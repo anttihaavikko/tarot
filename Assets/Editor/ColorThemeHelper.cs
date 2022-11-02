@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
-using UnityEditor.Experimental.SceneManagement;
+
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -89,7 +89,7 @@ namespace Editor
         {
             foreach (var go in Selection.gameObjects)
             {
-                var prefabMode = PrefabStageUtility.GetCurrentPrefabStage();
+                var prefabMode = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
                 if (prefabMode)
                 {
                     var data = new PrefabObject(prefabMode.assetPath, GetPath(go));
