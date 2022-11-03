@@ -112,7 +112,7 @@ public class Draggable : MonoBehaviour
         {
             // transform.position = pos;
             dropped?.Invoke(this);
-            enabled = !lockAfterDrop;
+            // enabled = !lockAfterDrop;
             gameObject.layer = layerId;
             
             return;

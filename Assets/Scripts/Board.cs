@@ -165,12 +165,15 @@ public class Board : MonoBehaviour
         var duration = 0.05f * Vector3.Distance(t.position, targetPos);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, targetPos, duration),0.1f);
 
+        var delay = 0f;
+
         if (end.Value == targetTile)
         {
-            Grow();
+            delay = 0.4f;
+            Invoke(nameof(Grow), delay);
         }
         
-        Invoke(nameof(AddCard), PanTime + 0.1f);
+        Invoke(nameof(AddCard), PanTime + 0.1f + delay);
     }
 
     private Vector3 Scale(Vector3 v)
