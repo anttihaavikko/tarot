@@ -30,9 +30,9 @@ public class InfiniteGrid<T> where T : GridTile
     public Vector3 GetCenter()
     {
         var positions = items.Values.Select(a => a.Position).ToList();
-        var x = positions.Average(p => p.x);
-        var y = positions.Average(p => p.y);
-        return new Vector3((float)x, (float)y, 0);
+        var x = (positions.Max(p => p.x) + positions.Min(p => p.x)) * 0.5f;
+        var y = (positions.Max(p => p.y) + positions.Min(p => p.y)) * 0.5f;
+        return new Vector3(x, y, 0);
     }
 
     public Vector2Int GetSize()

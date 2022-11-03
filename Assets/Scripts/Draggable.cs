@@ -94,7 +94,7 @@ public class Draggable : MonoBehaviour
         DropOn(rounded);
         this.StartCoroutine(() =>
         {
-            SetSortOrder(normalSortOrder - Mathf.RoundToInt(transform.position.y));
+            SetSortOrder(normalSortOrder);
         }, 0.3f);
     }
 

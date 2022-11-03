@@ -20,7 +20,8 @@ public class Board : MonoBehaviour
     private Vector2Int prevPos, prevDir;
     private Tile targetTile;
     
-    private const double MaxDropDistance = 0.7f;
+    private const float MaxDropDistance = 0.7f;
+    private const float PanTime = 0.3f;
 
     private void Start()
     {
@@ -33,8 +34,10 @@ public class Board : MonoBehaviour
                 AddTile(x, y);
             }
         }
-
-        AddCard();
+        
+        RepositionCamera();
+        Invoke(nameof(AddCard), PanTime + 0.1f);
+        
         MoveTarget();
     }
 
@@ -55,7 +58,7 @@ public class Board : MonoBehaviour
     private void AddCard()
     {
         var card = Instantiate(cardPrefab, transform);
-        card.SetBoard(this);
+        card.Init(this, EnumUtils.ToList<CardType>().ToList().Random());
         card.transform.position = hand.position;
     }
 
@@ -73,13 +76,16 @@ public class Board : MonoBehaviour
 
     private void RepositionCamera()
     {
+        const float perStep = 1f;
         var size = grid.GetSize();
-        var max = Mathf.Max(size.x, size.y);
-        cam.orthographicSize = 5f + max * 0.5f;
+        var max = Mathf.Max(size.x * 0.7f, size.y);
+
+        cam.orthographicSize = 1f + max * perStep;
 
         var center = grid.GetCenter();
-        cam.transform.position = center.WhereZ(-10);
-        hand.position = (center - Vector3.one * (2f + 0.5f * max)).WhereZ(0);
+        Tweener.MoveToBounceOut(cam.transform, center.WhereZ(-10), PanTime);
+        var handPos = center - new Vector3(1f + perStep * max * 0.9f, perStep * max * 0.9f, 0);
+        Tweener.MoveToBounceOut(hand, handPos, PanTime);
     }
 
     private void HidePreview()
@@ -164,7 +170,7 @@ public class Board : MonoBehaviour
             Grow();
         }
         
-        AddCard();
+        Invoke(nameof(AddCard), PanTime + 0.1f);
     }
 
     private Vector3 Scale(Vector3 v)
