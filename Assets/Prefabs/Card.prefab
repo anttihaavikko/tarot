@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 4148702712765327945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.25, z: 0}
-  m_LocalScale: {x: 0.92929, y: 0.92929, z: 0.92929}
+  m_LocalScale: {x: 0.92929, y: 1.393935, z: 0.92929}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4148702711367824605}
@@ -183,7 +183,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
 --- !u!61 &4148702712765327949
 BoxCollider2D:
   m_ObjectHideFlags: 0

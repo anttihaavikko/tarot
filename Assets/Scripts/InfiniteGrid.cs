@@ -27,9 +27,33 @@ public class InfiniteGrid<T> where T : GridTile
         return items.ContainsKey(GetKey(x, y));
     }
 
+    public Vector3 GetCenter()
+    {
+        var positions = items.Values.Select(a => a.Position).ToList();
+        var x = positions.Average(p => p.x);
+        var y = positions.Average(p => p.y);
+        return new Vector3((float)x, (float)y, 0);
+    }
+
+    public Vector2Int GetSize()
+    {
+        var positions = items.Values.Select(a => a.Position).ToList();
+        var x = Mathf.Abs(positions.Max(p => p.x)) + Mathf.Abs(positions.Min(p => p.x));
+        var y = Mathf.Abs(positions.Max(p => p.y)) + Mathf.Abs(positions.Min(p => p.y));
+        return new Vector2Int(x, y);
+    }
+
+    public GridSpot RandomFree()
+    {
+        return items.Values.Where(a => a.IsEmpty).OrderBy(_ => Random.value).First();
+    }
+
     public GridSpot GetClosest(Vector3 pos)
     {
-        return items.Values.Where(v => v.IsEmpty).OrderBy(v => Vector3.Distance(pos, v.AsVector3)).First();
+        return items.Values
+            .Where(v => v.IsEmpty && IsOnEdge(v.Position.x, v.Position.y))
+            .OrderBy(v => Vector3.Distance(pos, v.AsVector3))
+            .First();
     }
     
     public GridSpot GetClosestEdge(Vector3 pos)
@@ -49,6 +73,21 @@ public class InfiniteGrid<T> where T : GridTile
             Get(x, y - 1)
         };
     }
+    
+    public IEnumerable<GridSpot> GetNeighboursWithDiagonals(int x, int y)
+    {
+        return new []
+        {
+            Get(x + 1, y),
+            Get(x - 1, y),
+            Get(x, y + 1),
+            Get(x, y - 1),
+            Get(x + 1, y + 1),
+            Get(x + 1, y - 1),
+            Get(x - 1, y - 1),
+            Get(x - 1, y - 1)
+        };
+    }
 
     public IEnumerable<GridSpot> GetEdgeNeighbours(int x, int y)
     {
@@ -64,6 +103,11 @@ public class InfiniteGrid<T> where T : GridTile
         }).GroupBy(a => GetKey(a.Position.x, a.Position.y)).Select(g => g.First());
 
         return all;
+    }
+
+    public bool IsOnEdge(int x, int y)
+    {
+        return GetNeighbours(x, y).Any(v => v.IsWall);
     }
 
     public Vector2Int GetPosition(string key)
@@ -85,6 +129,7 @@ public class InfiniteGrid<T> where T : GridTile
 
         public bool IsWall => Value == default;
         public bool IsEmpty => Value != default && Value.IsEmpty;
+        public bool IsOccupied => Value != default && !Value.IsEmpty;
 
         public Vector3 AsVector3 => new(Position.x, Position.y);
 
