@@ -4,6 +4,7 @@ using AnttiStarterKit.Animations;
 using UnityEngine;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Utils;
+using TMPro;
 
 public class Board : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Camera cam;
     [SerializeField] private Transform hand;
+    [SerializeField] private TMP_Text cardTitle;
+    [SerializeField] private GameObject cardPreview;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
@@ -60,6 +63,9 @@ public class Board : MonoBehaviour
         var card = Instantiate(cardPrefab, transform);
         card.Init(this, EnumUtils.ToList<CardType>().ToList().Random());
         card.transform.position = hand.position;
+
+        cardPreview.SetActive(true);
+        cardTitle.text = card.GetName();
     }
 
     private void Grow()
@@ -155,6 +161,8 @@ public class Board : MonoBehaviour
 
         if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y) return;
         if (Vector3.Distance(p, spot.AsVector3) > MaxDropDistance) return;
+        
+        cardPreview.SetActive(false);
 
         end.Value.Set(card);
 

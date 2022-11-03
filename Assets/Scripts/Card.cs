@@ -51,6 +51,11 @@ public class Card : MonoBehaviour
         draggable.enabled = false;
     }
 
+    public string GetName()
+    {
+        return GetName(type);
+    }
+
     public static string GetName(CardType type)
     {
         return type switch
@@ -76,7 +81,8 @@ public class Card : MonoBehaviour
             CardType.Sun => "The Sun",
             CardType.Judgement => "Judgement",
             CardType.World => "The World",
-            CardType.Fool => "The Fool"
+            CardType.Fool => "The Fool",
+            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
         };
     }
 }
