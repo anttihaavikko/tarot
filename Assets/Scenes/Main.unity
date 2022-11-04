@@ -636,6 +636,7 @@ MonoBehaviour:
   moveCounters:
   - {fileID: 247579246}
   - {fileID: 1781495997}
+  expBar: {fileID: 451055652}
 --- !u!4 &296764683
 Transform:
   m_ObjectHideFlags: 0

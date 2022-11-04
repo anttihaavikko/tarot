@@ -19,6 +19,7 @@ public class Board : MonoBehaviour
     [SerializeField] private CardPreview cardPreview;
     [SerializeField] private Deck deck;
     [SerializeField] private List<TMP_Text> moveCounters;
+    [SerializeField] private Transform expBar;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
@@ -27,6 +28,9 @@ public class Board : MonoBehaviour
 
     private int movesLeft;
     private int moveCount = 5;
+
+    private int level = 1;
+    private int exp;
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
@@ -189,6 +193,17 @@ public class Board : MonoBehaviour
             delay = 0.4f;
             Invoke(nameof(Grow), delay);
             movesLeft = moveCount;
+            exp++;
+
+            UpdateExpBar();
+
+            if (exp == level)
+            {
+                exp = 0;
+                level++;
+                
+                Invoke(nameof(UpdateExpBar), 0.5f);
+            }
         }
         
         UpdateMoveDisplay();
@@ -197,6 +212,12 @@ public class Board : MonoBehaviour
         {
             Invoke(nameof(AddCard), PanTime + 0.1f + delay);
         }
+    }
+
+    private void UpdateExpBar()
+    {
+        var ratio = Mathf.Clamp01(1f * exp / level);
+        Tweener.ScaleToBounceOut(expBar, new Vector3(ratio, 1f, 1f), 0.2f);
     }
 
     private Vector3 Scale(Vector3 v)
