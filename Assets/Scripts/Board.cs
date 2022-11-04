@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using AnttiStarterKit.Animations;
 using UnityEngine;
@@ -17,11 +18,15 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform hand;
     [SerializeField] private CardPreview cardPreview;
     [SerializeField] private Deck deck;
+    [SerializeField] private List<TMP_Text> moveCounters;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
     private Vector2Int prevPos, prevDir;
     private Tile targetTile;
+
+    private int movesLeft;
+    private int moveCount = 5;
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
@@ -35,6 +40,9 @@ public class Board : MonoBehaviour
                 AddTile(x, y);
             }
         }
+        
+        movesLeft = moveCount;
+        UpdateMoveDisplay();
         
         RepositionCamera();
         Invoke(nameof(AddCard), PanTime + 0.1f);
@@ -173,14 +181,22 @@ public class Board : MonoBehaviour
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, targetPos, duration),0.1f);
 
         var delay = 0f;
+        
+        movesLeft--;
 
         if (end.Value == targetTile)
         {
             delay = 0.4f;
             Invoke(nameof(Grow), delay);
+            movesLeft = moveCount;
         }
         
-        Invoke(nameof(AddCard), PanTime + 0.1f + delay);
+        UpdateMoveDisplay();
+
+        if (movesLeft > 0)
+        {
+            Invoke(nameof(AddCard), PanTime + 0.1f + delay);
+        }
     }
 
     private Vector3 Scale(Vector3 v)
@@ -191,5 +207,10 @@ public class Board : MonoBehaviour
     private Vector3 InvertScale(Vector3 v)
     {
         return new Vector3(v.x, v.y / 1.5f, v.z);
+    }
+
+    private void UpdateMoveDisplay()
+    {
+        moveCounters.ForEach(t => t.text = $"{movesLeft} MOVES LEFT");
     }
 }
