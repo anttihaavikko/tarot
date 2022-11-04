@@ -38,11 +38,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amount: 5
+    - _Amount: 200
     - _EnableExternalAlpha: 0
     - _Offset: 0
-    - _Speed: 10
-    - _Sway: 5
+    - _Speed: 1
+    - _Sway: 20
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

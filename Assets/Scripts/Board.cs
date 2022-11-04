@@ -15,8 +15,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Camera cam;
     [SerializeField] private Transform hand;
-    [SerializeField] private TMP_Text cardTitle;
-    [SerializeField] private GameObject cardPreview;
+    [SerializeField] private CardPreview cardPreview;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
@@ -63,9 +62,8 @@ public class Board : MonoBehaviour
         var card = Instantiate(cardPrefab, transform);
         card.Init(this, EnumUtils.ToList<CardType>().ToList().Random());
         card.transform.position = hand.position;
-
-        cardPreview.SetActive(true);
-        cardTitle.text = card.GetName();
+        
+        cardPreview.Show(card.GetCardType());
     }
 
     private void Grow()
@@ -161,8 +159,8 @@ public class Board : MonoBehaviour
 
         if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y) return;
         if (Vector3.Distance(p, spot.AsVector3) > MaxDropDistance) return;
-        
-        cardPreview.SetActive(false);
+
+        cardPreview.Hide();
 
         end.Value.Set(card);
 

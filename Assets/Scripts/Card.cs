@@ -1,11 +1,15 @@
 using System;
+using AnttiStarterKit.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
     [SerializeField] private TMP_Text title;
-    
+    [SerializeField] private SpriteCollection cardSprites;
+    [SerializeField] private ColorCollection cardColors;
+    [SerializeField] private SpriteRenderer sprite, bg;
+
     private Board board;
     private Draggable draggable;
 
@@ -44,6 +48,8 @@ public class Card : MonoBehaviour
     {
         type = t;
         title.text = GetName(t);
+        sprite.sprite = cardSprites.Get((int)t);
+        bg.color = cardColors.Get((int)t);
     }
 
     public void Lock()
@@ -60,6 +66,7 @@ public class Card : MonoBehaviour
     {
         return type switch
         {
+            CardType.Fool => "The Fool",
             CardType.Magician => "The Magician",
             CardType.HighPriestess => "The High Priestess",
             CardType.Empress => "The Empress",
@@ -81,14 +88,19 @@ public class Card : MonoBehaviour
             CardType.Sun => "The Sun",
             CardType.Judgement => "Judgement",
             CardType.World => "The World",
-            CardType.Fool => "The Fool",
             _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
         };
+    }
+
+    public CardType GetCardType()
+    {
+        return type;
     }
 }
 
 public enum CardType
 {
+    Fool,
     Magician,
     HighPriestess,
     Empress,
@@ -110,5 +122,4 @@ public enum CardType
     Sun,
     Judgement,
     World,
-    Fool
 }
