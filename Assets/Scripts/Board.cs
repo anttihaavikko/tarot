@@ -28,8 +28,6 @@ public class Board : MonoBehaviour
 
     private void Start()
     {
-        // AddTile(0, 0);
-
         for (var x = -1; x < 2; x++)
         {
             for (var y = -1; y < 2; y++)
@@ -82,7 +80,7 @@ public class Board : MonoBehaviour
 
     private void RepositionCamera()
     {
-        const float perStep = 1f;
+        const float perStep = 0.9f;
         var size = grid.GetSize();
         var max = Mathf.Max(size.x * 0.7f, size.y);
 
