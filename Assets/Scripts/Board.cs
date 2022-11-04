@@ -62,7 +62,8 @@ public class Board : MonoBehaviour
         card.Init(this, deck.Pull());
         var t = card.transform;
         t.position = deck.GetSpawn();
-        Tweener.MoveToBounceOut(t, hand.position, 0.3f, 0.2f);
+        Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
+        this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
         cardPreview.Show(card.GetCardType());
     }
 
