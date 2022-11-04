@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AnttiStarterKit.Animations;
 using AnttiStarterKit.ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,12 @@ public class CardPreview : MonoBehaviour
     [SerializeField] private ColorCollection colors;
 
     private GameObject current;
+    private Appearer appearer;
+
+    private void Start()
+    {
+        appearer = GetComponent<Appearer>();
+    }
 
     public void Show(CardType type)
     {
@@ -25,9 +32,12 @@ public class CardPreview : MonoBehaviour
         current = images[(int)type];
         current.SetActive(true);
         bg.color = colors.Get((int)type);
+        
+        appearer.Show();
     }
 
     public void Hide()
     {
+        appearer.Hide();
     }
 }
