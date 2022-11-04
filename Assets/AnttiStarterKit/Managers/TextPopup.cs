@@ -17,9 +17,9 @@ namespace AnttiStarterKit.Managers
             anim = GetComponent<Animator>();
 
             if (!anim) return;
-            var info = anim.GetNextAnimatorStateInfo(-1);
-            defaultState = info.shortNameHash;
-            duration = info.length;
+            // var info = anim.GetNextAnimatorStateInfo(-1);
+            // defaultState = info.shortNameHash;
+            // duration = info.length;
         }
 
         public void Play(string content)

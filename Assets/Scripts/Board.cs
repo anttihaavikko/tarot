@@ -4,6 +4,8 @@ using System.Linq;
 using AnttiStarterKit.Animations;
 using UnityEngine;
 using AnttiStarterKit.Extensions;
+using AnttiStarterKit.Game;
+using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
 using TMPro;
 
@@ -20,6 +22,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Deck deck;
     [SerializeField] private List<TMP_Text> moveCounters;
     [SerializeField] private Transform expBar;
+    [SerializeField] private ScoreDisplay scoreDisplay;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
@@ -180,7 +183,8 @@ public class Board : MonoBehaviour
         card.Lock();
         
         Tweener.MoveToBounceOut(t, Scale(start.AsVector3), 0.1f);
-        var targetPos = Scale(end.AsVector3);
+        var cardPos = Scale(end.AsVector3);
+        var targetPos = cardPos;
         var duration = 0.05f * Vector3.Distance(t.position, targetPos);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, targetPos, duration),0.1f);
 
@@ -190,6 +194,15 @@ public class Board : MonoBehaviour
 
         if (end.Value == targetTile)
         {
+            if (movesLeft == moveCount - 1)
+            {
+                this.StartCoroutine(() =>
+                {
+                    scoreDisplay.AddMulti();
+                    EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
+                }, duration + 0.2f);
+            }
+            
             delay = 0.4f;
             Invoke(nameof(Grow), delay);
             movesLeft = moveCount;
@@ -199,6 +212,16 @@ public class Board : MonoBehaviour
 
             if (exp == level)
             {
+                var amount = grid.GetEmptyCount() * 10;
+                
+                this.StartCoroutine(() =>
+                {
+                    scoreDisplay.Add(amount);
+                    var shown = amount * scoreDisplay.Multi;
+                    EffectManager.AddTextPopup(shown.AsScore(), cardPos.RandomOffset(1f), 1.3f);
+                    scoreDisplay.ResetMulti();
+                }, duration + 0.5f);
+
                 exp = 0;
                 level++;
                 

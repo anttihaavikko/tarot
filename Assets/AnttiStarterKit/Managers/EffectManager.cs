@@ -116,12 +116,14 @@ namespace AnttiStarterKit.Managers
 			return eff.gameObject;
 		}
 
-		public static GameObject AddTextPopup(string content, Vector3 position)
+		public static GameObject AddTextPopup(string content, Vector3 position, float scale)
 		{
-			var t = Instance.GetTextPopup();
-			t.transform.position = position;
-			t.Play(content);
-			var go = t.gameObject;
+			var tp = Instance.GetTextPopup();
+			var t = tp.transform;
+			t.position = position;
+			t.localScale = Vector3.one * scale;
+			tp.Play(content);
+			var go = tp.gameObject;
 			go.SetActive(true);
 			return go;
 		}

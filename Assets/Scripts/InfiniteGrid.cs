@@ -145,6 +145,11 @@ public class InfiniteGrid<T> where T : GridTile
             Value = default;
         }
     }
+
+    public int GetEmptyCount()
+    {
+        return items.Values.Count(a => a.IsEmpty);
+    }
 }
 
 public abstract class GridTile : MonoBehaviour
