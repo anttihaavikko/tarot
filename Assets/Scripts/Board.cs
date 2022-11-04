@@ -16,6 +16,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Transform hand;
     [SerializeField] private CardPreview cardPreview;
+    [SerializeField] private Deck deck;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
@@ -60,9 +61,10 @@ public class Board : MonoBehaviour
     private void AddCard()
     {
         var card = Instantiate(cardPrefab, transform);
-        card.Init(this, EnumUtils.ToList<CardType>().ToList().Random());
-        card.transform.position = hand.position;
-        
+        card.Init(this, deck.Pull());
+        var t = card.transform;
+        t.position = deck.GetSpawn();
+        Tweener.MoveToBounceOut(t, hand.position, 0.3f);
         cardPreview.Show(card.GetCardType());
     }
 
