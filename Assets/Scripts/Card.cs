@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] private TMP_Text title;
+    [SerializeField] private TMP_Text title, number;
     [SerializeField] private SpriteCollection cardSprites;
     [SerializeField] private ColorCollection cardColors;
     [SerializeField] private SpriteRenderer sprite, bg;
@@ -47,9 +47,10 @@ public class Card : MonoBehaviour
     private void Init(CardType t)
     {
         type = t;
-        title.text = GetName(t);
+        title.text = GetName();
         sprite.sprite = cardSprites.Get((int)t);
         bg.color = cardColors.Get((int)t);
+        number.text = GetNumber();
     }
 
     public void Lock()
@@ -88,6 +89,36 @@ public class Card : MonoBehaviour
             CardType.Sun => "The Sun",
             CardType.Judgement => "Judgement",
             CardType.World => "The World",
+            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+        };
+    }
+    
+    public string GetNumber()
+    {
+        return type switch
+        {
+            CardType.Fool => "I",
+            CardType.Magician => "I",
+            CardType.HighPriestess => "II",
+            CardType.Empress => "III",
+            CardType.Emperor => "IV",
+            CardType.Hierophant => "V",
+            CardType.Lovers => "VI",
+            CardType.Chariot => "VII",
+            CardType.Strength => "VII",
+            CardType.Hermit => "IX",
+            CardType.WheelOfFortune => "X",
+            CardType.Justice => "XI",
+            CardType.HangedMan => "XII",
+            CardType.Death => "XIII",
+            CardType.Temperance => "XIV",
+            CardType.Devil => "XV",
+            CardType.Tower => "XVI",
+            CardType.Star => "XVII",
+            CardType.Moon => "XVIII",
+            CardType.Sun => "XIX",
+            CardType.Judgement => "XX",
+            CardType.World => "XXI",
             _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
         };
     }

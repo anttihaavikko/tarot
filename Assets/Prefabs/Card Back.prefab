@@ -10,10 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1044727668695542180}
   - component: {fileID: 1044727668695542181}
-  - component: {fileID: 6183539530803555096}
   - component: {fileID: 1044727668695542183}
-  - component: {fileID: 1044727668695542182}
-  - component: {fileID: 1044727668695542185}
   m_Layer: 0
   m_Name: Card Back
   m_TagString: Untagged
@@ -30,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1044727668695542178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4200298, y: 0.6300447, z: 0.4200298}
+  m_LocalScale: {x: 0.3791903, y: 0.5687854, z: 0.3791903}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1044727670233528118}
@@ -79,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95d3625293ffa48b0b49242f526d9fb8, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.11764706, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -89,23 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6183539530803555096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044727668695542178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e45d7808074410bd8e08a70e2dca1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: {fileID: 0}
-  cardSprites: {fileID: 11400000, guid: d555810c5d4ed44a8b2fb2c6c817b265, type: 2}
-  cardColors: {fileID: 11400000, guid: 14052a9de047f4f2bb55a553680cf200, type: 2}
-  sprite: {fileID: 0}
-  bg: {fileID: 1044727670233528121}
 --- !u!210 &1044727668695542183
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -117,53 +97,6 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
---- !u!61 &1044727668695542182
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044727668695542178}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1044727668695542185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044727668695542178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90062525066cb4f808a084a620bf4336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropMask:
-    serializedVersion: 2
-    m_Bits: 0
-  blockMask:
-    serializedVersion: 2
-    m_Bits: 0
-  lockAfterDrop: 0
-  normalSortOrder: 10
-  dragSortOrder: 20
 --- !u!1 &1044727670233528119
 GameObject:
   m_ObjectHideFlags: 0

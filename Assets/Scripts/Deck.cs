@@ -45,7 +45,7 @@ public class Deck : MonoBehaviour
 
     public Vector3 GetSpawn()
     {
-        return GetCurrent().position + Vector3.up * 0.2f;
+        return GetCurrent().position + new Vector3(0.2f, 0.2f, 0);
     }
 
     private Transform GetCurrent()

@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="400"
-     inkscape:cy="560"
+     inkscape:zoom="0.175"
+     inkscape:cx="2050.4482"
+     inkscape:cy="-127.72439"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -59,6 +59,37 @@
        x="267.60715"
        y="71.059525"
        ry="13.42173"
+       inkscape:export-xdpi="25"
+       inkscape:export-ydpi="25" />
+    <path
+       style="fill:#ffffff;stroke:#1b1b1e;stroke-width:9;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 556.38099,214.69047 0.75595,96.76191 21.92263,-30.23809 24.56845,30.23809 -3.02381,-94.49405 z"
+       id="path873"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-xdpi="25"
+       inkscape:export-ydpi="25" />
+    <path
+       style="fill:#ffffff;stroke:#1b1b1e;stroke-width:9;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 283.86486,213.90108 -0.75595,96.76191 -21.92263,-30.23809 -24.56845,30.23809 3.02381,-94.49405 z"
+       id="path873-6"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-xdpi="25"
+       inkscape:export-ydpi="25" />
+    <rect
+       style="fill:#ffffff;stroke:#1b1b1e;stroke-width:10.1104;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:100;stroke-dasharray:none;stroke-dashoffset:47.2441;paint-order:markers fill stroke;stroke-opacity:1"
+       id="rect871"
+       width="312.1095"
+       height="57.853893"
+       x="265.89447"
+       y="193.32304"
+       ry="0"
+       inkscape:export-xdpi="25"
+       inkscape:export-ydpi="25" />
+    <path
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:20;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 807.35714,-91.20274 187.95301,-282.83087 214.21365,-3.94258 -395.398,406.644235 z"
+       id="path915"
+       sodipodi:nodetypes="ccccc"
        inkscape:export-xdpi="25"
        inkscape:export-ydpi="25" />
   </g>
