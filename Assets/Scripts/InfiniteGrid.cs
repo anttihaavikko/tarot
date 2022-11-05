@@ -84,7 +84,7 @@ public class InfiniteGrid<T> where T : GridTile
             Get(x, y - 1),
             Get(x + 1, y + 1),
             Get(x + 1, y - 1),
-            Get(x - 1, y - 1),
+            Get(x - 1, y + 1),
             Get(x - 1, y - 1)
         };
     }
@@ -93,13 +93,18 @@ public class InfiniteGrid<T> where T : GridTile
     {
         return GetNeighbours(x, y).Where(v => v.IsWall);
     }
+    
+    public IEnumerable<GridSpot> GetEdgeNeighboursWithDiagonals(int x, int y)
+    {
+        return GetNeighboursWithDiagonals(x, y).Where(v => v.IsWall);
+    }
 
     public IEnumerable<GridSpot> GetEdges()
     {
         var all = items.SelectMany(v =>
         {
             var p = GetPosition(v.Key);
-            return GetEdgeNeighbours(p.x, p.y);
+            return GetEdgeNeighboursWithDiagonals(p.x, p.y);
         }).GroupBy(a => GetKey(a.Position.x, a.Position.y)).Select(g => g.First());
 
         return all;

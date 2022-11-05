@@ -93,6 +93,36 @@ public class Card : MonoBehaviour
         };
     }
     
+    public static string GetShortName(CardType type)
+    {
+        return type switch
+        {
+            CardType.Fool => "Fool",
+            CardType.Magician => "Magician",
+            CardType.HighPriestess => "High Priestess",
+            CardType.Empress => "Empress",
+            CardType.Emperor => "Emperor",
+            CardType.Hierophant => "Hierophant",
+            CardType.Lovers => "Lovers",
+            CardType.Chariot => "Chariot",
+            CardType.Strength => "Strength",
+            CardType.Hermit => "Hermit",
+            CardType.WheelOfFortune => "Wheel of Fortune",
+            CardType.Justice => "Justice",
+            CardType.HangedMan => "Hanged Man",
+            CardType.Death => "Death",
+            CardType.Temperance => "Temperance",
+            CardType.Devil => "Devil",
+            CardType.Tower => "Tower",
+            CardType.Star => "Star",
+            CardType.Moon => "Moon",
+            CardType.Sun => "Sun",
+            CardType.Judgement => "Judgement",
+            CardType.World => "World",
+            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+        };
+    }
+    
     public string GetNumber()
     {
         return type switch

@@ -23,6 +23,7 @@ public class Board : MonoBehaviour
     [SerializeField] private List<TMP_Text> moveCounters;
     [SerializeField] private Transform expBar;
     [SerializeField] private ScoreDisplay scoreDisplay;
+    [SerializeField] private Skills skills;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
