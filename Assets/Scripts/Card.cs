@@ -8,8 +8,8 @@ public class Card : MonoBehaviour
 {
     [SerializeField] private TMP_Text title, number;
     [SerializeField] private SpriteCollection cardSprites;
-    [SerializeField] private ColorCollection cardColors;
-    [SerializeField] private SpriteRenderer sprite, bg;
+    [SerializeField] private ColorCollection cardColors, patternColors;
+    [SerializeField] private SpriteRenderer sprite, bg, pattern;
 
     private Board board;
     private Draggable draggable;
@@ -55,6 +55,7 @@ public class Card : MonoBehaviour
         title.text = GetName();
         sprite.sprite = cardSprites.Get((int)t);
         bg.color = cardColors.Get((int)t);
+        pattern.color = patternColors.Get((int)t);
         number.text = GetNumber();
     }
 

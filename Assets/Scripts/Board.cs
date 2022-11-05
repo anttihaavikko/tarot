@@ -171,7 +171,6 @@ public class Board : MonoBehaviour
     private void AddTile(int x, int y)
     {
         if (!grid.Get(x, y).IsWall) return;
-        
         var tile = Instantiate(tilePrefab, transform);
         tile.Position = new Vector2Int(x, y);
         tile.transform.position = Scale(new Vector3(x, y, 0));
