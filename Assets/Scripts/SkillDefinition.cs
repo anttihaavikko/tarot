@@ -61,6 +61,21 @@ public class Skill
         sb.Replace("[2]", Card.GetShortName(secondCard));
         return sb.ToString();
     }
+    
+    public bool Matches(CardType type)
+    {
+        return firstCard == type;
+    }
+    
+    public bool Matches(Passive pas, CardType type)
+    {
+        return passive == pas && firstCard == type;
+    }
+    
+    public bool Matches(Passive pas)
+    {
+        return passive == pas;
+    }
 
     public bool Matches(SkillTrigger skillTrigger, CardType type)
     {

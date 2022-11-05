@@ -121,4 +121,14 @@ public class Skills : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
     }
+    
+    public IEnumerable<Skill> Get(Passive passive, CardType type)
+    {
+        return skills.Where(s => s.Matches(passive, type));
+    }
+
+    public IEnumerable<Skill> Get(Passive passive)
+    {
+        return skills.Where(s => s.Matches(passive));
+    }
 }

@@ -94,6 +94,16 @@ public class Board : MonoBehaviour
             .ToList()
             .ForEach(p => AddTile(p.Position.x, p.Position.y));
         
+        skills.Get(Passive.FurtherExtend).ToList().ForEach(s =>
+        {
+            grid.GetAll()
+                .Where(t => t.IsOccupied && s.Matches(t.Value.Card.GetCardType()))
+                .SelectMany(t => grid.GetNeighboursWithDiagonals(t.Position.x, t.Position.y, 2))
+                .Where(g => g.IsWall)
+                .ToList()
+                .ForEach(g => AddTile(g.Position.x, g.Position.y));
+        });
+        
         MoveTarget();
 
         RepositionCamera();
@@ -160,6 +170,8 @@ public class Board : MonoBehaviour
 
     private void AddTile(int x, int y)
     {
+        if (!grid.Get(x, y).IsWall) return;
+        
         var tile = Instantiate(tilePrefab, transform);
         tile.Position = new Vector2Int(x, y);
         tile.transform.position = Scale(new Vector3(x, y, 0));

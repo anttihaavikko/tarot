@@ -80,19 +80,19 @@ public class InfiniteGrid<T> where T : GridTile
         };
     }
     
-    public IEnumerable<GridSpot> GetNeighboursWithDiagonals(int x, int y)
+    public IEnumerable<GridSpot> GetNeighboursWithDiagonals(int x, int y, int reach = 1)
     {
-        return new []
+        var spots = new List<GridSpot>();
+        
+        for (var i = -reach; i <= reach; i++)
         {
-            Get(x + 1, y),
-            Get(x - 1, y),
-            Get(x, y + 1),
-            Get(x, y - 1),
-            Get(x + 1, y + 1),
-            Get(x + 1, y - 1),
-            Get(x - 1, y + 1),
-            Get(x - 1, y - 1)
-        };
+            for (var j = -reach; j <= reach; j++)
+            {
+                spots.Add(Get(x + i, y + j));
+            }   
+        }
+
+        return spots;
     }
 
     public IEnumerable<GridSpot> GetEdgeNeighbours(int x, int y)
@@ -134,6 +134,16 @@ public class InfiniteGrid<T> where T : GridTile
         return next.IsWall || !next.IsEmpty ? Get(x, y) : GetSlideTarget(next.Position.x, next.Position.y, dir);
     }
     
+    public List<GridSpot> GetAll()
+    {
+        return items.Values.ToList();
+    }
+
+    public int GetEmptyCount()
+    {
+        return items.Values.Count(a => a.IsEmpty);
+    }
+    
     public class GridSpot
     {
         public Vector2Int Position;
@@ -156,11 +166,6 @@ public class InfiniteGrid<T> where T : GridTile
             Position = pos;
             Value = default;
         }
-    }
-
-    public int GetEmptyCount()
-    {
-        return items.Values.Count(a => a.IsEmpty);
     }
 }
 
