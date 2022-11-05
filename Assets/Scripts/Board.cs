@@ -190,11 +190,6 @@ public class Board : MonoBehaviour
 
         JustTouched = grid.CollisionTarget ? grid.CollisionTarget.Card : null;
 
-        if (JustTouched)
-        {
-            Debug.Log($"Touched {JustTouched.GetCardType()}");
-        }
-
         cardPreview.Hide();
 
         end.Value.Set(card);
