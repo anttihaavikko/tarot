@@ -14,9 +14,13 @@ public class Skills : MonoBehaviour
     [SerializeField] private Board board;
     [SerializeField] private Transform skillContainer;
     [SerializeField] private SkillIcon iconPrefab;
+    [SerializeField] private List<SkillPick> skillPicks;
+    [SerializeField] private GameObject pickContainer;
 
     private List<Skill> skillPool;
     private List<Skill> skills = new();
+
+    private bool picking;
 
     private void Awake()
     {
@@ -29,6 +33,22 @@ public class Skills : MonoBehaviour
         {
             Add(Take(1)[0]);
         }
+    }
+
+    public IEnumerator Present()
+    {
+        var options = Take(skillPicks.Count);
+        skillPicks.ForEach(s => s.Setup(options[skillPicks.IndexOf(s)]));
+        pickContainer.SetActive(true);
+        picking = true;
+
+        while (picking) yield return null;
+    }
+
+    public void Pick()
+    {
+        pickContainer.SetActive(false);
+        picking = false;
     }
 
     public void Add(Skill source)

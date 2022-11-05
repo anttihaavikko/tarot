@@ -249,6 +249,8 @@ public class Board : MonoBehaviour
                 level++;
                 
                 yield return new WaitForSeconds(0.5f);
+                
+                yield return skills.Present();
 
                 UpdateExpBar();
             }
