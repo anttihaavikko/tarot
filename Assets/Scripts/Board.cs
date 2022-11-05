@@ -294,10 +294,9 @@ public class Board : MonoBehaviour
     public IEnumerator DestroyCards(List<Card> cards)
     {
         cards.ForEach(c => c.Shake());
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         cards.ForEach(c =>
         {
-            
             c.Tile.Clear();
             grid.Clear(c.Tile.Position.x, c.Tile.Position.y);
             c.gameObject.SetActive(false);
