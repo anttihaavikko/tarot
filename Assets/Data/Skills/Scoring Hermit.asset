@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Death Touch
+  m_Name: Scoring Hermit
   m_EditorClassIdentifier: 
   skill:
-    title: Death Touch
-    description: Destroy any card ([1]) slides into.
+    title: Scoring Hermit
+    description: When placing ([1]), score 100 for every empty neigbouring tile.
     passive: 0
     trigger: 1
-    effect: 3
-    firstCards: 0d0000000f000000
+    effect: 2
+    firstCards: 09000000
     secondCards: 
-    repeatable: 0
-    amount: 0
+    repeatable: 1
+    amount: 100

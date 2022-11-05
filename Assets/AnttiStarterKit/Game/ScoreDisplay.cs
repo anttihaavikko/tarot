@@ -95,9 +95,9 @@ namespace AnttiStarterKit.Game
             Invoke(nameof(ClearAddition), additionShowTime);
         }
 
-        public void AddMulti()
+        public void AddMulti(int amount = 1)
         {
-            multiplier++;
+            multiplier += amount;
             ShowMulti();
         }
 

@@ -2974,7 +2974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233949207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.07, y: -4.2, z: 0}
+  m_LocalPosition: {x: -2.64, y: -1.73, z: 0}
   m_LocalScale: {x: 2.149, y: 2.149, z: 2.149}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3412,7 +3412,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f8199cf3162a493aa5bf4f131de1dff, type: 2}
   - {fileID: 11400000, guid: c77a6e755fb75490d996b85f98f60dbf, type: 2}
   - {fileID: 11400000, guid: 5436a19ea993c4cc682d9a63cfca1ed5, type: 2}
+  - {fileID: 11400000, guid: 68032da07d4c44bd9936c9c32aa60f9d, type: 2}
   board: {fileID: 296764682}
+  skillContainer: {fileID: 1942875045}
+  iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}
 --- !u!4 &1517199134
 Transform:
   m_ObjectHideFlags: 0
@@ -4033,7 +4036,7 @@ MonoBehaviour:
   m_ChildAlignment: 2
   m_StartCorner: 1
   m_StartAxis: 0
-  m_CellSize: {x: 30, y: 30}
+  m_CellSize: {x: 20, y: 20}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -4108,7 +4111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

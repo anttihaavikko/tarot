@@ -15,7 +15,10 @@ MonoBehaviour:
   skill:
     title: Light
     description: ([1]) extends board twice as far.
-    passive: 0
+    passive: 1
+    trigger: 0
+    effect: 0
     firstCards: 110000001200000013000000
     secondCards: 
+    repeatable: 0
     amount: 0

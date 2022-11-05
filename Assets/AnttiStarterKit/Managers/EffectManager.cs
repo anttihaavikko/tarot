@@ -122,6 +122,7 @@ namespace AnttiStarterKit.Managers
 			var t = tp.transform;
 			t.position = position;
 			t.localScale = Vector3.one * scale;
+			t.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(-5f, 5f)));
 			tp.Play(content);
 			var go = tp.gameObject;
 			go.SetActive(true);

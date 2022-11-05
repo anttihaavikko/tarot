@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private TMP_Text letter;
+    [SerializeField] private Pulsater pulsater;
 
     private Skill skill;
 
@@ -21,5 +22,10 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
+    }
+
+    public void Pulsate()
+    {
+        pulsater.Pulsate();
     }
 }

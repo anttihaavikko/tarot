@@ -22,11 +22,15 @@ public class Skill
     public string title;
     [TextArea] public string description;
     public Passive passive;
+    public SkillTrigger trigger;
+    public SkillEffect effect;
     public List<CardType> firstCards, secondCards;
     public bool repeatable;
     public int amount;
     
     private CardType firstCard, secondCard;
+    
+    private SkillIcon icon;
 
     public Skill(Skill source)
     {
@@ -39,6 +43,8 @@ public class Skill
         repeatable = source.repeatable;
         firstCard = source.firstCard;
         secondCard = source.secondCard;
+        trigger = source.trigger;
+        effect = source.effect;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -55,6 +61,29 @@ public class Skill
         sb.Replace("[2]", Card.GetShortName(secondCard));
         return sb.ToString();
     }
+
+    public bool Matches(SkillTrigger skillTrigger, CardType type)
+    {
+        return trigger == skillTrigger && firstCard == type;
+    }
+    
+    public bool Matches(SkillTrigger skillTrigger)
+    {
+        return trigger == skillTrigger;
+    }
+
+    public void Trigger()
+    {
+        if (icon)
+        {
+            icon.Pulsate();
+        }
+    }
+
+    public void SetIcon(SkillIcon i)
+    {
+        icon = i;
+    }
 }
 
 public enum SkillTrigger
@@ -66,7 +95,9 @@ public enum SkillTrigger
 public enum SkillEffect
 {
     None,
-    AddMultiplierForEmptyNeighbours
+    AddMultiplierIfAlone,
+    AddScoreIfAlone,
+    DestroyTouching
 }
 
 public enum Passive

@@ -1,4 +1,5 @@
 using System;
+using AnttiStarterKit.Animations;
 using AnttiStarterKit.ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -12,11 +13,15 @@ public class Card : MonoBehaviour
 
     private Board board;
     private Draggable draggable;
+    private Shaker shaker;
 
     private CardType type;
+    
+    public Tile Tile { get; set; }
 
     private void Start()
     {
+        shaker = GetComponent<Shaker>();
         draggable = GetComponent<Draggable>();
         draggable.preview += Preview;
         draggable.dropped += Place;
@@ -26,7 +31,7 @@ public class Card : MonoBehaviour
     {
         if (board)
         {
-            board.Place(this);
+            board.Slide(this);
         }
     }
 
@@ -156,6 +161,11 @@ public class Card : MonoBehaviour
     public CardType GetCardType()
     {
         return type;
+    }
+
+    public void Shake()
+    {
+        shaker.Shake();
     }
 }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AnttiStarterKit.Animations;
@@ -29,6 +30,7 @@ public class Board : MonoBehaviour
 
     private Vector2Int prevPos, prevDir;
     private Tile targetTile;
+    private Card justPlaced;
 
     private int movesLeft;
     private int moveCount = 5;
@@ -38,6 +40,8 @@ public class Board : MonoBehaviour
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
+    
+    public Card JustTouched { get; private set; }
 
     private void Start()
     {
@@ -162,8 +166,15 @@ public class Board : MonoBehaviour
         grid.Set(x, y, tile);
     }
 
-    public void Place(Card card)
+    public void Slide(Card card)
     {
+        StartCoroutine(DoSlide(card));
+    }
+
+    private IEnumerator DoSlide(Card card)
+    {
+        justPlaced = card;
+        
         HidePreview();
         
         var t = card.transform;
@@ -174,8 +185,15 @@ public class Board : MonoBehaviour
         var dir = (start.Position - spot.Position);
         var end = grid.GetSlideTarget(start.Position.x, start.Position.y, dir);
 
-        if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y) return;
-        if (Vector3.Distance(p, spot.AsVector3) > MaxDropDistance) return;
+        if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y) yield break;
+        if (Vector3.Distance(p, spot.AsVector3) > MaxDropDistance) yield break;
+
+        JustTouched = grid.CollisionTarget ? grid.CollisionTarget.Card : null;
+
+        if (JustTouched)
+        {
+            Debug.Log($"Touched {JustTouched.GetCardType()}");
+        }
 
         cardPreview.Hide();
 
@@ -193,19 +211,20 @@ public class Board : MonoBehaviour
         
         movesLeft--;
 
+        yield return new WaitForSeconds(duration);
+
+        yield return skills.Trigger(SkillTrigger.Place, card);
+
         if (end.Value == targetTile)
         {
             if (movesLeft == moveCount - 1)
             {
-                this.StartCoroutine(() =>
-                {
-                    scoreDisplay.AddMulti();
-                    EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
-                }, duration + 0.2f);
+                scoreDisplay.AddMulti();
+                EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
             }
-            
-            delay = 0.4f;
-            Invoke(nameof(Grow), delay);
+
+            Grow();
+
             movesLeft = moveCount;
             exp++;
 
@@ -215,18 +234,17 @@ public class Board : MonoBehaviour
             {
                 var amount = grid.GetEmptyCount() * 10;
                 
-                this.StartCoroutine(() =>
-                {
-                    scoreDisplay.Add(amount);
-                    var shown = amount * scoreDisplay.Multi;
-                    EffectManager.AddTextPopup(shown.AsScore(), cardPos.RandomOffset(1f), 1.3f);
-                    scoreDisplay.ResetMulti();
-                }, duration + 0.5f);
+                yield return new WaitForSeconds(0.5f);
+                
+                AddScore(amount, cardPos);
+                scoreDisplay.ResetMulti();
 
                 exp = 0;
                 level++;
                 
-                Invoke(nameof(UpdateExpBar), 0.5f);
+                yield return new WaitForSeconds(0.5f);
+
+                UpdateExpBar();
             }
         }
         
@@ -234,7 +252,8 @@ public class Board : MonoBehaviour
 
         if (movesLeft > 0)
         {
-            Invoke(nameof(AddCard), PanTime + 0.1f + delay);
+            yield return new WaitForSeconds(0.5f);
+            AddCard();
         }
     }
 
@@ -257,5 +276,37 @@ public class Board : MonoBehaviour
     private void UpdateMoveDisplay()
     {
         moveCounters.ForEach(t => t.text = $"{movesLeft} MOVES LEFT");
+    }
+
+    public void AddMulti(int amount = 1)
+    {
+        scoreDisplay.AddMulti(amount);
+    }
+
+    public void AddScore(int amount, Vector3 pos)
+    {
+        scoreDisplay.Add(amount);
+        var shown = amount * scoreDisplay.Multi;
+        EffectManager.AddTextPopup(shown.AsScore(), pos.RandomOffset(1f), 1.3f);
+    }
+
+    public bool IsPlacedAlone()
+    {
+        var pos = justPlaced.Tile.Position;
+        return grid.GetNeighbours(pos.x, pos.y).All(g => g.IsWall || g.IsEmpty);
+    }
+
+    public IEnumerator DestroyCards(List<Card> cards)
+    {
+        cards.ForEach(c => c.Shake());
+        yield return new WaitForSeconds(0.2f);
+        cards.ForEach(c =>
+        {
+            
+            c.Tile.Clear();
+            grid.Clear(c.Tile.Position.x, c.Tile.Position.y);
+            c.gameObject.SetActive(false);
+        });
+        yield return new WaitForSeconds(0.5f);
     }
 }

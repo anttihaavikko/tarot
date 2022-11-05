@@ -17,7 +17,9 @@ MonoBehaviour:
     description: When placing ([1]), increase multiplier for every empty neigbouring
       tile.
     passive: 0
+    trigger: 1
+    effect: 1
     firstCards: 09000000
     secondCards: 
     repeatable: 1
-    amount: 0
+    amount: 5
