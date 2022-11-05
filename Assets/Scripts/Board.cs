@@ -193,7 +193,7 @@ public class Board : MonoBehaviour
         
         var spot = grid.GetClosestEdge(p);
         var start = grid.GetClosest(p);
-        var dir = (start.Position - spot.Position);
+        var dir = start.Position - spot.Position;
         var end = grid.GetSlideTarget(start.Position.x, start.Position.y, dir);
 
         if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y) yield break;
@@ -311,7 +311,6 @@ public class Board : MonoBehaviour
         cards.ForEach(c =>
         {
             c.Tile.Clear();
-            grid.Clear(c.Tile.Position.x, c.Tile.Position.y);
             c.gameObject.SetActive(false);
         });
         yield return new WaitForSeconds(0.5f);

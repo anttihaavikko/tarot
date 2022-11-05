@@ -18,11 +18,6 @@ public class InfiniteGrid<T> where T : GridTile
         items.Add(GetKey(x, y), new GridSpot(x, y, value));
     }
 
-    public void Clear(int x, int y)
-    {
-        items.Remove(GetKey(x, y));
-    }
-
     private static string GetKey(int x, int y)
     {
         return $"{x},{y}";
