@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Transform
-    description: Transform any drawn ([1]) to ([2]).
+    description: Transform any drawn ([1]) card to ([22]).
     passive: 3
     trigger: 0
     effect: 0

@@ -65,6 +65,8 @@ public class Skill
         var sb = new StringBuilder(description);
         sb.Replace("[1]", Card.GetShortName(firstCard));
         sb.Replace("[2]", Card.GetShortName(secondCard));
+        sb.Replace("[11]", Card.GetName(firstCard));
+        sb.Replace("[22]", Card.GetName(secondCard));
         sb.Replace("(", useColors ? "<color=#E0CA3C>" : "");
         sb.Replace(")", useColors ? "</color>" : "");
         return sb.ToString();
