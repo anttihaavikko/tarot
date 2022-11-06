@@ -22,6 +22,14 @@ Shader "CustomSprites/SinBlobify"
             "RenderType"="Transparent" 
             "Queue"="Transparent"
         }
+        
+        Stencil {
+             Ref [_Stencil]
+             Comp [_StencilComp]
+             Pass [_StencilOp] 
+             ReadMask [_StencilReadMask]
+             WriteMask [_StencilWriteMask]
+        }
 
         Blend SrcAlpha OneMinusSrcAlpha
 
