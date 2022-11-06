@@ -27,4 +27,9 @@ public class SkillPick : MonoBehaviour
         skillPool.Add(skill);
         skillPool.Pick();
     }
+
+    public void Hide()
+    {
+        preview.Hide();
+    }
 }

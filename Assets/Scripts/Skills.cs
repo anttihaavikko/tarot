@@ -15,8 +15,6 @@ public class Skills : MonoBehaviour
     [SerializeField] private Transform skillContainer;
     [SerializeField] private SkillIcon iconPrefab;
     [SerializeField] private List<SkillPick> skillPicks;
-    [SerializeField] private GameObject pickContainer;
-    [SerializeField] private SkillTooltip tooltip;
 
     private List<Skill> skillPool;
     private List<Skill> skills = new();
@@ -40,7 +38,6 @@ public class Skills : MonoBehaviour
     {
         var options = Take(skillPicks.Count);
         skillPicks.ForEach(s => s.Setup(options[skillPicks.IndexOf(s)]));
-        pickContainer.SetActive(true);
         picking = true;
 
         while (picking) yield return null;
@@ -48,8 +45,8 @@ public class Skills : MonoBehaviour
 
     public void Pick()
     {
-        pickContainer.SetActive(false);
         picking = false;
+        skillPicks.ForEach(s => s.Hide());
     }
 
     public void Add(Skill source)
