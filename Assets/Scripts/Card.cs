@@ -172,6 +172,11 @@ public class Card : MonoBehaviour
     {
         shaker.Shake();
     }
+
+    public void ShakeForever()
+    {
+        shaker.ShakeForever();
+    }
 }
 
 public enum CardType

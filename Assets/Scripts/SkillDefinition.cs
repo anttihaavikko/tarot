@@ -109,7 +109,8 @@ public class Skill
 public enum SkillTrigger
 {
     None,
-    Place
+    Place,
+    Death
 }
 
 public enum SkillEffect
@@ -117,7 +118,9 @@ public enum SkillEffect
     None,
     AddMultiplierIfAlone,
     AddScoreIfAlone,
-    DestroyTouching
+    DestroyTouching,
+    AddMultiForSlideLength,
+    AddMultiplier
 }
 
 public enum Passive

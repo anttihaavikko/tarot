@@ -110,6 +110,8 @@ public class Skills : MonoBehaviour
             SkillEffect.DestroyTouching
         }.Contains(skill.effect);
 
+        if (skill.effect == SkillEffect.AddMultiForSlideLength && board.SlideLength < 1) yield break;
+
         if (skill.effect is SkillEffect.AddMultiplierIfAlone or SkillEffect.AddScoreIfAlone)
         {
             if (!board.IsPlacedAlone())
@@ -124,6 +126,12 @@ public class Skills : MonoBehaviour
         
         EffectManager.AddTextPopup(skill.title, p, 0.8f);
         skill.Trigger();
+
+        if (skill.effect == SkillEffect.AddMultiForSlideLength)
+        {
+            board.AddMulti(board.SlideLength);
+            delay = 0.4f;
+        }
         
         if (skill.effect == SkillEffect.AddMultiplierIfAlone)
         {
@@ -135,6 +143,12 @@ public class Skills : MonoBehaviour
         {
             board.AddScore(skill.amount, pos);
             delay = 0.4f;
+        }
+        
+        if (skill.effect == SkillEffect.AddMultiplier)
+        {
+            board.AddMulti(skill.amount);
+            delay = 0.25f;
         }
 
         if (skill.effect == SkillEffect.DestroyTouching)

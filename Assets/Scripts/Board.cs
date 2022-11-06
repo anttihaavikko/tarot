@@ -42,6 +42,7 @@ public class Board : MonoBehaviour
     private const float PanTime = 0.3f;
     
     public Card JustTouched { get; private set; }
+    public int SlideLength { get; private set; }
 
     private void Start()
     {
@@ -200,6 +201,7 @@ public class Board : MonoBehaviour
         if (Vector3.Distance(p, spot.AsVector3) > MaxDropDistance) yield break;
 
         JustTouched = grid.CollisionTarget ? grid.CollisionTarget.Card : null;
+        SlideLength = Mathf.RoundToInt(Vector2Int.Distance(start.Position, end.Position));
 
         cardPreview.Hide();
 
@@ -306,13 +308,15 @@ public class Board : MonoBehaviour
 
     public IEnumerator DestroyCards(List<Card> cards)
     {
-        cards.ForEach(c => c.Shake());
+        cards.ForEach(c => c.ShakeForever());
         yield return new WaitForSeconds(0.3f);
-        cards.ForEach(c =>
+        foreach (var c in cards)
         {
+            yield return skills.Trigger(SkillTrigger.Death, c);
             c.Tile.Clear();
             c.gameObject.SetActive(false);
-        });
+        }
+
         yield return new WaitForSeconds(0.5f);
     }
 }

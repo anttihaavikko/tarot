@@ -23,6 +23,12 @@ namespace AnttiStarterKit.Animations
             _startAngle = _t.rotation.eulerAngles.z;
         }
 
+        public void ShakeForever()
+        {
+            duration = 9999f;
+            Shake();
+        }
+
         private void Update()
         {
             if (!(_durationLeft > 0)) return;

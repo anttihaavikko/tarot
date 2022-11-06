@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
+  m_Name: Suicidal
+  m_EditorClassIdentifier: 
+  skill:
+    title: Suicidal
+    description: Increase (multiplier) by (10) when ([1]) dies.
+    passive: 0
+    trigger: 2
+    effect: 5
+    firstCards: 0c000000
+    secondCards: 
+    repeatable: 1
+    amount: 10
