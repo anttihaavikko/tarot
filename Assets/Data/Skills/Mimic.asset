@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
+  m_Name: Mimic
+  m_EditorClassIdentifier: 
+  skill:
+    title: Mimic
+    description: ([1]) gets all the effects of ([2]).
+    passive: 2
+    trigger: 0
+    effect: 0
+    firstCards: 00000000
+    secondCards: 0100000002000000030000000400000005000000090000000c0000000d0000000f000000
+    repeatable: 1
+    amount: 0

@@ -79,9 +79,15 @@ public class Skills : MonoBehaviour
         return skillPool.OrderBy(s => Random.value).Take(amount).ToList();
     }
 
+    public IEnumerable<CardType> GetTypesFor(Card card)
+    {
+        var type = card.GetCardType();
+        return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.SecondType).Concat(new [] { type });
+    }
+
     public IEnumerator Trigger(SkillTrigger trigger, Card card)
     {
-        foreach (var s in skills.Where(s => s.Matches(trigger, card.GetCardType())).ToList())
+        foreach (var s in skills.Where(s => GetTypesFor(card).Any(t => s.Matches(trigger, t))).ToList())
         {
             yield return Act(s, card.transform.position);
         }

@@ -33,6 +33,7 @@ public class Skill
     private SkillIcon icon;
 
     public CardType FirstType => firstCard;
+    public CardType SecondType => secondCard;
 
     public Skill(Skill source)
     {
@@ -122,5 +123,6 @@ public enum SkillEffect
 public enum Passive
 {
     None,
-    FurtherExtend
+    FurtherExtend,
+    Mimic
 }
