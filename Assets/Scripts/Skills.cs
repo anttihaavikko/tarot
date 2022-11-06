@@ -32,6 +32,12 @@ public class Skills : MonoBehaviour
         {
             Add(Take(1)[0]);
         }
+
+        if (DevKey.Down(KeyCode.E))
+        {
+            var options = Take(skillPicks.Count);
+            skillPicks.ForEach(s => s.Setup(options[skillPicks.IndexOf(s)]));
+        }
     }
 
     public IEnumerator Present()
@@ -86,7 +92,7 @@ public class Skills : MonoBehaviour
     {
         foreach (var s in skills.Where(s => GetTypesFor(card).Any(t => s.Matches(trigger, t))).ToList())
         {
-            yield return Act(s, card.transform.position);
+            yield return Act(s, card.transform.position, card);
         }
     }
 
@@ -98,7 +104,7 @@ public class Skills : MonoBehaviour
         }
     }
 
-    public IEnumerator Act(Skill skill, Vector3 pos)
+    public IEnumerator Act(Skill skill, Vector3 pos, Card card = null)
     {
         var delay = 0f;
         var p = pos.RandomOffset(1f);
@@ -118,6 +124,8 @@ public class Skills : MonoBehaviour
                 yield break;
             }
         }
+
+        if (skill.effect == SkillEffect.SpawnAround && !board.HasEmptyNeighboursWithDiagonals(card)) yield break;
 
         if (touchEffect && !board.JustTouched) yield break;
         
@@ -155,6 +163,13 @@ public class Skills : MonoBehaviour
             {
                 yield return board.DestroyCards(new List<Card> { target });
             }
+        }
+        
+        if (skill.effect == SkillEffect.SpawnAround)
+        {
+            yield return new WaitForSeconds(0.4f);
+            yield return board.SpawnAround(card, skill.TargetType);
+            delay = 0.25f;
         }
 
         yield return new WaitForSeconds(delay);

@@ -40,6 +40,8 @@ public class Board : MonoBehaviour
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
+
+    private bool targetReached;
     
     public Card JustTouched { get; private set; }
     public int SlideLength { get; private set; }
@@ -79,11 +81,9 @@ public class Board : MonoBehaviour
 
     private void AddCard()
     {
-        var card = Instantiate(cardPrefab, transform);
-        card.Init(this, deck.Pull());
-        var type = card.GetCardType();
+        var type = deck.Pull();
+        var card = CreateCard(type, deck.GetSpawn());
         var t = card.transform;
-        t.position = deck.GetSpawn();
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
         
@@ -102,6 +102,14 @@ public class Board : MonoBehaviour
         }
 
         cardPreview.Show(type);
+    }
+
+    private Card CreateCard(CardType type, Vector3 pos)
+    {
+        var card = Instantiate(cardPrefab, transform);
+        card.Init(this, type);
+        card.transform.position = pos;
+        return card;
     }
 
     private void Grow()
@@ -220,58 +228,26 @@ public class Board : MonoBehaviour
         SlideLength = Mathf.RoundToInt(Vector2Int.Distance(start.Position, end.Position));
 
         cardPreview.Hide();
-
-        end.Value.Set(card);
-
-        card.Lock();
         
+        movesLeft--;
+
         Tweener.MoveToBounceOut(t, Scale(start.AsVector3), 0.1f);
         var cardPos = Scale(end.AsVector3);
         var targetPos = cardPos;
         var duration = 0.05f * Vector3.Distance(t.position, targetPos);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, targetPos, duration),0.1f);
-
-        var delay = 0f;
         
-        movesLeft--;
+        end.Value.Set(card);
+        card.Lock();
+        targetReached = false;
 
         yield return new WaitForSeconds(duration);
 
         yield return skills.Trigger(SkillTrigger.Place, card);
 
-        if (end.Value == targetTile)
+        if (targetReached || end.Value == targetTile)
         {
-            if (movesLeft == moveCount - 1)
-            {
-                scoreDisplay.AddMulti();
-                EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
-            }
-
-            Grow();
-
-            movesLeft = moveCount;
-            exp++;
-
-            UpdateExpBar();
-
-            if (exp == level)
-            {
-                var amount = grid.GetEmptyCount() * 10;
-                
-                yield return new WaitForSeconds(0.5f);
-                
-                AddScore(amount, cardPos);
-                scoreDisplay.ResetMulti();
-
-                exp = 0;
-                level++;
-                
-                yield return new WaitForSeconds(0.5f);
-                
-                yield return skills.Present();
-
-                UpdateExpBar();
-            }
+            yield return ReachedTarget(cardPos);
         }
         
         UpdateMoveDisplay();
@@ -280,6 +256,65 @@ public class Board : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
             AddCard();
+        }
+    }
+
+    public IEnumerator SpawnCards(CardType type, List<Tile> tiles)
+    {
+        JustTouched = null;
+        
+        foreach (var tile in tiles)
+        {
+            if (!tile.IsEmpty) continue;
+            var card = CreateCard(type, tile.transform.position);
+            tile.Set(card);    
+        }
+
+        foreach (var tile in tiles)
+        {
+            yield return skills.Trigger(SkillTrigger.Place, tile.Card);
+            
+            if (tile == targetTile)
+            {
+                targetReached = true;
+            }
+        }
+
+        UpdateMoveDisplay();
+    }
+
+    private IEnumerator ReachedTarget(Vector3 cardPos)
+    {
+        if (movesLeft == moveCount - 1)
+        {
+            scoreDisplay.AddMulti();
+            EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
+        }
+
+        Grow();
+
+        movesLeft = moveCount;
+        exp++;
+
+        UpdateExpBar();
+
+        if (exp == level)
+        {
+            var amount = grid.GetEmptyCount() * 10;
+
+            yield return new WaitForSeconds(0.5f);
+
+            AddScore(amount, cardPos);
+            scoreDisplay.ResetMulti();
+
+            exp = 0;
+            level++;
+
+            yield return new WaitForSeconds(0.5f);
+
+            yield return skills.Present();
+
+            UpdateExpBar();
         }
     }
 
@@ -334,5 +369,27 @@ public class Board : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
+    }
+
+    public IEnumerator SpawnAround(Card card, CardType type)
+    {
+        var targets = grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsEmpty).ToList();
+        yield return SpawnCards(type, targets.Select(t => t.Value).ToList());
+    }
+    
+    public IEnumerator SpawnOnNeighbours(Card card, CardType type)
+    {
+        var targets = grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsEmpty).ToList();
+        yield return SpawnCards(type, targets.Select(t => t.Value).ToList());
+    }
+
+    public bool HasEmptyNeighbours(Card card)
+    {
+        return grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Any(t => t.IsEmpty);
+    }
+    
+    public bool HasEmptyNeighboursWithDiagonals(Card card)
+    {
+        return grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Any(t => t.IsEmpty);
     }
 }

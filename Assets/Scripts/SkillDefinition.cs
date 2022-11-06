@@ -125,7 +125,8 @@ public enum SkillEffect
     AddScoreIfAlone,
     DestroyTouching,
     AddMultiForSlideLength,
-    AddMultiplier
+    AddMultiplier,
+    SpawnAround
 }
 
 public enum Passive
