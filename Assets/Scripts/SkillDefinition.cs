@@ -27,13 +27,15 @@ public class Skill
     public List<CardType> firstCards, secondCards;
     public bool repeatable;
     public int amount;
+    public bool useSecondImage;
     
     private CardType firstCard, secondCard;
     
     private SkillIcon icon;
 
-    public CardType FirstType => firstCard;
-    public CardType SecondType => secondCard;
+    public CardType MainType => firstCard;
+    public CardType ImageType => useSecondImage ? secondCard : firstCard;
+    public CardType TargetType => secondCard;
 
     public Skill(Skill source)
     {
@@ -48,13 +50,14 @@ public class Skill
         secondCard = source.secondCard;
         trigger = source.trigger;
         effect = source.effect;
+        useSecondImage = source.useSecondImage;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
     {
         var existing = skills.Where(s => s.title == title).Select(s => s.firstCard).ToList();
         firstCard = firstCards.Where(s => repeatable || !existing.Contains(s)).ToList().Random();
-        secondCard = secondCards.Random();
+        secondCard = secondCards.Where(s => s != firstCard).ToList().Random();
     }
 
     public string GetDescription(bool useColors = true)
@@ -127,5 +130,6 @@ public enum Passive
 {
     None,
     FurtherExtend,
-    Mimic
+    Mimic,
+    TransformOnDraw
 }

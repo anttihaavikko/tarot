@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Hermit Multi
-    description: When ([1]) is placed on the board, increase (multiplier) by (5)
-      if all the neighbour tiles are (empty).
+    description: When ([1]) is placed on the board and all the neighbour tiles are
+      (empty), increase (multiplier) by (5).
     passive: 0
     trigger: 1
     effect: 1
@@ -23,3 +23,4 @@ MonoBehaviour:
     secondCards: 
     repeatable: 1
     amount: 5
+    useSecondImage: 0

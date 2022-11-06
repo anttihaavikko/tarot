@@ -15,7 +15,7 @@ public class SkillTooltip : Manager<SkillTooltip>
 
     public void Show(Skill skill)
     {
-        cardPreview.Show(skill.FirstType);
+        cardPreview.Show(skill.ImageType);
         title.text = skill.title;
         description.text = skill.GetDescription();
         descShadow.text = skill.GetDescription(false);

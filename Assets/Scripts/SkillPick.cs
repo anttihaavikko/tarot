@@ -8,7 +8,6 @@ public class SkillPick : MonoBehaviour
     [SerializeField] private Skills skillPool;
     [SerializeField] private ButtonStyle buttonStyle;
     [SerializeField] private TMP_Text title, description, descriptionShadow;
-    
 
     private Skill skill;
 
@@ -17,7 +16,7 @@ public class SkillPick : MonoBehaviour
         skill = s;
         description.text = skill.GetDescription();
         descriptionShadow.text = skill.GetDescription(false);
-        preview.Show(skill.FirstType);
+        preview.Show(skill.ImageType);
         title.text = skill.title;
     }
 

@@ -79,7 +79,7 @@ public class Skills : MonoBehaviour
     public IEnumerable<CardType> GetTypesFor(Card card)
     {
         var type = card.GetCardType();
-        return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.SecondType).Concat(new [] { type });
+        return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new [] { type });
     }
 
     public IEnumerator Trigger(SkillTrigger trigger, Card card)

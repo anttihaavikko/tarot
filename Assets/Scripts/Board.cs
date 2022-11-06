@@ -81,11 +81,27 @@ public class Board : MonoBehaviour
     {
         var card = Instantiate(cardPrefab, transform);
         card.Init(this, deck.Pull());
+        var type = card.GetCardType();
         var t = card.transform;
         t.position = deck.GetSpawn();
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
-        cardPreview.Show(card.GetCardType());
+        
+        var transforms = skills.Get(Passive.TransformOnDraw, type).ToList();
+        if (transforms.Any())
+        {
+            this.StartCoroutine(() =>
+            {
+                var first = transforms.First();
+                var targetType = first.TargetType;
+                card.TransformTo(targetType);
+                cardPreview.Show(targetType);
+                first.Trigger();
+                EffectManager.AddTextPopup(first.title, card.transform.position, 0.8f);
+            }, 0.5f);
+        }
+
+        cardPreview.Show(type);
     }
 
     private void Grow()

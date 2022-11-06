@@ -1947,6 +1947,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -21.8
       objectReference: {fileID: 0}
+    - target: {fileID: 4014007390630685423, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4624582712215570913, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2078,6 +2082,10 @@ PrefabInstance:
     - target: {fileID: 4624582713115025243, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
       propertyPath: m_Name
       value: Skill Pick (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722905561629255142, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4928786110665979623, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3511,14 +3519,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 386eb82869dd842f0be37809c8070408, type: 2}
   - {fileID: 11400000, guid: 3da015cb2affd48d5b323d277715ea82, type: 2}
   - {fileID: 11400000, guid: 9a5ec136ded354738b242c893fc7854c, type: 2}
+  - {fileID: 11400000, guid: c4a9f2f59c1604c1bb425e0109036d52, type: 2}
   board: {fileID: 296764682}
   skillContainer: {fileID: 1942875045}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}
   skillPicks:
   - {fileID: 837314361}
   - {fileID: 809107302}
-  pickContainer: {fileID: 751828520}
-  tooltip: {fileID: 0}
 --- !u!4 &1517199134
 Transform:
   m_ObjectHideFlags: 0
@@ -4525,6 +4532,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 12e61650d4cdf44048f1974264c99360, type: 2}
+    - target: {fileID: 4014007390630685423, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4624582712215570913, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -4635,7 +4646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4624582713115025242, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -187
+      value: -175
       objectReference: {fileID: 0}
     - target: {fileID: 4624582713115025242, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4656,6 +4667,10 @@ PrefabInstance:
     - target: {fileID: 4624582713115025243, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
       propertyPath: m_Name
       value: Skill Pick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722905561629255142, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4928786110665979623, guid: 5ef6570f7d9834b28a23cccc55f1385a, type: 3}
       propertyPath: m_AnchorMax.y
