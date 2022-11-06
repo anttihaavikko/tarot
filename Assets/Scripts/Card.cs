@@ -137,7 +137,7 @@ public class Card : MonoBehaviour
     {
         return type switch
         {
-            CardType.Fool => "I",
+            CardType.Fool => "0",
             CardType.Magician => "I",
             CardType.HighPriestess => "II",
             CardType.Empress => "III",
