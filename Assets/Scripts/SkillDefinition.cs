@@ -32,6 +32,8 @@ public class Skill
     
     private SkillIcon icon;
 
+    public CardType FirstType => firstCard;
+
     public Skill(Skill source)
     {
         title = source.title;
@@ -54,11 +56,13 @@ public class Skill
         secondCard = secondCards.Random();
     }
 
-    public string GetDescription()
+    public string GetDescription(bool useColors = true)
     {
         var sb = new StringBuilder(description);
         sb.Replace("[1]", Card.GetShortName(firstCard));
         sb.Replace("[2]", Card.GetShortName(secondCard));
+        sb.Replace("(", useColors ? "<color=#E0CA3C>" : "");
+        sb.Replace(")", useColors ? "</color>" : "");
         return sb.ToString();
     }
     

@@ -4,6 +4,7 @@ using AnttiStarterKit.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using AnttiStarterKit.Extensions;
 
 public class CardPreview : MonoBehaviour
 {
@@ -34,8 +35,9 @@ public class CardPreview : MonoBehaviour
         current.SetActive(true);
         bg.color = colors.Get((int)type);
         pattern.color = patternColors.Get((int)type);
-        pattern.material.SetColor("_Color", patternColors.Get((int)type));
-        
+        pattern.material.SetColor("_Color", pattern.color);
+        pattern.gameObject.SetActive(false);
+        pattern.gameObject.SetActive(true);
         appearer.Show();
     }
 

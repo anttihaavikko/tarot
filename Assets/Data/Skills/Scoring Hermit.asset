@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Scoring Hermit
-    description: When placing ([1]), score 100 for every empty neigbouring tile.
+    description: When ([1]) is placed on the board, score (100) if all the neighbour
+      tiles are (empty).
     passive: 0
     trigger: 1
     effect: 2

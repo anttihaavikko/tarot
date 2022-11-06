@@ -16,6 +16,7 @@ public class Skills : MonoBehaviour
     [SerializeField] private SkillIcon iconPrefab;
     [SerializeField] private List<SkillPick> skillPicks;
     [SerializeField] private GameObject pickContainer;
+    [SerializeField] private SkillTooltip tooltip;
 
     private List<Skill> skillPool;
     private List<Skill> skills = new();
@@ -141,7 +142,7 @@ public class Skills : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
     }
-    
+
     public IEnumerable<Skill> Get(Passive passive, CardType type)
     {
         return skills.Where(s => s.Matches(passive, type));

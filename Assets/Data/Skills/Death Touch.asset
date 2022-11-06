@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Death Touch
-    description: Destroy any card ([1]) slides into.
+    description: (Destroy) any card ([1]) slides into.
     passive: 0
     trigger: 1
     effect: 3
