@@ -3,13 +3,14 @@ using AnttiStarterKit.Animations;
 using AnttiStarterKit.ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Card : MonoBehaviour
 {
     [SerializeField] private TMP_Text title, number;
     [SerializeField] private SpriteCollection cardSprites;
     [SerializeField] private ColorCollection cardColors, patternColors;
-    [SerializeField] private SpriteRenderer sprite, bg, pattern;
+    [SerializeField] private SpriteRenderer sprite, bg, pattern, radial;
 
     private Board board;
     private Draggable draggable;
@@ -25,6 +26,9 @@ public class Card : MonoBehaviour
         draggable = GetComponent<Draggable>();
         draggable.preview += Preview;
         draggable.dropped += Place;
+        radial.transform.Rotate(new Vector3(0, 0, Random.value * 360));
+        pattern.flipX = Random.value < 0.5f;
+        pattern.flipY = Random.value < 0.5f;
     }
 
     private void Place(Draggable d)
