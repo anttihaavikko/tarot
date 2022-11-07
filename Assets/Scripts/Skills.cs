@@ -124,7 +124,7 @@ public class Skills : MonoBehaviour
         };
     }
 
-    public IEnumerator DoEffect(Skill skill, Card card)
+    private IEnumerator DoEffect(Skill skill, Card card)
     {
         switch (skill.effect)
         {
@@ -172,7 +172,7 @@ public class Skills : MonoBehaviour
         }
     }
 
-    public IEnumerator Act(Skill skill, Vector3 pos, Card card = null)
+    private IEnumerator Act(Skill skill, Vector3 pos, Card card = null)
     {
         var p = pos.RandomOffset(1f);
 
