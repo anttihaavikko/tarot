@@ -30,6 +30,7 @@ public class Skill
     public bool useSecondImage;
     public string cancelShout;
     public float cancelDelay;
+    public bool canTargetSame;
     
     private CardType firstCard, secondCard;
     
@@ -55,13 +56,14 @@ public class Skill
         useSecondImage = source.useSecondImage;
         cancelShout = source.cancelShout;
         cancelDelay = source.cancelDelay;
+        canTargetSame = source.canTargetSame;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
     {
         var existing = skills.Where(s => s.title == title).Select(s => s.firstCard).ToList();
         firstCard = firstCards.Where(s => repeatable || !existing.Contains(s)).ToList().Random();
-        secondCard = secondCards.Where(s => s != firstCard).ToList().Random();
+        secondCard = secondCards.Where(s => canTargetSame || s != firstCard).ToList().Random();
     }
 
     public string GetDescription(bool useColors = true)
@@ -135,7 +137,8 @@ public enum SkillEffect
     DestroySurrounding,
     DestroyNeighbours,
     SpawnNeighbours,
-    AddScore
+    AddScore,
+    SpawnBehind
 }
 
 public enum Passive

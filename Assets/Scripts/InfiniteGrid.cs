@@ -6,6 +6,7 @@ public class InfiniteGrid<T> where T : GridTile
 {
     private readonly Dictionary<string, GridSpot> items = new();
     public T CollisionTarget { get; private set; }
+    public T BehindSpot { get; private set; }
 
     public GridSpot Get(int x, int y)
     {
@@ -122,10 +123,16 @@ public class InfiniteGrid<T> where T : GridTile
         return new Vector2Int(int.Parse(parts[0]), int.Parse(parts[1]));
     }
 
+    public void ResetSlide()
+    {
+        BehindSpot = default;
+    }
+
     public GridSpot GetSlideTarget(int x, int y, Vector2Int dir)
     {
         var next = Get(x + dir.x, y + dir.y);
         CollisionTarget = next.IsOccupied ? next.Value : default;
+        BehindSpot = next.IsEmpty ? Get(x, y).Value : BehindSpot;
         return next.IsWall || !next.IsEmpty ? Get(x, y) : GetSlideTarget(next.Position.x, next.Position.y, dir);
     }
     

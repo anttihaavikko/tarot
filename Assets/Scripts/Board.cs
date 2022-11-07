@@ -25,6 +25,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform expBar;
     [SerializeField] private ScoreDisplay scoreDisplay;
     [SerializeField] private Skills skills;
+    [SerializeField] private GameObject devMenu;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
@@ -42,9 +43,12 @@ public class Board : MonoBehaviour
     private const float PanTime = 0.3f;
 
     private bool targetReached;
+
+    private Card drawnCard;
     
     public Card JustTouched { get; private set; }
     public int SlideLength { get; private set; }
+    public Tile BehindSpot { get; private set; }
 
     private void Start()
     {
@@ -77,13 +81,24 @@ public class Board : MonoBehaviour
         {
             Grow();
         }
+        
+        if (DevKey.Down(KeyCode.Z))
+        {
+            devMenu.SetActive(!devMenu.activeSelf);
+        }
+    }
+
+    public void ChangeDrawnTo(CardType type)
+    {
+        drawnCard.TransformTo(type);
+        cardPreview.Show(type);
     }
 
     private void AddCard()
     {
         var type = deck.Pull();
-        var card = CreateCard(type, deck.GetSpawn());
-        var t = card.transform;
+        drawnCard = CreateCard(type, deck.GetSpawn());
+        var t = drawnCard.transform;
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
         
@@ -94,10 +109,10 @@ public class Board : MonoBehaviour
             {
                 var first = transforms.First();
                 var targetType = first.TargetType;
-                card.TransformTo(targetType);
+                drawnCard.TransformTo(targetType);
                 cardPreview.Show(targetType);
                 first.Trigger();
-                EffectManager.AddTextPopup(first.title, card.transform.position, 0.8f);
+                EffectManager.AddTextPopup(first.title, drawnCard.transform.position, 0.8f);
             }, 0.5f);
         }
 
@@ -209,6 +224,8 @@ public class Board : MonoBehaviour
 
     private IEnumerator DoSlide(Card card)
     {
+        grid.ResetSlide();
+        
         justPlaced = card;
         
         HidePreview();
@@ -225,6 +242,7 @@ public class Board : MonoBehaviour
         if (Vector3.Distance(p, spot.AsVector3) > MaxDropDistance) yield break;
 
         JustTouched = grid.CollisionTarget ? grid.CollisionTarget.Card : null;
+        BehindSpot = grid.BehindSpot;
         SlideLength = Mathf.RoundToInt(Vector2Int.Distance(start.Position, end.Position));
 
         cardPreview.Hide();
@@ -262,7 +280,8 @@ public class Board : MonoBehaviour
     public IEnumerator SpawnCards(CardType type, List<Tile> tiles)
     {
         JustTouched = null;
-        
+        BehindSpot = null;
+
         foreach (var tile in tiles)
         {
             if (!tile.IsEmpty) continue;
@@ -411,5 +430,10 @@ public class Board : MonoBehaviour
             grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsOccupied);
         
         return spots.Where(s => s.Value.Card != card).Select(s => s.Value.Card);
+    }
+
+    public IEnumerator SpawnBehind(CardType type)
+    {
+        yield return SpawnCards(type, new List<Tile>{ BehindSpot });
     }
 }

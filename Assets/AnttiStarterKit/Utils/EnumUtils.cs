@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AnttiStarterKit.Extensions;
 
 namespace AnttiStarterKit.Utils
 {
@@ -21,6 +22,11 @@ namespace AnttiStarterKit.Utils
             enumValList.AddRange(from int val in enumValArray select (T)Enum.Parse(enumType, val.ToString()));
 
             return enumValList;
+        }
+        
+        public static T Random<T>()
+        {
+            return ToList<T>().ToList().Random();
         }
     }
 }

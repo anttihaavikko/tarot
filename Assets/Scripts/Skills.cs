@@ -120,6 +120,7 @@ public class Skills : MonoBehaviour
             SkillEffect.DestroySurrounding => !board.HasNeighboursWithDiagonals(card),
             SkillEffect.DestroyNeighbours => !board.HasNeighbours(card),
             SkillEffect.SpawnNeighbours => !board.HasEmptyNeighbours(card),
+            SkillEffect.SpawnBehind => !board.BehindSpot,
             _ => false
         };
     }
@@ -165,6 +166,11 @@ public class Skills : MonoBehaviour
             case SkillEffect.SpawnNeighbours:
                 yield return new WaitForSeconds(0.4f);
                 yield return board.SpawnOnNeighbours(card, skill.TargetType);
+                yield return new WaitForSeconds(0.25f);
+                break;
+            case SkillEffect.SpawnBehind:
+                yield return new WaitForSeconds(0.4f);
+                yield return board.SpawnBehind(skill.TargetType);
                 yield return new WaitForSeconds(0.25f);
                 break;
             default:
