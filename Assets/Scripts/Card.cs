@@ -20,7 +20,7 @@ public class Card : MonoBehaviour
     
     public Tile Tile { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         shaker = GetComponent<Shaker>();
         draggable = GetComponent<Draggable>();

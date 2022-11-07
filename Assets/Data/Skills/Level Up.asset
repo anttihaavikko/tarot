@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Leveling
-    description: Placing ([1]) on the board causes you to level up.
+    description: Placing ([1]) on the board causes you immediately (choose) a new
+      (destiny).
     passive: 0
     trigger: 1
     effect: 7
-    firstCards: 140000000b0000000a000000
+    firstCards: 0a000000
     secondCards: 
     repeatable: 0
     amount: 0
