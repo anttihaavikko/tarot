@@ -132,6 +132,12 @@ public class Skills : MonoBehaviour
         EffectManager.AddTextPopup(skill.title, p, 0.8f);
         skill.Trigger();
 
+        if (skill.effect == SkillEffect.LevelUp)
+        {
+            yield return new WaitForSeconds(0.5f);
+            yield return Present();
+        }
+
         if (skill.effect == SkillEffect.AddMultiForSlideLength)
         {
             board.AddMulti(board.SlideLength);

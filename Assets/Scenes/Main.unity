@@ -3603,6 +3603,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a5ec136ded354738b242c893fc7854c, type: 2}
   - {fileID: 11400000, guid: c4a9f2f59c1604c1bb425e0109036d52, type: 2}
   - {fileID: 11400000, guid: 4da8d225f1ae04e659f8e683a5cf6596, type: 2}
+  - {fileID: 11400000, guid: 895a80b5c78bd472b81119d13648b308, type: 2}
   board: {fileID: 296764682}
   skillContainer: {fileID: 1942875045}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}

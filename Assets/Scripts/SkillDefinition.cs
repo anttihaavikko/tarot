@@ -126,7 +126,8 @@ public enum SkillEffect
     DestroyTouching,
     AddMultiForSlideLength,
     AddMultiplier,
-    SpawnAround
+    SpawnAround,
+    LevelUp
 }
 
 public enum Passive
