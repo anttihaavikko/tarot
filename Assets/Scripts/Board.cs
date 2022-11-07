@@ -267,6 +267,7 @@ public class Board : MonoBehaviour
         {
             if (!tile.IsEmpty) continue;
             var card = CreateCard(type, tile.transform.position);
+            card.Lock();
             tile.Set(card);    
         }
 

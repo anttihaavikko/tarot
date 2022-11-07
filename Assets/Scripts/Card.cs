@@ -66,6 +66,7 @@ public class Card : MonoBehaviour
     public void Lock()
     {
         draggable.enabled = false;
+        draggable.NormalizeSortOrder();
     }
 
     public string GetName()

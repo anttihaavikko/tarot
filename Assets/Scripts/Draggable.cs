@@ -56,6 +56,11 @@ public class Draggable : MonoBehaviour
         }
     }
 
+    public void NormalizeSortOrder()
+    {
+        SetSortOrder(dragSortOrder);
+    }
+
     private void OnMouseUp()
     {
         click?.Invoke();
