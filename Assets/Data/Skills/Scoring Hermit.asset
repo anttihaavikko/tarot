@@ -24,3 +24,5 @@ MonoBehaviour:
     repeatable: 1
     amount: 100
     useSecondImage: 0
+    cancelShout: Anxiety!
+    cancelDelay: 0.2

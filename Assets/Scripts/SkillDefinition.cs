@@ -28,6 +28,8 @@ public class Skill
     public bool repeatable;
     public int amount;
     public bool useSecondImage;
+    public string cancelShout;
+    public float cancelDelay;
     
     private CardType firstCard, secondCard;
     
@@ -51,6 +53,8 @@ public class Skill
         trigger = source.trigger;
         effect = source.effect;
         useSecondImage = source.useSecondImage;
+        cancelShout = source.cancelShout;
+        cancelDelay = source.cancelDelay;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -127,7 +131,11 @@ public enum SkillEffect
     AddMultiForSlideLength,
     AddMultiplier,
     SpawnAround,
-    LevelUp
+    LevelUp,
+    DestroySurrounding,
+    DestroyNeighbours,
+    SpawnNeighbours,
+    AddScore
 }
 
 public enum Passive

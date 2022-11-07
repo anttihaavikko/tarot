@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Hermit Multiplier
+  m_Name: Kill Around
   m_EditorClassIdentifier: 
   skill:
-    title: Hermit Multi
-    description: When ([1]) is placed on the board and all the neighbour tiles are
-      (empty), increase (multiplier) by (5).
+    title: Falling Star
+    description: Placing ([1]) destroys (all) the surrounding cards.
     passive: 0
     trigger: 1
-    effect: 1
-    firstCards: 09000000
+    effect: 8
+    firstCards: 11000000
     secondCards: 
-    repeatable: 1
-    amount: 5
+    repeatable: 0
+    amount: 0
     useSecondImage: 0
-    cancelShout: Anxiety!
-    cancelDelay: 0.2
+    cancelShout: 
+    cancelDelay: 0

@@ -393,4 +393,23 @@ public class Board : MonoBehaviour
     {
         return grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Any(t => t.IsEmpty);
     }
+
+    public bool HasNeighboursWithDiagonals(Card card)
+    {
+        return grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Any(t => t.IsOccupied);
+    }
+    
+    public bool HasNeighbours(Card card)
+    {
+        return grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Any(t => t.IsOccupied);
+    }
+    
+    public IEnumerable<Card> GetNeighbours(Card card, bool diagonals)
+    {
+        var spots = diagonals ?
+            grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsOccupied) :
+            grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsOccupied);
+        
+        return spots.Where(s => s.Value.Card != card).Select(s => s.Value.Card);
+    }
 }

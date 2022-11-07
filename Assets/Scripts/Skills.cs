@@ -104,81 +104,97 @@ public class Skills : MonoBehaviour
         }
     }
 
+    private bool ShouldCancel(Skill skill, Card card)
+    {
+        return skill.effect switch
+        {
+            SkillEffect.None => false,
+            SkillEffect.AddMultiplierIfAlone => !board.IsPlacedAlone(),
+            SkillEffect.AddScoreIfAlone => !board.IsPlacedAlone(),
+            SkillEffect.DestroyTouching => !board.JustTouched,
+            SkillEffect.AddMultiForSlideLength => board.SlideLength < 1,
+            SkillEffect.AddMultiplier => false,
+            SkillEffect.AddScore => false,
+            SkillEffect.SpawnAround => !board.HasEmptyNeighboursWithDiagonals(card),
+            SkillEffect.LevelUp => false,
+            SkillEffect.DestroySurrounding => !board.HasNeighboursWithDiagonals(card),
+            SkillEffect.DestroyNeighbours => !board.HasNeighbours(card),
+            SkillEffect.SpawnNeighbours => !board.HasEmptyNeighbours(card),
+            _ => false
+        };
+    }
+
+    public IEnumerator DoEffect(Skill skill, Card card)
+    {
+        switch (skill.effect)
+        {
+            case SkillEffect.None:
+                break;
+            case SkillEffect.AddScore:
+            case SkillEffect.AddScoreIfAlone:
+                board.AddScore(skill.amount, card.transform.position);
+                yield return new WaitForSeconds(0.4f);
+                break;
+            case SkillEffect.DestroyTouching:
+                yield return board.DestroyCards(new List<Card> { board.JustTouched });
+                break;
+            case SkillEffect.AddMultiForSlideLength:
+                board.AddMulti(board.SlideLength);
+                yield return new WaitForSeconds(0.4f);
+                break;
+            case SkillEffect.AddMultiplier:
+            case SkillEffect.AddMultiplierIfAlone:
+                board.AddMulti(skill.amount);
+                yield return new WaitForSeconds(0.4f);
+                break;
+            case SkillEffect.SpawnAround:
+                yield return new WaitForSeconds(0.4f);
+                yield return board.SpawnAround(card, skill.TargetType);
+                yield return new WaitForSeconds(0.25f);
+                break;
+            case SkillEffect.LevelUp:
+                yield return new WaitForSeconds(0.5f);
+                yield return Present();
+                break;
+            case SkillEffect.DestroySurrounding:
+                yield return board.DestroyCards(board.GetNeighbours(card, true).ToList());
+                break;
+            case SkillEffect.DestroyNeighbours:
+                yield return board.DestroyCards(board.GetNeighbours(card, false).ToList());
+                break;
+            case SkillEffect.SpawnNeighbours:
+                yield return new WaitForSeconds(0.4f);
+                yield return board.SpawnOnNeighbours(card, skill.TargetType);
+                yield return new WaitForSeconds(0.25f);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
     public IEnumerator Act(Skill skill, Vector3 pos, Card card = null)
     {
-        var delay = 0f;
         var p = pos.RandomOffset(1f);
-        var touchEffect = new []
-        {
-            SkillEffect.DestroyTouching
-        }.Contains(skill.effect);
 
-        if (skill.effect == SkillEffect.AddMultiForSlideLength && board.SlideLength < 1) yield break;
-
-        if (skill.effect is SkillEffect.AddMultiplierIfAlone or SkillEffect.AddScoreIfAlone)
+        if (ShouldCancel(skill, card))
         {
-            if (!board.IsPlacedAlone())
+            if (!string.IsNullOrEmpty(skill.cancelShout))
             {
-                EffectManager.AddTextPopup("ANXIETY!", p, 0.8f);
-                yield return new WaitForSeconds(0.3f);
-                yield break;
+                EffectManager.AddTextPopup(skill.cancelShout, p, 0.8f);
             }
+            
+            if (skill.cancelDelay > 0)
+            {
+                yield return new WaitForSeconds(skill.cancelDelay);
+            }
+            
+            yield break;
         }
 
-        if (skill.effect == SkillEffect.SpawnAround && !board.HasEmptyNeighboursWithDiagonals(card)) yield break;
-
-        if (touchEffect && !board.JustTouched) yield break;
-        
         EffectManager.AddTextPopup(skill.title, p, 0.8f);
         skill.Trigger();
 
-        if (skill.effect == SkillEffect.LevelUp)
-        {
-            yield return new WaitForSeconds(0.5f);
-            yield return Present();
-        }
-
-        if (skill.effect == SkillEffect.AddMultiForSlideLength)
-        {
-            board.AddMulti(board.SlideLength);
-            delay = 0.4f;
-        }
-        
-        if (skill.effect == SkillEffect.AddMultiplierIfAlone)
-        {
-            board.AddMulti(skill.amount);
-            delay = 0.4f;
-        }
-        
-        if (skill.effect == SkillEffect.AddScoreIfAlone)
-        {
-            board.AddScore(skill.amount, pos);
-            delay = 0.4f;
-        }
-        
-        if (skill.effect == SkillEffect.AddMultiplier)
-        {
-            board.AddMulti(skill.amount);
-            delay = 0.25f;
-        }
-
-        if (skill.effect == SkillEffect.DestroyTouching)
-        {
-            var target = board.JustTouched;
-            if (target)
-            {
-                yield return board.DestroyCards(new List<Card> { target });
-            }
-        }
-        
-        if (skill.effect == SkillEffect.SpawnAround)
-        {
-            yield return new WaitForSeconds(0.4f);
-            yield return board.SpawnAround(card, skill.TargetType);
-            delay = 0.25f;
-        }
-
-        yield return new WaitForSeconds(delay);
+        yield return DoEffect(skill, card);
     }
 
     public IEnumerable<Skill> Get(Passive passive, CardType type)

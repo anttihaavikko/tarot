@@ -22,3 +22,6 @@ MonoBehaviour:
     secondCards: 
     repeatable: 1
     amount: 0
+    useSecondImage: 0
+    cancelShout: Too short!
+    cancelDelay: 0.1
