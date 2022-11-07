@@ -40,9 +40,9 @@ public class InfiniteGrid<T> where T : GridTile
     public Vector2Int GetSize()
     {
         var positions = items.Values.Select(a => a.Position).ToList();
-        var x = Mathf.Abs(positions.Max(p => p.x)) + Mathf.Abs(positions.Min(p => p.x));
-        var y = Mathf.Abs(positions.Max(p => p.y)) + Mathf.Abs(positions.Min(p => p.y));
-        return new Vector2Int(x, y);
+        var x = Mathf.Abs(positions.Max(p => p.x) + 0.5f) + Mathf.Abs(positions.Min(p => p.x) - 0.5f);
+        var y = Mathf.Abs(positions.Max(p => p.y) + 0.5f) + Mathf.Abs(positions.Min(p => p.y) - 0.5f);
+        return new Vector2Int(Mathf.CeilToInt(x), Mathf.CeilToInt(y));
     }
 
     public GridSpot RandomFree()
