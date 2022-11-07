@@ -251,6 +251,7 @@ public class Board : MonoBehaviour
             yield break;
         }
         
+        skills.UnMarkSkills();
         card.Placed();
 
         JustTouched = grid.CollisionTarget ? grid.CollisionTarget.Card : null;
@@ -457,7 +458,6 @@ public class Board : MonoBehaviour
     public void HideCardPreview()
     {
         cardPreview.Hide();
-        skills.UnMarkSkills();
     }
 
     public void ShowPreview(CardType type)
