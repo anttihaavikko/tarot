@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 
 public class Draggable : MonoBehaviour
 {
-    public Action hidePreview, click, dropCancelled;
+    public Action hidePreview, click, dropCancelled, pick;
     public Action<Draggable> preview, dropped;
     
     [SerializeField] private LayerMask dropMask, blockMask;
@@ -40,8 +40,10 @@ public class Draggable : MonoBehaviour
         dragging = true;
         start = transform.position;
         offset = start - GetMousePos();
-        layerId = go.layer;
-        go.layer = 0;
+        // layerId = go.layer;
+        // go.layer = 0;
+        
+        pick?.Invoke();
         
         // AudioManager.Instance.PlayEffectAt(0, start, 1f);
 
@@ -80,6 +82,12 @@ public class Draggable : MonoBehaviour
         }
     }
 
+    public void Return()
+    {
+        Tweener.MoveToBounceOut(transform, start, 0.3f);
+        NormalizeSortOrder();
+    }
+
     private void InvokePreview()
     {
         preview?.Invoke(this);
@@ -97,10 +105,6 @@ public class Draggable : MonoBehaviour
     {
         var rounded = GetRoundedPos();
         DropOn(rounded);
-        this.StartCoroutine(() =>
-        {
-            SetSortOrder(normalSortOrder);
-        }, 0.3f);
     }
 
     public Vector2 GetRoundedPos()
@@ -118,7 +122,7 @@ public class Draggable : MonoBehaviour
             // transform.position = pos;
             dropped?.Invoke(this);
             // enabled = !lockAfterDrop;
-            gameObject.layer = layerId;
+            // gameObject.layer = layerId;
             
             return;
         }

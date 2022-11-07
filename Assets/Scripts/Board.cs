@@ -242,9 +242,16 @@ public class Board : MonoBehaviour
         var start = grid.GetClosest(p);
         var dir = start.Position - spot.Position;
         var end = grid.GetSlideTarget(start.Position.x, start.Position.y, dir);
-
-        if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y) yield break;
-        if (Vector3.Distance(p, spot.AsVector3) > MaxDropDistance) yield break;
+        
+        if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y ||
+            Vector3.Distance(p, spot.AsVector3) > MaxDropDistance)
+        {
+            card.ReturnToHand();
+            cardPreview.Show(card.GetCardType());
+            yield break;
+        }
+        
+        card.Placed();
 
         JustTouched = grid.CollisionTarget ? grid.CollisionTarget.Card : null;
         BehindSpot = grid.BehindSpot;
@@ -445,5 +452,10 @@ public class Board : MonoBehaviour
     public void AddToDeck(CardType type)
     {
         deck.AddToTop(type);
+    }
+
+    public void HideCardPreview()
+    {
+        cardPreview.Hide();
     }
 }

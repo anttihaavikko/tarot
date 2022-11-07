@@ -26,9 +26,20 @@ public class Card : MonoBehaviour
         draggable = GetComponent<Draggable>();
         draggable.preview += Preview;
         draggable.dropped += Place;
+        draggable.pick += HidePreview;
         radial.transform.Rotate(new Vector3(0, 0, Random.value * 360));
         pattern.flipX = Random.value < 0.5f;
         pattern.flipY = Random.value < 0.5f;
+    }
+
+    private void HidePreview()
+    {
+        board.HideCardPreview();
+    }
+
+    public void Placed()
+    {
+        draggable.pick -= HidePreview;
     }
 
     private void Place(Draggable d)
@@ -182,6 +193,11 @@ public class Card : MonoBehaviour
     public void TransformTo(CardType target)
     {
         Init(target);
+    }
+
+    public void ReturnToHand()
+    {
+        draggable.Return();
     }
 }
 
