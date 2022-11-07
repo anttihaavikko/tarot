@@ -77,15 +77,20 @@ public class Skills : MonoBehaviour
         skillPool.Remove(skill);
     }
 
-    public List<Skill> Take(int amount)
+    private List<Skill> Take(int amount)
     {
         skillPool.ForEach(s => s.Randomize(skills));
         return skillPool.OrderBy(s => Random.value).Take(amount).ToList();
     }
 
-    public IEnumerable<CardType> GetTypesFor(Card card)
+    private IEnumerable<CardType> GetTypesFor(Card card)
     {
         var type = card.GetCardType();
+        return GetTypesFor(type);
+    }
+
+    private IEnumerable<CardType> GetTypesFor(CardType type)
+    {
         return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new[] { type });
     }
 
@@ -219,7 +224,8 @@ public class Skills : MonoBehaviour
 
     public void MarkSkills(CardType type)
     {
-        skills.Where(s => s.MainType == type).ToList().ForEach(s => s.Icon.Mark(true));
+        var types = GetTypesFor(type).ToList();
+        skills.Where(s => types.Contains(s.MainType)).ToList().ForEach(s => s.Icon.Mark(true));
         skills.Where(s => s.HasTargetType && s.TargetType == type).ToList().ForEach(s => s.Icon.Mark(false));
     }
 

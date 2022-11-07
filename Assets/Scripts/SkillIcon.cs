@@ -37,6 +37,7 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void Mark(bool isSource)
     {
+        Pulsate();
         icon.color = isSource ? sourceColor : targetColor;
     }
 
