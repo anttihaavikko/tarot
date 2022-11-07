@@ -26,12 +26,13 @@ public class Skill
     public SkillEffect effect;
     public List<CardType> firstCards, secondCards;
     public bool repeatable;
+    public bool notRepeatableForOthers;
     public int amount;
     public bool useSecondImage;
     public string cancelShout;
     public float cancelDelay;
     public bool canTargetSame;
-    
+
     private CardType firstCard, secondCard;
     
     private SkillIcon icon;
@@ -57,6 +58,7 @@ public class Skill
         cancelShout = source.cancelShout;
         cancelDelay = source.cancelDelay;
         canTargetSame = source.canTargetSame;
+        notRepeatableForOthers = source.notRepeatableForOthers;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -138,7 +140,8 @@ public enum SkillEffect
     DestroyNeighbours,
     SpawnNeighbours,
     AddScore,
-    SpawnBehind
+    SpawnBehind,
+    AddToDeck
 }
 
 public enum Passive

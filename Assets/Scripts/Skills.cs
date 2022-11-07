@@ -65,7 +65,8 @@ public class Skills : MonoBehaviour
         
         skill.SetIcon(icon);
 
-        if (!skill.repeatable && skills.Count(s => s.title == skill.title) >= skill.firstCards.Count)
+        var doneRepeating = skills.Count(s => s.title == skill.title) >= skill.firstCards.Count;
+        if (!skill.repeatable && (skill.notRepeatableForOthers || doneRepeating))
         {
             Remove(source);
         }
@@ -172,6 +173,9 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(0.4f);
                 yield return board.SpawnBehind(skill.TargetType);
                 yield return new WaitForSeconds(0.25f);
+                break;
+            case SkillEffect.AddToDeck:
+                board.AddToDeck(skill.TargetType);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

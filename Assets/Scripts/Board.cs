@@ -86,6 +86,11 @@ public class Board : MonoBehaviour
         {
             devMenu.SetActive(!devMenu.activeSelf);
         }
+        
+        if (DevKey.Down(KeyCode.A))
+        {
+            deck.AddToTop(CardType.Death);
+        }
     }
 
     public void ChangeDrawnTo(CardType type)
@@ -435,5 +440,10 @@ public class Board : MonoBehaviour
     public IEnumerator SpawnBehind(CardType type)
     {
         yield return SpawnCards(type, new List<Tile>{ BehindSpot });
+    }
+
+    public void AddToDeck(CardType type)
+    {
+        deck.AddToTop(type);
     }
 }

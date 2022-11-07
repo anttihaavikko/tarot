@@ -11,24 +11,41 @@ public class Deck : MonoBehaviour
     [SerializeField] private SortingGroup cardPrefab;
 
     private Stack<CardType> deck = new();
-    private List<Transform> cards = new();
+    private readonly List<Transform> cards = new();
 
     private void Start()
     {
         for (var i = 0; i < 22; i++)
         {
-            var card = Instantiate(cardPrefab, transform);
-            var t = card.transform;
-            t.position += Vector3.up * 0.1f * i;
-            card.sortingOrder += i;
-            cards.Add(t);
+            AddCard();
         }
+    }
+
+    private void AddCard()
+    {
+        var card = Instantiate(cardPrefab, transform);
+        var t = card.transform;
+        var i = cards.Count;
+        t.position += Vector3.up * 0.1f * i;
+        card.sortingOrder += i;
+        cards.Add(t);
     }
 
     private void Shuffle()
     {
-        cards.ForEach(c => c.gameObject.SetActive(true));
+        for (var i = 0; i < 22; i++)
+        {
+            cards[i].gameObject.SetActive(true);
+        }
+        
         deck = new Stack<CardType>(EnumUtils.ToList<CardType>().OrderBy(_ => Random.value));
+    }
+
+    public void AddToTop(CardType type)
+    {
+        deck.Push(type);
+        if(deck.Count > cards.Count) AddCard();
+        GetCurrent().gameObject.SetActive(true);
     }
 
     public CardType Pull()
@@ -50,6 +67,6 @@ public class Deck : MonoBehaviour
 
     private Transform GetCurrent()
     {
-        return cards[Mathf.Max(0, deck.Count - 1)];
+        return cards[Mathf.Clamp(deck.Count - 1, 0, cards.Count - 1)];
     }
 }
