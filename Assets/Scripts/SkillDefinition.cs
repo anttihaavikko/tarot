@@ -32,14 +32,16 @@ public class Skill
     public string cancelShout;
     public float cancelDelay;
     public bool canTargetSame;
+    public Sprite iconSprite;
 
     private CardType firstCard, secondCard;
-    
-    private SkillIcon icon;
+
+    public SkillIcon Icon { get; private set; }
 
     public CardType MainType => firstCard;
     public CardType ImageType => useSecondImage ? secondCard : firstCard;
     public CardType TargetType => secondCard;
+    public bool HasTargetType => secondCards.Any();
 
     public Skill(Skill source)
     {
@@ -59,6 +61,7 @@ public class Skill
         cancelDelay = source.cancelDelay;
         canTargetSame = source.canTargetSame;
         notRepeatableForOthers = source.notRepeatableForOthers;
+        iconSprite = source.iconSprite;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -107,15 +110,15 @@ public class Skill
 
     public void Trigger()
     {
-        if (icon)
+        if (Icon)
         {
-            icon.Pulsate();
+            Icon.Pulsate();
         }
     }
 
     public void SetIcon(SkillIcon i)
     {
-        icon = i;
+        Icon = i;
     }
 }
 

@@ -96,7 +96,7 @@ public class Board : MonoBehaviour
     public void ChangeDrawnTo(CardType type)
     {
         drawnCard.TransformTo(type);
-        cardPreview.Show(type);
+        ShowPreview(type);
     }
 
     private void AddCard()
@@ -115,13 +115,13 @@ public class Board : MonoBehaviour
                 var first = transforms.First();
                 var targetType = first.TargetType;
                 drawnCard.TransformTo(targetType);
-                cardPreview.Show(targetType);
+                ShowPreview(targetType);
                 first.Trigger();
                 EffectManager.AddTextPopup(first.title, drawnCard.transform.position, 0.8f);
             }, 0.5f);
         }
 
-        cardPreview.Show(type);
+        ShowPreview(type);
     }
 
     private Card CreateCard(CardType type, Vector3 pos)
@@ -247,7 +247,7 @@ public class Board : MonoBehaviour
             Vector3.Distance(p, spot.AsVector3) > MaxDropDistance)
         {
             card.ReturnToHand();
-            cardPreview.Show(card.GetCardType());
+            ShowPreview(card.GetCardType());
             yield break;
         }
         
@@ -256,8 +256,8 @@ public class Board : MonoBehaviour
         JustTouched = grid.CollisionTarget ? grid.CollisionTarget.Card : null;
         BehindSpot = grid.BehindSpot;
         SlideLength = Mathf.RoundToInt(Vector2Int.Distance(start.Position, end.Position));
-
-        cardPreview.Hide();
+        
+        HideCardPreview();
         
         movesLeft--;
 
@@ -457,5 +457,12 @@ public class Board : MonoBehaviour
     public void HideCardPreview()
     {
         cardPreview.Hide();
+        skills.UnMarkSkills();
+    }
+
+    public void ShowPreview(CardType type)
+    {
+        cardPreview.Show(type);
+        skills.MarkSkills(type);
     }
 }

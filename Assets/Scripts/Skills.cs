@@ -62,7 +62,7 @@ public class Skills : MonoBehaviour
 
         var icon = Instantiate(iconPrefab, skillContainer);
         icon.Setup(skill);
-        
+
         skill.SetIcon(icon);
 
         var doneRepeating = skills.Count(s => s.title == skill.title) >= skill.firstCards.Count;
@@ -86,7 +86,7 @@ public class Skills : MonoBehaviour
     public IEnumerable<CardType> GetTypesFor(Card card)
     {
         var type = card.GetCardType();
-        return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new [] { type });
+        return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new[] { type });
     }
 
     public IEnumerator Trigger(SkillTrigger trigger, Card card)
@@ -192,12 +192,12 @@ public class Skills : MonoBehaviour
             {
                 EffectManager.AddTextPopup(skill.cancelShout, p, 0.8f);
             }
-            
+
             if (skill.cancelDelay > 0)
             {
                 yield return new WaitForSeconds(skill.cancelDelay);
             }
-            
+
             yield break;
         }
 
@@ -215,5 +215,16 @@ public class Skills : MonoBehaviour
     public IEnumerable<Skill> Get(Passive passive)
     {
         return skills.Where(s => s.Matches(passive));
+    }
+
+    public void MarkSkills(CardType type)
+    {
+        skills.Where(s => s.MainType == type).ToList().ForEach(s => s.Icon.Mark(true));
+        skills.Where(s => s.HasTargetType && s.TargetType == type).ToList().ForEach(s => s.Icon.Mark(false));
+    }
+
+    public void UnMarkSkills()
+    {
+        skills.ForEach(s => s.Icon.UnMark());
     }
 }

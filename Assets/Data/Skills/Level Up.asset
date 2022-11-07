@@ -22,5 +22,10 @@ MonoBehaviour:
     firstCards: 0a000000
     secondCards: 
     repeatable: 0
+    notRepeatableForOthers: 0
     amount: 0
     useSecondImage: 0
+    cancelShout: 
+    cancelDelay: 0
+    canTargetSame: 0
+    iconSprite: {fileID: 929917274, guid: f653580ec121045ebbae95b9d9639600, type: 3}
