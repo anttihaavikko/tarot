@@ -123,8 +123,8 @@ public class Skills : MonoBehaviour
             SkillEffect.AddScore => false,
             SkillEffect.SpawnAround => !board.HasEmptyNeighboursWithDiagonals(card),
             SkillEffect.LevelUp => false,
-            SkillEffect.DestroySurrounding => !board.HasNeighboursWithDiagonals(card),
-            SkillEffect.DestroyNeighbours => !board.HasNeighbours(card),
+            SkillEffect.DestroySurrounding => !board.HasNeighboursWithDiagonals(card, skill),
+            SkillEffect.DestroyNeighbours => !board.HasNeighbours(card, skill),
             SkillEffect.SpawnNeighbours => !board.HasEmptyNeighbours(card),
             SkillEffect.SpawnBehind => !board.BehindSpot,
             _ => false
@@ -164,10 +164,10 @@ public class Skills : MonoBehaviour
                 yield return Present();
                 break;
             case SkillEffect.DestroySurrounding:
-                yield return board.DestroyCards(board.GetNeighbours(card, true).ToList());
+                yield return board.DestroyCards(board.GetNeighbours(card, skill, true).ToList());
                 break;
             case SkillEffect.DestroyNeighbours:
-                yield return board.DestroyCards(board.GetNeighbours(card, false).ToList());
+                yield return board.DestroyCards(board.GetNeighbours(card, skill, false).ToList());
                 break;
             case SkillEffect.SpawnNeighbours:
                 yield return new WaitForSeconds(0.4f);

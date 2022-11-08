@@ -19,6 +19,7 @@ public class Card : MonoBehaviour
     private CardType type;
     
     public Tile Tile { get; set; }
+    public bool IsDying { get; private set; }
 
     private void Awake()
     {
@@ -187,6 +188,7 @@ public class Card : MonoBehaviour
 
     public void ShakeForever()
     {
+        IsDying = true;
         shaker.ShakeForever();
     }
 

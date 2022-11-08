@@ -124,7 +124,7 @@ TextureImporter:
         width: 671
         height: 686
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,7 +145,7 @@ TextureImporter:
         width: 702
         height: 953
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,6 +153,153 @@ TextureImporter:
       bones: []
       spriteID: 1a63676fe32784709b60952f7970006a
       internalID: -2108590751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chain
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 1262
+        width: 611
+        height: 715
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed1bfe3a8cefa4287b42559994ac63d3
+      internalID: 664068420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angel
+      rect:
+        serializedVersion: 2
+        x: 2175
+        y: 1268
+        width: 523
+        height: 681
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ede4b3bb3983439aa676a068ff43bbc
+      internalID: 944775062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 560
+        width: 520
+        height: 765
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 597868a7161404408a936c4069fa358f
+      internalID: -1104969298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fork
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 466
+        width: 683
+        height: 558
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91f67815b08234fd5af793e5418d97b9
+      internalID: 430679587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drop
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 475
+        width: 617
+        height: 718
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396d4dd91a0654f9e9e16d5e4b4b1b19
+      internalID: -275787404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertical
+      rect:
+        serializedVersion: 2
+        x: 2200
+        y: 334
+        width: 266
+        height: 844
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a40b57e5e5743048c17a71b34d39bd
+      internalID: -1624396315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: horizontal
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 121
+        width: 849
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a615a9a091554dfc8116f5e4e76e314
+      internalID: 2048286086
       vertices: []
       indices: 
       edges: []
@@ -169,7 +316,14 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       wheel: 929917274
+      scroll: -1104969298
+      angel: 944775062
+      chain: 664068420
+      fork: 430679587
       travel: -2108590751
+      horizontal: 2048286086
+      drop: -275787404
+      vertical: -1624396315
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -19,4 +19,9 @@ public class Tile : GridTile
     {
         card = null;
     }
+
+    public bool Contains(CardType type)
+    {
+        return Card.GetCardType() == type;
+    }
 }

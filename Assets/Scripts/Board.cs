@@ -392,9 +392,11 @@ public class Board : MonoBehaviour
 
     public IEnumerator DestroyCards(List<Card> cards)
     {
-        cards.ForEach(c => c.ShakeForever());
+        var targets = cards.Where(c => !c.IsDying).ToList();
+        
+        targets.ForEach(c => c.ShakeForever());
         yield return new WaitForSeconds(0.3f);
-        foreach (var c in cards)
+        foreach (var c in targets)
         {
             yield return skills.Trigger(SkillTrigger.Death, c);
             c.Tile.Clear();
@@ -426,23 +428,30 @@ public class Board : MonoBehaviour
         return grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Any(t => t.IsEmpty);
     }
 
-    public bool HasNeighboursWithDiagonals(Card card)
+    public bool HasNeighboursWithDiagonals(Card card, Skill skill)
     {
-        return grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Any(t => t.IsOccupied);
+        return grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y)
+            .Any(t => TileMatchesSkill(t, skill));
     }
     
-    public bool HasNeighbours(Card card)
+    public bool HasNeighbours(Card card, Skill skill)
     {
-        return grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Any(t => t.IsOccupied);
+        return grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y)
+            .Any(t => TileMatchesSkill(t, skill));
     }
     
-    public IEnumerable<Card> GetNeighbours(Card card, bool diagonals)
+    public IEnumerable<Card> GetNeighbours(Card card, Skill skill, bool diagonals)
     {
         var spots = diagonals ?
-            grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsOccupied) :
-            grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsOccupied);
+            grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Where(t => TileMatchesSkill(t, skill)) :
+            grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Where(t => TileMatchesSkill(t, skill));
         
         return spots.Where(s => s.Value.Card != card).Select(s => s.Value.Card);
+    }
+
+    private bool TileMatchesSkill(InfiniteGrid<Tile>.GridSpot spot, Skill skill)
+    {
+        return spot.IsOccupied && (!skill.HasTargetType || spot.Value.Contains(skill.TargetType));
     }
 
     public IEnumerator SpawnBehind(CardType type)
