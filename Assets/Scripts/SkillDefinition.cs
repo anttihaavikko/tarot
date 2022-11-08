@@ -161,5 +161,6 @@ public enum Passive
     Mimic,
     TransformOnDraw,
     AddMove,
-    ScoreDoubler
+    ScoreDoubler,
+    MultiIncreaseAndDecreaseMoves
 }

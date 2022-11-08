@@ -93,6 +93,33 @@ public class Skills : MonoBehaviour
     {
         return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new[] { type });
     }
+    
+    public bool Trigger(Passive passive, Vector3 pos)
+    {
+        var triggered = Get(passive).ToList();
+
+        triggered.ForEach(skill =>
+        {
+            EffectManager.AddTextPopup(skill.title, pos.RandomOffset(1f), 0.8f);
+            skill.Trigger();
+        });
+        
+        return triggered.Any();
+    }
+
+    public bool Trigger(Passive passive, CardType type, Vector3 pos)
+    {
+        var types = GetTypesFor(type).ToList();
+        var triggered = Get(passive, types).ToList();
+
+        triggered.ForEach(skill =>
+        {
+            EffectManager.AddTextPopup(skill.title, pos.RandomOffset(1f), 0.8f);
+            skill.Trigger();
+        });
+        
+        return triggered.Any();
+    }
 
     public IEnumerator Trigger(SkillTrigger trigger, Card card)
     {

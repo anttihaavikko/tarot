@@ -35,7 +35,7 @@ public class Board : MonoBehaviour
     private Card justPlaced;
 
     private int movesLeft;
-    private int MoveCount => 5 + skills.Count(Passive.AddMove);
+    private int MoveCount => 5 + skills.Count(Passive.AddMove) - skills.Count(Passive.MultiIncreaseAndDecreaseMoves);
 
     private int level = 1;
     private int exp;
@@ -321,7 +321,8 @@ public class Board : MonoBehaviour
     {
         if (movesLeft == MoveCount - 1)
         {
-            scoreDisplay.AddMulti();
+            var doubles = skills.Trigger(Passive.MultiIncreaseAndDecreaseMoves, cardPos);
+            scoreDisplay.AddMulti(doubles ? 2 : 1);
             EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
         }
 
@@ -380,17 +381,9 @@ public class Board : MonoBehaviour
 
     public void AddScore(int amount, Vector3 pos)
     {
-        var extraMulti = 1;
-        if (justPlaced)
-        {
-            var s = skills.Get(Passive.ScoreDoubler, justPlaced.GetCardType()).ToList();
-            if (s.Any())
-            {
-                EffectManager.AddTextPopup(s.First().title, justPlaced.transform.position.RandomOffset(1f) + Vector3.up * 1f, 0.8f);
-                extraMulti = 2;
-            }
-        }
-        
+        var doubles = justPlaced && skills.Trigger(Passive.ScoreDoubler, justPlaced.GetCardType(), justPlaced.transform.position + Vector3.up);
+        var extraMulti = doubles ? 2 : 1;
+
         var amt = extraMulti * amount;
         scoreDisplay.Add(amt);
         var shown = amt * scoreDisplay.Multi;

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
+  m_Name: Multi Increaser
+  m_EditorClassIdentifier: 
+  skill:
+    title: Risk
+    description: Reaching the (target) with your (first move) increases your (multiplier)
+      by (2). Decrease move amount by (1).
+    passive: 6
+    trigger: 0
+    effect: 0
+    firstCards: 04000000
+    secondCards: 
+    repeatable: 0
+    notRepeatableForOthers: 0
+    amount: 0
+    useSecondImage: 0
+    cancelShout: 
+    cancelDelay: 0
+    canTargetSame: 0
+    iconSprite: {fileID: 191931592, guid: 07e32a48bad264c0e9780b6eaaa3865b, type: 3}
