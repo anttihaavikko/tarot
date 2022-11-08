@@ -237,4 +237,9 @@ public class Skills : MonoBehaviour
     {
         skills.ForEach(s => s.Icon.UnMark());
     }
+
+    public int Count(Passive passive)
+    {
+        return skills.Count(s => s.Matches(passive));
+    }
 }

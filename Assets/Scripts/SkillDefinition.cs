@@ -153,5 +153,6 @@ public enum Passive
     None,
     FurtherExtend,
     Mimic,
-    TransformOnDraw
+    TransformOnDraw,
+    AddMove
 }

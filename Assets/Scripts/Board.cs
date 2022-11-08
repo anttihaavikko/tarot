@@ -35,7 +35,7 @@ public class Board : MonoBehaviour
     private Card justPlaced;
 
     private int movesLeft;
-    private int moveCount = 5;
+    private int MoveCount => 5 + skills.Count(Passive.AddMove);
 
     private int level = 1;
     private int exp;
@@ -61,7 +61,7 @@ public class Board : MonoBehaviour
             }
         }
         
-        movesLeft = moveCount;
+        movesLeft = MoveCount;
         UpdateMoveDisplay();
         
         RepositionCamera();
@@ -319,7 +319,7 @@ public class Board : MonoBehaviour
 
     private IEnumerator ReachedTarget(Vector3 cardPos)
     {
-        if (movesLeft == moveCount - 1)
+        if (movesLeft == MoveCount - 1)
         {
             scoreDisplay.AddMulti();
             EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
@@ -327,7 +327,7 @@ public class Board : MonoBehaviour
 
         Grow();
 
-        movesLeft = moveCount;
+        movesLeft = MoveCount;
         exp++;
 
         UpdateExpBar();
