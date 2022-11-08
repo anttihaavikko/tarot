@@ -127,6 +127,7 @@ public class Skills : MonoBehaviour
             SkillEffect.DestroyNeighbours => !board.HasNeighbours(card, skill),
             SkillEffect.SpawnNeighbours => !board.HasEmptyNeighbours(card),
             SkillEffect.SpawnBehind => !board.BehindSpot,
+            SkillEffect.DestroyClosest => !board.GetClosest(card, skill.TargetType),
             _ => false
         };
     }
@@ -181,6 +182,9 @@ public class Skills : MonoBehaviour
                 break;
             case SkillEffect.AddToDeck:
                 board.AddToDeck(skill.TargetType);
+                break;
+            case SkillEffect.DestroyClosest:
+                yield return board.DestroyCards(new List<Card> { board.GetClosest(card, skill.TargetType) });
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

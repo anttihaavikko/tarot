@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
+  m_Name: Hunt
+  m_EditorClassIdentifier: 
+  skill:
+    title: Hunt
+    description: Destroy closest ([2]) when placing ([1]).
+    passive: 0
+    trigger: 1
+    effect: 14
+    firstCards: 0200000005000000
+    secondCards: 0f0000000d0000000b00000000000000010000000a0000001500000014000000
+    repeatable: 0
+    notRepeatableForOthers: 0
+    amount: 0
+    useSecondImage: 0
+    cancelShout: 
+    cancelDelay: 0
+    canTargetSame: 0
+    iconSprite: {fileID: -1104969298, guid: f653580ec121045ebbae95b9d9639600, type: 3}

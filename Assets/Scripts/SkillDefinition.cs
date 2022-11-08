@@ -144,7 +144,8 @@ public enum SkillEffect
     SpawnNeighbours,
     AddScore,
     SpawnBehind,
-    AddToDeck
+    AddToDeck,
+    DestroyClosest
 }
 
 public enum Passive

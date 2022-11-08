@@ -9,6 +9,7 @@ using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
 using TMPro;
+using Random = System.Random;
 
 public class Board : MonoBehaviour
 {
@@ -82,7 +83,7 @@ public class Board : MonoBehaviour
             Grow();
         }
         
-        if (DevKey.Down(KeyCode.Z))
+        if (DevKey.Down(KeyCode.Tab))
         {
             devMenu.SetActive(!devMenu.activeSelf);
         }
@@ -471,7 +472,16 @@ public class Board : MonoBehaviour
 
     public void ShowPreview(CardType type)
     {
+        skills.UnMarkSkills();
         cardPreview.Show(type);
         skills.MarkSkills(type);
+    }
+
+    public Card GetClosest(Card card, CardType type)
+    {
+        var options = grid.GetAll().Where(s => s.IsOccupied && s.Value.Contains(type)).ToList();
+        return options.Any() ? 
+            options.OrderBy(o => Vector2Int.Distance(card.Tile.Position, o.Position)).First().Value.Card : 
+            default;
     }
 }
