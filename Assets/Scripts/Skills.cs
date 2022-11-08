@@ -186,6 +186,10 @@ public class Skills : MonoBehaviour
             case SkillEffect.DestroyClosest:
                 yield return board.DestroyCards(new List<Card> { board.GetClosest(card, skill.TargetType) });
                 break;
+            case SkillEffect.MoveTarget:
+                board.MoveTarget();
+                yield return new WaitForSeconds(0.3f);
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }

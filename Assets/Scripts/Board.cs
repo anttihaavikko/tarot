@@ -70,7 +70,7 @@ public class Board : MonoBehaviour
         MoveTarget();
     }
 
-    private void MoveTarget()
+    public void MoveTarget()
     {
         targetTile = grid.RandomFree().Value;
         target.position = targetTile.transform.position;

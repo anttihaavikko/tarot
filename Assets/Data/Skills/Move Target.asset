@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Move Addition
+  m_Name: Move Target
   m_EditorClassIdentifier: 
   skill:
-    title: Move
-    description: Get (1) additional (move) per new target.
-    passive: 4
-    trigger: 0
-    effect: 0
-    firstCards: 0a000000
+    title: Goals
+    description: Move (target) to another spot when placing ([1]).
+    passive: 0
+    trigger: 1
+    effect: 15
+    firstCards: 01000000
     secondCards: 
     repeatable: 0
     notRepeatableForOthers: 0
@@ -27,4 +27,4 @@ MonoBehaviour:
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: -653891632, guid: f653580ec121045ebbae95b9d9639600, type: 3}
+    iconSprite: {fileID: -715348552, guid: 07e32a48bad264c0e9780b6eaaa3865b, type: 3}
