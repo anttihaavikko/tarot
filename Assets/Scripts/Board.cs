@@ -301,7 +301,7 @@ public class Board : MonoBehaviour
             if (!tile.IsEmpty) continue;
             var card = CreateCard(type, tile.transform.position);
             card.Lock();
-            tile.Set(card);    
+            tile.Set(card);
         }
 
         foreach (var tile in tiles)
@@ -380,8 +380,20 @@ public class Board : MonoBehaviour
 
     public void AddScore(int amount, Vector3 pos)
     {
-        scoreDisplay.Add(amount);
-        var shown = amount * scoreDisplay.Multi;
+        var extraMulti = 1;
+        if (justPlaced)
+        {
+            var s = skills.Get(Passive.ScoreDoubler, justPlaced.GetCardType()).ToList();
+            if (s.Any())
+            {
+                EffectManager.AddTextPopup(s.First().title, justPlaced.transform.position.RandomOffset(1f) + Vector3.up * 1f, 0.8f);
+                extraMulti = 2;
+            }
+        }
+        
+        var amt = extraMulti * amount;
+        scoreDisplay.Add(amt);
+        var shown = amt * scoreDisplay.Multi;
         EffectManager.AddTextPopup(shown.AsScore(), pos.RandomOffset(1f), 1.3f);
     }
 

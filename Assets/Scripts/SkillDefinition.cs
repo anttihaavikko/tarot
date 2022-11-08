@@ -93,6 +93,11 @@ public class Skill
         return passive == pas && firstCard == type;
     }
     
+    public bool Matches(Passive pas, List<CardType> types)
+    {
+        return passive == pas && types.Contains(firstCard);
+    }
+    
     public bool Matches(Passive pas)
     {
         return passive == pas;
@@ -155,5 +160,6 @@ public enum Passive
     FurtherExtend,
     Mimic,
     TransformOnDraw,
-    AddMove
+    AddMove,
+    ScoreDoubler
 }

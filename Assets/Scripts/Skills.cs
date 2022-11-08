@@ -219,6 +219,11 @@ public class Skills : MonoBehaviour
 
         yield return DoEffect(skill, card);
     }
+    
+    public IEnumerable<Skill> Get(Passive passive, List<CardType> types)
+    {
+        return skills.Where(s => s.Matches(passive, types));
+    }
 
     public IEnumerable<Skill> Get(Passive passive, CardType type)
     {
@@ -245,5 +250,11 @@ public class Skills : MonoBehaviour
     public int Count(Passive passive)
     {
         return skills.Count(s => s.Matches(passive));
+    }
+
+    public bool Has(Passive passive, CardType type)
+    {
+        var types = GetTypesFor(type).ToList();
+        return skills.Any(s => s.Matches(passive, types));
     }
 }
