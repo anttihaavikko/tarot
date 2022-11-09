@@ -24,6 +24,7 @@ namespace AnttiStarterKit.Visuals
         private float colorAmount, colorSpeed = 1f;
         private float shakeAmount, shakeTime;
         private float totalShakeTime;
+        private Camera cam;
 
         private Vector3 originalPos;
 
@@ -43,6 +44,8 @@ namespace AnttiStarterKit.Visuals
                 Destroy (this.gameObject);
                 return;
             }
+            
+            cam = GetComponent<Camera>();
 
             instance = this;
         }
@@ -103,7 +106,8 @@ namespace AnttiStarterKit.Visuals
                 var diff = new Vector3(Random.Range(-shakeAmount, shakeAmount) * mod,
                     Random.Range(-shakeAmount, shakeAmount) * mod, 0);
 
-                var rot = Quaternion.Euler(0, 0, Random.Range(-shakeAmount, shakeAmount) * mod * 1.5f);
+                var scaledForRot = shakeAmount / cam.orthographicSize;
+                var rot = Quaternion.Euler(0, 0, Random.Range(-scaledForRot, scaledForRot) * mod * 1.5f);
 
                 cameraRig.position = originalPos + diff * 0.075f;
                 cameraRig.rotation = rot;
@@ -140,8 +144,9 @@ namespace AnttiStarterKit.Visuals
             colorSpeed = speed;
         }
 
-        public void BaseEffect(float mod = 1f) {
-            Shake(2.5f * mod, 0.8f * mod);
+        public void BaseEffect(float mod = 1f)
+        {
+            Shake(2.5f * mod * cam.orthographicSize, 0.8f * mod);
             Chromate(0.5f * mod, 0.5f * mod);
             Bulge(defaultLensDistortion + 1f * mod, 1f * mod);
             Decolor(0.5f * mod, 3f * mod);

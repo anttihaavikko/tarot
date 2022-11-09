@@ -8,6 +8,7 @@ using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
+using AnttiStarterKit.Visuals;
 using TMPro;
 using Random = System.Random;
 
@@ -18,7 +19,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform spotPreview, targetPreview, preview;
     [SerializeField] private SpriteRenderer previewLane;
     [SerializeField] private Transform target;
-    [SerializeField] private Camera cam;
+    [SerializeField] private Camera cam, displaceCam;
     [SerializeField] private Transform hand;
     [SerializeField] private CardPreview cardPreview;
     [SerializeField] private Deck deck;
@@ -27,6 +28,7 @@ public class Board : MonoBehaviour
     [SerializeField] private ScoreDisplay scoreDisplay;
     [SerializeField] private Skills skills;
     [SerializeField] private GameObject devMenu;
+    [SerializeField] private EffectCamera effectCamera;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
@@ -57,7 +59,7 @@ public class Board : MonoBehaviour
         {
             for (var y = -1; y < 2; y++)
             {
-                AddTile(x, y);
+                AddTile(x, y, false);
             }
         }
         
@@ -103,7 +105,7 @@ public class Board : MonoBehaviour
     private void AddCard()
     {
         var type = deck.Pull();
-        drawnCard = CreateCard(type, deck.GetSpawn());
+        drawnCard = CreateCard(type, deck.GetSpawn(), false);
         var t = drawnCard.transform;
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
@@ -125,11 +127,15 @@ public class Board : MonoBehaviour
         ShowPreview(type);
     }
 
-    private Card CreateCard(CardType type, Vector3 pos)
+    private Card CreateCard(CardType type, Vector3 pos, bool pulse = true)
     {
         var card = Instantiate(cardPrefab, transform);
         card.Init(this, type);
         card.transform.position = pos;
+        if (pulse)
+        {
+            PulseAt(pos);   
+        }
         return card;
     }
 
@@ -161,7 +167,7 @@ public class Board : MonoBehaviour
         var size = grid.GetSize();
         var max = Mathf.Max(size.x * 0.7f, size.y);
 
-        cam.orthographicSize = 1f + max * perStep;
+        cam.orthographicSize = displaceCam.orthographicSize = 1f + max * perStep;
 
         var center = grid.GetCenter();
         Tweener.MoveToBounceOut(cam.transform, center.WhereZ(-10), PanTime);
@@ -214,12 +220,17 @@ public class Board : MonoBehaviour
         previewLane.size = new Vector3(width, height);
     }
 
-    private void AddTile(int x, int y)
+    private void AddTile(int x, int y, bool pulse = true)
     {
         if (!grid.Get(x, y).IsWall) return;
         var tile = Instantiate(tilePrefab, transform);
         tile.Position = new Vector2Int(x, y);
-        tile.transform.position = Scale(new Vector3(x, y, 0));
+        var p = Scale(new Vector3(x, y, 0));
+        tile.transform.position = p;
+        if (pulse)
+        {
+            PulseAt(p, false);
+        }
         grid.Set(x, y, tile);
     }
 
@@ -267,11 +278,14 @@ public class Board : MonoBehaviour
         var cardPos = Scale(end.AsVector3);
         var targetPos = cardPos;
         var duration = 0.05f * Vector3.Distance(t.position, targetPos);
-        this.StartCoroutine(() => Tweener.MoveToBounceOut(t, targetPos, duration),0.1f);
-        
+        yield return new WaitForSeconds(0.1f);
+        Tweener.MoveToBounceOut(t, targetPos, duration);
+
         end.Value.Set(card);
         card.Lock();
         targetReached = false;
+
+        PulseAt(targetPos);
 
         yield return new WaitForSeconds(duration);
 
@@ -289,6 +303,19 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             AddCard();
         }
+    }
+
+    public void PulseAt(Vector3 pos, bool lines = true)
+    {
+        var set = lines ? new[] { 0, 2 } : new[] { 0 };
+        EffectManager.AddEffects(set, pos);
+        effectCamera.BaseEffect(0.2f);
+    }
+    
+    private void ExplodeAt(Vector3 pos)
+    {
+        EffectManager.AddEffects(new []{ 1, 2, 3 }, pos);
+        effectCamera.BaseEffect(0.5f);
     }
 
     public IEnumerator SpawnCards(CardType type, List<Tile> tiles)
@@ -406,10 +433,12 @@ public class Board : MonoBehaviour
         {
             yield return skills.Trigger(SkillTrigger.Death, c);
             c.Tile.Clear();
+            ExplodeAt(c.transform.position);
             c.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
     }
 
     public IEnumerator SpawnAround(Card card, CardType type)

@@ -195,6 +195,7 @@ public class Card : MonoBehaviour
     public void TransformTo(CardType target)
     {
         Init(target);
+        board.PulseAt(transform.position);
     }
 
     public void ReturnToHand()
