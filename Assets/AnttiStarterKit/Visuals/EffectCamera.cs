@@ -89,7 +89,7 @@ namespace AnttiStarterKit.Visuals
             ld.intensity.value = bulgeAmount;
 
             colorAmount = Mathf.MoveTowards(colorAmount, 0, Time.deltaTime * colorSpeed * 0.2f);
-            cg.saturation.value = Mathf.Lerp(0f, 50f, colorAmount);
+            cg.saturation.value = Mathf.Lerp(0f, 50f, -colorAmount);
             cg.contrast.value = Mathf.Lerp(0f, 100f, colorAmount);
         }
 
@@ -149,7 +149,7 @@ namespace AnttiStarterKit.Visuals
             Shake(2.5f * mod * cam.orthographicSize, 0.8f * mod);
             Chromate(0.5f * mod, 0.5f * mod);
             Bulge(defaultLensDistortion + 1f * mod, 1f * mod);
-            Decolor(0.75f * mod, 5f * mod);
+            Decolor(1.25f * mod, 5f * mod);
         }
 
         public static void Effect(float mod = 1f)
