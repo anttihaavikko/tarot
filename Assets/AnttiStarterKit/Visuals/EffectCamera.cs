@@ -149,7 +149,7 @@ namespace AnttiStarterKit.Visuals
             Shake(2.5f * mod * cam.orthographicSize, 0.8f * mod);
             Chromate(0.5f * mod, 0.5f * mod);
             Bulge(defaultLensDistortion + 1f * mod, 1f * mod);
-            Decolor(0.5f * mod, 3f * mod);
+            Decolor(1f * mod, 5f * mod);
         }
 
         public static void Effect(float mod = 1f)
