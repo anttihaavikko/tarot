@@ -17,7 +17,8 @@ MonoBehaviour:
     description: Spawn ([2]) behind placed ([1]).
     passive: 0
     trigger: 1
-    effect: 12
+    condition: 0
+    effect: 10
     firstCards: 06000000
     secondCards: 06000000
     repeatable: 0

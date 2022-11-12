@@ -23,6 +23,7 @@ public class Skill
     [TextArea] public string description;
     public Passive passive;
     public SkillTrigger trigger;
+    public SkillCondition condition;
     public SkillEffect effect;
     public List<CardType> firstCards, secondCards;
     public bool repeatable;
@@ -62,6 +63,7 @@ public class Skill
         canTargetSame = source.canTargetSame;
         notRepeatableForOthers = source.notRepeatableForOthers;
         iconSprite = source.iconSprite;
+        condition = source.condition;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -139,11 +141,16 @@ public enum SkillTrigger
     Death
 }
 
+public enum SkillCondition
+{
+    None,
+    IsAlone,
+    IsNotAlone
+}
+
 public enum SkillEffect
 {
     None,
-    AddMultiplierIfAlone,
-    AddScoreIfAlone,
     DestroyTouching,
     AddMultiForSlideLength,
     AddMultiplier,
@@ -159,8 +166,7 @@ public enum SkillEffect
     MoveTarget,
     TransformSurrounding,
     TransformNeighbours,
-    TransformTouching,
-    AddScoreIfNotAlone
+    TransformTouching
 }
 
 public enum Passive

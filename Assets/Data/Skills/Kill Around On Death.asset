@@ -17,7 +17,8 @@ MonoBehaviour:
     description: Destroying ([1]) destroys (all) the surrounding cards.
     passive: 0
     trigger: 2
-    effect: 8
+    condition: 0
+    effect: 6
     firstCards: 1100000013000000
     secondCards: 
     repeatable: 0

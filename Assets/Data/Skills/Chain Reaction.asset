@@ -17,7 +17,8 @@ MonoBehaviour:
     description: Destroy neighbouring ([2]) when ([1]) dies.
     passive: 0
     trigger: 2
-    effect: 9
+    condition: 0
+    effect: 7
     firstCards: 0c000000
     secondCards: 0c000000
     repeatable: 0

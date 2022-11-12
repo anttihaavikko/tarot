@@ -17,7 +17,8 @@ MonoBehaviour:
     description: Placing ([1]) increases (multiplier) for every tile it slides.
     passive: 0
     trigger: 1
-    effect: 4
+    condition: 0
+    effect: 2
     firstCards: 1500000007000000
     secondCards: 
     repeatable: 1

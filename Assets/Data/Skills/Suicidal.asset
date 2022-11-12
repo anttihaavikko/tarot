@@ -17,7 +17,8 @@ MonoBehaviour:
     description: Increase (multiplier) by (10) when ([1]) dies.
     passive: 0
     trigger: 2
-    effect: 5
+    condition: 0
+    effect: 3
     firstCards: 0c000000
     secondCards: 
     repeatable: 1

@@ -18,7 +18,8 @@ MonoBehaviour:
       (empty), score (100) points.
     passive: 0
     trigger: 1
-    effect: 2
+    condition: 1
+    effect: 9
     firstCards: 09000000
     secondCards: 
     repeatable: 1

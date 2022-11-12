@@ -142,13 +142,22 @@ public class Skills : MonoBehaviour
         }
     }
 
+    private bool FailsCondition(Skill skill, Card card)
+    {
+        return skill.condition switch
+        {
+            SkillCondition.None => false,
+            SkillCondition.IsAlone => !board.IsPlacedAlone(),
+            SkillCondition.IsNotAlone => board.IsPlacedAlone(),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
     private bool ShouldCancel(Skill skill, Card card)
     {
         return skill.effect switch
         {
             SkillEffect.None => false,
-            SkillEffect.AddMultiplierIfAlone => !board.IsPlacedAlone(),
-            SkillEffect.AddScoreIfAlone => !board.IsPlacedAlone(),
             SkillEffect.DestroyTouching => !board.JustTouched,
             SkillEffect.AddMultiForSlideLength => board.SlideLength < 1,
             SkillEffect.AddMultiplier => false,
@@ -163,8 +172,9 @@ public class Skills : MonoBehaviour
             SkillEffect.TransformTouching => !board.JustTouched,
             SkillEffect.TransformSurrounding => !board.HasNeighboursWithDiagonals(card, skill),
             SkillEffect.TransformNeighbours => !board.HasNeighbours(card, skill),
-            SkillEffect.AddScoreIfNotAlone => board.IsPlacedAlone(),
-            _ => false
+            SkillEffect.AddToDeck => false,
+            SkillEffect.MoveTarget => false,
+            _ => throw new ArgumentOutOfRangeException()
         };
     }
 
@@ -175,8 +185,6 @@ public class Skills : MonoBehaviour
             case SkillEffect.None:
                 break;
             case SkillEffect.AddScore:
-            case SkillEffect.AddScoreIfAlone:
-            case SkillEffect.AddScoreIfNotAlone:
                 board.AddScore(skill.amount, card.transform.position);
                 yield return new WaitForSeconds(0.4f);
                 break;
@@ -188,7 +196,6 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(0.4f);
                 break;
             case SkillEffect.AddMultiplier:
-            case SkillEffect.AddMultiplierIfAlone:
                 board.AddMulti(skill.amount);
                 yield return new WaitForSeconds(0.4f);
                 break;
@@ -245,7 +252,7 @@ public class Skills : MonoBehaviour
     {
         var p = pos.RandomOffset(1f);
 
-        if (ShouldCancel(skill, card))
+        if (FailsCondition(skill, card) || ShouldCancel(skill, card))
         {
             if (!string.IsNullOrEmpty(skill.cancelShout))
             {

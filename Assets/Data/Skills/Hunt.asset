@@ -17,7 +17,8 @@ MonoBehaviour:
     description: Destroy closest ([2]) when placing ([1]).
     passive: 0
     trigger: 1
-    effect: 14
+    condition: 0
+    effect: 12
     firstCards: 0200000005000000
     secondCards: 0f0000000d0000000b00000000000000010000000a0000001500000014000000
     repeatable: 0

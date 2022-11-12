@@ -18,7 +18,8 @@ MonoBehaviour:
       (destiny).
     passive: 0
     trigger: 1
-    effect: 7
+    condition: 0
+    effect: 5
     firstCards: 0a000000
     secondCards: 
     repeatable: 0

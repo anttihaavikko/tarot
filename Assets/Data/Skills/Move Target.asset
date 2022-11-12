@@ -17,7 +17,8 @@ MonoBehaviour:
     description: Move (target) to another spot when placing ([1]).
     passive: 0
     trigger: 1
-    effect: 15
+    condition: 0
+    effect: 13
     firstCards: 01000000
     secondCards: 
     repeatable: 0

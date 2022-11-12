@@ -17,7 +17,8 @@ MonoBehaviour:
     description: (Destroy) any card ([1]) slides into.
     passive: 0
     trigger: 1
-    effect: 3
+    condition: 0
+    effect: 1
     firstCards: 0d0000000f000000
     secondCards: 
     repeatable: 0

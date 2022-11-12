@@ -17,7 +17,8 @@ MonoBehaviour:
     description: Placing ([1]) transform (all) the surrounding cards (randomly).
     passive: 0
     trigger: 1
-    effect: 16
+    condition: 0
+    effect: 14
     firstCards: 01000000
     secondCards: 
     repeatable: 0

@@ -18,7 +18,8 @@ MonoBehaviour:
       (empty), increase (multiplier) by (5).
     passive: 0
     trigger: 1
-    effect: 1
+    condition: 1
+    effect: 3
     firstCards: 09000000
     secondCards: 
     repeatable: 1
