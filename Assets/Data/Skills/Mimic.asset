@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Mimic
   m_EditorClassIdentifier: 
   skill:
-    title: Mimic
+    title: Cut from the Same Cloth
     description: ([1]) gets all the effects of ([2]).
     passive: 2
     trigger: 0
+    condition: 0
     effect: 0
     firstCards: 00000000
     secondCards: 0100000002000000030000000400000005000000090000000c0000000d0000000f000000

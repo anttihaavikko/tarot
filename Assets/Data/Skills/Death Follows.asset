@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Death Follows
   m_EditorClassIdentifier: 
   skill:
-    title: Death Follows
+    title: Death's Doorstep
     description: Add ([2]) to the top of the (draw pile) when placing ([1]).
     passive: 0
     trigger: 1

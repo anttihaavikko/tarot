@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Multi Increaser
   m_EditorClassIdentifier: 
   skill:
-    title: Risk
+    title: Greased Lightning
     description: Reaching the (target) with your (first move) increases your (multiplier)
       by (2). Decrease move amount by (1).
     passive: 6
     trigger: 0
+    condition: 0
     effect: 0
     firstCards: 04000000
     secondCards: 

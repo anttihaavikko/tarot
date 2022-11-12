@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: True King
   m_EditorClassIdentifier: 
   skill:
-    title: True King
+    title: Et tu, brutus?
     description: Doubles your score now. Lose (2000 points) if ([1]) ever dies.
     passive: 7
     trigger: 2

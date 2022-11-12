@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: True Hermit
   m_EditorClassIdentifier: 
   skill:
-    title: True Hermit
+    title: Deer in Headlights
     description: Doubles your score now. Lose (1000 points) if ([1]) ever is ever
       placed next to another card.
     passive: 7

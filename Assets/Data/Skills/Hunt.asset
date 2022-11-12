@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hunt
   m_EditorClassIdentifier: 
   skill:
-    title: Hunt
+    title: Witch Hunt
     description: Destroy closest ([2]) when placing ([1]).
     passive: 0
     trigger: 1

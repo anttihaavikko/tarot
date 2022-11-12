@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Suicidal
   m_EditorClassIdentifier: 
   skill:
-    title: Suicidal
+    title: Short Changed
     description: Increase (multiplier) by (10) when ([1]) dies.
     passive: 0
     trigger: 2

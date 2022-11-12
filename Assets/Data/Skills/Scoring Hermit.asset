@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scoring Hermit
   m_EditorClassIdentifier: 
   skill:
-    title: Scoring Hermit
+    title: All for One
     description: When ([1]) is placed on the board and all the neighbour tiles are
       (empty), score (100) points.
     passive: 0

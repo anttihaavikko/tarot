@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Move Target
   m_EditorClassIdentifier: 
   skill:
-    title: Goals
+    title: Moving the Goalpost
     description: Move (target) to another spot when placing ([1]).
     passive: 0
     trigger: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Transform Around
   m_EditorClassIdentifier: 
   skill:
-    title: Poof
+    title: Some of My Best Friends
     description: Placing ([1]) transform (all) the surrounding cards (randomly).
     passive: 0
     trigger: 1

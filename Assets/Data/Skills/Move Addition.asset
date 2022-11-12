@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Move Addition
   m_EditorClassIdentifier: 
   skill:
-    title: Move
+    title: Now's Your Chance
     description: Get (1) additional (move) per new target.
     passive: 4
     trigger: 0
+    condition: 0
     effect: 0
     firstCards: 0a000000
     secondCards: 

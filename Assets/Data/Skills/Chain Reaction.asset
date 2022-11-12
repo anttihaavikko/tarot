@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chain Reaction
   m_EditorClassIdentifier: 
   skill:
-    title: Chain
+    title: Weakest Link
     description: Destroy neighbouring ([2]) when ([1]) dies.
     passive: 0
     trigger: 2

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Surround With Fools
   m_EditorClassIdentifier: 
   skill:
-    title: Around Fools
+    title: King for a Day
     description: Spawn ([2]) on every surrounding tile of ([1]).
     passive: 0
     trigger: 1

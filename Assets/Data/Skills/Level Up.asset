@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level Up
   m_EditorClassIdentifier: 
   skill:
-    title: Leveling
+    title: Live And Learn
     description: Placing ([1]) on the board causes you immediately (choose) a new
       (destiny).
     passive: 0

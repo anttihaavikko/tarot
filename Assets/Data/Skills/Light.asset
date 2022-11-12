@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Light
   m_EditorClassIdentifier: 
   skill:
-    title: Light
+    title: Guiding Light
     description: ([1]) extends board twice as far.
     passive: 1
     trigger: 0
+    condition: 0
     effect: 0
     firstCards: 110000001200000013000000
     secondCards: 

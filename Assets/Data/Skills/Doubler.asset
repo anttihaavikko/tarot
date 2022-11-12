@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Doubler
   m_EditorClassIdentifier: 
   skill:
-    title: Doubler
+    title: Teach Him to Fish
     description: (Double) all the scores gained by placing ([1]).
     passive: 5
     trigger: 0
+    condition: 0
     effect: 0
     firstCards: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
     secondCards: 

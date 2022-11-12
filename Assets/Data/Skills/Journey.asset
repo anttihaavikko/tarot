@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Journey
   m_EditorClassIdentifier: 
   skill:
-    title: Journey
+    title: Thousand Miles
     description: Placing ([1]) increases (multiplier) for every tile it slides.
     passive: 0
     trigger: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Death Touch
   m_EditorClassIdentifier: 
   skill:
-    title: Death Touch
+    title: Kiss of Death
     description: (Destroy) any card ([1]) slides into.
     passive: 0
     trigger: 1

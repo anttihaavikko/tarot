@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hermit Multiplier
   m_EditorClassIdentifier: 
   skill:
-    title: Hermit Multi
+    title: One Over Me
     description: When ([1]) is placed on the board and all the neighbour tiles are
       (empty), increase (multiplier) by (5).
     passive: 0
