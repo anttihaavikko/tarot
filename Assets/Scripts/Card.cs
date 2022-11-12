@@ -13,9 +13,9 @@ public class Card : MonoBehaviour
     [SerializeField] private SpriteCollection cardSprites;
     [SerializeField] private ColorCollection cardColors, patternColors;
     [SerializeField] private SpriteRenderer sprite, bg, pattern, radial;
+    [SerializeField] private Draggable draggable;
 
     private Board board;
-    private Draggable draggable;
     private Shaker shaker;
 
     private CardType type;
@@ -26,7 +26,6 @@ public class Card : MonoBehaviour
     private void Awake()
     {
         shaker = GetComponent<Shaker>();
-        draggable = GetComponent<Draggable>();
         draggable.preview += Preview;
         draggable.dropped += Place;
         draggable.pick += HidePreview;
@@ -70,7 +69,7 @@ public class Card : MonoBehaviour
     private void Init(CardType t)
     {
         type = t;
-        title.text = GetName();
+        gameObject.name = title.text = GetName();
         sprite.sprite = cardSprites.Get((int)t);
         bg.color = cardColors.Get((int)t);
         pattern.color = patternColors.Get((int)t);
@@ -79,8 +78,8 @@ public class Card : MonoBehaviour
 
     public void Lock()
     {
-        draggable.enabled = false;
         draggable.NormalizeSortOrder();
+        draggable.enabled = false;
     }
 
     public string GetName()
@@ -193,18 +192,16 @@ public class Card : MonoBehaviour
         IsDying = true;
         shaker.ShakeForever();
     }
-    
-    public void TransformToRandom(string message)
+
+    public void TransformTo(CardType target, string message = null)
     {
         var pos = transform.position;
-        EffectManager.AddTextPopup(message, pos, 0.8f);
-        var target = EnumUtils.Random<CardType>();
-        Init(target);
-        board.PulseAt(pos);
-    }
-
-    public void TransformTo(CardType target)
-    {
+        
+        if (!string.IsNullOrEmpty(message))
+        {
+            EffectManager.AddTextPopup(message, pos, 0.8f);
+        }
+        
         Init(target);
         board.PulseAt(transform.position);
     }
@@ -212,6 +209,11 @@ public class Card : MonoBehaviour
     public void ReturnToHand()
     {
         draggable.Return();
+    }
+
+    public static CardType GetRandomType()
+    {
+        return EnumUtils.Random<CardType>();
     }
 }
 

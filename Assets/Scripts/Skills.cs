@@ -221,13 +221,13 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(0.3f);
                 break;
             case SkillEffect.TransformSurrounding:
-                yield return board.TransformCards(board.GetNeighbours(card, skill, true).ToList(), skill.title);
+                yield return board.TransformCards(board.GetNeighbours(card, skill, true).ToList(), skill.title, skill.GetTargetOrRandomType());
                 break;
             case SkillEffect.TransformNeighbours:
-                yield return board.TransformCards(board.GetNeighbours(card, skill, false).ToList(), skill.title);
+                yield return board.TransformCards(board.GetNeighbours(card, skill, false).ToList(), skill.title, skill.GetTargetOrRandomType());
                 break;
             case SkillEffect.TransformTouching:
-                yield return board.TransformCards(new List<Card> { board.JustTouched }, skill.title);
+                yield return board.TransformCards(new List<Card> { board.JustTouched }, skill.title, skill.GetTargetOrRandomType());
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

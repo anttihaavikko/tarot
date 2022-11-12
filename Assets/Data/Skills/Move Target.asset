@@ -27,4 +27,4 @@ MonoBehaviour:
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: -715348552, guid: 07e32a48bad264c0e9780b6eaaa3865b, type: 3}
+    iconSprite: {fileID: -275787404, guid: f653580ec121045ebbae95b9d9639600, type: 3}

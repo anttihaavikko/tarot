@@ -678,6 +678,7 @@ MonoBehaviour:
   bg: {fileID: 4148702711367824594}
   pattern: {fileID: 1970641384685381501}
   radial: {fileID: 910610973054004631}
+  draggable: {fileID: 4148702712765327938}
 --- !u!210 &4148702712765327948
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -734,6 +735,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   lockAfterDrop: 0
+  sortingGroup: {fileID: 4148702712765327948}
   normalSortOrder: 10
   dragSortOrder: 20
 --- !u!114 &-6119202857570378887

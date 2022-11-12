@@ -12,6 +12,7 @@ public class Draggable : MonoBehaviour
     
     [SerializeField] private LayerMask dropMask, blockMask;
     [SerializeField] private bool lockAfterDrop = true;
+    [SerializeField] private SortingGroup sortingGroup;
     [SerializeField] private int normalSortOrder, dragSortOrder;
 
     public bool CanDrag { get; set; } = true;
@@ -22,13 +23,11 @@ public class Draggable : MonoBehaviour
     private Vector3 offset;
     private Vector3 start;
     private int layerId;
-    private SortingGroup sortingGroup;
 
     public bool IsDragging => dragging;
 
     private void Start()
     {
-        sortingGroup = GetComponent<SortingGroup>();
         cam = Camera.main;
     }
 
@@ -60,7 +59,7 @@ public class Draggable : MonoBehaviour
 
     public void NormalizeSortOrder()
     {
-        SetSortOrder(dragSortOrder);
+        SetSortOrder(normalSortOrder);
     }
 
     private void OnMouseUp()
@@ -85,7 +84,6 @@ public class Draggable : MonoBehaviour
     public void Return()
     {
         Tweener.MoveToBounceOut(transform, start, 0.3f);
-        NormalizeSortOrder();
     }
 
     private void InvokePreview()

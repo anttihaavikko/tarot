@@ -125,6 +125,11 @@ public class Skill
     {
         Icon = i;
     }
+    
+    public CardType GetTargetOrRandomType()
+    {
+        return HasTargetType ? TargetType : Card.GetRandomType();
+    }
 }
 
 public enum SkillTrigger
