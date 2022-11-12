@@ -16,10 +16,10 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: c5f1080f761e6478f904cb6542535553, type: 3}
   - {fileID: 21300000, guid: eff57e035341e478e8b8862dc66731ad, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: ce8b77dbf3bd6421fb95dba55f8ef0d9, type: 3}
   - {fileID: 21300000, guid: d83da4e3c744245a985f75d53c48ba2c, type: 3}
   - {fileID: 21300000, guid: 7c4db3bb06b6e47af9266ec904a28510, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 23d61a0d68410489da2c7e0a7ccfdc86, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
