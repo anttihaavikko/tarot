@@ -441,7 +441,7 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
     }
     
-    public IEnumerator TransformCards(List<Card> cards, string message, CardType type)
+    public IEnumerator TransformCards(List<Card> cards, Skill skill)
     {
         var targets = cards.Where(c => !c.IsDying).ToList();
         
@@ -450,7 +450,7 @@ public class Board : MonoBehaviour
         
         foreach (var c in targets)
         {
-            c.TransformTo(type, message);
+            c.TransformTo(skill.GetTargetOrRandomType(), skill.title);
             yield return new WaitForSeconds(0.2f);
             yield return skills.Trigger(SkillTrigger.Place, c);
             yield return new WaitForSeconds(0.2f);
