@@ -406,14 +406,14 @@ public class Board : MonoBehaviour
         scoreDisplay.AddMulti(amount);
     }
 
-    public void AddScore(int amount, Vector3 pos)
+    public void AddScore(int amount, Vector3 pos, bool useMulti = true)
     {
         var doubles = justPlaced && skills.Trigger(Passive.ScoreDoubler, justPlaced.GetCardType(), justPlaced.transform.position + Vector3.up);
         var extraMulti = doubles ? 2 : 1;
 
         var amt = extraMulti * amount;
-        scoreDisplay.Add(amt);
-        var shown = amt * scoreDisplay.Multi;
+        scoreDisplay.Add(amt, useMulti && amount > 0);
+        var shown = amt * (useMulti && amount > 0 ? scoreDisplay.Multi : 1);
         EffectManager.AddTextPopup(shown.AsScore(), pos.RandomOffset(1f), 1.3f);
     }
 
@@ -539,6 +539,7 @@ public class Board : MonoBehaviour
 
     public void DoubleScore()
     {
-        scoreDisplay.Add(scoreDisplay.Total, false);
+        justPlaced = null;
+        AddScore(scoreDisplay.Total, Vector3.zero, false);
     }
 }
