@@ -18,7 +18,7 @@ namespace AnttiStarterKit.Displaces
             var ph = Screen.height;
             var ratio = 1f * pw / ph;
             // cam.rect = new Rect(0, 0, 1f, 1f / ratio);
-            texture = new RenderTexture(pw, pw, 16);
+            texture = new RenderTexture(pw, ph, 16);
             cam.targetTexture = texture;
             worldDisplaceMaterial.SetTexture(DisplaceTex, texture);
             // worldDisplaceMaterial.SetFloat(Flip, Application.platform == RuntimePlatform.WebGLPlayer ? 0 : 1);
