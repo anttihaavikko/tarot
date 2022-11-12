@@ -78,9 +78,14 @@ namespace AnttiStarterKit.Game
             return addition > 0 ? $"+{number}" : number;
         }
 
-        public void Add(int amount)
+        public void Add(int amount, bool useMulti = true)
         {
-            var amt = amount * multiplier;
+            var amt = useMulti ? amount * multiplier : amount;
+
+            if (amt < 0 && value + amt < 0)
+            {
+                amt = -value;
+            }
         
             value += amt;
             addition += amt;

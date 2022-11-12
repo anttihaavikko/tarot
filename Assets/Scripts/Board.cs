@@ -536,4 +536,9 @@ public class Board : MonoBehaviour
             options.OrderBy(o => Vector2Int.Distance(card.Tile.Position, o.Position)).First().Value.Card : 
             default;
     }
+
+    public void DoubleScore()
+    {
+        scoreDisplay.Add(scoreDisplay.Total, false);
+    }
 }

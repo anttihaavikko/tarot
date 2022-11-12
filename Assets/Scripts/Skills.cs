@@ -65,6 +65,11 @@ public class Skills : MonoBehaviour
 
         skill.SetIcon(icon);
 
+        if (skill.Matches(Passive.DoubleScore))
+        {
+            board.DoubleScore();
+        }
+
         var doneRepeating = skills.Count(s => s.title == skill.title) >= skill.firstCards.Count;
         if (!skill.repeatable && (skill.notRepeatableForOthers || doneRepeating))
         {
@@ -158,6 +163,7 @@ public class Skills : MonoBehaviour
             SkillEffect.TransformTouching => !board.JustTouched,
             SkillEffect.TransformSurrounding => !board.HasNeighboursWithDiagonals(card, skill),
             SkillEffect.TransformNeighbours => !board.HasNeighbours(card, skill),
+            SkillEffect.AddScoreIfNotAlone => board.IsPlacedAlone(),
             _ => false
         };
     }
@@ -170,6 +176,7 @@ public class Skills : MonoBehaviour
                 break;
             case SkillEffect.AddScore:
             case SkillEffect.AddScoreIfAlone:
+            case SkillEffect.AddScoreIfNotAlone:
                 board.AddScore(skill.amount, card.transform.position);
                 yield return new WaitForSeconds(0.4f);
                 break;

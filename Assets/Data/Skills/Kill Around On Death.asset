@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Kill Around
+  m_Name: Kill Around On Death
   m_EditorClassIdentifier: 
   skill:
-    title: Falling Star
-    description: Placing ([1]) destroys (all) the surrounding cards.
+    title: Supernova
+    description: Destroying ([1]) destroys (all) the surrounding cards.
     passive: 0
-    trigger: 1
+    trigger: 2
     effect: 8
     firstCards: 1100000013000000
     secondCards: 
@@ -27,4 +27,4 @@ MonoBehaviour:
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: -576827614, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    iconSprite: {fileID: 1725031304, guid: 07e32a48bad264c0e9780b6eaaa3865b, type: 3}

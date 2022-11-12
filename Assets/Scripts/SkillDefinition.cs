@@ -159,7 +159,8 @@ public enum SkillEffect
     MoveTarget,
     TransformSurrounding,
     TransformNeighbours,
-    TransformTouching
+    TransformTouching,
+    AddScoreIfNotAlone
 }
 
 public enum Passive
@@ -170,5 +171,6 @@ public enum Passive
     TransformOnDraw,
     AddMove,
     ScoreDoubler,
-    MultiIncreaseAndDecreaseMoves
+    MultiIncreaseAndDecreaseMoves,
+    DoubleScore
 }

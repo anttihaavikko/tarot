@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Kill Around
+  m_Name: True Hermit
   m_EditorClassIdentifier: 
   skill:
-    title: Falling Star
-    description: Placing ([1]) destroys (all) the surrounding cards.
-    passive: 0
+    title: True Hermit
+    description: Doubles your score now. Lose (1000 points) if ([1]) ever is ever
+      placed next to another card.
+    passive: 7
     trigger: 1
-    effect: 8
-    firstCards: 1100000013000000
+    effect: 19
+    firstCards: 09000000
     secondCards: 
     repeatable: 0
     notRepeatableForOthers: 0
-    amount: 0
+    amount: -1000
     useSecondImage: 0
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: -576827614, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    iconSprite: {fileID: -2146485562, guid: 07e32a48bad264c0e9780b6eaaa3865b, type: 3}
