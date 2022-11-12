@@ -1,6 +1,8 @@
 using System;
 using AnttiStarterKit.Animations;
+using AnttiStarterKit.Managers;
 using AnttiStarterKit.ScriptableObjects;
+using AnttiStarterKit.Utils;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -190,6 +192,15 @@ public class Card : MonoBehaviour
     {
         IsDying = true;
         shaker.ShakeForever();
+    }
+    
+    public void TransformToRandom(string message)
+    {
+        var pos = transform.position;
+        EffectManager.AddTextPopup(message, pos, 0.8f);
+        var target = EnumUtils.Random<CardType>();
+        Init(target);
+        board.PulseAt(pos);
     }
 
     public void TransformTo(CardType target)

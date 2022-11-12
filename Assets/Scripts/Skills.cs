@@ -155,6 +155,9 @@ public class Skills : MonoBehaviour
             SkillEffect.SpawnNeighbours => !board.HasEmptyNeighbours(card),
             SkillEffect.SpawnBehind => !board.BehindSpot,
             SkillEffect.DestroyClosest => !board.GetClosest(card, skill.TargetType),
+            SkillEffect.TransformTouching => !board.JustTouched,
+            SkillEffect.TransformSurrounding => !board.HasNeighboursWithDiagonals(card, skill),
+            SkillEffect.TransformNeighbours => !board.HasNeighbours(card, skill),
             _ => false
         };
     }
@@ -216,6 +219,15 @@ public class Skills : MonoBehaviour
             case SkillEffect.MoveTarget:
                 board.MoveTarget();
                 yield return new WaitForSeconds(0.3f);
+                break;
+            case SkillEffect.TransformSurrounding:
+                yield return board.TransformCards(board.GetNeighbours(card, skill, true).ToList(), skill.title);
+                break;
+            case SkillEffect.TransformNeighbours:
+                yield return board.TransformCards(board.GetNeighbours(card, skill, false).ToList(), skill.title);
+                break;
+            case SkillEffect.TransformTouching:
+                yield return board.TransformCards(new List<Card> { board.JustTouched }, skill.title);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

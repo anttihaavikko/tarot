@@ -151,7 +151,10 @@ public enum SkillEffect
     SpawnBehind,
     AddToDeck,
     DestroyClosest,
-    MoveTarget
+    MoveTarget,
+    TransformSurrounding,
+    TransformNeighbours,
+    TransformTouching
 }
 
 public enum Passive

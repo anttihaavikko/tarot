@@ -440,6 +440,24 @@ public class Board : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
     }
+    
+    public IEnumerator TransformCards(List<Card> cards, string message)
+    {
+        var targets = cards.Where(c => !c.IsDying).ToList();
+        
+        targets.ForEach(c => c.Shake());
+        yield return new WaitForSeconds(0.2f);
+        
+        foreach (var c in targets)
+        {
+            c.TransformToRandom(message);
+            yield return new WaitForSeconds(0.2f);
+            yield return skills.Trigger(SkillTrigger.Place, c);
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        yield return new WaitForSeconds(0.3f);
+    }
 
     public IEnumerator SpawnAround(Card card, CardType type)
     {
