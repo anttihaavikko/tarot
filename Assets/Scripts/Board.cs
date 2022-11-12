@@ -229,7 +229,7 @@ public class Board : MonoBehaviour
         tile.transform.position = p;
         if (pulse)
         {
-            PulseAt(p, false);
+            // PulseAt(p, false);
         }
         grid.Set(x, y, tile);
     }
@@ -316,6 +316,7 @@ public class Board : MonoBehaviour
     {
         EffectManager.AddEffects(new []{ 1, 2, 3 }, pos);
         effectCamera.BaseEffect(0.5f);
+        PulseAt(pos, false);
     }
 
     public IEnumerator SpawnCards(CardType type, List<Tile> tiles)
