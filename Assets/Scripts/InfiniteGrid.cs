@@ -169,6 +169,16 @@ public class InfiniteGrid<T> where T : GridTile
             Value = default;
         }
     }
+
+    public IEnumerable<GridSpot> GetColumn(int column)
+    {
+        return items.Values.Where(v => v.IsOccupied && v.Position.x == column);
+    }
+    
+    public IEnumerable<GridSpot> GetRow(int row)
+    {
+        return items.Values.Where(v => v.IsOccupied && v.Position.y == row);
+    }
 }
 
 public abstract class GridTile : MonoBehaviour

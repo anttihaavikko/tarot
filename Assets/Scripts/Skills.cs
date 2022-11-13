@@ -182,6 +182,10 @@ public class Skills : MonoBehaviour
             SkillEffect.MoveTarget => false,
             SkillEffect.FillHoles => !board.HasHoles(),
             SkillEffect.SlideTowardsTarget => !board.CanSlideTowardsTarget(card),
+            SkillEffect.DestroyRow => !board.GetRow(card).Any(),
+            SkillEffect.DestroyColumn => !board.GetColumn(card).Any(),
+            SkillEffect.TransformRow => !board.GetRow(card).Any(),
+            SkillEffect.TransformColumn => !board.GetColumn(card).Any(),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -257,6 +261,18 @@ public class Skills : MonoBehaviour
             case SkillEffect.SlideTowardsTarget:
                 card.MarkVisit();
                 yield return board.SlideTowardsTarget(card);
+                break;
+            case SkillEffect.DestroyRow:
+                yield return board.DestroyCards(board.GetRow(card).ToList());
+                break;
+            case SkillEffect.DestroyColumn:
+                yield return board.DestroyCards(board.GetColumn(card).ToList());
+                break;
+            case SkillEffect.TransformRow:
+                yield return board.TransformCards(board.GetRow(card).ToList(), skill);
+                break;
+            case SkillEffect.TransformColumn:
+                yield return board.TransformCards(board.GetColumn(card).ToList(), skill);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

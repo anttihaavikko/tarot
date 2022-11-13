@@ -170,7 +170,11 @@ public enum SkillEffect
     TransformNeighbours,
     TransformTouching,
     FillHoles,
-    SlideTowardsTarget
+    SlideTowardsTarget,
+    DestroyRow,
+    DestroyColumn,
+    TransformRow,
+    TransformColumn
 }
 
 public enum Passive

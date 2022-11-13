@@ -624,4 +624,20 @@ public class Board : MonoBehaviour
             yield return ReachedTarget(pos);
         }
     }
+
+    public List<Card> GetColumn(Card card)
+    {
+        return grid.GetColumn(card.Tile.Position.x)
+            .Select(s => s.Value.Card)
+            .Where(c => c != card)
+            .ToList();
+    }
+    
+    public List<Card> GetRow(Card card)
+    {
+        return grid.GetRow(card.Tile.Position.y)
+            .Select(s => s.Value.Card)
+            .Where(c => c != card)
+            .ToList();
+    }
 }
