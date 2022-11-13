@@ -4502,6 +4502,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7636206150b234484ba8a7b80efe3f76, type: 2}
   - {fileID: 11400000, guid: 4b5699b3b6f5d43c6b964b9cb5bd3d86, type: 2}
   - {fileID: 11400000, guid: 52d94486c23ac428a8dc3447047a92d9, type: 2}
+  - {fileID: 11400000, guid: 03bb6d92c5a054602a4f08f88413784b, type: 2}
+  - {fileID: 11400000, guid: 1e6eb083a216f4341a725d0273f01ce4, type: 2}
   board: {fileID: 296764682}
   skillContainer: {fileID: 1942875045}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}

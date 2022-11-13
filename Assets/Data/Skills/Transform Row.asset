@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
+  m_Name: Transform Row
+  m_EditorClassIdentifier: 
+  skill:
+    title: Transform Row
+    description: Randomly (transform all) other cards on the same (row) as placed
+      ([1]).
+    passive: 0
+    trigger: 1
+    condition: 0
+    effect: 21
+    firstCards: 01000000
+    secondCards: 
+    repeatable: 0
+    notRepeatableForOthers: 0
+    amount: 0
+    useSecondImage: 0
+    cancelShout: 
+    cancelDelay: 0
+    canTargetSame: 0
+    iconSprite: {fileID: 2048286086, guid: f653580ec121045ebbae95b9d9639600, type: 3}
+    triggerDelay: 0
