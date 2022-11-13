@@ -11,5 +11,10 @@ namespace AnttiStarterKit.Extensions
         {
             return list.Any() ? list[UnityEngine.Random.Range(0, list.Count)] : default;
         }
+        
+        public static IEnumerable<T> RandomOrder<T>(this IEnumerable<T> list)
+        {
+            return list.OrderBy(_ => UnityEngine.Random.value);
+        }
     }
 }

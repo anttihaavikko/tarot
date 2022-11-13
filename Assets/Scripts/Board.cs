@@ -10,7 +10,7 @@ using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
 using TMPro;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 public class Board : MonoBehaviour
 {
@@ -441,7 +441,7 @@ public class Board : MonoBehaviour
 
     public IEnumerator DestroyCards(List<Card> cards, Card source)
     {
-        var targets = cards.Where(c => !c.IsDying).ToList();
+        var targets = cards.Where(c => !c.IsDying).RandomOrder().ToList();
         var immortals = targets.Where(c => skills.Has(Passive.Immortal, c.GetCardType())).ToList();
         targets = targets.Except(immortals).ToList();
 
@@ -479,7 +479,7 @@ public class Board : MonoBehaviour
     
     public IEnumerator TransformCards(List<Card> cards, Skill skill)
     {
-        var targets = cards.Where(c => !c.IsDying).ToList();
+        var targets = cards.Where(c => !c.IsDying).RandomOrder().ToList();
         
         targets.ForEach(c => c.Shake());
         yield return new WaitForSeconds(0.2f);
