@@ -473,12 +473,12 @@ public class Board : MonoBehaviour
 
     private void DrawLines(Vector3 from, List<Card> targets)
     {
+        var color = new Color(1f, 1f, 1f, 0.5f);
         effectCamera.BaseEffect(0.2f);
         
         targets.ForEach(c =>
         {
-            var color = new Color(1f, 1f, 1f, 0.5f);
-            lineDrawer.AddThunderLine(from, c.transform.position, color, Random.Range(0.4f, 0.8f), Random.Range(0.25f, 0.75f));
+            lineDrawer.AddThunderLine(from.RandomOffset(0.5f), c.transform.position.RandomOffset(0.5f), color, Random.Range(0.4f, 0.8f), Random.Range(0.25f, 0.75f));
         });
     }
 
