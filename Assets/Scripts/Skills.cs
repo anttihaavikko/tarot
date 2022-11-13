@@ -204,7 +204,7 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(0.4f);
                 break;
             case SkillEffect.DestroyTouching:
-                yield return board.DestroyCards(new List<Card> { board.JustTouched });
+                yield return board.DestroyCards(new List<Card> { board.JustTouched }, card);
                 break;
             case SkillEffect.AddMultiForSlideLength:
                 board.AddMulti(board.SlideLength);
@@ -225,10 +225,10 @@ public class Skills : MonoBehaviour
                 yield return Present();
                 break;
             case SkillEffect.DestroySurrounding:
-                yield return board.DestroyCards(board.GetNeighbours(card, skill, true).ToList());
+                yield return board.DestroyCards(board.GetNeighbours(card, skill, true).ToList(), card);
                 break;
             case SkillEffect.DestroyNeighbours:
-                yield return board.DestroyCards(board.GetNeighbours(card, skill, false).ToList());
+                yield return board.DestroyCards(board.GetNeighbours(card, skill, false).ToList(), card);
                 break;
             case SkillEffect.SpawnNeighbours:
                 yield return new WaitForSeconds(0.4f);
@@ -244,7 +244,7 @@ public class Skills : MonoBehaviour
                 board.AddToDeck(skill.TargetType);
                 break;
             case SkillEffect.DestroyClosest:
-                yield return board.DestroyCards(new List<Card> { board.GetClosest(card, skill.TargetType) });
+                yield return board.DestroyCards(new List<Card> { board.GetClosest(card, skill.TargetType) }, card);
                 break;
             case SkillEffect.MoveTarget:
                 board.MoveTarget();
@@ -267,10 +267,10 @@ public class Skills : MonoBehaviour
                 yield return board.SlideTowardsTarget(card);
                 break;
             case SkillEffect.DestroyRow:
-                yield return board.DestroyCards(board.GetRow(card).ToList());
+                yield return board.DestroyCards(board.GetRow(card).ToList(), card);
                 break;
             case SkillEffect.DestroyColumn:
-                yield return board.DestroyCards(board.GetColumn(card).ToList());
+                yield return board.DestroyCards(board.GetColumn(card).ToList(), card);
                 break;
             case SkillEffect.TransformRow:
                 yield return board.TransformCards(board.GetRow(card).ToList(), skill);
@@ -346,6 +346,11 @@ public class Skills : MonoBehaviour
     public int Count(Passive passive)
     {
         return skills.Count(s => s.Matches(passive));
+    }
+    
+    public bool Has(Passive passive)
+    {
+        return skills.Any(s => s.Matches(passive));
     }
 
     public bool Has(Passive passive, CardType type)

@@ -203,5 +203,6 @@ public enum Passive
     ScoreDoubler,
     MultiIncreaseAndDecreaseMoves,
     DoubleScore,
-    Extender
+    Extender,
+    Revenge
 }

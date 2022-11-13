@@ -74,6 +74,7 @@ public class Board : MonoBehaviour
 
     public void MoveTarget()
     {
+        target.gameObject.SetActive(true);
         targetTile = grid.RandomFree().Value;
         target.position = targetTile.transform.position;
         PulseAt(target.position);
@@ -289,6 +290,8 @@ public class Board : MonoBehaviour
         PulseAt(targetPos);
 
         yield return new WaitForSeconds(duration);
+        
+        HideTarget(card.Tile);
 
         yield return skills.Trigger(SkillTrigger.Place, card);
 
@@ -331,6 +334,7 @@ public class Board : MonoBehaviour
             var card = CreateCard(type, tile.transform.position);
             card.Lock();
             tile.Set(card);
+            HideTarget(card.Tile);
         }
 
         foreach (var tile in tiles)
@@ -344,6 +348,14 @@ public class Board : MonoBehaviour
         }
 
         UpdateMoveDisplay();
+    }
+
+    private void HideTarget(Tile tile)
+    {
+        if (tile == targetTile)
+        {
+            target.gameObject.SetActive(false);   
+        }
     }
 
     private IEnumerator ReachedTarget(Vector3 cardPos)
@@ -427,10 +439,10 @@ public class Board : MonoBehaviour
         return grid.GetNeighbours(pos.x, pos.y).All(g => g.IsWall || g.IsEmpty);
     }
 
-    public IEnumerator DestroyCards(List<Card> cards)
+    public IEnumerator DestroyCards(List<Card> cards, Card source)
     {
         var targets = cards.Where(c => !c.IsDying).ToList();
-        
+
         targets.ForEach(c => c.ShakeForever());
         yield return new WaitForSeconds(0.3f);
         foreach (var c in targets)
@@ -440,6 +452,12 @@ public class Board : MonoBehaviour
             ExplodeAt(c.transform.position);
             c.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.2f);
+        }
+
+        if (source && skills.Trigger(Passive.Revenge, source.transform.position))
+        {
+            yield return new WaitForSeconds(0.3f);
+            yield return DestroyCards(new List<Card> { source }, null);
         }
 
         yield return new WaitForSeconds(0.3f);
@@ -488,12 +506,14 @@ public class Board : MonoBehaviour
     public bool HasNeighboursWithDiagonals(Card card, Skill skill)
     {
         return grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y)
+            .Where(s => s.IsOccupied && s.Value.Card != card)
             .Any(t => TileMatchesSkill(t, skill));
     }
     
     public bool HasNeighbours(Card card, Skill skill)
     {
         return grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y)
+            .Where(s => s.IsOccupied && s.Value.Card != card)
             .Any(t => TileMatchesSkill(t, skill));
     }
     
@@ -617,6 +637,8 @@ public class Board : MonoBehaviour
         PulseAt(pos);
 
         yield return new WaitForSeconds(duration);
+        
+        HideTarget(card.Tile);
 
         yield return skills.Trigger(SkillTrigger.Place, card);
         
