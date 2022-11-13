@@ -29,6 +29,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Skills skills;
     [SerializeField] private GameObject devMenu;
     [SerializeField] private EffectCamera effectCamera;
+    [SerializeField] private LineDrawer lineDrawer;
 
     private readonly InfiniteGrid<Tile> grid = new();
 
@@ -313,7 +314,7 @@ public class Board : MonoBehaviour
         PulseAt(pos, false);
     }
 
-    public IEnumerator SpawnCards(CardType type, List<Tile> tiles)
+    public IEnumerator SpawnCards(CardType type, List<Tile> tiles, Vector3 lineStart)
     {
         JustTouched = null;
         BehindSpot = null;
@@ -325,6 +326,7 @@ public class Board : MonoBehaviour
             card.Lock();
             tile.Set(card);
             HideTarget(card.Tile);
+            DrawLines(lineStart, new List<Card>{ card });
         }
 
         foreach (var tile in tiles)
@@ -432,6 +434,8 @@ public class Board : MonoBehaviour
     public IEnumerator DestroyCards(List<Card> cards, Card source)
     {
         var targets = cards.Where(c => !c.IsDying).RandomOrder().ToList();
+        var from = source ? source.transform.position : Vector3.zero;
+        DrawLines(from, targets);
         var immortals = targets.Where(c => skills.Has(Passive.Immortal, c.GetCardType())).ToList();
         targets = targets.Except(immortals).ToList();
 
@@ -466,10 +470,23 @@ public class Board : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
     }
-    
-    public IEnumerator TransformCards(List<Card> cards, Skill skill)
+
+    private void DrawLines(Vector3 from, List<Card> targets)
+    {
+        effectCamera.BaseEffect(0.2f);
+        
+        targets.ForEach(c =>
+        {
+            var color = new Color(1f, 1f, 1f, 0.5f);
+            lineDrawer.AddThunderLine(from, c.transform.position, color, Random.Range(0.4f, 0.8f), Random.Range(0.25f, 0.75f));
+        });
+    }
+
+    public IEnumerator TransformCards(List<Card> cards, Skill skill, Vector3 lineStart)
     {
         var targets = cards.Where(c => !c.IsDying).RandomOrder().ToList();
+        
+        DrawLines(lineStart, targets);
         
         targets.ForEach(c => c.Shake());
         yield return new WaitForSeconds(0.2f);
@@ -488,13 +505,13 @@ public class Board : MonoBehaviour
     public IEnumerator SpawnAround(Card card, CardType type, int reach)
     {
         var targets = grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y, reach).Where(t => t.IsEmpty).ToList();
-        yield return SpawnCards(type, targets.Select(t => t.Value).ToList());
+        yield return SpawnCards(type, targets.Select(t => t.Value).ToList(), card.transform.position);
     }
     
     public IEnumerator SpawnOnNeighbours(Card card, CardType type)
     {
         var targets = grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsEmpty).ToList();
-        yield return SpawnCards(type, targets.Select(t => t.Value).ToList());
+        yield return SpawnCards(type, targets.Select(t => t.Value).ToList(), card.transform.position);
     }
 
     public bool HasEmptyNeighbours(Card card)
@@ -544,9 +561,9 @@ public class Board : MonoBehaviour
         return spot.IsOccupied && (!skill.HasTargetType || spot.Value.Contains(skill.TargetType));
     }
 
-    public IEnumerator SpawnBehind(CardType type)
+    public IEnumerator SpawnBehind(CardType type, Vector3 lineStart)
     {
-        yield return SpawnCards(type, new List<Tile>{ BehindSpot });
+        yield return SpawnCards(type, new List<Tile>{ BehindSpot }, lineStart);
     }
 
     public void AddToDeck(CardType type, int amount)

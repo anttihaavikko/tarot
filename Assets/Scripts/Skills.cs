@@ -238,7 +238,7 @@ public class Skills : MonoBehaviour
                 break;
             case SkillEffect.SpawnBehind:
                 yield return new WaitForSeconds(0.4f);
-                yield return board.SpawnBehind(skill.TargetType);
+                yield return board.SpawnBehind(skill.TargetType, card.transform.position);
                 yield return new WaitForSeconds(0.25f);
                 break;
             case SkillEffect.AddToDeck:
@@ -252,17 +252,17 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(0.3f);
                 break;
             case SkillEffect.TransformSurrounding:
-                yield return board.TransformCards(board.GetNeighbours(card, skill, true).ToList(), skill);
+                yield return board.TransformCards(board.GetNeighbours(card, skill, true).ToList(), skill, card.transform.position);
                 break;
             case SkillEffect.TransformNeighbours:
-                yield return board.TransformCards(board.GetNeighbours(card, skill, false).ToList(), skill);
+                yield return board.TransformCards(board.GetNeighbours(card, skill, false).ToList(), skill, card.transform.position);
                 break;
             case SkillEffect.TransformTouching:
-                yield return board.TransformCards(new List<Card> { board.JustTouched }, skill);
+                yield return board.TransformCards(new List<Card> { board.JustTouched }, skill, card.transform.position);
                 break;
             case SkillEffect.FillHoles:
                 var holes = board.GetHoles(skill);
-                yield return board.SpawnCards(skill.TargetType, holes);
+                yield return board.SpawnCards(skill.TargetType, holes, card.transform.position);
                 if (holes.Any())
                 {
                     yield return new WaitForSeconds(0.3f);
@@ -284,10 +284,10 @@ public class Skills : MonoBehaviour
                 yield return board.DestroyCards(board.GetColumn(card).ToList(), card);
                 break;
             case SkillEffect.TransformRow:
-                yield return board.TransformCards(board.GetRow(card).ToList(), skill);
+                yield return board.TransformCards(board.GetRow(card).ToList(), skill, card.transform.position);
                 break;
             case SkillEffect.TransformColumn:
-                yield return board.TransformCards(board.GetColumn(card).ToList(), skill);
+                yield return board.TransformCards(board.GetColumn(card).ToList(), skill, card.transform.position);
                 break;
             case SkillEffect.DestroyAll:
                 yield return board.DestroyCards(board.GetAll(skill.TargetType), card);
