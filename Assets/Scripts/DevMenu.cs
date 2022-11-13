@@ -27,7 +27,7 @@ public class DevMenu : MonoBehaviour
             button.GetComponentInChildren<TMP_Text>().text = skill.title;
             button.onClick.AddListener(() =>
             {
-                skill.Randomize(skills.Owned);
+                skills.Randomize(skill);
                 skills.Add(skill);
             });
         }

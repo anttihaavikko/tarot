@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Destroy Column
+  m_Name: Surround With Fools Extension
   m_EditorClassIdentifier: 
   skill:
-    title: Sitting Ducks
-    description: (Destroy) all other cards on the same (column) as placed ([1]).
-    passive: 0
-    trigger: 1
+    title: Fool for a Lifetime
+    description: (Extend) the range of ([R]).
+    passive: 8
+    trigger: 0
     condition: 0
-    effect: 20
-    firstCards: 0d0000000f000000
+    effect: 0
+    firstCards: 04000000
     secondCards: 
     repeatable: 0
     notRepeatableForOthers: 0
@@ -28,6 +28,6 @@ MonoBehaviour:
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: -1624396315, guid: f653580ec121045ebbae95b9d9639600, type: 3}
+    iconSprite: {fileID: -60582938, guid: 1f62efd971a4a4031946c67ad09c7c88, type: 3}
     triggerDelay: 0
-    requirement: {fileID: 0}
+    requirement: {fileID: 11400000, guid: 4da8d225f1ae04e659f8e683a5cf6596, type: 2}

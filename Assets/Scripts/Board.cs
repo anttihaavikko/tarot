@@ -463,9 +463,9 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
     }
 
-    public IEnumerator SpawnAround(Card card, CardType type)
+    public IEnumerator SpawnAround(Card card, CardType type, int reach)
     {
-        var targets = grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsEmpty).ToList();
+        var targets = grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y, reach).Where(t => t.IsEmpty).ToList();
         yield return SpawnCards(type, targets.Select(t => t.Value).ToList());
     }
     

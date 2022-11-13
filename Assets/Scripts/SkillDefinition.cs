@@ -14,6 +14,11 @@ public class SkillDefinition : ScriptableObject
     {
         return new Skill(skill);
     }
+
+    public bool Is(Skill other)
+    {
+        return skill.title == other.title;
+    }
 }
 
 [Serializable]
@@ -35,6 +40,7 @@ public class Skill
     public bool canTargetSame;
     public Sprite iconSprite;
     public float triggerDelay;
+    public SkillDefinition requirement;
 
     private CardType firstCard, secondCard;
 
@@ -66,6 +72,7 @@ public class Skill
         iconSprite = source.iconSprite;
         condition = source.condition;
         triggerDelay = source.triggerDelay;
+        requirement = source.requirement;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -82,6 +89,10 @@ public class Skill
         sb.Replace("[2]", Card.GetShortName(secondCard));
         sb.Replace("[11]", Card.GetName(firstCard));
         sb.Replace("[22]", Card.GetName(secondCard));
+        if (requirement)
+        {
+            sb.Replace("[R]", requirement.GetSkill().title);   
+        }
         sb.Replace("(", useColors ? "<color=#E0CA3C>" : "");
         sb.Replace(")", useColors ? "</color>" : "");
         return sb.ToString();
@@ -115,6 +126,11 @@ public class Skill
     public bool Matches(SkillTrigger skillTrigger)
     {
         return trigger == skillTrigger;
+    }
+
+    public bool Matches(SkillDefinition skill)
+    {
+        return skill.Is(this);
     }
 
     public void Trigger()
@@ -186,5 +202,6 @@ public enum Passive
     AddMove,
     ScoreDoubler,
     MultiIncreaseAndDecreaseMoves,
-    DoubleScore
+    DoubleScore,
+    Extender
 }
