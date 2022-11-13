@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,8 +66,8 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
+    maxTextureSize: 512
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -267,11 +267,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2043
-        y: 419
+        y: 428
         width: 630
-        height: 799
+        height: 790
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -279,6 +279,111 @@ TextureImporter:
       bones: []
       spriteID: 12ec9f7af96974e4aacfc7b305b72d11
       internalID: -763425680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stop
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 21
+        width: 652
+        height: 624
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85d8e9e8221ba4eb9a398d300b58788b
+      internalID: -1245342001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boot
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 18
+        width: 417
+        height: 530
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25b752b4f950437abde7a5a5d64ed1b
+      internalID: 1526445704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drill
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 12
+        width: 251
+        height: 545
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47bf80d6c181d465bb133f1843d61e90
+      internalID: 345145459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ghost
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 15
+        width: 420
+        height: 595
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 985f61ca347a842fc838b74eb7256e10
+      internalID: -918384143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: score_ll
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 0
+        width: 636
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c1c071c54bcf423da6c82b7db8bdf12
+      internalID: 472195649
       vertices: []
       indices: 
       edges: []
@@ -295,11 +400,16 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       transform_row: -852461112
+      stop: -1245342001
+      drill: 345145459
       transform_col: 1563123012
+      boot: 1526445704
       skull: 1548060246
       wall_extender: 868693512
       kill_doubler: -2132673831
       defy_score: -1666857655
+      ghost: -918384143
+      score_ll: 472195649
       wall_scorer: -1200592501
       guards: -763425680
   spritePackingTag: 

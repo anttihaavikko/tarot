@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1f62efd971a4a4031946c67ad09c7c88
+guid: 8d48dd2df5ca34a19a1ae4603948f1d1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,34 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: true_king
+      name: downs
       rect:
         serializedVersion: 2
         x: 43
-        y: 1203
-        width: 759
-        height: 833
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65369839556244fca82ab2370310c255
-      internalID: 1070377585
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sunlight
-      rect:
-        serializedVersion: 2
-        x: 792
-        y: 1203
-        width: 768
-        height: 811
+        y: 1485
+        width: 286
+        height: 498
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0be293fc10864b62bf542645ada771b
-      internalID: -1786412683
+      spriteID: 308a0439b78534134a60d450fb2b2da1
+      internalID: -1968548009
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moonlight
+      name: touch_king
       rect:
         serializedVersion: 2
-        x: 1589
-        y: 1250
-        width: 579
-        height: 774
+        x: 435
+        y: 1410
+        width: 796
+        height: 554
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47497cb1eb76f4294b826cfea3814eb1
-      internalID: -799159852
+      spriteID: 507093daa05fa42fcb10b3d1c6cf7967
+      internalID: -945833413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rocket
+      name: funeral
       rect:
         serializedVersion: 2
-        x: 2228
-        y: 1209
-        width: 458
-        height: 824
+        x: 1310
+        y: 1381
+        width: 717
+        height: 574
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a4222b14904743e49c6f868421ebe21
-      internalID: 1015092320
+      spriteID: 2fe1269e12b024c95837fcb669d443b8
+      internalID: 897776116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mason
+      name: kids
       rect:
         serializedVersion: 2
-        x: 28
-        y: 513
-        width: 824
-        height: 643
+        x: 2106
+        y: 1369
+        width: 589
+        height: 620
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,71 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f6de3aa2ecbd42338a2e97d65f7422c
-      internalID: 1547167880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: revenge
-      rect:
-        serializedVersion: 2
-        x: 946
-        y: 510
-        width: 552
-        height: 636
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e5e3bad891c441c6b99756789b52f4b
-      internalID: 1021596406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: replacement
-      rect:
-        serializedVersion: 2
-        x: 1513
-        y: 454
-        width: 724
-        height: 783
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6dcda994622c6426ba326213aa75e2c9
-      internalID: 1871998653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: king_squiggle
-      rect:
-        serializedVersion: 2
-        x: 2316
-        y: 403
-        width: 307
-        height: 784
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d59277ddaa9e43c9822df580a14a1b2
-      internalID: -60582938
+      spriteID: 8b24cea731372449baeefa470ca280ba
+      internalID: 307348820
       vertices: []
       indices: 
       edges: []
@@ -294,14 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      moonlight: -799159852
-      revenge: 1021596406
-      king_squiggle: -60582938
-      replacement: 1871998653
-      sunlight: -1786412683
-      rocket: 1015092320
-      true_king: 1070377585
-      mason: 1547167880
+      kids: 307348820
+      funeral: 897776116
+      touch_king: -945833413
+      downs: -1968548009
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
