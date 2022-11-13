@@ -21,7 +21,7 @@ MonoBehaviour:
     effect: 0
     firstCards: 0200000005000000
     secondCards: 
-    repeatable: 0
+    repeatable: 1
     notRepeatableForOthers: 0
     amount: 0
     useSecondImage: 0

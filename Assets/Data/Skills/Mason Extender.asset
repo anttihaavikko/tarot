@@ -19,12 +19,12 @@ MonoBehaviour:
     trigger: 0
     condition: 0
     effect: 0
-    firstCards: 10000000
-    secondCards: 
+    firstCards: 0e000000
+    secondCards: 10000000
     repeatable: 0
     notRepeatableForOthers: 0
     amount: 0
-    useSecondImage: 0
+    useSecondImage: 1
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
