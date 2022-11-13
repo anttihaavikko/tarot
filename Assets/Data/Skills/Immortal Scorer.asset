@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Plague
+  m_Name: Immortal Scorer
   m_EditorClassIdentifier: 
   skill:
-    title: Like the Plague
-    description: Destroy closest ([2]) when ([1]) dies.
+    title: Death and Taxes
+    description: Score (100) points when a card (defies death).
     passive: 0
-    trigger: 2
+    trigger: 3
     condition: 0
-    effect: 12
-    firstCards: 0d000000
-    secondCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000e0000000f000000100000001100000012000000130000001400000015000000
+    effect: 9
+    firstCards: 0c000000
+    secondCards: 
     repeatable: 1
     notRepeatableForOthers: 0
-    amount: 0
+    amount: 100
     useSecondImage: 0
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: 1548060246, guid: f2cc5fa39c5b14aa09e66e815370184c, type: 3}
+    iconSprite: {fileID: -1666857655, guid: f2cc5fa39c5b14aa09e66e815370184c, type: 3}
     triggerDelay: 0
-    requirement: {fileID: 0}
+    requirement: {fileID: 11400000, guid: 3caa402df157340a09b04cdf29067019, type: 2}
+    anyTriggers: 1

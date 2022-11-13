@@ -442,6 +442,8 @@ public class Board : MonoBehaviour
     public IEnumerator DestroyCards(List<Card> cards, Card source)
     {
         var targets = cards.Where(c => !c.IsDying).ToList();
+        var immortals = targets.Where(c => skills.Has(Passive.Immortal, c.GetCardType())).ToList();
+        targets = targets.Except(immortals).ToList();
 
         targets.ForEach(c => c.ShakeForever());
         yield return new WaitForSeconds(0.3f);
@@ -452,6 +454,18 @@ public class Board : MonoBehaviour
             ExplodeAt(c.transform.position);
             c.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.2f);
+        }
+
+        foreach (var c in immortals)
+        {
+            yield return new WaitForSeconds(0.2f);
+            var pos = c.transform.position;
+            skills.Trigger(Passive.Immortal, c.GetCardType(), pos);
+            PulseAt(pos);
+            c.Pulsate();
+            yield return new WaitForSeconds(0.2f);
+            yield return skills.Trigger(SkillTrigger.DefyDeath, c);
+            yield return new WaitForSeconds(0.1f);
         }
 
         if (source && skills.Trigger(Passive.Revenge, source.transform.position))
@@ -560,6 +574,14 @@ public class Board : MonoBehaviour
         skills.UnMarkSkills();
         cardPreview.Show(type);
         skills.MarkSkills(type);
+    }
+
+    public List<Card> GetAll(CardType type)
+    {
+        var options = grid.GetAll().Where(s => s.IsOccupied && s.Value.Contains(type)).ToList();
+        return options.Any() ? 
+            options.Select(s => s.Value.Card).ToList() : 
+            default;
     }
 
     public Card GetClosest(Card card, CardType type)

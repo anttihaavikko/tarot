@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,13 @@ public class Pulsater : MonoBehaviour
 
     private float pos = -1f;
 
+    private Vector3 targetSize;
+
+    private void Awake()
+    {
+        targetSize = transform.localScale;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +25,7 @@ public class Pulsater : MonoBehaviour
             pos = Mathf.MoveTowards(pos, 1f, Time.deltaTime * speed);
             var stepped = Mathf.SmoothStep(0f, 1f, pos);
             var size = Mathf.Sin(Mathf.PI * stepped) * amount + 1f;
-            transform.localScale = size * Vector3.one;
+            transform.localScale = size * targetSize;
         }
     }
 

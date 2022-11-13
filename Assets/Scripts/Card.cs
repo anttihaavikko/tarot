@@ -15,6 +15,7 @@ public class Card : MonoBehaviour
     [SerializeField] private ColorCollection cardColors, patternColors;
     [SerializeField] private SpriteRenderer sprite, bg, pattern, radial;
     [SerializeField] private Draggable draggable;
+    [SerializeField] private Pulsater pulsater;
 
     private Board board;
     private Shaker shaker;
@@ -231,6 +232,11 @@ public class Card : MonoBehaviour
     public bool HasVisited(Vector2Int pos)
     {
         return visited.Contains(pos);
+    }
+
+    public void Pulsate()
+    {
+        pulsater.Pulsate();
     }
 }
 

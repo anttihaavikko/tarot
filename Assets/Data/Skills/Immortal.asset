@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Plague
+  m_Name: Immortal
   m_EditorClassIdentifier: 
   skill:
-    title: Like the Plague
-    description: Destroy closest ([2]) when ([1]) dies.
-    passive: 0
-    trigger: 2
+    title: Live Long and Prosper
+    description: ([1]) can not be (destroyed).
+    passive: 10
+    trigger: 0
     condition: 0
-    effect: 12
-    firstCards: 0d000000
-    secondCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000e0000000f000000100000001100000012000000130000001400000015000000
-    repeatable: 1
+    effect: 0
+    firstCards: 0d0000000f000000
+    secondCards: 
+    repeatable: 0
     notRepeatableForOthers: 0
     amount: 0
     useSecondImage: 0
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: 1548060246, guid: f2cc5fa39c5b14aa09e66e815370184c, type: 3}
+    iconSprite: {fileID: 944775062, guid: f653580ec121045ebbae95b9d9639600, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}

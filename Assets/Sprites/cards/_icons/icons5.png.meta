@@ -124,7 +124,7 @@ TextureImporter:
         width: 354
         height: 733
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,7 +145,7 @@ TextureImporter:
         width: 853
         height: 323
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,6 +153,48 @@ TextureImporter:
       bones: []
       spriteID: 68f7865053ea64eb68c47e1dd2efbb13
       internalID: -852461112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defy_score
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 1331
+        width: 573
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4fd75269d1df4e559150b8bb8bf75e9
+      internalID: -1666857655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skull
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 1218
+        width: 492
+        height: 806
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb211ba1c29d48528370c5c847ca3c4
+      internalID: 1548060246
       vertices: []
       indices: 
       edges: []
@@ -170,6 +212,8 @@ TextureImporter:
     nameFileIdTable:
       transform_row: -852461112
       transform_col: 1563123012
+      skull: 1548060246
+      defy_score: -1666857655
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

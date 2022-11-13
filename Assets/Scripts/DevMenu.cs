@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AnttiStarterKit.Utils;
 using TMPro;
 using UnityEngine;
@@ -20,8 +21,16 @@ public class DevMenu : MonoBehaviour
             button.GetComponentInChildren<TMP_Text>().text = type.ToString();
             button.onClick.AddListener(() => board.ChangeDrawnTo(type));
         }
+
+        var allSkills = skills.All();
+        allSkills.Reverse();
         
-        foreach (var skill in skills.All())
+        allSkills.GroupBy(x => x.iconSprite)
+            .Where(g => g.Count() > 1)
+            .ToList()
+            .ForEach(g => Debug.Log($"Same icon <color=red>{g.Key.name}</color> for skills: {ListNames(g)}"));
+        
+        foreach (var skill in allSkills)
         {
             var button = Instantiate(buttonPrefab, skillPanel);
             button.GetComponentInChildren<TMP_Text>().text = skill.title;
@@ -31,5 +40,10 @@ public class DevMenu : MonoBehaviour
                 skills.Add(skill);
             });
         }
+    }
+
+    private string ListNames(IGrouping<Sprite, Skill> grouping)
+    {
+        return string.Join(", ", grouping.ToList().Select(s => $"<color=yellow>{s.title}</color>"));
     }
 }

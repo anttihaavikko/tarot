@@ -577,6 +577,7 @@ GameObject:
   - component: {fileID: 4148702712765327949}
   - component: {fileID: 4148702712765327938}
   - component: {fileID: -6119202857570378887}
+  - component: {fileID: 6676230570582208932}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -679,6 +680,7 @@ MonoBehaviour:
   pattern: {fileID: 1970641384685381501}
   radial: {fileID: 910610973054004631}
   draggable: {fileID: 4148702712765327938}
+  pulsater: {fileID: 6676230570582208932}
 --- !u!210 &4148702712765327948
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -754,6 +756,20 @@ MonoBehaviour:
   rotationAmount: 0.5
   duration: 0.5
   decreasing: 0
+--- !u!114 &6676230570582208932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148702712765327945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a34521434044b8da4e730f3f4dcc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.15
+  speed: 1.5
 --- !u!1 &6193662392892193295
 GameObject:
   m_ObjectHideFlags: 0

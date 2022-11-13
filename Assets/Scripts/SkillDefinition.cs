@@ -41,6 +41,7 @@ public class Skill
     public Sprite iconSprite;
     public float triggerDelay;
     public SkillDefinition requirement;
+    public bool anyTriggers;
 
     private CardType firstCard, secondCard;
 
@@ -73,6 +74,7 @@ public class Skill
         condition = source.condition;
         triggerDelay = source.triggerDelay;
         requirement = source.requirement;
+        anyTriggers = source.anyTriggers;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -120,7 +122,7 @@ public class Skill
 
     public bool Matches(SkillTrigger skillTrigger, CardType type)
     {
-        return trigger == skillTrigger && firstCard == type;
+        return trigger == skillTrigger && (firstCard == type || anyTriggers);
     }
     
     public bool Matches(SkillTrigger skillTrigger)
@@ -156,7 +158,8 @@ public enum SkillTrigger
 {
     None,
     Place,
-    Death
+    Death,
+    DefyDeath
 }
 
 public enum SkillCondition
@@ -190,7 +193,8 @@ public enum SkillEffect
     DestroyRow,
     DestroyColumn,
     TransformRow,
-    TransformColumn
+    TransformColumn,
+    DestroyAll
 }
 
 public enum Passive
@@ -204,5 +208,6 @@ public enum Passive
     MultiIncreaseAndDecreaseMoves,
     DoubleScore,
     Extender,
-    Revenge
+    Revenge,
+    Immortal
 }
