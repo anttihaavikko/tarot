@@ -261,7 +261,17 @@ public class Skills : MonoBehaviour
                 yield return board.TransformCards(new List<Card> { board.JustTouched }, skill);
                 break;
             case SkillEffect.FillHoles:
-                yield return board.SpawnCards(skill.TargetType, board.GetHoles(skill));
+                var holes = board.GetHoles(skill);
+                yield return board.SpawnCards(skill.TargetType, holes);
+                if (holes.Any())
+                {
+                    yield return new WaitForSeconds(0.3f);
+                }
+                foreach (var hole in holes)
+                {
+                    yield return Trigger(SkillTrigger.FillGap, hole.Card);
+                    yield return new WaitForSeconds(0.1f);
+                }
                 break;
             case SkillEffect.SlideTowardsTarget:
                 card.MarkVisit();

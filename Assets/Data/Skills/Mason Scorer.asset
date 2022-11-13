@@ -10,23 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Scoring Hermit
+  m_Name: Mason Scorer
   m_EditorClassIdentifier: 
   skill:
-    title: All for One
-    description: When ([1]) is placed on the board and all the neighbour tiles are
-      (empty), score (100) points.
+    title: Written in Stone
+    description: Score ([X] points) for every gap filled with ([R]).
     passive: 0
-    trigger: 1
-    condition: 1
+    trigger: 4
+    condition: 0
     effect: 9
-    firstCards: 09000000
+    firstCards: 10000000
     secondCards: 
-    repeatable: 1
+    repeatable: 0
     notRepeatableForOthers: 0
-    amount: 100
+    amount: 1000
     useSecondImage: 0
-    cancelShout: Anxiety!
-    cancelDelay: 0.2
+    cancelShout: 
+    cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: -108116859, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    iconSprite: {fileID: -1200592501, guid: f2cc5fa39c5b14aa09e66e815370184c, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 11400000, guid: cb65cda22333147f8a0373da2eb04cc3, type: 2}
+    anyTriggers: 0

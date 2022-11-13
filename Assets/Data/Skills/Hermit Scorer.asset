@@ -10,25 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: True King
+  m_Name: Hermit Scorer
   m_EditorClassIdentifier: 
   skill:
-    title: Et tu, brutus?
-    description: Doubles your score now. Lose ([X] points) if ([1]) ever dies.
-    passive: 7
-    trigger: 2
-    condition: 0
+    title: All for One
+    description: When ([1]) is placed on the board and all the neighbour tiles are
+      (empty), score ([X] points).
+    passive: 0
+    trigger: 1
+    condition: 1
     effect: 9
-    firstCards: 04000000
+    firstCards: 09000000
     secondCards: 
-    repeatable: 0
+    repeatable: 1
     notRepeatableForOthers: 0
-    amount: -2000
+    amount: 100
     useSecondImage: 0
-    cancelShout: 
-    cancelDelay: 0
+    cancelShout: Anxiety!
+    cancelDelay: 0.2
     canTargetSame: 0
-    iconSprite: {fileID: 1070377585, guid: 1f62efd971a4a4031946c67ad09c7c88, type: 3}
+    iconSprite: {fileID: -108116859, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
     anyTriggers: 0

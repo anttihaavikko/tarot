@@ -91,6 +91,7 @@ public class Skill
         sb.Replace("[2]", Card.GetShortName(secondCard));
         sb.Replace("[11]", Card.GetName(firstCard));
         sb.Replace("[22]", Card.GetName(secondCard));
+        sb.Replace("[X]", Mathf.Abs(amount).ToString());
         if (requirement)
         {
             sb.Replace("[R]", requirement.GetSkill().title);   
@@ -159,7 +160,8 @@ public enum SkillTrigger
     None,
     Place,
     Death,
-    DefyDeath
+    DefyDeath,
+    FillGap
 }
 
 public enum SkillCondition

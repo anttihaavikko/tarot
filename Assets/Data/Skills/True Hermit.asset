@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Deer in Headlights
-    description: Doubles your score now. Lose (1000 points) if ([1]) ever is ever
+    description: Doubles your score now. Lose ([X] points) if ([1]) ever is ever
       placed next to another card.
     passive: 7
     trigger: 1
@@ -30,3 +30,6 @@ MonoBehaviour:
     cancelDelay: 0
     canTargetSame: 0
     iconSprite: {fileID: -2146485562, guid: 07e32a48bad264c0e9780b6eaaa3865b, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 0}
+    anyTriggers: 0

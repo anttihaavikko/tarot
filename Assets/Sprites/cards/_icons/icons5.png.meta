@@ -208,7 +208,7 @@ TextureImporter:
         width: 668
         height: 633
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,7 +229,7 @@ TextureImporter:
         width: 633
         height: 746
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,6 +237,27 @@ TextureImporter:
       bones: []
       spriteID: 157130c82054446c795d1e19c3e1d20e
       internalID: 868693512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_scorer
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 623
+        width: 567
+        height: 677
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b67d84d8d8f84ff1bdba87cf95345f3
+      internalID: -1200592501
       vertices: []
       indices: 
       edges: []
@@ -258,6 +279,7 @@ TextureImporter:
       wall_extender: 868693512
       kill_doubler: -2132673831
       defy_score: -1666857655
+      wall_scorer: -1200592501
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
