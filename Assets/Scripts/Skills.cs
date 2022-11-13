@@ -17,9 +17,10 @@ public class Skills : MonoBehaviour
     [SerializeField] private List<SkillPick> skillPicks;
 
     private List<Skill> skillPool;
-    private List<Skill> skills = new();
 
     private bool picking;
+
+    public List<Skill> Owned { get; } = new();
 
     private void Awake()
     {
@@ -58,7 +59,7 @@ public class Skills : MonoBehaviour
     public void Add(Skill source)
     {
         var skill = new Skill(source);
-        skills.Add(skill);
+        Owned.Add(skill);
 
         var icon = Instantiate(iconPrefab, skillContainer);
         icon.Setup(skill);
@@ -70,7 +71,7 @@ public class Skills : MonoBehaviour
             board.DoubleScore();
         }
 
-        var doneRepeating = skills.Count(s => s.title == skill.title) >= skill.firstCards.Count;
+        var doneRepeating = Owned.Count(s => s.title == skill.title) >= skill.firstCards.Count;
         if (!skill.repeatable && (skill.notRepeatableForOthers || doneRepeating))
         {
             Remove(source);
@@ -82,9 +83,14 @@ public class Skills : MonoBehaviour
         skillPool.Remove(skill);
     }
 
+    public List<Skill> All()
+    {
+        return skillPool.ToList();
+    }
+
     private List<Skill> Take(int amount)
     {
-        skillPool.ForEach(s => s.Randomize(skills));
+        skillPool.ForEach(s => s.Randomize(Owned));
         return skillPool.OrderBy(s => Random.value).Take(amount).ToList();
     }
 
@@ -96,7 +102,7 @@ public class Skills : MonoBehaviour
 
     private IEnumerable<CardType> GetTypesFor(CardType type)
     {
-        return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new[] { type });
+        return Owned.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new[] { type });
     }
     
     public bool Trigger(Passive passive, Vector3 pos)
@@ -128,7 +134,7 @@ public class Skills : MonoBehaviour
 
     public IEnumerator Trigger(SkillTrigger trigger, Card card)
     {
-        foreach (var s in skills.Where(s => GetTypesFor(card).Any(t => s.Matches(trigger, t))).ToList())
+        foreach (var s in Owned.Where(s => GetTypesFor(card).Any(t => s.Matches(trigger, t))).ToList())
         {
             yield return Act(s, card.transform.position, card);
         }
@@ -136,7 +142,7 @@ public class Skills : MonoBehaviour
 
     public IEnumerator Trigger(SkillTrigger trigger)
     {
-        foreach (var s in skills.Where(s => s.Matches(trigger)).ToList())
+        foreach (var s in Owned.Where(s => s.Matches(trigger)).ToList())
         {
             yield return Act(s, Vector3.zero);
         }
@@ -287,39 +293,39 @@ public class Skills : MonoBehaviour
     
     public IEnumerable<Skill> Get(Passive passive, List<CardType> types)
     {
-        return skills.Where(s => s.Matches(passive, types));
+        return Owned.Where(s => s.Matches(passive, types));
     }
 
     public IEnumerable<Skill> Get(Passive passive, CardType type)
     {
-        return skills.Where(s => s.Matches(passive, type));
+        return Owned.Where(s => s.Matches(passive, type));
     }
 
     public IEnumerable<Skill> Get(Passive passive)
     {
-        return skills.Where(s => s.Matches(passive));
+        return Owned.Where(s => s.Matches(passive));
     }
 
     public void MarkSkills(CardType type)
     {
         var types = GetTypesFor(type).ToList();
-        skills.Where(s => types.Contains(s.MainType)).ToList().ForEach(s => s.Icon.Mark(true));
-        skills.Where(s => s.HasTargetType && s.TargetType == type).ToList().ForEach(s => s.Icon.Mark(false));
+        Owned.Where(s => types.Contains(s.MainType)).ToList().ForEach(s => s.Icon.Mark(true));
+        Owned.Where(s => s.HasTargetType && s.TargetType == type).ToList().ForEach(s => s.Icon.Mark(false));
     }
 
     public void UnMarkSkills()
     {
-        skills.ForEach(s => s.Icon.UnMark());
+        Owned.ForEach(s => s.Icon.UnMark());
     }
 
     public int Count(Passive passive)
     {
-        return skills.Count(s => s.Matches(passive));
+        return Owned.Count(s => s.Matches(passive));
     }
 
     public bool Has(Passive passive, CardType type)
     {
         var types = GetTypesFor(type).ToList();
-        return skills.Any(s => s.Matches(passive, types));
+        return Owned.Any(s => s.Matches(passive, types));
     }
 }
