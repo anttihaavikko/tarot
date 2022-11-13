@@ -164,57 +164,34 @@ public class Skills : MonoBehaviour
 
     private bool ShouldCancel(Skill skill, Card card)
     {
-        switch (skill.effect)
+        return skill.effect switch
         {
-            case SkillEffect.None:
-                return false;
-            case SkillEffect.DestroyTouching:
-                return !board.JustTouched;
-            case SkillEffect.AddMultiForSlideLength:
-                return board.SlideLength < 1;
-            case SkillEffect.AddMultiplier:
-            case SkillEffect.AddScore:
-                return false;
-            case SkillEffect.SpawnAround:
-                return !board.HasEmptyNeighboursWithDiagonals(card);
-            case SkillEffect.LevelUp:
-                return false;
-            case SkillEffect.DestroySurrounding:
-                return !board.HasNeighboursWithDiagonals(card, skill);
-            case SkillEffect.DestroyNeighbours:
-                return !board.HasNeighbours(card, skill);
-            case SkillEffect.SpawnNeighbours:
-                return !board.HasEmptyNeighbours(card);
-            case SkillEffect.SpawnBehind:
-                return !board.BehindSpot;
-            case SkillEffect.DestroyClosest:
-                return !board.GetClosest(card, skill.TargetType);
-            case SkillEffect.TransformTouching:
-                return !board.JustTouched;
-            case SkillEffect.TransformSurrounding:
-                return !board.HasNeighboursWithDiagonals(card, skill);
-            case SkillEffect.TransformNeighbours:
-                return !board.HasNeighbours(card, skill);
-            case SkillEffect.AddToDeck:
-            case SkillEffect.MoveTarget:
-                return false;
-            case SkillEffect.FillHoles:
-                return !board.HasHoles();
-            case SkillEffect.SlideTowardsTarget:
-                return !board.CanSlideTowardsTarget(card);
-            case SkillEffect.DestroyRow:
-                return !board.GetRow(card).Any();
-            case SkillEffect.DestroyColumn:
-                return !board.GetColumn(card).Any();
-            case SkillEffect.TransformRow:
-                return !board.GetRow(card).Any();
-            case SkillEffect.TransformColumn:
-                return !board.GetColumn(card).Any();
-            case SkillEffect.DestroyAll:
-                return !board.GetAll(skill.TargetType).Any();
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            SkillEffect.None => false,
+            SkillEffect.DestroyTouching => !board.JustTouched,
+            SkillEffect.AddMultiForSlideLength => board.SlideLength < 1,
+            SkillEffect.AddMultiplier => false,
+            SkillEffect.AddScore => false,
+            SkillEffect.SpawnAround => false,
+            SkillEffect.LevelUp => false,
+            SkillEffect.DestroySurrounding => !board.HasNeighboursWithDiagonals(card, skill),
+            SkillEffect.DestroyNeighbours => !board.HasNeighbours(card, skill),
+            SkillEffect.SpawnNeighbours => !board.HasEmptyNeighbours(card),
+            SkillEffect.SpawnBehind => !board.BehindSpot,
+            SkillEffect.DestroyClosest => !board.GetClosest(card, skill.TargetType, 1).Any(),
+            SkillEffect.TransformTouching => !board.JustTouched,
+            SkillEffect.TransformSurrounding => !board.HasNeighboursWithDiagonals(card, skill),
+            SkillEffect.TransformNeighbours => !board.HasNeighbours(card, skill),
+            SkillEffect.AddToDeck => false,
+            SkillEffect.MoveTarget => false,
+            SkillEffect.FillHoles => !board.HasHoles(skill),
+            SkillEffect.SlideTowardsTarget => !board.CanSlideTowardsTarget(card),
+            SkillEffect.DestroyRow => !board.GetRow(card).Any(),
+            SkillEffect.DestroyColumn => !board.GetColumn(card).Any(),
+            SkillEffect.TransformRow => !board.GetRow(card).Any(),
+            SkillEffect.TransformColumn => !board.GetColumn(card).Any(),
+            SkillEffect.DestroyAll => !board.GetAll(skill.TargetType).Any(),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 
     private IEnumerator DoEffect(Skill skill, Card card)
@@ -268,7 +245,7 @@ public class Skills : MonoBehaviour
                 board.AddToDeck(skill.TargetType);
                 break;
             case SkillEffect.DestroyClosest:
-                yield return board.DestroyCards(new List<Card> { board.GetClosest(card, skill.TargetType) }, card);
+                yield return board.DestroyCards(board.GetClosest(card, skill.TargetType, ExtenderCount(skill)), card);
                 break;
             case SkillEffect.MoveTarget:
                 board.MoveTarget();
@@ -284,7 +261,7 @@ public class Skills : MonoBehaviour
                 yield return board.TransformCards(new List<Card> { board.JustTouched }, skill);
                 break;
             case SkillEffect.FillHoles:
-                yield return board.SpawnCards(skill.TargetType, board.GetHoles());
+                yield return board.SpawnCards(skill.TargetType, board.GetHoles(skill));
                 break;
             case SkillEffect.SlideTowardsTarget:
                 card.MarkVisit();
@@ -310,9 +287,14 @@ public class Skills : MonoBehaviour
         }
     }
 
-    private bool HasExtender(Skill skill)
+    public bool HasExtender(Skill skill)
     {
         return skills.Any(s => s.requirement && s.requirement.Is(skill));
+    }
+
+    private int ExtenderCount(Skill skill)
+    {
+        return skills.Count(s => s.requirement && s.requirement.Is(skill));
     }
 
     private IEnumerator Act(Skill skill, Vector3 pos, Card card = null)

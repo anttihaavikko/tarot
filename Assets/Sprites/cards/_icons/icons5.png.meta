@@ -166,7 +166,7 @@ TextureImporter:
         width: 573
         height: 705
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,7 +187,7 @@ TextureImporter:
         width: 492
         height: 806
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -195,6 +195,48 @@ TextureImporter:
       bones: []
       spriteID: 9fb211ba1c29d48528370c5c847ca3c4
       internalID: 1548060246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kill_doubler
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 667
+        width: 668
+        height: 633
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4883d1935c4f433daa2c72e04294a2c
+      internalID: -2132673831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_extender
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 579
+        width: 633
+        height: 746
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 157130c82054446c795d1e19c3e1d20e
+      internalID: 868693512
       vertices: []
       indices: 
       edges: []
@@ -213,6 +255,8 @@ TextureImporter:
       transform_row: -852461112
       transform_col: 1563123012
       skull: 1548060246
+      wall_extender: 868693512
+      kill_doubler: -2132673831
       defy_score: -1666857655
   spritePackingTag: 
   pSDRemoveMatte: 0

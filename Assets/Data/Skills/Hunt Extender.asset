@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
+  m_Name: Hunt Extender
+  m_EditorClassIdentifier: 
+  skill:
+    title: Double Whammy
+    description: ([R]) destroys an (additional) target.
+    passive: 8
+    trigger: 0
+    condition: 0
+    effect: 0
+    firstCards: 0200000005000000
+    secondCards: 
+    repeatable: 0
+    notRepeatableForOthers: 0
+    amount: 0
+    useSecondImage: 0
+    cancelShout: 
+    cancelDelay: 0
+    canTargetSame: 0
+    iconSprite: {fileID: -2132673831, guid: f2cc5fa39c5b14aa09e66e815370184c, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 11400000, guid: 398dd203cc9ee4dbdaf6dd0395db3d4d, type: 2}
+    anyTriggers: 0

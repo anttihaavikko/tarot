@@ -579,17 +579,16 @@ public class Board : MonoBehaviour
     public List<Card> GetAll(CardType type)
     {
         var options = grid.GetAll().Where(s => s.IsOccupied && s.Value.Contains(type)).ToList();
-        return options.Any() ? 
-            options.Select(s => s.Value.Card).ToList() : 
-            default;
+        return options.Select(s => s.Value.Card).ToList();
     }
 
-    public Card GetClosest(Card card, CardType type)
+    public List<Card> GetClosest(Card card, CardType type, int amount)
     {
         var options = grid.GetAll().Where(s => s.IsOccupied && s.Value.Contains(type)).ToList();
-        return options.Any() ? 
-            options.OrderBy(o => Vector2Int.Distance(card.Tile.Position, o.Position)).First().Value.Card : 
-            default;
+        return options.OrderBy(o => Vector2Int.Distance(card.Tile.Position, o.Position))
+            .Take(amount)
+            .Select(s => s.Value.Card)
+            .ToList();
     }
 
     public void DoubleScore()
@@ -598,19 +597,30 @@ public class Board : MonoBehaviour
         AddScore(scoreDisplay.Total, Vector3.zero, false);
     }
 
-    private bool IsSurrounded(Tile tile, bool diagonalsToo = false)
+    private bool IsSurrounded(Tile tile)
     {
-        return GetNeighbours(tile, diagonalsToo).Count() == 4;
+        return GetNeighbours(tile, false).Count() == 4;
+    }
+    
+    private bool IsAlmostSurrounded(Tile tile, Skill skill)
+    {
+        var neighbours = GetNeighbours(tile, false).ToList();
+        return skills.HasExtender(skill) && 
+               neighbours.Count == 3 && 
+               grid.GetNeighbours(tile.Position.x, tile.Position.y).All(n => n.IsOccupied || GetNeighbours(n.Value, false).Count() >= 3);
     }
 
-    public List<Tile> GetHoles()
+    public List<Tile> GetHoles(Skill skill)
     {
-        return grid.GetAll().Where(s => s.IsEmpty && IsSurrounded(s.Value)).Select(s => s.Value).ToList();
+        return grid.GetAll()
+            .Where(s => s.IsEmpty && (IsSurrounded(s.Value) || IsAlmostSurrounded(s.Value, skill)))
+            .Select(s => s.Value)
+            .ToList();
     }
 
-    public bool HasHoles()
+    public bool HasHoles(Skill skill)
     {
-        return GetHoles().Any();
+        return GetHoles(skill).Any();
     }
 
     public bool CanSlideTowardsTarget(Card card)
