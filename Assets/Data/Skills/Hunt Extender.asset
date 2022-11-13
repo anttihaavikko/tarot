@@ -32,3 +32,5 @@ MonoBehaviour:
     triggerDelay: 0
     requirement: {fileID: 11400000, guid: 398dd203cc9ee4dbdaf6dd0395db3d4d, type: 2}
     anyTriggers: 0
+    isNotMarked: 0
+    usesRequirementForMarking: 1

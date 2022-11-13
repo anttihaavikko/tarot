@@ -42,6 +42,8 @@ public class Skill
     public float triggerDelay;
     public SkillDefinition requirement;
     public bool anyTriggers;
+    public bool isNotMarked;
+    public bool usesRequirementForMarking;
 
     private CardType firstCard, secondCard;
 
@@ -75,6 +77,8 @@ public class Skill
         triggerDelay = source.triggerDelay;
         requirement = source.requirement;
         anyTriggers = source.anyTriggers;
+        isNotMarked = source.isNotMarked;
+        usesRequirementForMarking = source.usesRequirementForMarking;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -99,6 +103,16 @@ public class Skill
         sb.Replace("(", useColors ? "<color=#E0CA3C>" : "");
         sb.Replace(")", useColors ? "</color>" : "");
         return sb.ToString();
+    }
+
+    public bool MatchesForSecondaryMarking(CardType type)
+    {
+        return !isNotMarked && HasTargetType && TargetType == type;
+    }
+
+    public bool MatchesForMarking(List<CardType> types, Skills skills)
+    {
+        return !isNotMarked && skills.GetActualType(this).Any(types.Contains);
     }
     
     public bool Matches(CardType type)

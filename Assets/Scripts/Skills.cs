@@ -350,11 +350,18 @@ public class Skills : MonoBehaviour
         return skills.Where(s => s.Matches(passive));
     }
 
+    public List<CardType> GetActualType(Skill skill)
+    {
+        return skill.usesRequirementForMarking ? 
+            skills.Where(s => skill.requirement.Is(s)).Select(s => s.MainType).ToList() : 
+            new List<CardType>{ skill.MainType };
+    }
+
     public void MarkSkills(CardType type)
     {
         var types = GetTypesFor(type).ToList();
-        skills.Where(s => types.Contains(s.MainType)).ToList().ForEach(s => s.Icon.Mark(true));
-        skills.Where(s => s.HasTargetType && s.TargetType == type).ToList().ForEach(s => s.Icon.Mark(false));
+        skills.Where(s => s.MatchesForMarking(types, this)).ToList().ForEach(s => s.Icon.Mark(true));
+        skills.Where(s => s.MatchesForSecondaryMarking(type)).ToList().ForEach(s => s.Icon.Mark(false));
     }
 
     public void UnMarkSkills()

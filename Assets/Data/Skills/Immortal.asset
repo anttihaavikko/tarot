@@ -19,7 +19,7 @@ MonoBehaviour:
     trigger: 0
     condition: 0
     effect: 0
-    firstCards: 0d0000000f000000
+    firstCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000e0000000f0000001000000011000000120000001300000014000000150000000d000000
     secondCards: 
     repeatable: 0
     notRepeatableForOthers: 0
@@ -31,3 +31,5 @@ MonoBehaviour:
     iconSprite: {fileID: 944775062, guid: f653580ec121045ebbae95b9d9639600, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
+    anyTriggers: 0
+    isNotMarked: 0
