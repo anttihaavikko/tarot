@@ -76,6 +76,7 @@ public class Board : MonoBehaviour
     {
         targetTile = grid.RandomFree().Value;
         target.position = targetTile.transform.position;
+        PulseAt(target.position);
     }
 
     private void Update()
@@ -353,6 +354,8 @@ public class Board : MonoBehaviour
             scoreDisplay.AddMulti(doubles ? 2 : 1);
             EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
         }
+
+        yield return new WaitForSeconds(0.2f);
 
         Grow();
 
