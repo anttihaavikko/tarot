@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.ScriptableObjects;
@@ -19,6 +20,7 @@ public class Card : MonoBehaviour
     private Shaker shaker;
 
     private CardType type;
+    private List<Vector2Int> visited = new ();
     
     public Tile Tile { get; set; }
     public bool IsDying { get; private set; }
@@ -214,6 +216,21 @@ public class Card : MonoBehaviour
     public static CardType GetRandomType()
     {
         return EnumUtils.Random<CardType>();
+    }
+
+    public void MarkVisit()
+    {
+        visited.Add(Tile.Position);
+    }
+
+    public void ClearVisits()
+    {
+        visited.Clear();
+    }
+
+    public bool HasVisited(Vector2Int pos)
+    {
+        return visited.Contains(pos);
     }
 }
 

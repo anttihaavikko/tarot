@@ -175,6 +175,7 @@ public class Skills : MonoBehaviour
             SkillEffect.AddToDeck => false,
             SkillEffect.MoveTarget => false,
             SkillEffect.FillHoles => !board.HasHoles(),
+            SkillEffect.SlideTowardsTarget => !board.CanSlideTowardsTarget(card),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -246,6 +247,10 @@ public class Skills : MonoBehaviour
                 break;
             case SkillEffect.FillHoles:
                 yield return board.SpawnCards(skill.TargetType, board.GetHoles());
+                break;
+            case SkillEffect.SlideTowardsTarget:
+                card.MarkVisit();
+                yield return board.SlideTowardsTarget(card);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

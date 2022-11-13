@@ -567,4 +567,61 @@ public class Board : MonoBehaviour
     {
         return GetHoles().Any();
     }
+
+    public bool CanSlideTowardsTarget(Card card)
+    {
+        var tp = targetTile.Position;
+        var cp = card.Tile.Position;
+        var dir = tp - cp;
+        var isAligned = dir.x == 0 || dir.y == 0;
+        return isAligned && dir.magnitude >= 1;
+    }
+
+    public IEnumerator SlideTowardsTarget(Card card)
+    {
+        var tp = targetTile.Position;
+        var cp = card.Tile.Position;
+        var dir = tp - cp;
+        var isAligned = dir.x == 0 || dir.y == 0;
+
+        if (!isAligned || dir.magnitude < 1)
+        {
+            card.ClearVisits();
+            yield break;
+        }
+
+        var t = card.transform;
+        var slideTarget = grid.GetSlideTarget(cp.x, cp.y, dir / Mathf.RoundToInt(dir.magnitude));
+        var sp = slideTarget.Value.Position;
+        
+        if ((sp - cp).magnitude < 1 || card.HasVisited(sp))
+        {
+            card.ClearVisits();
+            yield break;
+        }
+
+        targetReached = false;
+        
+        var pos = Scale(slideTarget.AsVector3);
+        var duration = 0.05f * Vector3.Distance(t.position, pos);
+        yield return new WaitForSeconds(0.1f);
+        Tweener.MoveToBounceOut(t, pos, duration);
+        
+        card.Tile.Clear();
+        slideTarget.Value.Set(card);
+        card.MarkVisit();
+
+        PulseAt(pos);
+
+        yield return new WaitForSeconds(duration);
+
+        yield return skills.Trigger(SkillTrigger.Place, card);
+        
+        if (targetReached || slideTarget.Value == targetTile)
+        {
+            card.ClearVisits();
+            yield return new WaitForSeconds(0.3f);
+            yield return ReachedTarget(pos);
+        }
+    }
 }
