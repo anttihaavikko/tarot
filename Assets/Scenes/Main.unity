@@ -3859,6 +3859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 1044727668695542183, guid: 38a461dfef6664548b153a6a2625b789, type: 3}
+  board: {fileID: 296764682}
 --- !u!1 &1222569406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4513,6 +4514,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4135fc785c0f64be9b14713ddc84480f, type: 2}
   - {fileID: 11400000, guid: 57000ae46c5864741855918436ffa183, type: 2}
   - {fileID: 11400000, guid: b4062aefa6260489eb4060e2b87987b3, type: 2}
+  - {fileID: 11400000, guid: 2df4a1f70d9b94dab90878e2e6bafd23, type: 2}
   board: {fileID: 296764682}
   skillContainer: {fileID: 1942875045}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}

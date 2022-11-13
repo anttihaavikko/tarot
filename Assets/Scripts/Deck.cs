@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class Deck : MonoBehaviour
 {
     [SerializeField] private SortingGroup cardPrefab;
+    [SerializeField] private Board board;
 
     private Stack<CardType> deck = new();
     private readonly List<Transform> cards = new();
@@ -41,11 +42,16 @@ public class Deck : MonoBehaviour
         deck = new Stack<CardType>(EnumUtils.ToList<CardType>().OrderBy(_ => Random.value));
     }
 
-    public void AddToTop(CardType type)
+    public void AddToTop(CardType type, int amount)
     {
-        deck.Push(type);
-        if(deck.Count > cards.Count) AddCard();
-        GetCurrent().gameObject.SetActive(true);
+        for (var i = 0; i < amount; i++)
+        {
+            deck.Push(type);
+            if(deck.Count > cards.Count) AddCard();
+            var top = GetCurrent();
+            top.gameObject.SetActive(true);
+            board.PulseAt(top.position);
+        }
     }
 
     public CardType Pull()

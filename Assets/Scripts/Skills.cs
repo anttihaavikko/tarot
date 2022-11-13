@@ -242,7 +242,7 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(0.25f);
                 break;
             case SkillEffect.AddToDeck:
-                board.AddToDeck(skill.TargetType);
+                board.AddToDeck(skill.TargetType, skill.amount);
                 break;
             case SkillEffect.DestroyClosest:
                 yield return board.DestroyCards(board.GetClosest(card, skill.TargetType, ExtenderCount(skill)), card);

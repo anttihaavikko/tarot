@@ -82,19 +82,9 @@ public class Board : MonoBehaviour
 
     private void Update()
     {
-        if (DevKey.Down(KeyCode.Q))
-        {
-            Grow();
-        }
-        
         if (DevKey.Down(KeyCode.Tab))
         {
             devMenu.SetActive(!devMenu.activeSelf);
-        }
-        
-        if (DevKey.Down(KeyCode.A))
-        {
-            deck.AddToTop(CardType.Death);
         }
     }
 
@@ -559,9 +549,9 @@ public class Board : MonoBehaviour
         yield return SpawnCards(type, new List<Tile>{ BehindSpot });
     }
 
-    public void AddToDeck(CardType type)
+    public void AddToDeck(CardType type, int amount)
     {
-        deck.AddToTop(type);
+        deck.AddToTop(type, amount);
     }
 
     public void HideCardPreview()
