@@ -494,6 +494,15 @@ public class Board : MonoBehaviour
             .Any(t => TileMatchesSkill(t, skill));
     }
     
+    public IEnumerable<Card> GetNeighbours(Tile tile, bool diagonals)
+    {
+        var spots = diagonals ?
+            grid.GetNeighboursWithDiagonals(tile.Position.x, tile.Position.y).Where(t => t.IsOccupied) :
+            grid.GetNeighbours(tile.Position.x, tile.Position.y).Where(t => t.IsOccupied);
+        
+        return spots.Where(s => s.Value != tile).Select(s => s.Value.Card);
+    }
+    
     public IEnumerable<Card> GetNeighbours(Card card, Skill skill, bool diagonals)
     {
         var spots = diagonals ?
@@ -542,5 +551,20 @@ public class Board : MonoBehaviour
     {
         justPlaced = null;
         AddScore(scoreDisplay.Total, Vector3.zero, false);
+    }
+
+    private bool IsSurrounded(Tile tile, bool diagonalsToo = false)
+    {
+        return GetNeighbours(tile, diagonalsToo).Count() == 4;
+    }
+
+    public List<Tile> GetHoles()
+    {
+        return grid.GetAll().Where(s => s.IsEmpty && IsSurrounded(s.Value)).Select(s => s.Value).ToList();
+    }
+
+    public bool HasHoles()
+    {
+        return GetHoles().Any();
     }
 }

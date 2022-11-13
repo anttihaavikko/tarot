@@ -34,6 +34,7 @@ public class Skill
     public float cancelDelay;
     public bool canTargetSame;
     public Sprite iconSprite;
+    public float triggerDelay;
 
     private CardType firstCard, secondCard;
 
@@ -64,6 +65,7 @@ public class Skill
         notRepeatableForOthers = source.notRepeatableForOthers;
         iconSprite = source.iconSprite;
         condition = source.condition;
+        triggerDelay = source.triggerDelay;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -166,7 +168,8 @@ public enum SkillEffect
     MoveTarget,
     TransformSurrounding,
     TransformNeighbours,
-    TransformTouching
+    TransformTouching,
+    FillHoles
 }
 
 public enum Passive

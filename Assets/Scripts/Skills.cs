@@ -174,6 +174,7 @@ public class Skills : MonoBehaviour
             SkillEffect.TransformNeighbours => !board.HasNeighbours(card, skill),
             SkillEffect.AddToDeck => false,
             SkillEffect.MoveTarget => false,
+            SkillEffect.FillHoles => !board.HasHoles(),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -243,6 +244,9 @@ public class Skills : MonoBehaviour
             case SkillEffect.TransformTouching:
                 yield return board.TransformCards(new List<Card> { board.JustTouched }, skill);
                 break;
+            case SkillEffect.FillHoles:
+                yield return board.SpawnCards(skill.TargetType, board.GetHoles());
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -268,6 +272,9 @@ public class Skills : MonoBehaviour
         }
 
         EffectManager.AddTextPopup(skill.title, p, 0.8f);
+
+        yield return new WaitForSeconds(skill.triggerDelay);
+        
         skill.Trigger();
 
         yield return DoEffect(skill, card);

@@ -124,7 +124,7 @@ TextureImporter:
         width: 759
         height: 833
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -132,6 +132,153 @@ TextureImporter:
       bones: []
       spriteID: 65369839556244fca82ab2370310c255
       internalID: 1070377585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunlight
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1203
+        width: 768
+        height: 811
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0be293fc10864b62bf542645ada771b
+      internalID: -1786412683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moonlight
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 1250
+        width: 579
+        height: 774
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47497cb1eb76f4294b826cfea3814eb1
+      internalID: -799159852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rocket
+      rect:
+        serializedVersion: 2
+        x: 2228
+        y: 1209
+        width: 458
+        height: 824
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4222b14904743e49c6f868421ebe21
+      internalID: 1015092320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mason
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 513
+        width: 824
+        height: 643
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6de3aa2ecbd42338a2e97d65f7422c
+      internalID: 1547167880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: revenge
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 510
+        width: 552
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e5e3bad891c441c6b99756789b52f4b
+      internalID: 1021596406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: replacement
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 454
+        width: 724
+        height: 783
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dcda994622c6426ba326213aa75e2c9
+      internalID: 1871998653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_squiggle
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 403
+        width: 307
+        height: 784
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d59277ddaa9e43c9822df580a14a1b2
+      internalID: -60582938
       vertices: []
       indices: 
       edges: []
@@ -147,7 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      moonlight: -799159852
+      revenge: 1021596406
+      king_squiggle: -60582938
+      replacement: 1871998653
+      sunlight: -1786412683
+      rocket: 1015092320
       true_king: 1070377585
+      mason: 1547167880
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
