@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Transform Row
   m_EditorClassIdentifier: 
   skill:
-    title: Transform Row
+    title: Toe the Line
     description: Randomly (transform all) other cards on the same (row) as placed
       ([1]).
     passive: 0

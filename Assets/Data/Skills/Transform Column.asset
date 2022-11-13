@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Transform Column
   m_EditorClassIdentifier: 
   skill:
-    title: Transform Column
+    title: Bottom Line
     description: Randomly (transform all) other cards on the same (column) as placed
       ([1]).
     passive: 0

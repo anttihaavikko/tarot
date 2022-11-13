@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Destroy Column
   m_EditorClassIdentifier: 
   skill:
-    title: Destroy Column
+    title: Sitting Ducks
     description: (Destroy) all other cards on the same (column) as placed ([1]).
     passive: 0
     trigger: 1

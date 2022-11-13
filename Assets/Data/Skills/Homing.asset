@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Homing
   m_EditorClassIdentifier: 
   skill:
-    title: Homing
+    title: Bring Home the Bacon
     description: Placed ([1]) will slide towards (the target) afterwards.
     passive: 0
     trigger: 1
