@@ -474,8 +474,8 @@ public class Board : MonoBehaviour
 
     public IEnumerator DestroyCards(List<Card> cards, Card source)
     {
-        var targets = cards.Where(c => !c.IsDying).RandomOrder().ToList();
         var from = source ? source.transform.position : Vector3.zero;
+        var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(from, c.transform.position)).ToList();
         DrawLines(from, targets, false, true);
         var immortals = targets.Where(c => skills.Has(Passive.Immortal, c.GetCardType())).ToList();
         targets = targets.Except(immortals).ToList();
@@ -536,7 +536,7 @@ public class Board : MonoBehaviour
 
     public IEnumerator TransformCards(List<Card> cards, Skill skill, Vector3 lineStart)
     {
-        var targets = cards.Where(c => !c.IsDying).RandomOrder().ToList();
+        var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(lineStart, c.transform.position)).ToList();
         
         DrawLines(lineStart, targets, true);
         
