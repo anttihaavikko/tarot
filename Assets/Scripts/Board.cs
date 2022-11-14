@@ -31,6 +31,7 @@ public class Board : MonoBehaviour
     [SerializeField] private EffectCamera effectCamera;
     [SerializeField] private LineDrawer lineDrawer;
     [SerializeField] private Transform handSpotPrefab;
+    [SerializeField] private CardTooltipper tooltipper;
 
     private readonly InfiniteGrid<Tile> grid = new();
     private readonly List<Card> drawnCards = new();
@@ -56,6 +57,8 @@ public class Board : MonoBehaviour
     public Card JustTouched { get; private set; }
     public int SlideLength { get; private set; }
     public Tile BehindSpot { get; private set; }
+    
+    public bool IsActing => !canPlace;
 
     private void Start()
     {
@@ -297,7 +300,7 @@ public class Board : MonoBehaviour
         SlideLength = Mathf.RoundToInt(Vector2Int.Distance(start.Position, end.Position));
         
         HideCardPreview();
-        
+
         movesLeft--;
         
         RepositionHand(false);
@@ -610,9 +613,10 @@ public class Board : MonoBehaviour
     public void HideCardPreview()
     {
         cardPreview.Hide();
+        tooltipper.Clear();
     }
 
-    private void ShowPreview(CardType type)
+    public void ShowPreview(CardType type)
     {
         skills.UnMarkSkills();
         cardPreview.Show(type);

@@ -729,6 +729,7 @@ GameObject:
   - component: {fileID: 296764683}
   - component: {fileID: 296764682}
   - component: {fileID: 296764684}
+  - component: {fileID: 296764685}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -770,6 +771,7 @@ MonoBehaviour:
   effectCamera: {fileID: 519420033}
   lineDrawer: {fileID: 368307508}
   handSpotPrefab: {fileID: 1645572278475050218, guid: 96f05f3f54f2b45cbbd9d468ef2f84e6, type: 3}
+  tooltipper: {fileID: 296764685}
 --- !u!4 &296764683
 Transform:
   m_ObjectHideFlags: 0
@@ -797,6 +799,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095433ff060849689ceab97855c611bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &296764685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296764681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58568da7df14428a6123fb610bb50b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 519420031}
+  cardMask:
+    serializedVersion: 2
+    m_Bits: 128
+  board: {fileID: 296764682}
 --- !u!1 &368307506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,7 +1930,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 183
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
