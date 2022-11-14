@@ -467,6 +467,7 @@ public class Board : MonoBehaviour
 
     public bool IsPlacedAlone()
     {
+        if (!justPlaced) return false;
         var pos = justPlaced.Tile.Position;
         return grid.GetNeighbours(pos.x, pos.y).All(g => g.IsWall || g.IsEmpty);
     }
