@@ -195,6 +195,7 @@ public class Skills : MonoBehaviour
             SkillEffect.TransformRow => !board.GetRow(card).Any(),
             SkillEffect.TransformColumn => !board.GetColumn(card).Any(),
             SkillEffect.DestroyAll => !board.GetAll(skill.TargetType).Any(),
+            SkillEffect.ScoreForNeighbours => !board.GetNeighbours(card, skill, true).Any(),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -297,6 +298,9 @@ public class Skills : MonoBehaviour
             case SkillEffect.DestroyAll:
                 yield return board.DestroyCards(board.GetAll(skill.TargetType), card);
                 break;
+            case SkillEffect.ScoreForNeighbours:
+                yield return board.ScoreFor(card, skill);
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -365,8 +369,8 @@ public class Skills : MonoBehaviour
     public void MarkSkills(CardType type)
     {
         var types = GetTypesFor(type).ToList();
-        skills.Where(s => s.MatchesForMarking(types, this)).ToList().ForEach(s => s.Icon.Mark(true));
         skills.Where(s => s.MatchesForSecondaryMarking(type)).ToList().ForEach(s => s.Icon.Mark(false));
+        skills.Where(s => s.MatchesForMarking(types, this)).ToList().ForEach(s => s.Icon.Mark(true));
     }
 
     public void UnMarkSkills()

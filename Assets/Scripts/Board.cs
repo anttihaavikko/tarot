@@ -512,7 +512,7 @@ public class Board : MonoBehaviour
 
     private void DrawLines(Vector3 from, List<Card> targets)
     {
-        var color = new Color(1f, 1f, 1f, 0.5f);
+        var color = new Color(1f, 1f, 1f, 0.75f);
         effectCamera.BaseEffect(0.2f);
         
         targets.ForEach(c =>
@@ -593,6 +593,23 @@ public class Board : MonoBehaviour
             grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Where(t => TileMatchesSkill(t, skill));
         
         return spots.Where(s => s.Value.Card != card).Select(s => s.Value.Card);
+    }
+
+    public IEnumerator ScoreFor(Card card, Skill skill)
+    {
+        yield return new WaitForSeconds(0.3f);
+        
+        var neighbours = GetNeighbours(card, skill, true).ToList();
+        var p = card.transform.position;
+
+        foreach (var c in neighbours)
+        {
+            AddScore(skill.amount, c.transform.position);
+            DrawLines(p, new List<Card>{ c });
+            PulseAt(p);
+            c.Pulsate();
+            yield return new WaitForSeconds(0.15f);
+        }
     }
 
     private bool TileMatchesSkill(InfiniteGrid<Tile>.GridSpot spot, Skill skill)

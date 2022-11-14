@@ -210,7 +210,8 @@ public enum SkillEffect
     DestroyColumn,
     TransformRow,
     TransformColumn,
-    DestroyAll
+    DestroyAll,
+    ScoreForNeighbours
 }
 
 public enum Passive

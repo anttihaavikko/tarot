@@ -208,7 +208,7 @@ TextureImporter:
         width: 458
         height: 489
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,7 +229,7 @@ TextureImporter:
         width: 464
         height: 579
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,7 +250,7 @@ TextureImporter:
         width: 479
         height: 642
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -258,6 +258,27 @@ TextureImporter:
       bones: []
       spriteID: b9021dc601a13430bab8cb1257cc9355
       internalID: 181175677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: love_score
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 495
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef92dbc17750f4a39bfac0258fe3c1f7
+      internalID: 1811437036
       vertices: []
       indices: 
       edges: []
@@ -279,6 +300,7 @@ TextureImporter:
       downs: -1968548009
       hand2: 386931138
       hand3: 181175677
+      love_score: 1811437036
       hand1: -1631727916
   spritePackingTag: 
   pSDRemoveMatte: 0
