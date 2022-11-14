@@ -30,8 +30,10 @@ public class Board : MonoBehaviour
     [SerializeField] private GameObject devMenu;
     [SerializeField] private EffectCamera effectCamera;
     [SerializeField] private LineDrawer lineDrawer;
+    [SerializeField] private Transform handSpotPrefab;
 
     private readonly InfiniteGrid<Tile> grid = new();
+    private readonly List<Card> drawnCards = new();
 
     private Vector2Int prevPos, prevDir;
     private Tile targetTile;
@@ -49,6 +51,7 @@ public class Board : MonoBehaviour
     private bool targetReached;
 
     private Card drawnCard;
+    private bool canPlace;
     
     public Card JustTouched { get; private set; }
     public int SlideLength { get; private set; }
@@ -71,6 +74,8 @@ public class Board : MonoBehaviour
         Invoke(nameof(AddCard), PanTime + 0.1f);
         
         MoveTarget();
+        
+        canPlace = true;
     }
 
     public void MoveTarget()
@@ -95,11 +100,14 @@ public class Board : MonoBehaviour
         ShowPreview(type);
     }
 
-    private void AddCard()
+    public void AddCard()
     {
+        RepositionHand(true);
+        
         var type = deck.Pull();
         drawnCard = CreateCard(type, deck.GetSpawn(), false);
         var t = drawnCard.transform;
+        t.parent = hand;
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
         
@@ -118,6 +126,21 @@ public class Board : MonoBehaviour
         }
 
         ShowPreview(type);
+
+        drawnCards.Insert(0, drawnCard);
+    }
+
+    private void RepositionHand(bool useOffset)
+    {
+        if (drawnCards.Any())
+        {
+            for (var i = 0; i < drawnCards.Count; i++)
+            {
+                var offset = i + (useOffset ? 1 : 0);
+                var pos = hand.position + Vector3.right * offset + Vector3.down * (0.2f * offset);
+                Tweener.MoveToBounceOut(drawnCards.ElementAt(i).transform, pos, 0.3f);
+            }
+        }
     }
 
     private Card CreateCard(CardType type, Vector3 pos, bool pulse = true)
@@ -234,10 +257,17 @@ public class Board : MonoBehaviour
 
     private IEnumerator DoSlide(Card card)
     {
+        if (!canPlace)
+        {
+            card.ReturnToHand();
+            ShowPreview(card.GetCardType());
+            HidePreview();
+            yield break;
+        }
+        
+        canPlace = false;
         grid.ResetSlide();
-        
         justPlaced = card;
-        
         HidePreview();
         
         var t = card.transform;
@@ -253,11 +283,14 @@ public class Board : MonoBehaviour
         {
             card.ReturnToHand();
             ShowPreview(card.GetCardType());
+            canPlace = true;
             yield break;
         }
         
         skills.UnMarkSkills();
         card.Placed();
+        drawnCards.Remove(card);
+        card.transform.parent = transform;
 
         JustTouched = grid.CollisionTarget ? grid.CollisionTarget.Card : null;
         BehindSpot = grid.BehindSpot;
@@ -266,6 +299,8 @@ public class Board : MonoBehaviour
         HideCardPreview();
         
         movesLeft--;
+        
+        RepositionHand(false);
 
         Tweener.MoveToBounceOut(t, Scale(start.AsVector3), 0.1f);
         var cardPos = Scale(end.AsVector3);
@@ -296,6 +331,7 @@ public class Board : MonoBehaviour
         if (movesLeft > 0)
         {
             yield return new WaitForSeconds(0.5f);
+            canPlace = true;
             AddCard();
         }
     }
@@ -576,7 +612,7 @@ public class Board : MonoBehaviour
         cardPreview.Hide();
     }
 
-    public void ShowPreview(CardType type)
+    private void ShowPreview(CardType type)
     {
         skills.UnMarkSkills();
         cardPreview.Show(type);
@@ -703,5 +739,15 @@ public class Board : MonoBehaviour
             .Select(s => s.Value.Card)
             .Where(c => c != card)
             .ToList();
+    }
+
+    public void IncreaseHandSize()
+    {
+        AddCard();
+        
+        var offset = drawnCards.Count;
+        var pos = hand.position + Vector3.right * offset + Vector3.down * (0.2f * offset);
+        var spot = Instantiate(handSpotPrefab, hand);
+        spot.position = pos;
     }
 }

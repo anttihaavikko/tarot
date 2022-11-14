@@ -225,5 +225,6 @@ public enum Passive
     DoubleScore,
     Extender,
     Revenge,
-    Immortal
+    Immortal,
+    HandSize
 }
