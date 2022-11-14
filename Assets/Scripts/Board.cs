@@ -394,7 +394,7 @@ public class Board : MonoBehaviour
         if (movesLeft == MoveCount - 1)
         {
             var doubles = skills.Trigger(Passive.MultiIncreaseAndDecreaseMoves, cardPos);
-            scoreDisplay.AddMulti(doubles ? 2 : 1);
+            AddMulti(cardPos, doubles ? 2 : 1);
             EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
         }
 
@@ -448,9 +448,10 @@ public class Board : MonoBehaviour
         moveCounters.ForEach(t => t.text = $"{movesLeft} MOVES LEFT");
     }
 
-    public void AddMulti(int amount = 1)
+    public void AddMulti(Vector3 pos, int amount = 1)
     {
         scoreDisplay.AddMulti(amount);
+        EffectManager.AddTextPopup($"+x{amount}", pos.RandomOffset(0.5f) + Vector3.down, 0.9f);
     }
 
     public void AddScore(int amount, Vector3 pos, bool useMulti = true)

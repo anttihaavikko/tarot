@@ -214,11 +214,11 @@ public class Skills : MonoBehaviour
                 yield return board.DestroyCards(new List<Card> { board.JustTouched }, card);
                 break;
             case SkillEffect.AddMultiForSlideLength:
-                board.AddMulti(board.SlideLength);
+                board.AddMulti(card.transform.position, board.SlideLength);
                 yield return new WaitForSeconds(0.4f);
                 break;
             case SkillEffect.AddMultiplier:
-                board.AddMulti(skill.amount);
+                board.AddMulti(card.transform.position, skill.amount);
                 yield return new WaitForSeconds(0.4f);
                 break;
             case SkillEffect.SpawnAround:

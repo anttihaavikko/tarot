@@ -271,7 +271,7 @@ TextureImporter:
         width: 495
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -279,6 +279,69 @@ TextureImporter:
       bones: []
       spriteID: ef92dbc17750f4a39bfac0258fe3c1f7
       internalID: 1811437036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fifty-fifty
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 46
+        width: 655
+        height: 577
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb8fd9438dd754652aece99a3374cb57
+      internalID: 1251437981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: infi_deck
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 21
+        width: 602
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27450cc16b3b04e2a83435ecb978d483
+      internalID: 1573285013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transform_scorer
+      rect:
+        serializedVersion: 2
+        x: 1958
+        y: 21
+        width: 489
+        height: 643
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b5523fda9c99472eb9b5e04fcfde308
+      internalID: -1407483164
       vertices: []
       indices: 
       edges: []
@@ -297,11 +360,14 @@ TextureImporter:
       kids: 307348820
       funeral: 897776116
       touch_king: -945833413
+      fifty-fifty: 1251437981
       downs: -1968548009
       hand2: 386931138
       hand3: 181175677
       love_score: 1811437036
+      infi_deck: 1573285013
       hand1: -1631727916
+      transform_scorer: -1407483164
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
