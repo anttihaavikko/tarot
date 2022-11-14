@@ -17,7 +17,7 @@ public class Card : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite, bg, pattern, radial;
     [SerializeField] private Draggable draggable;
     [SerializeField] private Pulsater pulsater;
-    [SerializeField] private Material flashSMaterial, normalMaterial;
+    [SerializeField] private Material flashSMaterial, normalMaterial, darkFlashMaterial;
 
     private Board board;
     private Shaker shaker;
@@ -39,9 +39,19 @@ public class Card : MonoBehaviour
         pattern.flipY = Random.value < 0.5f;
     }
 
+    public void DarkFlash()
+    {
+        DoFlash(darkFlashMaterial);
+    }
+    
     public void Flash()
     {
-        sprite.material = pattern.material = flashSMaterial;
+        DoFlash(flashSMaterial);
+    }
+
+    private void DoFlash(Material mat)
+    {
+        sprite.material = pattern.material = mat;
         this.StartCoroutine(() => sprite.material = pattern.material = normalMaterial, 0.2f);
     }
 

@@ -476,7 +476,7 @@ public class Board : MonoBehaviour
     {
         var targets = cards.Where(c => !c.IsDying).RandomOrder().ToList();
         var from = source ? source.transform.position : Vector3.zero;
-        DrawLines(from, targets);
+        DrawLines(from, targets, false, true);
         var immortals = targets.Where(c => skills.Has(Passive.Immortal, c.GetCardType())).ToList();
         targets = targets.Except(immortals).ToList();
 
@@ -513,13 +513,23 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
     }
 
-    private void DrawLines(Vector3 from, List<Card> targets)
+    private void DrawLines(Vector3 from, List<Card> targets, bool lightFlash = false, bool darkFlash = false)
     {
         var color = new Color(1f, 1f, 1f, 0.75f);
         effectCamera.BaseEffect(0.2f);
         
         targets.ForEach(c =>
         {
+            if (lightFlash)
+            {
+                c.Flash();
+            }
+
+            if (darkFlash)
+            {
+                c.DarkFlash();
+            }
+            
             lineDrawer.AddThunderLine(from.RandomOffset(0.5f), c.transform.position.RandomOffset(0.5f), color, Random.Range(0.4f, 0.8f), Random.Range(0.25f, 0.75f));
         });
     }
@@ -528,7 +538,7 @@ public class Board : MonoBehaviour
     {
         var targets = cards.Where(c => !c.IsDying).RandomOrder().ToList();
         
-        DrawLines(lineStart, targets);
+        DrawLines(lineStart, targets, true);
         
         targets.ForEach(c => c.Shake());
         yield return new WaitForSeconds(0.2f);

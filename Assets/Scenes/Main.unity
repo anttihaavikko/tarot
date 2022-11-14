@@ -1973,7 +1973,7 @@ MonoBehaviour:
   cameraRig: {fileID: 2142172501}
   ppVolume: {fileID: 584944103}
   colorSplitMaterial: {fileID: 2100000, guid: 72b252ae67fa14167b86226b49ab98f6, type: 2}
-  returnSpeed: 0.6
+  returnSpeed: 5
   shakeChance: 0.3
   timeResumeSpeed: 1
 --- !u!1 &551048930
