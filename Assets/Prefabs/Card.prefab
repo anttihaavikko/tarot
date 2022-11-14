@@ -681,6 +681,8 @@ MonoBehaviour:
   radial: {fileID: 910610973054004631}
   draggable: {fileID: 4148702712765327938}
   pulsater: {fileID: 6676230570582208932}
+  flashSMaterial: {fileID: 2100000, guid: c68bb6318bfd54355ba25b0817137827, type: 2}
+  normalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!210 &4148702712765327948
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -964,7 +966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8888683981529283542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.03352771, y: 0.022351805, z: 0.03352771}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -991,7 +993,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

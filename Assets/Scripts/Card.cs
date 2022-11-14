@@ -6,6 +6,7 @@ using AnttiStarterKit.ScriptableObjects;
 using AnttiStarterKit.Utils;
 using TMPro;
 using UnityEngine;
+using AnttiStarterKit.Extensions;
 using Random = UnityEngine.Random;
 
 public class Card : MonoBehaviour
@@ -16,6 +17,7 @@ public class Card : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite, bg, pattern, radial;
     [SerializeField] private Draggable draggable;
     [SerializeField] private Pulsater pulsater;
+    [SerializeField] private Material flashSMaterial, normalMaterial;
 
     private Board board;
     private Shaker shaker;
@@ -35,6 +37,12 @@ public class Card : MonoBehaviour
         radial.transform.Rotate(new Vector3(0, 0, Random.value * 360));
         pattern.flipX = Random.value < 0.5f;
         pattern.flipY = Random.value < 0.5f;
+    }
+
+    public void Flash()
+    {
+        sprite.material = pattern.material = flashSMaterial;
+        this.StartCoroutine(() => sprite.material = pattern.material = normalMaterial, 0.2f);
     }
 
     private void HidePreview()
@@ -207,6 +215,8 @@ public class Card : MonoBehaviour
         
         Init(target);
         board.PulseAt(transform.position);
+        
+        Flash();
     }
 
     public void ReturnToHand()

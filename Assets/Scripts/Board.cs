@@ -496,6 +496,7 @@ public class Board : MonoBehaviour
             skills.Trigger(Passive.Immortal, c.GetCardType(), pos);
             PulseAt(pos);
             c.Pulsate();
+            c.Flash();
             yield return new WaitForSeconds(0.2f);
             yield return skills.Trigger(SkillTrigger.DefyDeath, c);
             yield return new WaitForSeconds(0.1f);
@@ -608,6 +609,7 @@ public class Board : MonoBehaviour
             DrawLines(p, new List<Card>{ c });
             PulseAt(p);
             c.Pulsate();
+            c.Flash();
             yield return new WaitForSeconds(0.15f);
         }
     }
