@@ -325,8 +325,10 @@ public class Board : MonoBehaviour
         SlideLength = Mathf.RoundToInt(Vector2Int.Distance(start.Position, end.Position));
         
         HideCardPreview();
+        
+        var cardPos = Scale(end.AsVector3);
 
-        if (!skills.Trigger(Passive.FreeMove, card))
+        if (!skills.Trigger(Passive.FreeMove, card.GetCardType(), cardPos))
         {
             movesLeft--;   
         }
@@ -334,7 +336,6 @@ public class Board : MonoBehaviour
         RepositionHand(false);
 
         Tweener.MoveToBounceOut(t, Scale(start.AsVector3), 0.1f);
-        var cardPos = Scale(end.AsVector3);
         var targetPos = cardPos;
         var duration = 0.05f * Vector3.Distance(t.position, targetPos);
         yield return new WaitForSeconds(0.1f);
