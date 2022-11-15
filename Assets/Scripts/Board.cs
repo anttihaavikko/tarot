@@ -32,6 +32,7 @@ public class Board : MonoBehaviour
     [SerializeField] private LineDrawer lineDrawer;
     [SerializeField] private Transform handSpotPrefab;
     [SerializeField] private CardTooltipper tooltipper;
+    [SerializeField] private SpriteRenderer playArea;
 
     private readonly InfiniteGrid<Tile> grid = new();
     private readonly List<Card> drawnCards = new();
@@ -45,6 +46,7 @@ public class Board : MonoBehaviour
 
     private int level = 1;
     private int exp;
+    private int fieldSize = 10;
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
@@ -79,6 +81,8 @@ public class Board : MonoBehaviour
         MoveTarget();
         
         canPlace = true;
+
+        playArea.size = Scale(new Vector3(fieldSize * 2 + 2, fieldSize * 2 + 2));
     }
 
     public void MoveTarget()
@@ -256,6 +260,8 @@ public class Board : MonoBehaviour
 
     private void AddTile(int x, int y, bool pulse = true)
     {
+        if (x < -fieldSize || x > fieldSize || y < -fieldSize || y > fieldSize) return;
+        
         if (!grid.Get(x, y).IsWall) return;
         var tile = Instantiate(tilePrefab, transform);
         tile.Position = new Vector2Int(x, y);
