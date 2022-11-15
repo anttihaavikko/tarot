@@ -25,6 +25,13 @@ public class DevMenu : MonoBehaviour
         var allSkills = skills.All();
         allSkills.Reverse();
         
+        EnumUtils.ToList<CardType>().ToList().ForEach(type =>
+        {
+            var source = allSkills.Count(c => c.firstCards.Contains(type));
+            var target = allSkills.Count(c => c.secondCards.Contains(type));
+            Debug.Log($"<color=white>{type}</color>: <color=yellow>{source}</color> source, <color=red>{target}</color> target");
+        });
+        
         allSkills.GroupBy(x => x.iconSprite)
             .Where(g => g.Count() > 1)
             .ToList()
