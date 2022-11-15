@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
+  m_Name: Multi On Draw
+  m_EditorClassIdentifier: 
+  skill:
+    title: Lost in the Shuffle
+    description: Increase (multiplier) when (drawing) a card but (reset) it when
+      (reshuffling).
+    passive: 12
+    trigger: 0
+    condition: 0
+    effect: 0
+    firstCards: 08000000
+    secondCards: 
+    repeatable: 0
+    notRepeatableForOthers: 0
+    amount: 0
+    useSecondImage: 0
+    cancelShout: 
+    cancelDelay: 0
+    canTargetSame: 0
+    iconSprite: {fileID: 1573285013, guid: 8d48dd2df5ca34a19a1ae4603948f1d1, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 0}
+    anyTriggers: 0
+    isNotMarked: 1
+    usesRequirementForMarking: 0

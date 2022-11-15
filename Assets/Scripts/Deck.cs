@@ -40,6 +40,7 @@ public class Deck : MonoBehaviour
         }
         
         deck = new Stack<CardType>(EnumUtils.ToList<CardType>().OrderBy(_ => Random.value));
+        board.Shuffled();
     }
 
     public void AddToTop(CardType type, int amount)

@@ -227,5 +227,6 @@ public enum Passive
     Extender,
     Revenge,
     Immortal,
-    HandSize
+    HandSize,
+    MultiDrawShuffleReset
 }

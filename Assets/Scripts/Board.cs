@@ -124,13 +124,28 @@ public class Board : MonoBehaviour
                 drawnCard.TransformTo(targetType);
                 ShowPreview(targetType);
                 first.Trigger();
-                EffectManager.AddTextPopup(first.title, drawnCard.transform.position, 0.8f);
+                EffectManager.AddTextPopup(first.title, t.position, 0.8f);
             }, 0.5f);
         }
 
         ShowPreview(type);
 
         drawnCards.Insert(0, drawnCard);
+
+        if (skills.Trigger(Passive.MultiDrawShuffleReset, t.position))
+        {
+            AddMulti(t.position);
+        }
+    }
+
+    public void Shuffled()
+    {
+        var p = deck.transform.position;
+        
+        if (skills.Trigger(Passive.MultiDrawShuffleReset, p))
+        {
+            scoreDisplay.ResetMulti();
+        }
     }
 
     private void RepositionHand(bool useOffset)
