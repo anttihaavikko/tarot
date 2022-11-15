@@ -10,28 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Multi Increaser
+  m_Name: Moon Behind
   m_EditorClassIdentifier: 
   skill:
-    title: Greased Lightning
-    description: Reaching the (target) with your (first move) increases your (multiplier)
-      by (2). Decrease move amount by (1).
-    passive: 6
-    trigger: 0
+    title: Shoot for the Moon
+    description: Spawn ([2]) behind placed ([1]).
+    passive: 0
+    trigger: 1
     condition: 0
-    effect: 0
-    firstCards: 04000000
-    secondCards: 
+    effect: 10
+    firstCards: 15000000
+    secondCards: 12000000
     repeatable: 0
     notRepeatableForOthers: 0
     amount: 0
     useSecondImage: 0
     cancelShout: 
     cancelDelay: 0
-    canTargetSame: 0
-    iconSprite: {fileID: 191931592, guid: 07e32a48bad264c0e9780b6eaaa3865b, type: 3}
+    canTargetSame: 1
+    iconSprite: {fileID: 904226086, guid: c45c071d97b0c4af8827c7521e72f1aa, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
     anyTriggers: 0
-    isNotMarked: 1
+    isNotMarked: 0
     usesRequirementForMarking: 0

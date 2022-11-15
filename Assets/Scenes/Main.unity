@@ -786,7 +786,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &296764684
 MonoBehaviour:
@@ -899,7 +899,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &368307506
 GameObject:
@@ -931,7 +931,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &368307508
 MonoBehaviour:
@@ -4142,7 +4142,7 @@ Transform:
   - {fileID: 937495461}
   - {fileID: 1665657991}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &1233949210
 SortingGroup:
@@ -4672,6 +4672,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: faa8746d587e2464fb819397f7412a1d, type: 2}
   - {fileID: 11400000, guid: b8c2674f6eecd473daeff51bceb2de6a, type: 2}
   - {fileID: 11400000, guid: 199eb3647e144473fb932ab987c16409, type: 2}
+  - {fileID: 11400000, guid: 47a88ed0966ef43c7bdfe6b2bf86561e, type: 2}
   board: {fileID: 296764682}
   skillContainer: {fileID: 1942875045}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}
@@ -4691,7 +4692,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1517199135
 MonoBehaviour:
