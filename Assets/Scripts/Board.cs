@@ -46,7 +46,7 @@ public class Board : MonoBehaviour
 
     private int level = 1;
     private int exp;
-    private int fieldSize = 10;
+    private int fieldSize = 7;
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
@@ -260,7 +260,11 @@ public class Board : MonoBehaviour
 
     private void AddTile(int x, int y, bool pulse = true)
     {
-        if (x < -fieldSize || x > fieldSize || y < -fieldSize || y > fieldSize) return;
+        if (x < -fieldSize || x > fieldSize || y < -fieldSize || y > fieldSize)
+        {
+            playArea.gameObject.SetActive(true);
+            return;
+        }
         
         if (!grid.Get(x, y).IsWall) return;
         var tile = Instantiate(tilePrefab, transform);
@@ -495,7 +499,7 @@ public class Board : MonoBehaviour
 
     public IEnumerator DestroyCards(List<Card> cards, Card source)
     {
-        var from = source ? source.transform.position : Vector3.zero;
+        var from = source ? source.transform.position : hand.transform.position;
         var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(from, c.transform.position)).ToList();
         DrawLines(from, targets, false, true);
         var immortals = targets.Where(c => skills.Has(Passive.Immortal, c.GetCardType())).ToList();

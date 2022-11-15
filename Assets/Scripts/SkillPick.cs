@@ -1,3 +1,4 @@
+using System.Collections;
 using AnttiStarterKit.Animations;
 using TMPro;
 using UnityEngine;
@@ -23,8 +24,16 @@ public class SkillPick : MonoBehaviour
     public void Pick()
     {
         buttonStyle.Reset();
+        StartCoroutine(DoPick());
+    }
+
+    private IEnumerator DoPick()
+    {
         skillPool.Add(skill);
         skillPool.Pick();
+        yield return new WaitForSeconds(0.5f);
+        yield return skillPool.Trigger(SkillTrigger.AddSkill);
+        skillPool.DonePicking();
     }
 
     public void Hide()

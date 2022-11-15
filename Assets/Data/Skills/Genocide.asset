@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Transform
+  m_Name: Genocide
   m_EditorClassIdentifier: 
   skill:
-    title: Change Your Tune
-    description: Transform any drawn ([1]) card to ([22]).
-    passive: 3
-    trigger: 0
+    title: Screaming Bloody Murder
+    description: Instantly (destroy) every ([2]). Repeat everyt time you gain a (new
+      destiny).
+    passive: 0
+    trigger: 6
     condition: 0
-    effect: 0
-    firstCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
+    effect: 23
+    firstCards: 0f000000
     secondCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
     repeatable: 0
     notRepeatableForOthers: 0
@@ -28,4 +29,9 @@ MonoBehaviour:
     cancelShout: 
     cancelDelay: 0
     canTargetSame: 0
-    iconSprite: {fileID: -781657138, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    iconSprite: {fileID: 1043322991, guid: c45c071d97b0c4af8827c7521e72f1aa, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 0}
+    anyTriggers: 0
+    isNotMarked: 1
+    usesRequirementForMarking: 0

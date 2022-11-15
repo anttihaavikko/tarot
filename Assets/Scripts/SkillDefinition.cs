@@ -176,7 +176,8 @@ public enum SkillTrigger
     Death,
     DefyDeath,
     FillGap,
-    Transform
+    Transform,
+    AddSkill
 }
 
 public enum SkillCondition

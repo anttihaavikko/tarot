@@ -50,8 +50,12 @@ public class Skills : MonoBehaviour
 
     public void Pick()
     {
-        picking = false;
         skillPicks.ForEach(s => s.Hide());
+    }
+
+    public void DonePicking()
+    {
+        picking = false;
     }
 
     public void Add(Skill source)

@@ -833,7 +833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &297112761
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4676,6 +4676,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7adffd61bedc74fd6a1ab3cf56a0030f, type: 2}
   - {fileID: 11400000, guid: 5e86b7002f8e648d39b1b3849ec98174, type: 2}
   - {fileID: 11400000, guid: 57d20e611ba9a4012894d8252652ce55, type: 2}
+  - {fileID: 11400000, guid: ce97c77a3323d4e32a61aec6d85dc2a0, type: 2}
   board: {fileID: 296764682}
   skillContainer: {fileID: 1942875045}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}
