@@ -129,8 +129,8 @@ public class Skills : MonoBehaviour
         
         return triggered.Any();
     }
-
-    public bool Trigger(Passive passive, CardType type, Vector3 pos)
+    
+    public List<Skill> GetTriggered(Passive passive, CardType type, Vector3 pos)
     {
         var types = GetTypesFor(type).ToList();
         var triggered = Get(passive, types).ToList();
@@ -141,7 +141,12 @@ public class Skills : MonoBehaviour
             skill.Trigger();
         });
         
-        return triggered.Any();
+        return triggered;
+    }
+
+    public bool Trigger(Passive passive, CardType type, Vector3 pos)
+    {
+        return GetTriggered(passive, type, pos).Any();
     }
 
     public IEnumerator Trigger(SkillTrigger trigger, Card card)

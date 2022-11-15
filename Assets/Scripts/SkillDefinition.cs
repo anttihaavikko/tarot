@@ -231,5 +231,6 @@ public enum Passive
     Revenge,
     Immortal,
     HandSize,
-    MultiDrawShuffleReset
+    MultiDrawShuffleReset,
+    Replace
 }

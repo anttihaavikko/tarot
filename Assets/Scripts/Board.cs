@@ -510,9 +510,20 @@ public class Board : MonoBehaviour
         foreach (var c in targets)
         {
             yield return skills.Trigger(SkillTrigger.Death, c);
-            c.Tile.Clear();
-            ExplodeAt(c.transform.position);
+            var p = c.transform.position;
+            var type = c.GetCardType();
+            var tile = c.Tile;
+            tile.Clear();
+            ExplodeAt(p);
             c.gameObject.SetActive(false);
+
+            var replaces = skills.GetTriggered(Passive.Replace, type, p);
+            if (replaces.Any())
+            {
+                yield return new WaitForSeconds(0.2f);
+                yield return SpawnCards(replaces.First().TargetType, new List<Tile> { tile }, hand.position);
+            }
+            
             yield return new WaitForSeconds(0.2f);
         }
 
