@@ -117,6 +117,11 @@ public class Skills : MonoBehaviour
         return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new[] { type });
     }
     
+    public bool Trigger(Passive passive, Card card)
+    {
+        return Trigger(passive, card.GetCardType(), card.transform.position);
+    }
+    
     public bool Trigger(Passive passive, Vector3 pos)
     {
         var triggered = Get(passive).ToList();

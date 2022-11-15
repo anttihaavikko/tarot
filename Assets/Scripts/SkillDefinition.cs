@@ -232,5 +232,6 @@ public enum Passive
     Immortal,
     HandSize,
     MultiDrawShuffleReset,
-    Replace
+    Replace,
+    FreeMove
 }

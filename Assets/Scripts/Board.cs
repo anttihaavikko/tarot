@@ -326,8 +326,11 @@ public class Board : MonoBehaviour
         
         HideCardPreview();
 
-        movesLeft--;
-        
+        if (!skills.Trigger(Passive.FreeMove, card))
+        {
+            movesLeft--;   
+        }
+
         RepositionHand(false);
 
         Tweener.MoveToBounceOut(t, Scale(start.AsVector3), 0.1f);
