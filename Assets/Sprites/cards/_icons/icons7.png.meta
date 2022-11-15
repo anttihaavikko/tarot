@@ -124,7 +124,7 @@ TextureImporter:
         width: 517
         height: 564
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -132,6 +132,27 @@ TextureImporter:
       bones: []
       spriteID: 18f6f758a4f964cc1a1cded04527c4a7
       internalID: 904226086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transform_mover
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1312
+        width: 633
+        height: 724
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 673a61870021247ce9143a4d28616936
+      internalID: -698657382
       vertices: []
       indices: 
       edges: []
@@ -147,6 +168,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      transform_mover: -698657382
       moon_rotate: 904226086
   spritePackingTag: 
   pSDRemoveMatte: 0

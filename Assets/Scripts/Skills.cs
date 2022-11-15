@@ -196,6 +196,7 @@ public class Skills : MonoBehaviour
             SkillEffect.TransformColumn => !board.GetColumn(card).Any(),
             SkillEffect.DestroyAll => !board.GetAll(skill.TargetType).Any(),
             SkillEffect.ScoreForNeighbours => !board.GetNeighbours(card, skill, true).Any(),
+            SkillEffect.ScoreForNeighboursNoDiagonals => !board.GetNeighbours(card, skill, false).Any(),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -299,7 +300,10 @@ public class Skills : MonoBehaviour
                 yield return board.DestroyCards(board.GetAll(skill.TargetType), card);
                 break;
             case SkillEffect.ScoreForNeighbours:
-                yield return board.ScoreFor(card, skill);
+                yield return board.ScoreFor(card, skill, true);
+                break;
+            case SkillEffect.ScoreForNeighboursNoDiagonals:
+                yield return board.ScoreFor(card, skill, false);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

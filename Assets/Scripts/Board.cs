@@ -567,7 +567,9 @@ public class Board : MonoBehaviour
         foreach (var c in targets)
         {
             c.TransformTo(skill.GetTargetOrRandomType(), skill.title);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
+            yield return skills.Trigger(SkillTrigger.Transform, c);
+            yield return new WaitForSeconds(0.1f);
             yield return skills.Trigger(SkillTrigger.Place, c);
             yield return new WaitForSeconds(0.2f);
         }
@@ -629,11 +631,11 @@ public class Board : MonoBehaviour
         return spots.Where(s => s.Value.Card != card).Select(s => s.Value.Card);
     }
 
-    public IEnumerator ScoreFor(Card card, Skill skill)
+    public IEnumerator ScoreFor(Card card, Skill skill, bool doDiagonals)
     {
         yield return new WaitForSeconds(0.3f);
         
-        var neighbours = GetNeighbours(card, skill, true).ToList();
+        var neighbours = GetNeighbours(card, skill, doDiagonals).ToList();
         var p = card.transform.position;
 
         foreach (var c in neighbours)

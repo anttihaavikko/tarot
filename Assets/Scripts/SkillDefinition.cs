@@ -175,7 +175,8 @@ public enum SkillTrigger
     Place,
     Death,
     DefyDeath,
-    FillGap
+    FillGap,
+    Transform
 }
 
 public enum SkillCondition
@@ -211,7 +212,8 @@ public enum SkillEffect
     TransformRow,
     TransformColumn,
     DestroyAll,
-    ScoreForNeighbours
+    ScoreForNeighbours,
+    ScoreForNeighboursNoDiagonals
 }
 
 public enum Passive
