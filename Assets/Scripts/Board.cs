@@ -117,7 +117,7 @@ public class Board : MonoBehaviour
         t.parent = hand;
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
-        
+
         var transforms = skills.Get(Passive.TransformOnDraw, type).ToList();
         if (transforms.Any())
         {
@@ -128,7 +128,9 @@ public class Board : MonoBehaviour
                 drawnCard.TransformTo(targetType);
                 ShowPreview(targetType);
                 first.Trigger();
-                EffectManager.AddTextPopup(first.title, t.position, 0.8f);
+                var position = t.position;
+                EffectManager.AddTextPopup(first.title, position, 0.8f);
+                first.Announce(position);
             }, 0.5f);
         }
 

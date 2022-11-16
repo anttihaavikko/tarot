@@ -21,11 +21,18 @@ MonoBehaviour:
     effect: 0
     firstCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
     secondCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
-    repeatable: 0
-    notRepeatableForOthers: 0
+    iconSprite: {fileID: -781657138, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 0}
+    sound: {fileID: 8300000, guid: 0d0638816166d4a409414a42522163ef, type: 3}
     amount: 0
-    useSecondImage: 1
     cancelShout: 
     cancelDelay: 0
+    repeatable: 0
+    notRepeatableForOthers: 0
+    useSecondImage: 1
     canTargetSame: 0
-    iconSprite: {fileID: -781657138, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    anyTriggers: 0
+    isNotMarked: 0
+    usesRequirementForMarking: 0
+    canNotFizzle: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AnttiStarterKit.Extensions;
+using AnttiStarterKit.Managers;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Skill", menuName = "Skill", order = 0)]
@@ -34,6 +35,7 @@ public class Skill
     public Sprite iconSprite;
     public float triggerDelay;
     public SkillDefinition requirement;
+    public AudioClip sound;
     
     [Space]
     public int amount;
@@ -87,6 +89,7 @@ public class Skill
         isNotMarked = source.isNotMarked;
         usesRequirementForMarking = source.usesRequirementForMarking;
         canNotFizzle = source.canNotFizzle;
+        sound = source.sound;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -174,6 +177,14 @@ public class Skill
     public CardType GetTargetOrRandomType()
     {
         return HasTargetType ? TargetType : Card.GetRandomType();
+    }
+
+    public void Announce(Vector3 position)
+    {
+        if (sound)
+        {
+            AudioManager.Instance.PlayEffectAt(sound, position);
+        }
     }
 }
 

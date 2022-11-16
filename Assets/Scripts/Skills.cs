@@ -360,6 +360,7 @@ public class Skills : MonoBehaviour
         }
 
         EffectManager.AddTextPopup(skill.title, p, 0.8f);
+        skill.Announce(p);
 
         yield return new WaitForSeconds(skill.triggerDelay);
         

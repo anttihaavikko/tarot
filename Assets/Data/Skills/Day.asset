@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Day
   m_EditorClassIdentifier: 
   skill:
-    title: Carpe diem
+    title: Carpe Diem
     description: Placing ([1]) destroys all ([2]) cards.
     passive: 0
     trigger: 1
@@ -21,14 +21,18 @@ MonoBehaviour:
     effect: 23
     firstCards: 13000000
     secondCards: 12000000
-    repeatable: 0
-    notRepeatableForOthers: 0
-    amount: 0
-    useSecondImage: 0
-    cancelShout: 
-    cancelDelay: 0
-    canTargetSame: 0
     iconSprite: {fileID: -1786412683, guid: 1f62efd971a4a4031946c67ad09c7c88, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
+    sound: {fileID: 8300000, guid: 60b8d18ed5c004a5fa2897f36610aec8, type: 3}
+    amount: 0
+    cancelShout: 
+    cancelDelay: 0
+    repeatable: 0
+    notRepeatableForOthers: 0
+    useSecondImage: 0
+    canTargetSame: 0
     anyTriggers: 0
+    isNotMarked: 0
+    usesRequirementForMarking: 0
+    canNotFizzle: 0
