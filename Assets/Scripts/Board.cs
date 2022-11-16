@@ -46,7 +46,7 @@ public class Board : MonoBehaviour
 
     private int level = 1;
     private int exp;
-    private int fieldSize = 7;
+    private int fieldSize = 9;
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
@@ -87,7 +87,7 @@ public class Board : MonoBehaviour
 
     private void UpdateAreaSize()
     {
-        playArea.size = Scale(new Vector3(fieldSize * 2 + 2, fieldSize * 2 + 2));
+        playArea.size = Scale(new Vector3(fieldSize * 2 - 1.5f, fieldSize * 2 - 2f));
     }
 
     public void MoveTarget()
@@ -274,12 +274,13 @@ public class Board : MonoBehaviour
 
     private void AddTile(int x, int y, bool pulse = true)
     {
-        if (x < -fieldSize || x > fieldSize || y < -fieldSize || y > fieldSize)
+        var diff = fieldSize - Mathf.Max(Mathf.Abs(x), Mathf.Abs(y));
+        if (diff < 3)
         {
             playArea.gameObject.SetActive(true);
-            return;
+            if (diff < 2) return;
         }
-        
+
         if (!grid.Get(x, y).IsWall) return;
         var tile = Instantiate(tilePrefab, transform);
         tile.Position = new Vector2Int(x, y);
