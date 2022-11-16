@@ -234,6 +234,7 @@ public class Card : MonoBehaviour
         board.PulseAt(transform.position);
         
         Flash();
+        Announce();
     }
 
     public void ReturnToHand()
