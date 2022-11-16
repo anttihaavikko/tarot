@@ -22,11 +22,18 @@ MonoBehaviour:
     effect: 3
     firstCards: 09000000
     secondCards: 
-    repeatable: 1
-    notRepeatableForOthers: 0
+    iconSprite: {fileID: -409514102, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 0}
+    sound: {fileID: 8300000, guid: 7bb04fda8a164435d97c41c718ddada8, type: 3}
     amount: 5
-    useSecondImage: 0
     cancelShout: Anxiety!
     cancelDelay: 0.2
+    repeatable: 1
+    notRepeatableForOthers: 0
+    useSecondImage: 0
     canTargetSame: 0
-    iconSprite: {fileID: -409514102, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    anyTriggers: 0
+    isNotMarked: 0
+    usesRequirementForMarking: 0
+    canNotFizzle: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fizzle
   m_EditorClassIdentifier: 
   skill:
-    title: Fizzle
+    title: Shilly-Shally
     description: Score ([X] points) when another (destiny) effect fails to (trigger).
     passive: 0
     trigger: 7
@@ -21,16 +21,18 @@ MonoBehaviour:
     effect: 9
     firstCards: 00000000
     secondCards: 
-    repeatable: 1
-    notRepeatableForOthers: 0
-    amount: 150
-    useSecondImage: 0
-    cancelShout: 
-    cancelDelay: 0
-    canTargetSame: 0
     iconSprite: {fileID: -367514726, guid: c45c071d97b0c4af8827c7521e72f1aa, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
+    sound: {fileID: 8300000, guid: af31cee1ac1454e30a677d6332cfbf6f, type: 3}
+    amount: 150
+    cancelShout: 
+    cancelDelay: 0
+    repeatable: 1
+    notRepeatableForOthers: 0
+    useSecondImage: 0
+    canTargetSame: 0
     anyTriggers: 1
     isNotMarked: 1
     usesRequirementForMarking: 0
+    canNotFizzle: 0

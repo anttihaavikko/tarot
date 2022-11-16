@@ -22,14 +22,18 @@ MonoBehaviour:
     effect: 9
     firstCards: 09000000
     secondCards: 
-    repeatable: 1
-    notRepeatableForOthers: 0
-    amount: 100
-    useSecondImage: 0
-    cancelShout: Anxiety!
-    cancelDelay: 0.2
-    canTargetSame: 0
     iconSprite: {fileID: -108116859, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
+    sound: {fileID: 8300000, guid: a77998631a4a14a5b94c972db1572ab3, type: 3}
+    amount: 100
+    cancelShout: Anxiety!
+    cancelDelay: 0.2
+    repeatable: 1
+    notRepeatableForOthers: 0
+    useSecondImage: 0
+    canTargetSame: 0
     anyTriggers: 0
+    isNotMarked: 0
+    usesRequirementForMarking: 0
+    canNotFizzle: 0
