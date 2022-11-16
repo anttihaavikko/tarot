@@ -83,6 +83,8 @@ public class Skills : MonoBehaviour
         {
             Remove(source);
         }
+        
+        skill.Announce(Vector3.zero);
     }
 
     private void Remove(Skill skill)
