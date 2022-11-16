@@ -31,16 +31,22 @@ public class Skill
     public SkillCondition condition;
     public SkillEffect effect;
     public List<CardType> firstCards, secondCards;
-    public bool repeatable;
-    public bool notRepeatableForOthers;
-    public int amount;
-    public bool useSecondImage;
-    public string cancelShout;
-    public float cancelDelay;
-    public bool canTargetSame;
     public Sprite iconSprite;
     public float triggerDelay;
     public SkillDefinition requirement;
+    
+    [Space]
+    public int amount;
+    
+    [Space]
+    public string cancelShout;
+    public float cancelDelay;
+    
+    [Space]
+    public bool repeatable;
+    public bool notRepeatableForOthers;
+    public bool useSecondImage;
+    public bool canTargetSame;
     public bool anyTriggers;
     public bool isNotMarked;
     public bool usesRequirementForMarking;
