@@ -170,6 +170,7 @@ public class Board : MonoBehaviour
         var card = Instantiate(cardPrefab, transform);
         card.Init(this, type);
         card.transform.position = pos;
+        card.Announce();
         if (pulse)
         {
             PulseAt(pos);   

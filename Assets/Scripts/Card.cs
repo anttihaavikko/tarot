@@ -18,6 +18,7 @@ public class Card : MonoBehaviour
     [SerializeField] private Draggable draggable;
     [SerializeField] private Pulsater pulsater;
     [SerializeField] private Material flashSMaterial, normalMaterial, darkFlashMaterial;
+    [SerializeField] private SoundCollection cardSounds;
 
     private Board board;
     private Shaker shaker;
@@ -106,6 +107,12 @@ public class Card : MonoBehaviour
     public string GetName()
     {
         return GetName(type);
+    }
+
+    public void Announce()
+    {
+        var sound = cardSounds.At((int)type);
+        AudioManager.Instance.PlayEffectAt(sound, transform.position);
     }
 
     public static string GetName(CardType type)

@@ -684,6 +684,7 @@ MonoBehaviour:
   flashSMaterial: {fileID: 2100000, guid: c68bb6318bfd54355ba25b0817137827, type: 2}
   normalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   darkFlashMaterial: {fileID: 2100000, guid: 0223fa7a52ae1480d99adaaef5c256f6, type: 2}
+  cardSounds: {fileID: 11400000, guid: caba13590707742dbb06bfb616398c8d, type: 2}
 --- !u!210 &4148702712765327948
 SortingGroup:
   m_ObjectHideFlags: 0
