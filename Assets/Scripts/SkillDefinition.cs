@@ -44,6 +44,7 @@ public class Skill
     public bool anyTriggers;
     public bool isNotMarked;
     public bool usesRequirementForMarking;
+    public bool canNotFizzle;
 
     private CardType firstCard, secondCard;
 
@@ -79,6 +80,7 @@ public class Skill
         anyTriggers = source.anyTriggers;
         isNotMarked = source.isNotMarked;
         usesRequirementForMarking = source.usesRequirementForMarking;
+        canNotFizzle = source.canNotFizzle;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -177,7 +179,8 @@ public enum SkillTrigger
     DefyDeath,
     FillGap,
     Transform,
-    AddSkill
+    AddSkill,
+    Fizzle
 }
 
 public enum SkillCondition

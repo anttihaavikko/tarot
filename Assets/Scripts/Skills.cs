@@ -350,6 +350,12 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(skill.cancelDelay);
             }
 
+            if (card)
+            {
+                Debug.Log($"{skill.title} fizzled");
+                yield return Trigger(SkillTrigger.Fizzle, card);   
+            }
+
             yield break;
         }
 

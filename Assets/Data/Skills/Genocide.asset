@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Screaming Bloody Murder
-    description: Instantly (destroy) every ([2]). Repeat everyt time you gain a (new
+    description: Instantly (destroy) every ([2]). Repeat every time you gain a (new
       destiny).
     passive: 0
     trigger: 6
