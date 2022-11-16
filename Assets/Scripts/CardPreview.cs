@@ -17,9 +17,14 @@ public class CardPreview : MonoBehaviour
     private GameObject current;
     private Appearer appearer;
 
-    private void Start()
+    private void Awake()
     {
         appearer = GetComponent<Appearer>();
+    }
+
+    public void MakeUnique()
+    {
+        pattern.material = Instantiate(pattern.material);
     }
 
     public void Show(CardType type)
