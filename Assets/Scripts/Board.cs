@@ -82,6 +82,11 @@ public class Board : MonoBehaviour
         
         canPlace = true;
 
+        UpdateAreaSize();
+    }
+
+    private void UpdateAreaSize()
+    {
         playArea.size = Scale(new Vector3(fieldSize * 2 + 2, fieldSize * 2 + 2));
     }
 
@@ -99,6 +104,12 @@ public class Board : MonoBehaviour
         {
             devMenu.SetActive(!devMenu.activeSelf);
         }
+    }
+
+    public void IncreaseAreaSize()
+    {
+        fieldSize++;
+        UpdateAreaSize();
     }
 
     public void ChangeDrawnTo(CardType type)

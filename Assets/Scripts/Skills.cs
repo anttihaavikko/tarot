@@ -77,6 +77,11 @@ public class Skills : MonoBehaviour
         {
             board.IncreaseHandSize();
         }
+        
+        if(skill.Matches(Passive.IncreaseSize))
+        {
+            board.IncreaseAreaSize();
+        }
 
         var doneRepeating = skills.Count(s => s.title == skill.title) >= skill.firstCards.Count;
         if (!skill.repeatable && (skill.notRepeatableForOthers || doneRepeating))

@@ -253,5 +253,6 @@ public enum Passive
     HandSize,
     MultiDrawShuffleReset,
     Replace,
-    FreeMove
+    FreeMove,
+    IncreaseSize
 }
