@@ -25,7 +25,7 @@ MonoBehaviour:
     iconSprite: {fileID: -2146485562, guid: 07e32a48bad264c0e9780b6eaaa3865b, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 5373a48fd9a4344adb36cb98d8f40014, type: 3}
     amount: -1000
     cancelShout: 
     cancelDelay: 0

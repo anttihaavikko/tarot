@@ -21,11 +21,18 @@ MonoBehaviour:
     effect: 4
     firstCards: 04000000
     secondCards: 00000000
-    repeatable: 0
-    notRepeatableForOthers: 0
+    iconSprite: {fileID: -1734278407, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 0}
+    sound: {fileID: 8300000, guid: cc65a7d909d474c12a6ed4ba6fbf2b5b, type: 3}
     amount: 0
-    useSecondImage: 0
     cancelShout: 
     cancelDelay: 0
+    repeatable: 0
+    notRepeatableForOthers: 0
+    useSecondImage: 0
     canTargetSame: 0
-    iconSprite: {fileID: -1734278407, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    anyTriggers: 0
+    isNotMarked: 0
+    usesRequirementForMarking: 0
+    canNotFizzle: 0
