@@ -355,16 +355,16 @@ public class Board : MonoBehaviour
         RepositionHand(false);
 
         Tweener.MoveToBounceOut(t, Scale(start.AsVector3), 0.1f);
-        var targetPos = cardPos;
-        var duration = 0.05f * Vector3.Distance(t.position, targetPos);
+        var duration = 0.05f * Vector3.Distance(t.position, cardPos);
         yield return new WaitForSeconds(0.1f);
-        Tweener.MoveToBounceOut(t, targetPos, duration);
+        Tweener.MoveToBounceOut(t, cardPos, duration);
 
         end.Value.Set(card);
         card.Lock();
         targetReached = false;
 
-        PulseAt(targetPos);
+        PulseAt(cardPos);
+        AudioManager.Instance.PlayEffectFromCollection(2, cardPos);
 
         yield return new WaitForSeconds(duration);
         

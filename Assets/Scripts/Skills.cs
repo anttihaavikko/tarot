@@ -199,7 +199,7 @@ public class Skills : MonoBehaviour
             SkillEffect.AddMultiForSlideLength => board.SlideLength < 1,
             SkillEffect.AddMultiplier => false,
             SkillEffect.AddScore => false,
-            SkillEffect.SpawnAround => false,
+            SkillEffect.SpawnAround => !board.HasEmptyNeighboursWithDiagonals(card),
             SkillEffect.LevelUp => false,
             SkillEffect.DestroySurrounding => !board.HasNeighboursWithDiagonals(card, skill),
             SkillEffect.DestroyNeighbours => !board.HasNeighbours(card, skill),
