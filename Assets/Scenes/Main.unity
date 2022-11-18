@@ -901,6 +901,9 @@ MonoBehaviour:
   handSpotPrefab: {fileID: 1645572278475050218, guid: 96f05f3f54f2b45cbbd9d468ef2f84e6, type: 3}
   tooltipper: {fileID: 296764685}
   playArea: {fileID: 297112761}
+  explosionSound: {fileID: 11400000, guid: ae2be1c64115d464ba4e991d259a45ea, type: 2}
+  transformSound: {fileID: 11400000, guid: 68de6020b475049758b3f43f4ccfc26d, type: 2}
+  placeSound: {fileID: 11400000, guid: 1253bc6c8c1b74280822c7c03aa96c6a, type: 2}
 --- !u!4 &296764683
 Transform:
   m_ObjectHideFlags: 0
@@ -4548,9 +4551,20 @@ MonoBehaviour:
   musics:
   - {fileID: 171540254}
   volume: 0.5
-  effects: []
+  effects:
+  - {fileID: 8300000, guid: 1c3edef3a73ee4bc6b7b9ec784b76363, type: 3}
+  - {fileID: 8300000, guid: 47c3defc12ac4459795aa7c6cc0cab7a, type: 3}
+  - {fileID: 8300000, guid: 27d6a4103304a47818fb59c83e38ee5e, type: 3}
+  - {fileID: 8300000, guid: 8d9531fdd0f134b11a349108d46150fb, type: 3}
+  - {fileID: 8300000, guid: 4926aa59542d04131ba0b3d9ea0ceda0, type: 3}
+  - {fileID: 8300000, guid: 25e58f659c7204c9ca7ef65d36637748, type: 3}
+  - {fileID: 8300000, guid: 57cf6fe56914c43c58c5537a056453d6, type: 3}
+  - {fileID: 8300000, guid: 0ad7985a8aa7f44758fdc29b19bd28f7, type: 3}
   soundCollections:
   - {fileID: 11400000, guid: caba13590707742dbb06bfb616398c8d, type: 2}
+  - {fileID: 11400000, guid: 4a5e649db35814509931216bead3090b, type: 2}
+  - {fileID: 11400000, guid: ed1e92e53c6ca4744b01d651646a6293, type: 2}
+  - {fileID: 11400000, guid: 32cf01edcd7954228887d82a5489dc11, type: 2}
 --- !u!4 &1355618496
 Transform:
   m_ObjectHideFlags: 0

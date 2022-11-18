@@ -7,6 +7,7 @@ using UnityEngine;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
+using AnttiStarterKit.ScriptableObjects;
 using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
 using TMPro;
@@ -33,6 +34,8 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform handSpotPrefab;
     [SerializeField] private CardTooltipper tooltipper;
     [SerializeField] private SpriteRenderer playArea;
+
+    [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
 
     private readonly InfiniteGrid<Tile> grid = new();
     private readonly List<Card> drawnCards = new();
@@ -307,7 +310,7 @@ public class Board : MonoBehaviour
             HidePreview();
             yield break;
         }
-        
+
         canPlace = false;
         grid.ResetSlide();
         justPlaced = card;
@@ -320,7 +323,7 @@ public class Board : MonoBehaviour
         var start = grid.GetClosest(p);
         var dir = start.Position - spot.Position;
         var end = grid.GetSlideTarget(start.Position.x, start.Position.y, dir);
-        
+
         if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y ||
             Vector3.Distance(p, spot.AsVector3) > MaxDropDistance)
         {
@@ -329,7 +332,7 @@ public class Board : MonoBehaviour
             canPlace = true;
             yield break;
         }
-        
+
         skills.UnMarkSkills();
         card.Placed();
         drawnCards.Remove(card);
@@ -342,6 +345,7 @@ public class Board : MonoBehaviour
         HideCardPreview();
         
         var cardPos = Scale(end.AsVector3);
+        placeSound.Play(cardPos);
 
         if (!skills.Trigger(Passive.FreeMove, card.GetCardType(), cardPos))
         {
@@ -535,6 +539,7 @@ public class Board : MonoBehaviour
             tile.Clear();
             ExplodeAt(p);
             c.gameObject.SetActive(false);
+            explosionSound.Play(p);
 
             var replaces = skills.GetTriggered(Passive.Replace, type, p);
             if (replaces.Any())
@@ -601,6 +606,7 @@ public class Board : MonoBehaviour
         foreach (var c in targets)
         {
             c.TransformTo(skill.GetTargetOrRandomType(), skill.title);
+            transformSound.Play(c.transform.position);
             yield return new WaitForSeconds(0.1f);
             yield return skills.Trigger(SkillTrigger.Transform, c);
             yield return new WaitForSeconds(0.1f);

@@ -14,7 +14,6 @@ namespace Editor
     {
         private Vector2 _listScroll, _playerScroll;
         private Texture2D _black;
-        private SoundComposition _object;
         private string _filter = "";
 
         private static Texture2D MakeTex(int width, int height, Color col)
@@ -36,13 +35,16 @@ namespace Editor
         {
             var amount = 0.15f;
             _black = MakeTex(600, 1, new Color(amount, amount, amount));
-            _object = (SoundComposition)target;
+            // _object = (SoundComposition)target;
 
-            if (_object && _object.rows == null)
-            {
-                _object.rows = new List<SoundCompositionRow>();
-                return;
-            }
+            var rows = serializedObject.FindProperty("rows");
+
+            // if (serializedObject.FindProperty("rows") == null)
+            // {
+            //     serializedObject.FindProperty("rows").arra
+            //     _object.rows = new List<SoundCompositionRow>();
+            //     return;
+            // }
 
             // _sounds = _object.rows.Select(r => r.clip).ToList();
             // _soundVolumes = _object.rows.Select(r => r.volume).ToList();
@@ -52,6 +54,9 @@ namespace Editor
         {
             // base.OnInspectorGUI();
             // DrawDefaultInspector();
+            
+            serializedObject.Update();
+            var rows =  serializedObject.FindProperty("rows");
 
             EditorGUILayout.BeginVertical(new GUIStyle
             {
@@ -90,11 +95,11 @@ namespace Editor
 
                 if (GUILayout.Button("Add", GUILayout.MaxWidth(70.0f)))
                 {
-                    _object.rows.Add(new SoundCompositionRow
-                    {
-                        clip = clip,
-                        volume = 1f
-                    });
+                    var index = serializedObject.FindProperty("rows").arraySize;
+                    serializedObject.FindProperty("rows").InsertArrayElementAtIndex(index);
+                    serializedObject.FindProperty("rows").GetArrayElementAtIndex(index).FindPropertyRelative("clip").objectReferenceInstanceIDValue = clip.GetInstanceID();
+                    serializedObject.FindProperty("rows").GetArrayElementAtIndex(index).FindPropertyRelative("volume").floatValue = 1f;
+                    serializedObject.ApplyModifiedProperties();
                 }
                 
                 EditorGUILayout.EndHorizontal();
@@ -131,22 +136,22 @@ namespace Editor
                 padding = new RectOffset(0, 0, 20, 0)
             });
 
-            for (var i = 0; i < _object.rows.Count; i++)
+            for (var i = 0; i < serializedObject.FindProperty("rows").arraySize; i++)
             {
-                var row = _object.rows[i];
+                var row = serializedObject.FindProperty("rows").GetArrayElementAtIndex(i);
                 GUILayout.BeginHorizontal();
                 if (GUILayout.Button("►", GUILayout.MaxWidth(20.0f)))
                 {
                     if (AudioManager.Instance)
                     {
-                        AudioManager.Instance.PlayEffectAt(row.clip, Vector3.zero, row.volume);
+                        AudioManager.Instance.PlayEffectAt((AudioClip)row.FindPropertyRelative("clip").objectReferenceValue, Vector3.zero, row.FindPropertyRelative("volume").floatValue);
                     }
                 }
-                GUILayout.Label(row.clip.name, EditorStyles.boldLabel, GUILayout.Width(80.0f));
-                row.volume = EditorGUILayout.Slider("", row.volume, 0f, 5f);
+                GUILayout.Label(row.FindPropertyRelative("clip").objectReferenceValue.name, EditorStyles.boldLabel, GUILayout.Width(80.0f));
+                row.FindPropertyRelative("volume").floatValue = EditorGUILayout.Slider("", row.FindPropertyRelative("volume").floatValue, 0f, 5f);
                 if (GUILayout.Button("X", GUILayout.MaxWidth(20.0f)))
                 {
-                    _object.rows.RemoveAt(i);
+                    serializedObject.FindProperty("rows").DeleteArrayElementAtIndex(i);
                 }
                 GUILayout.EndHorizontal();
             }
@@ -155,11 +160,13 @@ namespace Editor
             
             if (GUILayout.Button("► Play"))
             {
-                _object.Play();
+                ((SoundComposition)serializedObject.targetObject).Play();
             }
 
             EditorGUILayout.EndVertical();
             // GUILayout.EndScrollView();
+            
+            serializedObject.ApplyModifiedProperties();
         }
 
         public static T[] GetAtPath<T> (string path) {
