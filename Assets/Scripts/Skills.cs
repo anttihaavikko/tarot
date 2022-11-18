@@ -136,6 +136,7 @@ public class Skills : MonoBehaviour
         triggered.ForEach(skill =>
         {
             EffectManager.AddTextPopup(skill.title, pos.RandomOffset(1f), 0.8f);
+            skill.Announce(pos);
             skill.Trigger();
         });
         
@@ -150,6 +151,7 @@ public class Skills : MonoBehaviour
         triggered.ForEach(skill =>
         {
             EffectManager.AddTextPopup(skill.title, pos.RandomOffset(1f), 0.8f);
+            skill.Announce(pos);
             skill.Trigger();
         });
         
