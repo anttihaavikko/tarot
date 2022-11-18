@@ -12,6 +12,7 @@ namespace AnttiStarterKit.ScriptableObjects
     public class SoundComposition : ScriptableObject
     {
         public List<SoundCompositionRow> rows;
+        public List<SoundCollectionRow> collections;
 
         public void Play()
         {
@@ -27,6 +28,11 @@ namespace AnttiStarterKit.ScriptableObjects
             {
                 am.PlayEffectAt(row.clip, pos, row.volume * volume);
             }
+            
+            foreach (var row in collections)
+            {
+                am.PlayEffectFromCollection(row.collection, pos, row.volume * volume);
+            }
         }
     }
 
@@ -34,6 +40,13 @@ namespace AnttiStarterKit.ScriptableObjects
     public class SoundCompositionRow
     {
         public AudioClip clip;
+        public float volume = 1f;
+    }
+    
+    [Serializable]
+    public class SoundCollectionRow
+    {
+        public SoundCollection collection;
         public float volume = 1f;
     }
 }

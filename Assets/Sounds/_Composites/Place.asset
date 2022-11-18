@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Place
   m_EditorClassIdentifier: 
   rows:
-  - clip: {fileID: 8300000, guid: 4130d766abf9944bdab21a109350a737, type: 3}
-    volume: 1
   - clip: {fileID: 8300000, guid: 0ad7985a8aa7f44758fdc29b19bd28f7, type: 3}
     volume: 1
   - clip: {fileID: 8300000, guid: 57cf6fe56914c43c58c5537a056453d6, type: 3}
     volume: 0.49
+  collections:
+  - collection: {fileID: 11400000, guid: 32cf01edcd7954228887d82a5489dc11, type: 2}
+    volume: 2

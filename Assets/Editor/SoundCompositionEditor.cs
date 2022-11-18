@@ -49,6 +49,22 @@ namespace Editor
             // _sounds = _object.rows.Select(r => r.clip).ToList();
             // _soundVolumes = _object.rows.Select(r => r.volume).ToList();
         }
+        
+        public static List<T> FindAssetsByType<T>() where T : UnityEngine.Object
+        {
+            List<T> assets = new List<T>();
+            string[] guids = AssetDatabase.FindAssets(string.Format("t:{0}", typeof(T)));
+            for( int i = 0; i < guids.Length; i++ )
+            {
+                string assetPath = AssetDatabase.GUIDToAssetPath( guids[i] );
+                T asset = AssetDatabase.LoadAssetAtPath<T>( assetPath );
+                if( asset != null )
+                {
+                    assets.Add(asset);
+                }
+            }
+            return assets;
+        }
 
         public override void OnInspectorGUI()
         {
@@ -76,8 +92,39 @@ namespace Editor
                 }
             };
             
-            var clips = GetAtPath<AudioClip>("Sounds");
+            var collections = FindAssetsByType<SoundCollection>();
             var row = 0;
+            foreach (var collection in collections)
+            {
+                if (_filter.Length > 0 && !collection.name.Contains(_filter)) continue;
+                
+                EditorGUILayout.BeginHorizontal(row % 2 == 0 ? eventStyle : new GUIStyle());
+                EditorGUILayout.LabelField("★ " + collection.name);
+                
+                if (GUILayout.Button("►", GUILayout.MaxWidth(20.0f)))
+                {
+                    if (AudioManager.Instance)
+                    {
+                        AudioManager.Instance.PlayEffectFromCollection(collection, Vector3.zero, 1f);
+                    }
+                }
+
+                if (GUILayout.Button("Add", GUILayout.MaxWidth(70.0f)))
+                {
+                    var index = serializedObject.FindProperty("collections").arraySize;
+                    serializedObject.FindProperty("collections").InsertArrayElementAtIndex(index);
+                    serializedObject.FindProperty("collections").GetArrayElementAtIndex(index).FindPropertyRelative("collection").objectReferenceInstanceIDValue = collection.GetInstanceID();
+                    serializedObject.FindProperty("collections").GetArrayElementAtIndex(index).FindPropertyRelative("volume").floatValue = 1f;
+                    serializedObject.ApplyModifiedProperties();
+                }
+                
+                EditorGUILayout.EndHorizontal();
+
+                row++;
+            }
+            
+            var clips = GetAtPath<AudioClip>("Sounds");
+            row = 0;
             foreach (var clip in clips)
             {
                 if (_filter.Length > 0 && !clip.name.Contains(_filter)) continue;
@@ -135,6 +182,26 @@ namespace Editor
             {
                 padding = new RectOffset(0, 0, 20, 0)
             });
+            
+            for (var i = 0; i < serializedObject.FindProperty("collections").arraySize; i++)
+            {
+                var row = serializedObject.FindProperty("collections").GetArrayElementAtIndex(i);
+                GUILayout.BeginHorizontal();
+                if (GUILayout.Button("►", GUILayout.MaxWidth(20.0f)))
+                {
+                    if (AudioManager.Instance)
+                    {
+                        AudioManager.Instance.PlayEffectFromCollection((SoundCollection)row.FindPropertyRelative("collection").objectReferenceValue, Vector3.zero, row.FindPropertyRelative("volume").floatValue);
+                    }
+                }
+                GUILayout.Label("★ " + row.FindPropertyRelative("collection").objectReferenceValue.name, EditorStyles.boldLabel, GUILayout.Width(80.0f));
+                row.FindPropertyRelative("volume").floatValue = EditorGUILayout.Slider("", row.FindPropertyRelative("volume").floatValue, 0f, 5f);
+                if (GUILayout.Button("X", GUILayout.MaxWidth(20.0f)))
+                {
+                    serializedObject.FindProperty("collections").DeleteArrayElementAtIndex(i);
+                }
+                GUILayout.EndHorizontal();
+            }
 
             for (var i = 0; i < serializedObject.FindProperty("rows").arraySize; i++)
             {

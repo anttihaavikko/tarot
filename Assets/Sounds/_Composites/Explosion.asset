@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Explosion
   m_EditorClassIdentifier: 
   rows:
-  - clip: {fileID: 8300000, guid: b6368c16ecc204b898cf93892ea2706c, type: 3}
-    volume: 1.65
   - clip: {fileID: 8300000, guid: 47c3defc12ac4459795aa7c6cc0cab7a, type: 3}
     volume: 1
   - clip: {fileID: 8300000, guid: 27d6a4103304a47818fb59c83e38ee5e, type: 3}
@@ -25,3 +23,6 @@ MonoBehaviour:
     volume: 1
   - clip: {fileID: 8300000, guid: 25e58f659c7204c9ca7ef65d36637748, type: 3}
     volume: 1
+  collections:
+  - collection: {fileID: 11400000, guid: 4a5e649db35814509931216bead3090b, type: 2}
+    volume: 1.65
