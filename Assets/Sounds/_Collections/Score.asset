@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
   m_Name: Score
   m_EditorClassIdentifier: 
-  volume: 2.5
+  volume: 3
   clips:
   - {fileID: 8300000, guid: 2c3173758a86b4540aeb83c82f990491, type: 3}
   - {fileID: 8300000, guid: 54e2f1b5d779e42dd81c2492eb9e39e3, type: 3}
