@@ -354,6 +354,11 @@ public class Skills : MonoBehaviour
                 EffectManager.AddTextPopup(skill.cancelShout, p, 0.8f);
             }
 
+            if (skill.cancelSound)
+            {
+                AudioManager.Instance.PlayEffectAt(skill.cancelSound, p);
+            }
+
             if (skill.cancelDelay > 0)
             {
                 yield return new WaitForSeconds(skill.cancelDelay);

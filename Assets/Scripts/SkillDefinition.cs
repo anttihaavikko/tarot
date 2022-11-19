@@ -43,6 +43,7 @@ public class Skill
     [Space]
     public string cancelShout;
     public float cancelDelay;
+    public AudioClip cancelSound;
     
     [Space]
     public bool repeatable;
@@ -90,6 +91,7 @@ public class Skill
         usesRequirementForMarking = source.usesRequirementForMarking;
         canNotFizzle = source.canNotFizzle;
         sound = source.sound;
+        cancelSound = source.cancelSound;
     }
 
     public void Randomize(IEnumerable<Skill> skills)

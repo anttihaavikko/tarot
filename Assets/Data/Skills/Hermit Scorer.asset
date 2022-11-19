@@ -29,6 +29,7 @@ MonoBehaviour:
     amount: 100
     cancelShout: Anxiety!
     cancelDelay: 0.2
+    cancelSound: {fileID: 8300000, guid: 7e7bd5e99a8f147118e72ae9118bff4b, type: 3}
     repeatable: 1
     notRepeatableForOthers: 0
     useSecondImage: 0
