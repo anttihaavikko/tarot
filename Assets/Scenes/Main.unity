@@ -3645,8 +3645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd78f00156b840c092ce66dc032c7f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.01
-  speed: 2
+  amount: 0.05
+  speed: 3
 --- !u!1 &986983147
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,8 +5109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd78f00156b840c092ce66dc032c7f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.01
-  speed: 2
+  amount: 0.05
+  speed: 3
 --- !u!224 &1483259804 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 160017149719832046, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
@@ -5212,6 +5212,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 69577287a93d54fd784b7f5e6703f264, type: 2}
   - {fileID: 11400000, guid: 050afbd1856ed41a9a7d322af5dc6159, type: 2}
   - {fileID: 11400000, guid: 5518ad3d5c46c463ca4625110692baff, type: 2}
+  - {fileID: 11400000, guid: 170bc76fcbad24bd086dd1c108c05b3a, type: 2}
   board: {fileID: 296764682}
   skillContainer: {fileID: 1942875045}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}

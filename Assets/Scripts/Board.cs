@@ -69,6 +69,7 @@ public class Board : MonoBehaviour
     
     public bool IsActing => !canPlace;
     private bool IsDragging => drawnCards.Any(c => c.IsDragging);
+    private Vector3 MidPoint => cam.transform.position.WhereZ(0);
 
     private void Start()
     {
@@ -394,7 +395,7 @@ public class Board : MonoBehaviour
         {
             yield return new WaitForSeconds(0.75f);
             AudioManager.Instance.PlayEffectAt(8, Vector3.zero);
-            EffectManager.AddTextPopup("Last Move!", cam.transform.position.WhereZ(0), 1.2f);
+            EffectManager.AddTextPopup("Last Move!", MidPoint, 1.2f);
             effectCamera.BaseEffect(0.3f);
             moveShaker.Shake();
             yield return new WaitForSeconds(0.5f);
@@ -553,8 +554,9 @@ public class Board : MonoBehaviour
         var extraMulti = doubles ? 2 : 1;
 
         var amt = extraMulti * amount;
-        scoreDisplay.Add(amt, useMulti && amount > 0);
-        var shown = amt * (useMulti && amount > 0 ? scoreDisplay.Multi : 1);
+        var willUseMulti = useMulti && (amount > 0 || !skills.Trigger(Passive.NoNegativeMulti, MidPoint));
+        scoreDisplay.Add(amt, willUseMulti);
+        var shown = amt * (willUseMulti ? scoreDisplay.Multi : 1);
         EffectManager.AddTextPopup(shown.AsScore(), pos.RandomOffset(1f), 1.3f);
         
         AudioManager.Instance.PlayEffectFromCollection(5, pos);

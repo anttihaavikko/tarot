@@ -256,5 +256,6 @@ public enum Passive
     MultiDrawShuffleReset,
     Replace,
     FreeMove,
-    IncreaseSize
+    IncreaseSize,
+    NoNegativeMulti
 }
