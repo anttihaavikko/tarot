@@ -28,6 +28,11 @@ public class CardPreview : MonoBehaviour
         pattern.material = Instantiate(pattern.material);
     }
 
+    public void Show()
+    {
+        appearer.Show();
+    }
+
     public void Show(CardType type)
     {
         title.text = Card.GetName(type);

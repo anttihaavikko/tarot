@@ -16,12 +16,16 @@ public class Skills : MonoBehaviour
     [SerializeField] private Transform skillContainer;
     [SerializeField] private SkillIcon iconPrefab;
     [SerializeField] private List<SkillPick> skillPicks;
-    [SerializeField] private Appearer title, rerollButton;
+    [SerializeField] private Appearer title, rerollButton, toggleButton;
+    [SerializeField] private CardTooltipper tooltipper;
 
     private List<Skill> skillPool;
     private bool picking;
     private readonly List<Skill> skills = new();
     private int rerolls;
+    private bool shown;
+
+    public bool IsViewingBoard => picking && !shown;
 
     private void Awake()
     {
@@ -47,11 +51,35 @@ public class Skills : MonoBehaviour
         StartCoroutine(DoReroll());
     }
 
+    public void Toggle()
+    {
+        shown = !shown;
+        toggleButton.ShowWithText(shown ? "SHOW BOARD" : "RETURN", 0);
+        
+        if (!shown)
+        {
+            title.Hide();
+            rerollButton.Hide();
+            skillPicks.ForEach(s => s.Hide());
+            return;
+        }
+        
+        if (rerolls > 0)
+        {
+            rerollButton.Show();
+        }
+        
+        tooltipper.Clear();
+        title.Show();
+        skillPicks.ForEach(s => s.Show());
+    }
+
     private IEnumerator DoReroll()
     {
         rerolls--;
         AudioManager.Instance.PlayEffectAt(12, Vector3.zero);
         title.Hide();
+        toggleButton.ShowAfter(0.2f);
         rerollButton.Hide();
         skillPicks.ForEach(s => s.Hide());
         yield return new WaitForSeconds(1f);
@@ -65,8 +93,10 @@ public class Skills : MonoBehaviour
         {
             rerolls = skills.Count(s => s.Matches(Passive.Reroll));   
         }
-        
+
         title.Show();
+        toggleButton.ShowAfter(0.2f);
+        shown = true;
 
         if (rerolls > 0)
         {
@@ -83,7 +113,9 @@ public class Skills : MonoBehaviour
 
     public void Pick()
     {
+        shown = false;
         title.Hide();
+        toggleButton.Hide();
         rerollButton.Hide();
         skillPicks.ForEach(s => s.Hide());
     }

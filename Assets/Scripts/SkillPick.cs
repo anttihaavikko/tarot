@@ -40,4 +40,9 @@ public class SkillPick : MonoBehaviour
     {
         preview.Hide();
     }
+
+    public void Show()
+    {
+        preview.Show();
+    }
 }

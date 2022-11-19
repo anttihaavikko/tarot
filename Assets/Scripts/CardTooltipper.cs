@@ -33,6 +33,7 @@ public class CardTooltipper : MonoBehaviour
 
     public void Clear()
     {
+        board.HideCardPreview();
         current = null;
     }
 }
