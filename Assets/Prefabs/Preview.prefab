@@ -1316,6 +1316,7 @@ MonoBehaviour:
   title: {fileID: 160017149565620323}
   bg: {fileID: 160017147789799148}
   pattern: {fileID: 160017148601590955}
+  radial: {fileID: 160017148666181462}
   images:
   - {fileID: 6686947322036122995}
   - {fileID: 4819464010094204386}
@@ -1341,6 +1342,7 @@ MonoBehaviour:
   - {fileID: 8099559233867177256}
   colors: {fileID: 11400000, guid: 14052a9de047f4f2bb55a553680cf200, type: 2}
   patternColors: {fileID: 11400000, guid: d773f85a9214c40b585b3dc8d075a4ee, type: 2}
+  radialColors: {fileID: 11400000, guid: 3172983e81f674aedb41a6fc5136e6c1, type: 2}
 --- !u!114 &160017149719832018
 MonoBehaviour:
   m_ObjectHideFlags: 0

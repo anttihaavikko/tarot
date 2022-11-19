@@ -11,8 +11,9 @@ public class CardPreview : MonoBehaviour
     [SerializeField] private TMP_Text title;
     [SerializeField] private Image bg;
     [SerializeField] private RawImage pattern;
+    [SerializeField] private Image radial;
     [SerializeField] private List<GameObject> images;
-    [SerializeField] private ColorCollection colors, patternColors;
+    [SerializeField] private ColorCollection colors, patternColors, radialColors;
 
     private GameObject current;
     private Appearer appearer;
@@ -41,6 +42,7 @@ public class CardPreview : MonoBehaviour
         bg.color = colors.Get((int)type);
         pattern.color = patternColors.Get((int)type);
         pattern.material.SetColor("_Color", pattern.color);
+        radial.color = radialColors.Get((int)type);
         pattern.gameObject.SetActive(false);
         pattern.gameObject.SetActive(true);
         appearer.Show();

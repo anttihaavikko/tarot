@@ -29,6 +29,8 @@ namespace Editor
             EditorGUILayout.ColorField(firstColor * secondColor);
             EditorGUILayout.LabelField("Subtract");
             EditorGUILayout.ColorField(firstColor - secondColor);
+            EditorGUILayout.LabelField("Average");
+            EditorGUILayout.ColorField((firstColor + secondColor) * 0.5f);
         }
     }
 }

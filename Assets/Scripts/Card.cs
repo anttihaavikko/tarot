@@ -13,7 +13,7 @@ public class Card : MonoBehaviour
 {
     [SerializeField] private TMP_Text title, number;
     [SerializeField] private SpriteCollection cardSprites;
-    [SerializeField] private ColorCollection cardColors, patternColors;
+    [SerializeField] private ColorCollection cardColors, patternColors, radialColors;
     [SerializeField] private SpriteRenderer sprite, bg, pattern, radial;
     [SerializeField] private Draggable draggable;
     [SerializeField] private Pulsater pulsater;
@@ -97,6 +97,7 @@ public class Card : MonoBehaviour
         sprite.sprite = cardSprites.Get((int)t);
         bg.color = cardColors.Get((int)t);
         pattern.color = patternColors.Get((int)t);
+        radial.color = radialColors.Get((int)t);
         number.text = GetNumber();
     }
 
