@@ -260,5 +260,6 @@ public enum Passive
     FreeMove,
     IncreaseSize,
     NoNegativeMulti,
-    Reroll
+    Reroll,
+    StopsOnTarget
 }

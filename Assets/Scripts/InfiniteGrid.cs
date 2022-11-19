@@ -128,14 +128,22 @@ public class InfiniteGrid<T> where T : GridTile
         BehindSpot = default;
     }
 
-    public GridSpot GetSlideTarget(int x, int y, Vector2Int dir)
+    public List<GridSpot> GetSlidePath(int x, int y, Vector2Int dir)
     {
-        var next = Get(x + dir.x, y + dir.y);
-        CollisionTarget = next.IsOccupied ? next.Value : default;
-        BehindSpot = next.IsEmpty ? Get(x, y).Value : BehindSpot;
-        return next.IsWall || !next.IsEmpty ? Get(x, y) : GetSlideTarget(next.Position.x, next.Position.y, dir);
+        var path = new List<GridSpot> { Get(x, y) };
+
+        while (true)
+        {
+            var next = Get(x + dir.x, y + dir.y);
+            CollisionTarget = next.IsOccupied ? next.Value : default;
+            BehindSpot = next.IsEmpty ? Get(x, y).Value : BehindSpot;
+            if (next.IsWall || !next.IsEmpty) return path;
+            path.Add(next);
+            x = next.Position.x;
+            y = next.Position.y;
+        }
     }
-    
+
     public List<GridSpot> GetAll()
     {
         return items.Values.ToList();

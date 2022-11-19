@@ -267,9 +267,11 @@ public class Board : MonoBehaviour
         var spot = grid.GetClosestEdge(p);
         var start = grid.GetClosest(p);
         var dir = start.Position - spot.Position;
-        var end = grid.GetSlideTarget(start.Position.x, start.Position.y, dir);
+        var path = grid.GetSlidePath(start.Position.x, start.Position.y, dir);
+        var end = path.LastOrDefault();
 
-        if (Vector3.Distance(p, spot.AsVector3) > MaxDropDistance || 
+        if (!path.Any() || 
+            Vector3.Distance(p, spot.AsVector3) > MaxDropDistance || 
             start.Position.x != spot.Position.x && start.Position.y != spot.Position.y)
         {
             HidePreview();
@@ -323,6 +325,14 @@ public class Board : MonoBehaviour
         StartCoroutine(DoSlide(card));
     }
 
+    private InfiniteGrid<Tile>.GridSpot GetSlideTarget(Card card, int x, int y, Vector2Int dir)
+    {
+        var slidePath = grid.GetSlidePath(x, y, dir);
+        return skills.Trigger(Passive.StopsOnTarget, card)
+            ? slidePath.FirstOrDefault(s => s.Value == targetTile) ?? slidePath.Last()
+            : slidePath.Last();
+    }
+
     private IEnumerator DoSlide(Card card)
     {
         if (!canPlace)
@@ -345,7 +355,8 @@ public class Board : MonoBehaviour
         var spot = grid.GetClosestEdge(p);
         var start = grid.GetClosest(p);
         var dir = start.Position - spot.Position;
-        var end = grid.GetSlideTarget(start.Position.x, start.Position.y, dir);
+
+        var end = GetSlideTarget(card, start.Position.x, start.Position.y, dir);
 
         if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y ||
             Vector3.Distance(p, spot.AsVector3) > MaxDropDistance)
@@ -856,9 +867,10 @@ public class Board : MonoBehaviour
             card.ClearVisits();
             yield break;
         }
-
+        
         var t = card.transform;
-        var slideTarget = grid.GetSlideTarget(cp.x, cp.y, dir / Mathf.RoundToInt(dir.magnitude));
+        var slideTarget = GetSlideTarget(card, cp.x, cp.y, dir / Mathf.RoundToInt(dir.magnitude));
+        
         var sp = slideTarget.Value.Position;
         
         if ((sp - cp).magnitude < 1 || card.HasVisited(sp))
