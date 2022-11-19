@@ -126,6 +126,7 @@ namespace AnttiStarterKit.Managers
 			tp.Play(content);
 			var go = tp.gameObject;
 			go.SetActive(true);
+			AudioManager.Instance.PlayEffectFromCollection(2, position);
 			return go;
 		}
 	}
