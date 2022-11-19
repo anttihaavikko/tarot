@@ -54,6 +54,7 @@ public class Skill
     public bool isNotMarked;
     public bool usesRequirementForMarking;
     public bool canNotFizzle;
+    public bool skipAnnounce;
 
     private CardType firstCard, secondCard;
 
@@ -92,6 +93,7 @@ public class Skill
         canNotFizzle = source.canNotFizzle;
         sound = source.sound;
         cancelSound = source.cancelSound;
+        skipAnnounce = source.skipAnnounce;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -181,12 +183,12 @@ public class Skill
         return HasTargetType ? TargetType : Card.GetRandomType();
     }
 
-    public void Announce(Vector3 position)
+    public void Announce(Vector3 position, bool obtained = false)
     {
-        if (sound)
-        {
-            AudioManager.Instance.PlayEffectAt(sound, position);
-        }
+        if (skipAnnounce && !obtained) return;
+        EffectManager.AddTextPopup(title, position.RandomOffset(1f), 0.8f);
+        if (!sound) return;
+        AudioManager.Instance.PlayEffectAt(sound, position);
     }
 }
 
@@ -257,5 +259,6 @@ public enum Passive
     Replace,
     FreeMove,
     IncreaseSize,
-    NoNegativeMulti
+    NoNegativeMulti,
+    Reroll
 }

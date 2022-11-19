@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
@@ -15,10 +16,12 @@ public class Skills : MonoBehaviour
     [SerializeField] private Transform skillContainer;
     [SerializeField] private SkillIcon iconPrefab;
     [SerializeField] private List<SkillPick> skillPicks;
+    [SerializeField] private Appearer title, rerollButton;
 
     private List<Skill> skillPool;
     private bool picking;
     private readonly List<Skill> skills = new();
+    private int rerolls;
 
     private void Awake()
     {
@@ -39,17 +42,49 @@ public class Skills : MonoBehaviour
         }
     }
 
-    public IEnumerator Present()
+    public void Reroll()
     {
+        StartCoroutine(DoReroll());
+    }
+
+    private IEnumerator DoReroll()
+    {
+        rerolls--;
+        AudioManager.Instance.PlayEffectAt(12, Vector3.zero);
+        title.Hide();
+        rerollButton.Hide();
+        skillPicks.ForEach(s => s.Hide());
+        yield return new WaitForSeconds(1f);
+        AudioManager.Instance.PlayEffectAt(9, Vector3.zero);
+        yield return Present(true);
+    }
+
+    public IEnumerator Present(bool isReroll = false)
+    {
+        if (!isReroll)
+        {
+            rerolls = skills.Count(s => s.Matches(Passive.Reroll));   
+        }
+        
+        title.Show();
+
+        if (rerolls > 0)
+        {
+            rerollButton.ShowWithText($"REROLL ({rerolls})", 0.3f);
+        }
+        
         var options = Take(skillPicks.Count);
         skillPicks.ForEach(s => s.Setup(options[skillPicks.IndexOf(s)]));
         picking = true;
 
+        if (isReroll) yield break;
         while (picking) yield return null;
     }
 
     public void Pick()
     {
+        title.Hide();
+        rerollButton.Hide();
         skillPicks.ForEach(s => s.Hide());
     }
 
@@ -89,7 +124,7 @@ public class Skills : MonoBehaviour
             Remove(source);
         }
         
-        skill.Announce(Vector3.zero);
+        skill.Announce(Vector3.zero, true);
     }
 
     private void Remove(Skill skill)
@@ -135,7 +170,6 @@ public class Skills : MonoBehaviour
 
         triggered.ForEach(skill =>
         {
-            EffectManager.AddTextPopup(skill.title, pos.RandomOffset(1f), 0.8f);
             skill.Announce(pos);
             skill.Trigger();
         });
@@ -150,7 +184,6 @@ public class Skills : MonoBehaviour
 
         triggered.ForEach(skill =>
         {
-            EffectManager.AddTextPopup(skill.title, pos.RandomOffset(1f), 0.8f);
             skill.Announce(pos);
             skill.Trigger();
         });
@@ -372,8 +405,7 @@ public class Skills : MonoBehaviour
 
             yield break;
         }
-
-        EffectManager.AddTextPopup(skill.title, p, 0.8f);
+        
         skill.Announce(p);
 
         yield return new WaitForSeconds(skill.triggerDelay);

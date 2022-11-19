@@ -187,7 +187,7 @@ TextureImporter:
         width: 577
         height: 749
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,7 +208,7 @@ TextureImporter:
         width: 530
         height: 637
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,7 +229,7 @@ TextureImporter:
         width: 498
         height: 611
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,7 +250,7 @@ TextureImporter:
         width: 599
         height: 579
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -258,6 +258,111 @@ TextureImporter:
       bones: []
       spriteID: aeb77773766cc47789bcf5b34cbac56d
       internalID: 1159883073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reroll
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 576
+        width: 783
+        height: 692
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44b6bf5f555943ecadc27c21a348d93
+      internalID: 1101289505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hunt_score
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 5
+        width: 507
+        height: 731
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbbacd92267314797ab4f57012280054
+      internalID: -1802922660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: list_up
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 68
+        width: 667
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf887b8bbc62b459681faae8d1fbf739
+      internalID: -690829276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: true_friend
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 37
+        width: 605
+        height: 567
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff90c255d767b4b9c9b652a7a8b33a40
+      internalID: -161750360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: trilby
+      rect:
+        serializedVersion: 2
+        x: 2062
+        y: 65
+        width: 617
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a3499ca86644933a75a5dc4b14954e
+      internalID: -1448675154
       vertices: []
       indices: 
       edges: []
@@ -273,11 +378,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      list_up: -690829276
       fizzle: -367514726
+      hunt_score: -1802922660
+      true_friend: -161750360
       no_negatives: 2122239935
+      trilby: -1448675154
       strike: -687841705
       enlarge: 1159883073
       genocide: 1043322991
+      reroll: 1101289505
       transform_mover: -698657382
       moon_rotate: 904226086
   spritePackingTag: 
