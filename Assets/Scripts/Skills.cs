@@ -339,7 +339,7 @@ public class Skills : MonoBehaviour
                 board.AddToDeck(skill.TargetType, skill.amount);
                 break;
             case SkillEffect.DestroyClosest:
-                yield return board.DestroyCards(board.GetClosest(card, skill.TargetType, ExtenderCount(skill)), card);
+                yield return board.DestroyCards(board.GetClosest(card, skill.TargetType, 1 + ExtenderCount(skill)), card);
                 break;
             case SkillEffect.MoveTarget:
                 board.MoveTarget();
