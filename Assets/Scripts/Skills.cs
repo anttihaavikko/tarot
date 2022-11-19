@@ -78,7 +78,7 @@ public class Skills : MonoBehaviour
         rerolls--;
         AudioManager.Instance.PlayEffectAt(12, Vector3.zero);
         title.Hide();
-        toggleButton.ShowAfter(0.2f);
+        toggleButton.Hide();
         rerollButton.Hide();
         skillPicks.ForEach(s => s.Hide());
         yield return new WaitForSeconds(1f);
