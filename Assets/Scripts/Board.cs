@@ -62,6 +62,7 @@ public class Board : MonoBehaviour
     private Card drawnCard;
     private bool canPlace;
     private int soundIndex;
+    private bool alreadyOver;
     
     public Card JustTouched { get; private set; }
     public int SlideLength { get; private set; }
@@ -104,7 +105,13 @@ public class Board : MonoBehaviour
     public void MoveTarget()
     {
         target.gameObject.SetActive(true);
-        targetTile = grid.RandomFree().Value;
+        var spot = grid.RandomFree();
+        if (spot == default)
+        {
+            GameOver();
+            return;
+        }
+        targetTile = spot.Value;
         target.position = targetTile.transform.position;
         PulseAt(target.position);
     }
@@ -246,6 +253,11 @@ public class Board : MonoBehaviour
         previewLane.gameObject.SetActive(false);
         prevDir = Vector2Int.zero;
         prevPos = Vector2Int.zero;
+    }
+
+    private bool NoFreeSpots()
+    {
+        return grid.GetClosest(Vector3.zero) == default;
     }
 
     public void Preview(Card card)
@@ -401,6 +413,13 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
+        if (NoFreeSpots())
+        {
+            yield return new WaitForSeconds(1f);
+            GameOver();
+            yield break;
+        }
+
         if (movesLeft > 0)
         {
             yield return new WaitForSeconds(0.5f);
@@ -414,6 +433,8 @@ public class Board : MonoBehaviour
 
     private void GameOver()
     {
+        if (alreadyOver) return;
+        alreadyOver = true;
         effectCamera.BaseEffect(0.5f);
         AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
         gameOverContainer.SetActive(true);

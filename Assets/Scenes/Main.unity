@@ -3645,8 +3645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd78f00156b840c092ce66dc032c7f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.05
-  speed: 3
+  amount: 7
+  speed: 10
 --- !u!1 &986983147
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,8 +5109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd78f00156b840c092ce66dc032c7f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.05
-  speed: 3
+  amount: 7
+  speed: 10
 --- !u!224 &1483259804 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 160017149719832046, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}

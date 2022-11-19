@@ -47,7 +47,7 @@ public class InfiniteGrid<T> where T : GridTile
 
     public GridSpot RandomFree()
     {
-        return items.Values.Where(a => a.IsEmpty).OrderBy(_ => Random.value).First();
+        return items.Values.Where(a => a.IsEmpty).OrderBy(_ => Random.value).FirstOrDefault();
     }
 
     public GridSpot GetClosest(Vector3 pos)
@@ -55,7 +55,7 @@ public class InfiniteGrid<T> where T : GridTile
         return items.Values
             .Where(v => v.IsEmpty && IsOnEdge(v.Position.x, v.Position.y))
             .OrderBy(v => Vector3.Distance(pos, v.AsVector3))
-            .First();
+            .FirstOrDefault();
     }
     
     public GridSpot GetClosestEdge(Vector3 pos)
