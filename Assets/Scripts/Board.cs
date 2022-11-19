@@ -68,7 +68,7 @@ public class Board : MonoBehaviour
     public Tile BehindSpot { get; private set; }
     
     public bool IsActing => !canPlace;
-    private bool IsDragging => drawnCards.Any(c => c.IsDragging);
+    public bool IsDragging => drawnCards.Any(c => c.IsDragging);
     private Vector3 MidPoint => cam.transform.position.WhereZ(0);
 
     private void Start()
