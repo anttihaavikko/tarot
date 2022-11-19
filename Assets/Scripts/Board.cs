@@ -34,6 +34,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Transform handSpotPrefab;
     [SerializeField] private CardTooltipper tooltipper;
     [SerializeField] private SpriteRenderer playArea;
+    [SerializeField] private Shaker moveShaker;
 
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
 
@@ -131,6 +132,8 @@ public class Board : MonoBehaviour
         t.parent = hand;
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
+        
+        placeSound.Play(hand.position);
 
         var transforms = skills.Get(Passive.TransformOnDraw, type).ToList();
         if (transforms.Any())
@@ -379,12 +382,29 @@ public class Board : MonoBehaviour
         
         UpdateMoveDisplay();
 
+        if (movesLeft == 1)
+        {
+            yield return new WaitForSeconds(0.75f);
+            AudioManager.Instance.PlayEffectAt(8, Vector3.zero);
+            EffectManager.AddTextPopup("Last Move!", cam.transform.position.WhereZ(0), 1.2f);   
+            moveShaker.Shake();
+            yield return new WaitForSeconds(0.5f);
+        }
+
         if (movesLeft > 0)
         {
             yield return new WaitForSeconds(0.5f);
             canPlace = true;
             AddCard();
+            yield break;
         }
+        
+        Invoke(nameof(GameOver), 1.5f);
+    }
+
+    private void GameOver()
+    {
+        AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
     }
 
     public void PulseAt(Vector3 pos, bool lines = true)
@@ -468,6 +488,8 @@ public class Board : MonoBehaviour
             level++;
 
             yield return new WaitForSeconds(0.5f);
+            
+            AudioManager.Instance.PlayEffectAt(9, Vector3.zero);
 
             yield return skills.Present();
 
@@ -493,7 +515,9 @@ public class Board : MonoBehaviour
 
     private void UpdateMoveDisplay()
     {
-        moveCounters.ForEach(t => t.text = $"{movesLeft} MOVES LEFT");
+        var color = movesLeft < 2 ? "#E0CA3C" : "#FBFFFE";
+        moveCounters[0].text = $"{movesLeft} MOVES LEFT";
+        moveCounters[1].text = $"<color={color}>{movesLeft}</color> MOVES LEFT";
     }
 
     public void AddMulti(Vector3 pos, int amount = 1)
@@ -809,10 +833,12 @@ public class Board : MonoBehaviour
         card.MarkVisit();
 
         PulseAt(pos);
+        placeSound.Play(pos);
 
         yield return new WaitForSeconds(duration);
         
         HideTarget(card.Tile);
+        AudioManager.Instance.PlayEffectFromCollection(2, pos);
 
         yield return skills.Trigger(SkillTrigger.Place, card);
         

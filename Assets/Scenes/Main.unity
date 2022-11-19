@@ -901,6 +901,7 @@ MonoBehaviour:
   handSpotPrefab: {fileID: 1645572278475050218, guid: 96f05f3f54f2b45cbbd9d468ef2f84e6, type: 3}
   tooltipper: {fileID: 296764685}
   playArea: {fileID: 297112761}
+  moveShaker: {fileID: 1562096005}
   explosionSound: {fileID: 11400000, guid: ae2be1c64115d464ba4e991d259a45ea, type: 2}
   transformSound: {fileID: 11400000, guid: 68de6020b475049758b3f43f4ccfc26d, type: 2}
   placeSound: {fileID: 11400000, guid: 1253bc6c8c1b74280822c7c03aa96c6a, type: 2}
@@ -4560,6 +4561,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 25e58f659c7204c9ca7ef65d36637748, type: 3}
   - {fileID: 8300000, guid: 57cf6fe56914c43c58c5537a056453d6, type: 3}
   - {fileID: 8300000, guid: 0ad7985a8aa7f44758fdc29b19bd28f7, type: 3}
+  - {fileID: 8300000, guid: a81ee6af0d46e419f8e65d52f9d5a183, type: 3}
+  - {fileID: 8300000, guid: de454631f549e4119a7916274f9f339c, type: 3}
+  - {fileID: 8300000, guid: f3a580678c2584f0bbd63e636f49bf74, type: 3}
   soundCollections:
   - {fileID: 11400000, guid: caba13590707742dbb06bfb616398c8d, type: 2}
   - {fileID: 11400000, guid: 4a5e649db35814509931216bead3090b, type: 2}
@@ -5094,6 +5098,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1562096004}
+  - component: {fileID: 1562096005}
   m_Layer: 5
   m_Name: Moves
   m_TagString: Untagged
@@ -5123,6 +5128,22 @@ RectTransform:
   m_AnchoredPosition: {x: 5.500244, y: -131.4}
   m_SizeDelta: {x: 366.008, y: 64.809}
   m_Pivot: {x: 1, y: 1}
+--- !u!114 &1562096005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562096003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9566f86d52934ac3b3620665f8d044f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.1
+  rotationAmount: 2
+  duration: 0.2
+  decreasing: 1
 --- !u!1 &1665657990
 GameObject:
   m_ObjectHideFlags: 0
