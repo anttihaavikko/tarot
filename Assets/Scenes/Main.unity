@@ -4565,7 +4565,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a81ee6af0d46e419f8e65d52f9d5a183, type: 3}
   - {fileID: 8300000, guid: de454631f549e4119a7916274f9f339c, type: 3}
   - {fileID: 8300000, guid: f3a580678c2584f0bbd63e636f49bf74, type: 3}
-  - {fileID: 8300000, guid: 606843bfef3c44f43991f8c911b2b7e0, type: 3}
+  - {fileID: 8300000, guid: db592a3445ffc4c8f898cf1215452d40, type: 3}
   soundCollections:
   - {fileID: 11400000, guid: caba13590707742dbb06bfb616398c8d, type: 2}
   - {fileID: 11400000, guid: 4a5e649db35814509931216bead3090b, type: 2}

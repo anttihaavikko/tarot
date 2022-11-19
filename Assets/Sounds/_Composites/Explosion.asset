@@ -16,13 +16,13 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 47c3defc12ac4459795aa7c6cc0cab7a, type: 3}
     volume: 1
   - clip: {fileID: 8300000, guid: 27d6a4103304a47818fb59c83e38ee5e, type: 3}
-    volume: 1
+    volume: 0.37
   - clip: {fileID: 8300000, guid: 8d9531fdd0f134b11a349108d46150fb, type: 3}
     volume: 0.46
   - clip: {fileID: 8300000, guid: 4926aa59542d04131ba0b3d9ea0ceda0, type: 3}
     volume: 1
   - clip: {fileID: 8300000, guid: 25e58f659c7204c9ca7ef65d36637748, type: 3}
-    volume: 1
+    volume: 1.71
   collections:
   - collection: {fileID: 11400000, guid: 4a5e649db35814509931216bead3090b, type: 2}
-    volume: 1.65
+    volume: 1.68
