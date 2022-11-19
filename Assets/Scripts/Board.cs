@@ -329,7 +329,6 @@ public class Board : MonoBehaviour
     private InfiniteGrid<Tile>.GridSpot GetSlideTarget(Card card, int x, int y, Vector2Int dir)
     {
         PreviousDirection = dir;
-        Debug.Log(dir);
         var slidePath = grid.GetSlidePath(x, y, dir);
         return skills.Trigger(Passive.StopsOnTarget, card)
             ? slidePath.FirstOrDefault(s => s.Value == targetTile) ?? slidePath.Last()
