@@ -84,7 +84,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _Amount: 0.00040119668
+    - _Amount: 0.00008980801
     - _Blend: 0
     - _BlueOffset: 1
     - _BumpScale: 1

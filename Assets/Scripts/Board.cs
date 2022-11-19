@@ -313,6 +313,7 @@ public class Board : MonoBehaviour
             card.ReturnToHand();
             ShowPreview(card.GetCardType());
             HidePreview();
+            placeSound.Play(card.transform.position);
             yield break;
         }
 
@@ -333,6 +334,7 @@ public class Board : MonoBehaviour
             Vector3.Distance(p, spot.AsVector3) > MaxDropDistance)
         {
             card.ReturnToHand();
+            placeSound.Play(card.transform.position);
             ShowPreview(card.GetCardType());
             canPlace = true;
             yield break;
