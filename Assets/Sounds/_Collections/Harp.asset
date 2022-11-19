@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Harp
+  m_EditorClassIdentifier: 
+  volume: 1
+  clips:
+  - {fileID: 8300000, guid: fbd5523370a2d4851875029fd84a86fe, type: 3}
+  - {fileID: 8300000, guid: 88dde62e2c688436fae1b88af9bc2e32, type: 3}
+  - {fileID: 8300000, guid: 43583f8c4b9f342dc8a4c8f1e99f0f6e, type: 3}
+  - {fileID: 8300000, guid: ed80f0ad92e0d428c83e26d2ecb107af, type: 3}
+  - {fileID: 8300000, guid: 4b76d804d55364e9d9c9bce880e84044, type: 3}
+  - {fileID: 8300000, guid: 8bc37a66f3f3847bdbba0cb469d83c98, type: 3}
+  - {fileID: 8300000, guid: 2d4f305ed5a2f4813ae34f033f6346f1, type: 3}
+  - {fileID: 8300000, guid: 6023dfcca187e4e5da908765b1ab4823, type: 3}

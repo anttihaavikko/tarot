@@ -902,6 +902,7 @@ MonoBehaviour:
   tooltipper: {fileID: 296764685}
   playArea: {fileID: 297112761}
   moveShaker: {fileID: 1562096005}
+  harpSounds: {fileID: 11400000, guid: 1b47c8c12ce8347a885f2b3741b4696d, type: 2}
   explosionSound: {fileID: 11400000, guid: ae2be1c64115d464ba4e991d259a45ea, type: 2}
   transformSound: {fileID: 11400000, guid: 68de6020b475049758b3f43f4ccfc26d, type: 2}
   placeSound: {fileID: 11400000, guid: 1253bc6c8c1b74280822c7c03aa96c6a, type: 2}
@@ -4564,6 +4565,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a81ee6af0d46e419f8e65d52f9d5a183, type: 3}
   - {fileID: 8300000, guid: de454631f549e4119a7916274f9f339c, type: 3}
   - {fileID: 8300000, guid: f3a580678c2584f0bbd63e636f49bf74, type: 3}
+  - {fileID: 8300000, guid: 606843bfef3c44f43991f8c911b2b7e0, type: 3}
   soundCollections:
   - {fileID: 11400000, guid: caba13590707742dbb06bfb616398c8d, type: 2}
   - {fileID: 11400000, guid: 4a5e649db35814509931216bead3090b, type: 2}
@@ -4571,6 +4573,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32cf01edcd7954228887d82a5489dc11, type: 2}
   - {fileID: 11400000, guid: 4069d810b2d4c4dc38f5b8b8e0c8fd20, type: 2}
   - {fileID: 11400000, guid: f0974a3b410874cb187cfc7c77628386, type: 2}
+  - {fileID: 11400000, guid: 1b47c8c12ce8347a885f2b3741b4696d, type: 2}
 --- !u!4 &1355618496
 Transform:
   m_ObjectHideFlags: 0

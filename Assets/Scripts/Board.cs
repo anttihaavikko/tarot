@@ -35,6 +35,7 @@ public class Board : MonoBehaviour
     [SerializeField] private CardTooltipper tooltipper;
     [SerializeField] private SpriteRenderer playArea;
     [SerializeField] private Shaker moveShaker;
+    [SerializeField] private SoundCollection harpSounds;
 
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
 
@@ -59,6 +60,7 @@ public class Board : MonoBehaviour
 
     private Card drawnCard;
     private bool canPlace;
+    private int soundIndex;
     
     public Card JustTouched { get; private set; }
     public int SlideLength { get; private set; }
@@ -459,12 +461,18 @@ public class Board : MonoBehaviour
 
     private IEnumerator ReachedTarget(Vector3 cardPos)
     {
-        if (movesLeft == MoveCount - 1)
+        AudioManager.Instance.PlayEffectAt(harpSounds.At(soundIndex), cardPos, 0.5f, false);
+
+        var reachedWithFirst = movesLeft == MoveCount - 1;
+        
+        if (reachedWithFirst)
         {
             var doubles = skills.Trigger(Passive.MultiIncreaseAndDecreaseMoves, cardPos);
             AddMulti(cardPos, doubles ? 2 : 1);
             EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
         }
+        
+        soundIndex = reachedWithFirst ? (soundIndex + 1) % 7 : 0;
 
         yield return new WaitForSeconds(0.2f);
 
@@ -477,7 +485,10 @@ public class Board : MonoBehaviour
 
         if (exp == level)
         {
+            yield return new WaitForSeconds(0.5f);
+            
             var amount = grid.GetEmptyCount() * 10;
+            AudioManager.Instance.PlayEffectAt(11, cardPos, false);
 
             yield return new WaitForSeconds(0.5f);
 
