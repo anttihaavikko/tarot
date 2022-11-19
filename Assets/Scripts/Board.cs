@@ -539,7 +539,7 @@ public class Board : MonoBehaviour
             tile.Clear();
             ExplodeAt(p);
             c.gameObject.SetActive(false);
-            explosionSound.Play(p);
+            explosionSound.Play(p, 0.6f);
 
             var replaces = skills.GetTriggered(Passive.Replace, type, p);
             if (replaces.Any())
@@ -575,6 +575,7 @@ public class Board : MonoBehaviour
 
     private void DrawLines(Vector3 from, List<Card> targets, bool lightFlash = false, bool darkFlash = false)
     {
+        AudioManager.Instance.PlayEffectFromCollection(4, from);
         var color = new Color(1f, 1f, 1f, 0.75f);
         effectCamera.BaseEffect(0.2f);
         
