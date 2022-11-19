@@ -38,8 +38,7 @@ namespace AnttiStarterKit.Animations
                 _durationLeft -= Time.deltaTime;
                 transform.position = _durationLeft > 0 ? _startPos + GetOffset(AdjustedAmount()) : _startPos;
                 var angle = _durationLeft > 0 ? _startAngle + AdjustedAngleAmount() : _startAngle;
-                transform.localRotation = Quaternion.Euler(0, 0, angle); 
-                
+                transform.localRotation = Quaternion.Euler(0, 0, angle);
                 yield return null;
             }
         }

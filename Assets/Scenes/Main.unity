@@ -6085,7 +6085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 0.1
-  rotationAmount: 2
+  rotationAmount: 0
   duration: 0.2
   decreasing: 1
 --- !u!1 &1665657990
