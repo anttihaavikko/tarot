@@ -819,7 +819,7 @@ public class Board : MonoBehaviour
         var neighbours = GetNeighbours(tile, false).ToList();
         return skills.HasExtender(skill) && 
                neighbours.Count == 3 && 
-               grid.GetNeighbours(tile.Position.x, tile.Position.y).All(n => n.IsOccupied || GetNeighbours(n.Value, false).Count() >= 3);
+               grid.GetNeighbours(tile.Position.x, tile.Position.y).All(n => n.IsOccupied || !n.IsWall && GetNeighbours(n.Value, false).Count() >= 3);
     }
 
     public List<Tile> GetHoles(Skill skill)
