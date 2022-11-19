@@ -29,6 +29,8 @@ public class Card : MonoBehaviour
     public Tile Tile { get; set; }
     public bool IsDying { get; private set; }
 
+    public bool IsDragging => draggable.IsDragging;
+
     private void Awake()
     {
         shaker = GetComponent<Shaker>();

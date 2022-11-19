@@ -36,7 +36,7 @@ public class Board : MonoBehaviour
     [SerializeField] private SpriteRenderer playArea;
     [SerializeField] private Shaker moveShaker;
     [SerializeField] private SoundCollection harpSounds;
-
+    
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
 
     private readonly InfiniteGrid<Tile> grid = new();
@@ -67,6 +67,7 @@ public class Board : MonoBehaviour
     public Tile BehindSpot { get; private set; }
     
     public bool IsActing => !canPlace;
+    private bool IsDragging => drawnCards.Any(c => c.IsDragging);
 
     private void Start()
     {

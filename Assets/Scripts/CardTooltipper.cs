@@ -24,7 +24,7 @@ public class CardTooltipper : MonoBehaviour
         if (!hit) return;
         
         var card = hit.GetComponent<Card>();
-        if (card && card != current)
+        if (card && card != current && !card.IsDragging)
         {
             current = card;
             board.ShowPreview(card.GetCardType());
