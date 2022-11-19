@@ -17,7 +17,6 @@ public class Skills : MonoBehaviour
     [SerializeField] private SkillIcon iconPrefab;
     [SerializeField] private List<SkillPick> skillPicks;
     [SerializeField] private Appearer title, rerollButton, toggleButton;
-    [SerializeField] private CardTooltipper tooltipper;
 
     private List<Skill> skillPool;
     private bool picking;
@@ -69,7 +68,7 @@ public class Skills : MonoBehaviour
             rerollButton.Show();
         }
         
-        tooltipper.Clear();
+        board.HideCardPreview();
         title.Show();
         skillPicks.ForEach(s => s.Show());
     }
