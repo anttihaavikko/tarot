@@ -51,7 +51,7 @@ public class Board : MonoBehaviour
 
     private int level = 1;
     private int exp;
-    private int fieldSize = 9;
+    private int fieldSize = 7;
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
@@ -488,7 +488,7 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             
             var amount = grid.GetEmptyCount() * 10;
-            AudioManager.Instance.PlayEffectAt(11, cardPos, false);
+            AudioManager.Instance.PlayEffectAt(11, cardPos, 0.7f, false);
 
             yield return new WaitForSeconds(0.5f);
 
