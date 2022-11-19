@@ -284,6 +284,7 @@ public class Skills : MonoBehaviour
             SkillEffect.DestroyAll => !board.GetAll(skill.TargetType).Any(),
             SkillEffect.ScoreForNeighbours => !board.GetNeighbours(card, skill, true).Any(),
             SkillEffect.ScoreForNeighboursNoDiagonals => !board.GetNeighbours(card, skill, false).Any(),
+            SkillEffect.SpawnOnSides => board.PreviousDirection.magnitude < 1 || !board.HasEmptySides(card),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -391,6 +392,11 @@ public class Skills : MonoBehaviour
                 break;
             case SkillEffect.ScoreForNeighboursNoDiagonals:
                 yield return board.ScoreFor(card, skill, false);
+                break;
+            case SkillEffect.SpawnOnSides:
+                yield return new WaitForSeconds(0.4f);
+                yield return board.SpawnOnSides(card, skill.TargetType);
+                yield return new WaitForSeconds(0.25f);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

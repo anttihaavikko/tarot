@@ -238,7 +238,8 @@ public enum SkillEffect
     TransformColumn,
     DestroyAll,
     ScoreForNeighbours,
-    ScoreForNeighboursNoDiagonals
+    ScoreForNeighboursNoDiagonals,
+    SpawnOnSides
 }
 
 public enum Passive

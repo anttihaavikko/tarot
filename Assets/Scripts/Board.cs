@@ -67,6 +67,7 @@ public class Board : MonoBehaviour
     public Card JustTouched { get; private set; }
     public int SlideLength { get; private set; }
     public Tile BehindSpot { get; private set; }
+    public Vector2Int PreviousDirection { get; private set; }
     
     public bool IsActing => !skills.IsViewingBoard && !canPlace;
     public bool IsDragging => drawnCards.Any(c => c.IsDragging);
@@ -327,6 +328,8 @@ public class Board : MonoBehaviour
 
     private InfiniteGrid<Tile>.GridSpot GetSlideTarget(Card card, int x, int y, Vector2Int dir)
     {
+        PreviousDirection = dir;
+        Debug.Log(dir);
         var slidePath = grid.GetSlidePath(x, y, dir);
         return skills.Trigger(Passive.StopsOnTarget, card)
             ? slidePath.FirstOrDefault(s => s.Value == targetTile) ?? slidePath.Last()
@@ -470,6 +473,7 @@ public class Board : MonoBehaviour
     {
         JustTouched = null;
         BehindSpot = null;
+        PreviousDirection = Vector2Int.zero;
 
         foreach (var tile in tiles)
         {
@@ -704,11 +708,36 @@ public class Board : MonoBehaviour
         var targets = grid.GetNeighboursWithDiagonals(card.Tile.Position.x, card.Tile.Position.y, reach).Where(t => t.IsEmpty).ToList();
         yield return SpawnCards(type, targets.Select(t => t.Value).ToList(), card.transform.position);
     }
+
+    public IEnumerator SpawnOnSides(Card card, CardType type)
+    {
+        yield return SpawnCards(type, GetSides(card).ToList(), card.transform.position);
+    }
     
     public IEnumerator SpawnOnNeighbours(Card card, CardType type)
     {
         var targets = grid.GetNeighbours(card.Tile.Position.x, card.Tile.Position.y).Where(t => t.IsEmpty).ToList();
         yield return SpawnCards(type, targets.Select(t => t.Value).ToList(), card.transform.position);
+    }
+
+    public bool HasEmptySides(Card card)
+    {
+        return GetSides(card).Any(t => t.IsEmpty);
+    }
+
+    private IEnumerable<Tile> GetSides(Card card)
+    {
+        var p = card.Tile.Position;
+        var left = grid.Get(p.x + PreviousDirection.y, p.y + PreviousDirection.x);
+        var right = grid.Get(p.x - PreviousDirection.y, p.y - PreviousDirection.x);
+        return new[] { left, right }.Where(t => t.IsEmpty).Select(t => t.Value);
+    }
+
+    private bool IsOnSide(Tile tile, Tile behind)
+    {
+        if (SlideLength == 0) return true;
+        if (!behind) return false;
+        return tile.Position.x != behind.Position.x && tile.Position.y != behind.Position.y;
     }
 
     public bool HasEmptyNeighbours(Card card)
