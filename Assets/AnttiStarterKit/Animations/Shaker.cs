@@ -10,7 +10,8 @@ namespace AnttiStarterKit.Animations
         [SerializeField] private float rotationAmount = 1f;
         [SerializeField] private float duration = 0.1f;
         [SerializeField] private bool decreasing;
-    
+        [SerializeField] private bool useLocalPosition;
+
         private Vector3 _startPos;
         private float _durationLeft;
         private float _startAngle;
@@ -20,7 +21,7 @@ namespace AnttiStarterKit.Animations
         {
             _t = transform;
             _durationLeft = duration;
-            _startPos = _t.position;
+            _startPos = useLocalPosition ? _t.localPosition : _t.position;
             _startAngle = _t.rotation.eulerAngles.z;
             StartCoroutine(ShakeRoutine());
         }
@@ -31,12 +32,23 @@ namespace AnttiStarterKit.Animations
             Shake();
         }
 
+        private void PositionTo(Vector3 pos)
+        {
+            if (useLocalPosition)
+            {
+                _t.localPosition = pos;
+                return;
+            }
+
+            _t.position = pos;
+        }
+
         private IEnumerator ShakeRoutine()
         {
             while (_durationLeft > 0)
             {
                 _durationLeft -= Time.deltaTime;
-                transform.position = _durationLeft > 0 ? _startPos + GetOffset(AdjustedAmount()) : _startPos;
+                PositionTo(_durationLeft > 0 ? _startPos + GetOffset(AdjustedAmount()) : _startPos);
                 var angle = _durationLeft > 0 ? _startAngle + AdjustedAngleAmount() : _startAngle;
                 transform.localRotation = Quaternion.Euler(0, 0, angle);
                 yield return null;

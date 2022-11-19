@@ -746,7 +746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.797121, y: -15.030025}
+  m_AnchoredPosition: {x: -14.797119, y: -15.030025}
   m_SizeDelta: {x: 345.708, y: 81.523}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &247579246
@@ -6214,6 +6214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562096004}
   - component: {fileID: 1562096005}
+  - component: {fileID: 1562096006}
   m_Layer: 5
   m_Name: Moves
   m_TagString: Untagged
@@ -6240,9 +6241,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.500244, y: -131.4}
+  m_AnchoredPosition: {x: -82.341705, y: -156.67549}
   m_SizeDelta: {x: 366.008, y: 64.809}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0.76, y: 0.61}
 --- !u!114 &1562096005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6255,10 +6256,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9566f86d52934ac3b3620665f8d044f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.001
+  amount: 7
   rotationAmount: 1
   duration: 0.2
   decreasing: 1
+  useLocalPosition: 1
+--- !u!114 &1562096006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562096003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6364cdfe2743a996f4871ac72b7e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 113
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1562096005}
+        m_TargetAssemblyTypeName: AnttiStarterKit.Animations.Shaker, StarterKit
+        m_MethodName: Shake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1665657990
 GameObject:
   m_ObjectHideFlags: 0

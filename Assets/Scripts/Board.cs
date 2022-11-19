@@ -421,8 +421,8 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
             AudioManager.Instance.PlayEffectAt(8, Vector3.zero);
             EffectManager.AddTextPopup("Last Move!", MidPoint, 1.2f);
-            effectCamera.BaseEffect(0.3f);
             moveShaker.Shake();
+            effectCamera.BaseEffect(0.3f);
             yield return new WaitForSeconds(0.5f);
         }
 
