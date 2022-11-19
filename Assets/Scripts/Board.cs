@@ -36,7 +36,8 @@ public class Board : MonoBehaviour
     [SerializeField] private SpriteRenderer playArea;
     [SerializeField] private Shaker moveShaker;
     [SerializeField] private SoundCollection harpSounds;
-    
+    [SerializeField] private GameObject gameOverContainer;
+
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
 
     private readonly InfiniteGrid<Tile> grid = new();
@@ -71,6 +72,8 @@ public class Board : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.TargetPitch = 1;
+        
         for (var x = -1; x < 2; x++)
         {
             for (var y = -1; y < 2; y++)
@@ -410,7 +413,10 @@ public class Board : MonoBehaviour
 
     private void GameOver()
     {
+        effectCamera.BaseEffect(0.5f);
         AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
+        gameOverContainer.SetActive(true);
+        AudioManager.Instance.TargetPitch = 0;
     }
 
     public void PulseAt(Vector3 pos, bool lines = true)
