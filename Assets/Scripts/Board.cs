@@ -535,6 +535,8 @@ public class Board : MonoBehaviour
         scoreDisplay.Add(amt, useMulti && amount > 0);
         var shown = amt * (useMulti && amount > 0 ? scoreDisplay.Multi : 1);
         EffectManager.AddTextPopup(shown.AsScore(), pos.RandomOffset(1f), 1.3f);
+        
+        AudioManager.Instance.PlayEffectFromCollection(5, pos);
     }
 
     public bool IsPlacedAlone()
