@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,6 +22,7 @@ namespace AnttiStarterKit.Animations
             _durationLeft = duration;
             _startPos = _t.position;
             _startAngle = _t.rotation.eulerAngles.z;
+            StartCoroutine(ShakeRoutine());
         }
 
         public void ShakeForever()
@@ -29,14 +31,17 @@ namespace AnttiStarterKit.Animations
             Shake();
         }
 
-        private void Update()
+        private IEnumerator ShakeRoutine()
         {
-            if (!(_durationLeft > 0)) return;
-        
-            _durationLeft -= Time.deltaTime;
-            transform.position = _durationLeft > 0 ? _startPos + GetOffset(AdjustedAmount()) : _startPos;
-            var angle = _durationLeft > 0 ? _startAngle + AdjustedAngleAmount() : _startAngle;
-            transform.localRotation = Quaternion.Euler(0, 0, angle); 
+            while (_durationLeft > 0)
+            {
+                _durationLeft -= Time.deltaTime;
+                transform.position = _durationLeft > 0 ? _startPos + GetOffset(AdjustedAmount()) : _startPos;
+                var angle = _durationLeft > 0 ? _startAngle + AdjustedAngleAmount() : _startAngle;
+                transform.localRotation = Quaternion.Euler(0, 0, angle); 
+                
+                yield return null;
+            }
         }
 
         private float AdjustedAmount()
