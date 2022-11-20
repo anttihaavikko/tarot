@@ -14,7 +14,6 @@ public class Deck : MonoBehaviour
 {
     [SerializeField] private SortingGroup cardPrefab;
     [SerializeField] private Board board;
-    [SerializeField] private Transform dealPos;
 
     private Stack<CardType> deck = new();
     private readonly List<Transform> cards = new();
@@ -23,6 +22,8 @@ public class Deck : MonoBehaviour
 
     private const int DeckSize = 22;
     private const float DealDelay = 0.03f;
+
+    private Vector3 DealPos => transform.position + board.SkyPoint.magnitude * Vector3.down + Vector3.left;
 
     private void Awake()
     {
@@ -60,7 +61,7 @@ public class Deck : MonoBehaviour
         {
             var t = cards[i].transform;
             var p = t.position;
-            t.position = dealPos.position.RandomOffset(1f);
+            t.position = DealPos.RandomOffset(1f);
             t.gameObject.SetActive(true);
             Tweener.MoveToBounceOut(t, p, 0.3f, i * DealDelay);
             this.StartCoroutine(() => AudioManager.Instance.PlayEffectFromCollection(3, p), i * DealDelay);
