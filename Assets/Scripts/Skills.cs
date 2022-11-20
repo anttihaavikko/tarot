@@ -405,12 +405,12 @@ public class Skills : MonoBehaviour
 
     public bool HasExtender(Skill skill)
     {
-        return skills.Any(s => s.requirement && s.requirement.Is(skill));
+        return skills.Any(s => s.passive == Passive.Extender && s.requirement && s.requirement.Is(skill));
     }
 
     private int ExtenderCount(Skill skill)
     {
-        return skills.Count(s => s.requirement && s.requirement.Is(skill));
+        return skills.Count(s => s.passive == Passive.Extender && s.requirement && s.requirement.Is(skill));
     }
 
     private IEnumerator Act(Skill skill, Vector3 pos, Card card = null)

@@ -201,7 +201,8 @@ public enum SkillTrigger
     FillGap,
     Transform,
     AddSkill,
-    Fizzle
+    Fizzle,
+    Kill
 }
 
 public enum SkillCondition

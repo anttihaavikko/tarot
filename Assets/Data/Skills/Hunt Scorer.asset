@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Hunt Extender
+  m_Name: Hunt Scorer
   m_EditorClassIdentifier: 
   skill:
-    title: Double Whammy
-    description: ([R]) destroys an (additional) target.
-    passive: 8
-    trigger: 0
+    title: Dressed to Kill
+    description: ([R]) kill from ([1]) also scores ([X] points).
+    passive: 0
+    trigger: 8
     condition: 0
-    effect: 0
+    effect: 9
     firstCards: 0200000005000000
     secondCards: 
-    iconSprite: {fileID: -2132673831, guid: f2cc5fa39c5b14aa09e66e815370184c, type: 3}
-    triggerDelay: 0
+    iconSprite: {fileID: -1802922660, guid: c45c071d97b0c4af8827c7521e72f1aa, type: 3}
+    triggerDelay: 0.3
     requirement: {fileID: 11400000, guid: 398dd203cc9ee4dbdaf6dd0395db3d4d, type: 2}
-    sound: {fileID: 8300000, guid: ea58fe2d923284ae5a65f4ef1dfe3448, type: 3}
-    amount: 0
+    sound: {fileID: 8300000, guid: 0cad69dc7c1724c9db701d0e1c85439e, type: 3}
+    amount: 200
     cancelShout: 
     cancelDelay: 0
     cancelSound: {fileID: 0}
@@ -35,6 +35,6 @@ MonoBehaviour:
     canTargetSame: 0
     anyTriggers: 0
     isNotMarked: 0
-    usesRequirementForMarking: 1
+    usesRequirementForMarking: 0
     canNotFizzle: 0
     skipAnnounce: 0

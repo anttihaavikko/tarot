@@ -653,6 +653,11 @@ public class Board : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 yield return SpawnCards(replaces.First().TargetType, new List<Tile> { tile }, hand.position);
             }
+
+            if (source)
+            {
+                yield return skills.Trigger(SkillTrigger.Kill, source);
+            }
             
             yield return new WaitForSeconds(0.2f);
         }
