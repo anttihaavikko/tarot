@@ -65,6 +65,12 @@ public class Card : MonoBehaviour
     {
         shadow.gameObject.SetActive(false);
         transform.localScale = originalSize;
+        RandomizeRotation();
+    }
+
+    public void RandomizeRotation()
+    {
+        transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-2f, 2f));
     }
 
     private void Picked()
@@ -72,6 +78,7 @@ public class Card : MonoBehaviour
         shadow.gameObject.SetActive(true);
         originalSize = transform.localScale;
         transform.localScale *= 1.1f;
+        RandomizeRotation();
         board.HideCardPreview();
     }
 
@@ -253,6 +260,7 @@ public class Card : MonoBehaviour
         board.PulseAt(transform.position);
         
         Flash();
+        RandomizeRotation();
         // Announce();
     }
 

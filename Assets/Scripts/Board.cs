@@ -147,6 +147,7 @@ public class Board : MonoBehaviour
         t.parent = hand;
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
+        drawnCard.RandomizeRotation();
         
         placeSound.Play(hand.position);
 
@@ -480,6 +481,7 @@ public class Board : MonoBehaviour
             if (!tile.IsEmpty) continue;
             var card = CreateCard(type, tile.transform.position);
             card.Lock();
+            card.RandomizeRotation();
             tile.Set(card);
             HideTarget(card.Tile);
             DrawLines(lineStart, new List<Card>{ card });
