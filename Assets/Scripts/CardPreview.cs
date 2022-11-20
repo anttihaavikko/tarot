@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.ScriptableObjects;
 using TMPro;
@@ -26,6 +27,13 @@ public class CardPreview : MonoBehaviour
     public void MakeUnique()
     {
         pattern.material = Instantiate(pattern.material);
+
+        var pics = images.Select(i => i.GetComponent<Image>()).ToList();
+        var mat = Instantiate(pics[0].material);
+        mat.SetFloat("_Offset", Random.value * 100f);
+        mat.SetFloat("_Speed", Random.Range(0.4f, 0.6f));
+        mat.SetFloat("_Amount", Random.Range(0.04f, 0.06f));
+        pics.ForEach(p => p.material = mat);
     }
 
     public void Show()
