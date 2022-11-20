@@ -19,6 +19,7 @@ public class Card : MonoBehaviour
     [SerializeField] private Pulsater pulsater;
     [SerializeField] private Material flashSMaterial, normalMaterial, darkFlashMaterial;
     [SerializeField] private SoundCollection cardSounds;
+    [SerializeField] private Transform shadow;
 
     private Board board;
     private Shaker shaker;
@@ -60,13 +61,15 @@ public class Card : MonoBehaviour
         this.StartCoroutine(() => sprite.material = pattern.material = normalMaterial, 0.2f);
     }
 
-    private void ResetSize()
+    private void ResetPicked()
     {
+        shadow.gameObject.SetActive(false);
         transform.localScale = originalSize;
     }
 
     private void Picked()
     {
+        shadow.gameObject.SetActive(true);
         originalSize = transform.localScale;
         transform.localScale *= 1.1f;
         board.HideCardPreview();
@@ -74,7 +77,7 @@ public class Card : MonoBehaviour
 
     public void Placed()
     {
-        ResetSize();
+        ResetPicked();
         draggable.pick -= Picked;
     }
 
@@ -91,6 +94,9 @@ public class Card : MonoBehaviour
         if (board)
         {
             board.Preview(this);
+            var p = transform.position;
+            var diff = Vector3.MoveTowards(p, Vector3.zero, 0.2f);
+            shadow.position = p + diff.normalized * 0.2f;
         }
     }
 
@@ -252,7 +258,7 @@ public class Card : MonoBehaviour
 
     public void ReturnToHand()
     {
-        ResetSize();
+        ResetPicked();
         draggable.Return();
     }
 
