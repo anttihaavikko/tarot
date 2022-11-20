@@ -1033,6 +1033,6 @@ public class Board : MonoBehaviour
         }
         
         scoreDisplay.ResetMulti();
-        EffectManager.AddTextPopup($"BAD LUCK!", pos.RandomOffset(0.5f) + Vector3.down, 0.9f);
+        EffectManager.AddTextPopup("BAD LUCK!", pos.RandomOffset(0.5f) + Vector3.down, 0.9f);
     }
 }
