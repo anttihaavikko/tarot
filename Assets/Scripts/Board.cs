@@ -104,17 +104,16 @@ public class Board : MonoBehaviour
 
     private void SetupDaily()
     {
-        if (DailyState.Instance.IsDaily)
-        {
-            DailyState.Instance.Seed();
+        if (!DailyState.Instance.IsDaily) return;
+        
+        DailyState.Instance.Seed();
 
-            fieldSize = Random.Range(4, 10);
-            var skillCount = Random.Range(DailyState.MinSkills, DailyState.MaxSkills + 1);
+        fieldSize = Random.Range(4, 10);
+        var skillCount = Random.Range(DailyState.MinSkills, DailyState.MaxSkills + 1);
             
-            for (var i = 0; i < skillCount; i++)
-            {
-                skills.AddRandom();
-            }
+        for (var i = 0; i < skillCount; i++)
+        {
+            skills.AddRandom();
         }
     }
 
