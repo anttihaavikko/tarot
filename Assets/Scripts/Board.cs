@@ -52,7 +52,7 @@ public class Board : MonoBehaviour
 
     private int level = 1;
     private int exp;
-    private int fieldSize = 7;
+    private int fieldSize = 4;
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
@@ -72,6 +72,8 @@ public class Board : MonoBehaviour
     public bool IsActing => !skills.IsViewingBoard && !canPlace;
     public bool IsDragging => drawnCards.Any(c => c.IsDragging);
     private Vector3 MidPoint => cam.transform.position.WhereZ(0);
+
+    public int ShownBoardSize => fieldSize + 2;
 
     private void Start()
     {
@@ -109,7 +111,7 @@ public class Board : MonoBehaviour
         var spot = grid.RandomFree();
         if (spot == default)
         {
-            GameOver();
+            GameOver(true);
             return;
         }
         targetTile = spot.Value;
@@ -430,7 +432,7 @@ public class Board : MonoBehaviour
         if (NoFreeSpots())
         {
             yield return new WaitForSeconds(1f);
-            GameOver();
+            GameOver(false);
             yield break;
         }
 
@@ -443,13 +445,30 @@ public class Board : MonoBehaviour
             yield break;
         }
         
-        Invoke(nameof(GameOver), 1.5f);
+        yield return new WaitForSeconds(1.5f);
+        GameOver(false);
     }
 
-    private void GameOver()
+    private void GameOver(bool filled)
     {
         if (alreadyOver) return;
         alreadyOver = true;
+        StartCoroutine(ShowGameOver(filled));
+    }
+
+    private IEnumerator ShowGameOver(bool filled)
+    {
+        if (filled)
+        {
+            yield return new WaitForSeconds(1f);
+            effectCamera.BaseEffect(0.3f);
+            EffectManager.AddTextPopup("Full Board Bonus!", MidPoint, 1.5f);
+            AudioManager.Instance.PlayEffectAt(13, MidPoint);
+            yield return new WaitForSeconds(0.2f);
+            AddScore(scoreDisplay.Total, MidPoint, false);
+            yield return new WaitForSeconds(2f);         
+        }
+        
         effectCamera.BaseEffect(0.5f);
         AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
         gameOverContainer.SetActive(true);
