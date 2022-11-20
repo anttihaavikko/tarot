@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Spawn Sides
+  m_Name: Spawn Sides Church
   m_EditorClassIdentifier: 
   skill:
-    title: Child's Play
+    title: Goody Two-Shoes
     description: Spawn ([2]) on both sides of placed ([1]).
     passive: 0
     trigger: 1
     condition: 0
     effect: 26
-    firstCards: 06000000
-    secondCards: 06000000
-    iconSprite: {fileID: 307348820, guid: 8d48dd2df5ca34a19a1ae4603948f1d1, type: 3}
+    firstCards: 0500000002000000
+    secondCards: 0500000002000000
+    iconSprite: {fileID: 1819956519, guid: 36f50c6a977d04576891735e7cbb2339, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
-    sound: {fileID: 8300000, guid: 2c52ce1ad5d814d0fa8f34dc9ac14f59, type: 3}
+    sound: {fileID: 8300000, guid: a773fa9d8d3e14001aebd46cfef0249a, type: 3}
     amount: 0
     cancelShout: 
     cancelDelay: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 0
-    canTargetSame: 1
+    canTargetSame: 0
     anyTriggers: 0
     isNotMarked: 0
     usesRequirementForMarking: 0

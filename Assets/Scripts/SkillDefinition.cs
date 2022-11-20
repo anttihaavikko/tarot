@@ -240,7 +240,8 @@ public enum SkillEffect
     DestroyAll,
     ScoreForNeighbours,
     ScoreForNeighboursNoDiagonals,
-    SpawnOnSides
+    SpawnOnSides,
+    GambleMulti
 }
 
 public enum Passive

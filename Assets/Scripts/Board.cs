@@ -988,4 +988,16 @@ public class Board : MonoBehaviour
         var spot = Instantiate(handSpotPrefab, hand);
         spot.position = pos;
     }
+
+    public void GambleMulti(Vector3 pos)
+    {
+        if (Random.value < 0.5f)
+        {
+            AddMulti(pos, scoreDisplay.Multi);
+            return;
+        }
+        
+        scoreDisplay.ResetMulti();
+        EffectManager.AddTextPopup($"BAD LUCK!", pos.RandomOffset(0.5f) + Vector3.down, 0.9f);
+    }
 }
