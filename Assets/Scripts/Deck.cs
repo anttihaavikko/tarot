@@ -19,6 +19,8 @@ public class Deck : MonoBehaviour
     private Stack<CardType> deck = new();
     private readonly List<Transform> cards = new();
 
+    private int shuffles;
+
     private const int DeckSize = 22;
     private const float DealDelay = 0.03f;
 
@@ -28,7 +30,10 @@ public class Deck : MonoBehaviour
         {
             AddCard();
         }
-        
+    }
+
+    public void Init()
+    {
         SetupStack();
     }
 
@@ -67,7 +72,9 @@ public class Deck : MonoBehaviour
 
     private void SetupStack()
     {
+        DailyState.Instance.Seed(shuffles + 666);
         deck = new Stack<CardType>(EnumUtils.ToList<CardType>().OrderBy(_ => Random.value).Take(DeckSize));
+        shuffles++;
     }
 
     public void AddToTop(CardType type, int amount)

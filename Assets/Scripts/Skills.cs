@@ -23,12 +23,19 @@ public class Skills : MonoBehaviour
     private readonly List<Skill> skills = new();
     private int rerolls;
     private bool shown;
+    private int usedRerolls;
 
     public bool IsViewingBoard => picking && !shown;
 
     private void Awake()
     {
+        ResetPool();
+    }
+
+    public void ResetPool()
+    {
         skillPool = skillDefinitions.Select(s => s.GetSkill()).ToList();
+        skills.Clear();
     }
 
     private void Update()
@@ -47,6 +54,7 @@ public class Skills : MonoBehaviour
 
     public void Reroll()
     {
+        usedRerolls++;
         StartCoroutine(DoReroll());
     }
 
@@ -124,7 +132,7 @@ public class Skills : MonoBehaviour
         picking = false;
     }
 
-    public void Add(Skill source)
+    public void Add(Skill source, bool silent = false)
     {
         var skill = new Skill(source);
         skills.Add(skill);
@@ -134,17 +142,17 @@ public class Skills : MonoBehaviour
 
         skill.SetIcon(icon);
 
-        if (skill.Matches(Passive.DoubleScore))
+        if (skill.Matches(Passive.DoubleScore) && board)
         {
             board.DoubleScore();
         }
         
-        if(skill.Matches(Passive.HandSize))
+        if(skill.Matches(Passive.HandSize) && board)
         {
             board.IncreaseHandSize();
         }
         
-        if(skill.Matches(Passive.IncreaseSize))
+        if(skill.Matches(Passive.IncreaseSize) && board)
         {
             board.IncreaseAreaSize();
         }
@@ -154,7 +162,8 @@ public class Skills : MonoBehaviour
         {
             Remove(source);
         }
-        
+
+        if (silent) return;
         skill.Announce(Vector3.zero, true);
     }
 
@@ -170,8 +179,15 @@ public class Skills : MonoBehaviour
 
     private List<Skill> Take(int amount)
     {
+        DailyState.Instance.Seed(skills.Count + usedRerolls + 313);
         skillPool.ForEach(s => s.Randomize(skills));
         return skillPool.OrderBy(s => Random.value).Where(CanObtain).Take(amount).ToList();
+    }
+
+    public void AddRandom()
+    {
+        var s = Take(1).First();
+        Add(s, true);
     }
 
     private bool CanObtain(Skill skill)

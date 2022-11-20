@@ -46,6 +46,7 @@ public class Board : MonoBehaviour
     private Vector2Int prevPos, prevDir;
     private Tile targetTile;
     private Card justPlaced;
+    private int targetMoves;
 
     private int movesLeft;
     private int MoveCount => 5 + skills.Count(Passive.AddMove) - skills.Count(Passive.MultiIncreaseAndDecreaseMoves);
@@ -73,8 +74,6 @@ public class Board : MonoBehaviour
     public bool IsDragging => drawnCards.Any(c => c.IsDragging);
     public Vector3 MidPoint => cam.transform.position.WhereZ(0);
 
-    public int ShownBoardSize => fieldSize + 2;
-
     private void Start()
     {
         AudioManager.Instance.TargetPitch = 1;
@@ -87,17 +86,36 @@ public class Board : MonoBehaviour
             }
         }
         
+        deck.Init();
+        MoveTarget();
+        
+        SetupDaily();
+        
+        UpdateAreaSize();
+        
         movesLeft = MoveCount;
         UpdateMoveDisplay();
         
         RepositionCamera();
         Invoke(nameof(AddCard), PanTime + 0.1f);
-        
-        MoveTarget();
-        
-        canPlace = true;
 
-        UpdateAreaSize();
+        canPlace = true;
+    }
+
+    private void SetupDaily()
+    {
+        if (DailyState.Instance.IsDaily)
+        {
+            DailyState.Instance.Seed();
+
+            fieldSize = Random.Range(4, 9);
+            var skillCount = Random.Range(DailyState.MinSkills, DailyState.MaxSkills + 1);
+            
+            for (var i = 0; i < skillCount; i++)
+            {
+                skills.AddRandom();
+            }
+        }
     }
 
     private void UpdateAreaSize()
@@ -107,6 +125,7 @@ public class Board : MonoBehaviour
 
     public void MoveTarget()
     {
+        DailyState.Instance.Seed(targetMoves + 1234);
         target.gameObject.SetActive(true);
         var spot = grid.RandomFree();
         if (spot == default)
@@ -117,6 +136,7 @@ public class Board : MonoBehaviour
         targetTile = spot.Value;
         target.position = targetTile.transform.position;
         PulseAt(target.position);
+        targetMoves++;
     }
 
     private void Update()
@@ -124,6 +144,11 @@ public class Board : MonoBehaviour
         if (DevKey.Down(KeyCode.Tab))
         {
             devMenu.SetActive(!devMenu.activeSelf);
+        }
+        
+        if (DevKey.Down(KeyCode.Escape))
+        {
+            SceneChanger.Instance.ChangeScene("Start");
         }
     }
 
