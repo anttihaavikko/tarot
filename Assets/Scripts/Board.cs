@@ -437,6 +437,7 @@ public class Board : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
             canPlace = true;
+            yield return deck.TryShuffle();
             AddCard();
             yield break;
         }
