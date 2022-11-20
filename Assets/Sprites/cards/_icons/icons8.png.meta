@@ -145,7 +145,7 @@ TextureImporter:
         width: 689
         height: 703
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,6 +153,27 @@ TextureImporter:
       bones: []
       spriteID: b41923625cba44160970502d8d30366c
       internalID: -205805902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barks
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 1168
+        width: 746
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70047d68261094fbfa36b42c70f570e4
+      internalID: 1702000581
       vertices: []
       indices: 
       edges: []
@@ -169,6 +190,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       luck: -205805902
+      barks: 1702000581
       pair: 1819956519
   spritePackingTag: 
   pSDRemoveMatte: 0

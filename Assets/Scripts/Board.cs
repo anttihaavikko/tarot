@@ -717,7 +717,7 @@ public class Board : MonoBehaviour
         
         foreach (var c in targets)
         {
-            c.TransformTo(skill.GetTargetOrRandomType(), skill.title);
+            c.TransformTo(skill.ExtraType, skill.title);
             transformSound.Play(c.transform.position);
             yield return new WaitForSeconds(0.1f);
             yield return skills.Trigger(SkillTrigger.Transform, c);

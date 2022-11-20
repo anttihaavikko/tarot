@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Managers;
+using AnttiStarterKit.Utils;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Skill", menuName = "Skill", order = 0)]
@@ -31,7 +32,7 @@ public class Skill
     public SkillTrigger trigger;
     public SkillCondition condition;
     public SkillEffect effect;
-    public List<CardType> firstCards, secondCards;
+    public List<CardType> firstCards, secondCards, extraTypes;
     public Sprite iconSprite;
     public float triggerDelay;
     public SkillDefinition requirement;
@@ -65,6 +66,8 @@ public class Skill
     public CardType TargetType => secondCard;
     public bool HasTargetType => secondCards.Any();
 
+    public CardType ExtraType => extraTypes.Any() ? extraTypes.Random() : EnumUtils.Random<CardType>();
+
     public Skill(Skill source)
     {
         title = source.title;
@@ -94,6 +97,7 @@ public class Skill
         sound = source.sound;
         cancelSound = source.cancelSound;
         skipAnnounce = source.skipAnnounce;
+        extraTypes = source.extraTypes.ToList();
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -176,11 +180,6 @@ public class Skill
     public void SetIcon(SkillIcon i)
     {
         Icon = i;
-    }
-    
-    public CardType GetTargetOrRandomType()
-    {
-        return HasTargetType ? TargetType : Card.GetRandomType();
     }
 
     public void Announce(Vector3 position, bool obtained = false)
