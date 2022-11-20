@@ -46,10 +46,10 @@ public class DailyView : MonoBehaviour
         skills.ResetPool();
         DailyState.Instance.Seed();
 
-        fieldSize = Random.Range(4, 9);
+        fieldSize = Random.Range(4, 10);
         var skillCount = Random.Range(DailyState.MinSkills, DailyState.MaxSkills + 1);
         
-        infos.ForEach(i => i.text = $"Board size of {fieldSize + 2}, start with");
+        infos.ForEach(i => i.text = $"Board size of {(fieldSize - 2) * 2 + 1}, start with");
 
         for (var i = 0; i < skillCount; i++)
         {

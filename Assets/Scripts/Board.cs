@@ -108,7 +108,7 @@ public class Board : MonoBehaviour
         {
             DailyState.Instance.Seed();
 
-            fieldSize = Random.Range(4, 9);
+            fieldSize = Random.Range(4, 10);
             var skillCount = Random.Range(DailyState.MinSkills, DailyState.MaxSkills + 1);
             
             for (var i = 0; i < skillCount; i++)
