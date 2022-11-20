@@ -201,7 +201,8 @@ public enum SkillTrigger
     Transform,
     AddSkill,
     Fizzle,
-    Kill
+    Kill,
+    TargetMove
 }
 
 public enum SkillCondition

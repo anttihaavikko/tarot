@@ -71,7 +71,7 @@ public class Board : MonoBehaviour
     
     public bool IsActing => !skills.IsViewingBoard && !canPlace;
     public bool IsDragging => drawnCards.Any(c => c.IsDragging);
-    private Vector3 MidPoint => cam.transform.position.WhereZ(0);
+    public Vector3 MidPoint => cam.transform.position.WhereZ(0);
 
     public int ShownBoardSize => fieldSize + 2;
 

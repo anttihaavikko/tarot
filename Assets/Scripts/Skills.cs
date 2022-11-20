@@ -313,7 +313,7 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(0.4f);
                 break;
             case SkillEffect.AddMultiplier:
-                board.AddMulti(card.transform.position, skill.amount);
+                board.AddMulti(card ? card.transform.position : board.MidPoint, skill.amount);
                 yield return new WaitForSeconds(0.4f);
                 break;
             case SkillEffect.SpawnAround:
@@ -350,6 +350,11 @@ public class Skills : MonoBehaviour
                 break;
             case SkillEffect.MoveTarget:
                 board.MoveTarget();
+                if (skills.Any(s => s.Matches(SkillTrigger.TargetMove)))
+                {
+                    yield return new WaitForSeconds(0.3f);
+                    yield return Trigger(SkillTrigger.TargetMove, card);
+                }
                 yield return new WaitForSeconds(0.3f);
                 break;
             case SkillEffect.TransformSurrounding:
