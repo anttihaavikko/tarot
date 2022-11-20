@@ -734,7 +734,7 @@ public class Board : MonoBehaviour
                 c.DarkFlash();
             }
             
-            lineDrawer.AddThunderLine(from.RandomOffset(0.5f), c.transform.position.RandomOffset(0.5f), color, Random.Range(0.4f, 0.8f), 1.5f);
+            lineDrawer.AddThunderLine(from.RandomOffset(0.5f), c.transform.position.RandomOffset(0.5f), color, Random.Range(0.4f, 0.8f), 1f);
         });
     }
 
