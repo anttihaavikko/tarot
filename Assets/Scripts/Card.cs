@@ -25,6 +25,8 @@ public class Card : MonoBehaviour
 
     private CardType type;
     private List<Vector2Int> visited = new ();
+
+    private Vector3 originalSize;
     
     public Tile Tile { get; set; }
     public bool IsDying { get; private set; }
@@ -36,7 +38,7 @@ public class Card : MonoBehaviour
         shaker = GetComponent<Shaker>();
         draggable.preview += Preview;
         draggable.dropped += Place;
-        draggable.pick += HidePreview;
+        draggable.pick += Picked;
         radial.transform.Rotate(new Vector3(0, 0, Random.value * 360));
         pattern.flipX = Random.value < 0.5f;
         pattern.flipY = Random.value < 0.5f;
@@ -58,14 +60,22 @@ public class Card : MonoBehaviour
         this.StartCoroutine(() => sprite.material = pattern.material = normalMaterial, 0.2f);
     }
 
-    private void HidePreview()
+    private void ResetSize()
     {
+        transform.localScale = originalSize;
+    }
+
+    private void Picked()
+    {
+        originalSize = transform.localScale;
+        transform.localScale *= 1.1f;
         board.HideCardPreview();
     }
 
     public void Placed()
     {
-        draggable.pick -= HidePreview;
+        ResetSize();
+        draggable.pick -= Picked;
     }
 
     private void Place(Draggable d)
@@ -242,6 +252,7 @@ public class Card : MonoBehaviour
 
     public void ReturnToHand()
     {
+        ResetSize();
         draggable.Return();
     }
 
