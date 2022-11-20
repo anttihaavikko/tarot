@@ -247,6 +247,14 @@ public class Skills : MonoBehaviour
     {
         return GetTriggered(passive, type, pos, firstOnly).Any();
     }
+    
+    public IEnumerator PlaceTrigger(Card card, bool manual = false)
+    {
+        foreach (var s in skills.Where(s => (manual || !s.manualPlaceOnly) && GetTypesFor(card).Any(t => s.Matches(SkillTrigger.Place, t))).ToList())
+        {
+            yield return Act(s, card.transform.position, card);
+        }
+    }
 
     public IEnumerator Trigger(SkillTrigger trigger, Card card)
     {

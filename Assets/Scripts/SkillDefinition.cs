@@ -56,6 +56,7 @@ public class Skill
     public bool usesRequirementForMarking;
     public bool canNotFizzle;
     public bool skipAnnounce;
+    public bool manualPlaceOnly;
 
     private CardType firstCard, secondCard;
 
@@ -98,6 +99,7 @@ public class Skill
         cancelSound = source.cancelSound;
         skipAnnounce = source.skipAnnounce;
         extraTypes = source.extraTypes.ToList();
+        manualPlaceOnly = source.manualPlaceOnly;
     }
 
     public void Randomize(IEnumerable<Skill> skills)

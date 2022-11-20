@@ -21,6 +21,7 @@ MonoBehaviour:
     effect: 26
     firstCards: 0500000002000000
     secondCards: 0500000002000000
+    extraTypes: 
     iconSprite: {fileID: 1819956519, guid: 36f50c6a977d04576891735e7cbb2339, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
@@ -38,3 +39,4 @@ MonoBehaviour:
     usesRequirementForMarking: 0
     canNotFizzle: 0
     skipAnnounce: 0
+    manualPlaceOnly: 1

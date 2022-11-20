@@ -435,7 +435,7 @@ public class Board : MonoBehaviour
         
         HideTarget(card.Tile);
 
-        yield return skills.Trigger(SkillTrigger.Place, card);
+        yield return skills.PlaceTrigger(card, true);
 
         if (targetReached || end.Value == targetTile)
         {
@@ -533,7 +533,7 @@ public class Board : MonoBehaviour
 
         foreach (var tile in tiles)
         {
-            yield return skills.Trigger(SkillTrigger.Place, tile.Card);
+            yield return skills.PlaceTrigger(tile.Card);
             
             if (tile == targetTile)
             {
@@ -754,7 +754,7 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             yield return skills.Trigger(SkillTrigger.Transform, c);
             yield return new WaitForSeconds(0.1f);
-            yield return skills.Trigger(SkillTrigger.Place, c);
+            yield return skills.PlaceTrigger(c);
             yield return new WaitForSeconds(0.2f);
         }
 
@@ -987,7 +987,7 @@ public class Board : MonoBehaviour
         HideTarget(card.Tile);
         AudioManager.Instance.PlayEffectFromCollection(2, pos);
 
-        yield return skills.Trigger(SkillTrigger.Place, card);
+        yield return skills.PlaceTrigger(card, true);
         
         if (targetReached || slideTarget.Value == targetTile)
         {
