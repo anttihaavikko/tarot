@@ -941,6 +941,8 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Tweener.MoveToBounceOut(t, pos, duration);
         
+        SlideLength = Mathf.RoundToInt(Vector2Int.Distance(cp, slideTarget.Position));
+        
         card.Tile.Clear();
         slideTarget.Value.Set(card);
         card.MarkVisit();
