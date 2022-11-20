@@ -73,6 +73,8 @@ public class Board : MonoBehaviour
     public bool IsActing => !skills.IsViewingBoard && !canPlace;
     public bool IsDragging => drawnCards.Any(c => c.IsDragging);
     public Vector3 MidPoint => cam.transform.position.WhereZ(0);
+    
+    public Vector3 SkyPoint => MidPoint + Vector3.Distance(MidPoint, hand.transform.position) * Vector3.up;
 
     private void Start()
     {
@@ -148,6 +150,11 @@ public class Board : MonoBehaviour
         if (DevKey.Down(KeyCode.Escape))
         {
             SceneChanger.Instance.ChangeScene("Start");
+        }
+        
+        if (DevKey.Down(KeyCode.T))
+        {
+            DrawLines(SkyPoint, drawnCards);
         }
     }
 
@@ -653,7 +660,7 @@ public class Board : MonoBehaviour
 
     public IEnumerator DestroyCards(List<Card> cards, Card source)
     {
-        var from = source ? source.transform.position : hand.transform.position;
+        var from = source ? source.transform.position : SkyPoint;
         var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(from, c.transform.position)).ToList();
         DrawLines(from, targets, false, true);
         var immortals = targets.Where(c => skills.Has(Passive.Immortal, c.GetCardType())).ToList();
@@ -727,7 +734,7 @@ public class Board : MonoBehaviour
                 c.DarkFlash();
             }
             
-            lineDrawer.AddThunderLine(from.RandomOffset(0.5f), c.transform.position.RandomOffset(0.5f), color, Random.Range(0.4f, 0.8f), Random.Range(0.25f, 0.75f));
+            lineDrawer.AddThunderLine(from.RandomOffset(0.5f), c.transform.position.RandomOffset(0.5f), color, Random.Range(0.4f, 0.8f), 1.5f);
         });
     }
 
