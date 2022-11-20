@@ -52,7 +52,7 @@ public class Board : MonoBehaviour
 
     private int level = 1;
     private int exp;
-    private int fieldSize = 4;
+    private int fieldSize = 7;
     
     private const float MaxDropDistance = 0.7f;
     private const float PanTime = 0.3f;
