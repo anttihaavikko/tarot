@@ -726,6 +726,7 @@ public class Board : MonoBehaviour
         {
             c.TransformTo(GetTransformTypeFor(c, skill.ExtraType), skill.title);
             transformSound.Play(c.transform.position);
+            DrawLines(lineStart, new List<Card> { c }, true);
             yield return new WaitForSeconds(0.1f);
             yield return skills.Trigger(SkillTrigger.Transform, c);
             yield return new WaitForSeconds(0.1f);
