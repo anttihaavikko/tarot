@@ -35,7 +35,8 @@ MonoBehaviour:
     useSecondImage: 0
     canTargetSame: 0
     anyTriggers: 1
-    isNotMarked: 0
+    isNotMarked: 1
     usesRequirementForMarking: 0
     canNotFizzle: 0
     skipAnnounce: 0
+    manualPlaceOnly: 0

@@ -92,6 +92,24 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.69933546
+        value: 0.102357864
+        inSlope: -0.77386206
+        outSlope: -0.77386206
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.20320232
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -125,7 +143,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 1
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -145,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCollection: {fileID: 0}
+  hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: -1
   hideDelay: 0
   silent: 0

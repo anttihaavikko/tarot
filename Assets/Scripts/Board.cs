@@ -156,6 +156,11 @@ public class Board : MonoBehaviour
         {
             DrawLines(SkyPoint, drawnCards);
         }
+        
+        if (DevKey.Down(KeyCode.Y))
+        {
+            DrawLines(Vector3.zero, drawnCards);
+        }
     }
 
     public void IncreaseAreaSize()
@@ -734,7 +739,7 @@ public class Board : MonoBehaviour
                 c.DarkFlash();
             }
             
-            lineDrawer.AddThunderLine(from.RandomOffset(0.5f), c.transform.position.RandomOffset(0.5f), color, Random.Range(0.4f, 0.8f), 1f);
+            lineDrawer.AddThunderLine(from.RandomOffset(0.25f), c.transform.position.RandomOffset(0.25f), color, Random.Range(0.4f, 0.8f), 1f);
         });
     }
 

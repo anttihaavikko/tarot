@@ -35,11 +35,12 @@ public class LineDrawer : ObjectPool<LineRenderer>
         line.transform.localScale = Vector3.one;
         var mid = (from + to) * 0.5f;
         line.positionCount = 4;
+        var offset = Mathf.Min(midOffset, Vector3.Distance(from, to) * 0.3f);
         line.SetPositions(new []
         {
             from,
-            mid.RandomOffset(midOffset),
-            mid.RandomOffset(midOffset),
+            mid.RandomOffset(offset),
+            mid.RandomOffset(offset),
             to
         });
 
