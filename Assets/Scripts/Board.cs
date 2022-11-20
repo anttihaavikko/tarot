@@ -143,6 +143,7 @@ public class Board : MonoBehaviour
     {
         RepositionHand(true);
         
+        var p = hand.position;
         var type = deck.Pull();
         drawnCard = CreateCard(type, deck.GetSpawn(), false);
         var t = drawnCard.transform;
@@ -151,9 +152,9 @@ public class Board : MonoBehaviour
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
         drawnCard.RandomizeRotation();
         
-        placeSound.Play(hand.position);
+        placeSound.Play(p);
 
-        var transforms = skills.Get(Passive.TransformOnDraw, type).ToList();
+        var transforms = skills.GetTriggered(Passive.TransformOnDraw, type, p, true).ToList();
         if (transforms.Any())
         {
             this.StartCoroutine(() =>
@@ -647,7 +648,7 @@ public class Board : MonoBehaviour
             c.gameObject.SetActive(false);
             explosionSound.Play(p, 0.6f);
 
-            var replaces = skills.GetTriggered(Passive.Replace, type, p);
+            var replaces = skills.GetTriggered(Passive.Replace, type, p, true);
             if (replaces.Any())
             {
                 yield return new WaitForSeconds(0.2f);
@@ -708,7 +709,7 @@ public class Board : MonoBehaviour
 
     private CardType GetTransformTypeFor(Card card, CardType defaultType)
     {
-        var triggered = skills.GetTriggered(Passive.TransformForcer, card.GetCardType(), card.transform.position);
+        var triggered = skills.GetTriggered(Passive.TransformForcer, card.GetCardType(), card.transform.position, true);
         return triggered.Any() ? triggered.First().TargetType : defaultType;
     }
 

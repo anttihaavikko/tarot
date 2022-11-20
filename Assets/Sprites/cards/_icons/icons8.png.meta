@@ -166,7 +166,7 @@ TextureImporter:
         width: 746
         height: 818
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -174,6 +174,27 @@ TextureImporter:
       bones: []
       spriteID: 70047d68261094fbfa36b42c70f570e4
       internalID: 1702000581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: servants
+      rect:
+        serializedVersion: 2
+        x: 2175
+        y: 1187
+        width: 520
+        height: 812
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aef7c5e6a26e4f30b247e5b3310c352
+      internalID: 699894101
       vertices: []
       indices: 
       edges: []
@@ -192,6 +213,7 @@ TextureImporter:
       luck: -205805902
       barks: 1702000581
       pair: 1819956519
+      servants: 699894101
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

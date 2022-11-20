@@ -190,9 +190,9 @@ public class Skills : MonoBehaviour
         return skills.Where(s => s.Matches(Passive.Mimic, type)).Select(s => s.TargetType).Concat(new[] { type });
     }
     
-    public bool Trigger(Passive passive, Card card)
+    public bool Trigger(Passive passive, Card card, bool firstOnly = false)
     {
-        return Trigger(passive, card.GetCardType(), card.transform.position);
+        return Trigger(passive, card.GetCardType(), card.transform.position, firstOnly);
     }
     
     public bool Trigger(Passive passive, Vector3 pos)
@@ -208,10 +208,15 @@ public class Skills : MonoBehaviour
         return triggered.Any();
     }
     
-    public List<Skill> GetTriggered(Passive passive, CardType type, Vector3 pos)
+    public List<Skill> GetTriggered(Passive passive, CardType type, Vector3 pos, bool firstOnly = false)
     {
         var types = GetTypesFor(type).ToList();
         var triggered = Get(passive, types).ToList();
+
+        if (firstOnly)
+        {
+            triggered = triggered.Take(1).ToList();
+        }
 
         triggered.ForEach(skill =>
         {
@@ -222,9 +227,9 @@ public class Skills : MonoBehaviour
         return triggered;
     }
 
-    public bool Trigger(Passive passive, CardType type, Vector3 pos)
+    public bool Trigger(Passive passive, CardType type, Vector3 pos, bool firstOnly = false)
     {
-        return GetTriggered(passive, type, pos).Any();
+        return GetTriggered(passive, type, pos, firstOnly).Any();
     }
 
     public IEnumerator Trigger(SkillTrigger trigger, Card card)
@@ -457,14 +462,9 @@ public class Skills : MonoBehaviour
         yield return DoEffect(skill, card);
     }
     
-    public IEnumerable<Skill> Get(Passive passive, List<CardType> types)
+    private IEnumerable<Skill> Get(Passive passive, List<CardType> types)
     {
         return skills.Where(s => s.Matches(passive, types));
-    }
-
-    public IEnumerable<Skill> Get(Passive passive, CardType type)
-    {
-        return skills.Where(s => s.Matches(passive, type));
     }
 
     public IEnumerable<Skill> Get(Passive passive)
