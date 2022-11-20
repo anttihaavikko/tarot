@@ -159,7 +159,7 @@ public class Board : MonoBehaviour
             this.StartCoroutine(() =>
             {
                 var first = transforms.First();
-                var targetType = first.TargetType;
+                var targetType = GetTransformTypeFor(drawnCard, first.TargetType);
                 drawnCard.TransformTo(targetType);
                 ShowPreview(targetType);
                 first.Trigger();
@@ -706,6 +706,12 @@ public class Board : MonoBehaviour
         });
     }
 
+    private CardType GetTransformTypeFor(Card card, CardType defaultType)
+    {
+        var triggered = skills.GetTriggered(Passive.TransformForcer, card.GetCardType(), card.transform.position);
+        return triggered.Any() ? triggered.First().TargetType : defaultType;
+    }
+
     public IEnumerator TransformCards(List<Card> cards, Skill skill, Vector3 lineStart)
     {
         var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(lineStart, c.transform.position)).ToList();
@@ -717,7 +723,7 @@ public class Board : MonoBehaviour
         
         foreach (var c in targets)
         {
-            c.TransformTo(skill.ExtraType, skill.title);
+            c.TransformTo(GetTransformTypeFor(c, skill.ExtraType), skill.title);
             transformSound.Play(c.transform.position);
             yield return new WaitForSeconds(0.1f);
             yield return skills.Trigger(SkillTrigger.Transform, c);

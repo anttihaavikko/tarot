@@ -5768,6 +5768,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da75215b4d2e64753a8941cb4579ddfd, type: 2}
   - {fileID: 11400000, guid: 8c3c4100973ba4945b0a4f5200837f41, type: 2}
   - {fileID: 11400000, guid: 2e66035d7daec493598007ab27ebda62, type: 2}
+  - {fileID: 11400000, guid: 7686dab33d04a436f9878da8a7cf5e6b, type: 2}
+  - {fileID: 11400000, guid: 4aef7f10771dc43ffb6f246117563e58, type: 2}
   board: {fileID: 296764682}
   skillContainer: {fileID: 1942875045}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}

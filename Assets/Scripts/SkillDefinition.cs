@@ -263,5 +263,6 @@ public enum Passive
     IncreaseSize,
     NoNegativeMulti,
     Reroll,
-    StopsOnTarget
+    StopsOnTarget,
+    TransformForcer
 }
