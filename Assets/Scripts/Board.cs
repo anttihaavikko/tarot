@@ -593,10 +593,11 @@ public class Board : MonoBehaviour
 
         movesLeft = MoveCount;
         exp++;
+        var levelMod = skills.Has(Passive.SlowerExp) ? 1.5f : 1f;
 
         UpdateExpBar();
 
-        if (exp == level)
+        if (exp == Mathf.CeilToInt(level * levelMod))
         {
             yield return new WaitForSeconds(0.5f);
 
@@ -625,7 +626,8 @@ public class Board : MonoBehaviour
 
     private void UpdateExpBar()
     {
-        var ratio = Mathf.Clamp01(1f * exp / level);
+        var levelMod = skills.Has(Passive.SlowerExp) ? 1.5f : 1f;
+        var ratio = Mathf.Clamp01(1f * exp / Mathf.CeilToInt(level * levelMod));
         Tweener.ScaleToBounceOut(expBar, new Vector3(ratio, 1f, 1f), 0.2f);
     }
 

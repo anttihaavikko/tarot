@@ -271,5 +271,6 @@ public enum Passive
     Reroll,
     StopsOnTarget,
     TransformForcer,
-    GambleTransform
+    GambleTransform,
+    SlowerExp
 }
