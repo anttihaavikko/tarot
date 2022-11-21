@@ -867,15 +867,23 @@ public class Board : MonoBehaviour
 
         foreach (var c in neighbours)
         {
-            AddScore(skill.amount, c.transform.position);
-            DrawLines(p, new List<Card>{ c });
-            PulseAt(p);
-            c.Pulsate();
-            c.Flash();
+            ScoreFor(c, skill.amount, p);
             yield return new WaitForSeconds(0.15f);
         }
     }
-    
+
+    public void ScoreFor(Card c, int amount, Vector3 p, bool pulse = true)
+    {
+        AddScore(amount, c.transform.position);
+        DrawLines(p, new List<Card> { c });
+        if (pulse)
+        {
+            PulseAt(p);   
+        }
+        c.Pulsate();
+        c.Flash();
+    }
+
     public IEnumerator MultiFor(Card card, Skill skill, bool doDiagonals)
     {
         yield return new WaitForSeconds(0.3f);

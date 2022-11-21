@@ -185,9 +185,9 @@ public class Skill
         Icon = i;
     }
 
-    public void Announce(Vector3 position, bool obtained = false)
+    public void Announce(Vector3 position, bool force = false)
     {
-        if (skipAnnounce && !obtained) return;
+        if (skipAnnounce && !force) return;
         EffectManager.AddTextPopup(title, position.RandomOffset(1f), 0.8f);
         if (!sound) return;
         AudioManager.Instance.PlayEffectAt(sound, position);
@@ -245,7 +245,8 @@ public enum SkillEffect
     ScoreForNeighboursNoDiagonals,
     SpawnOnSides,
     GambleMulti,
-    MultiForNeighbours
+    MultiForNeighbours,
+    AddScoreForEach
 }
 
 public enum Passive
