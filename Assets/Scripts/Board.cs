@@ -871,6 +871,24 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
     }
+    
+    public IEnumerator MultiFor(Card card, Skill skill, bool doDiagonals)
+    {
+        yield return new WaitForSeconds(0.3f);
+        
+        var neighbours = GetNeighbours(card, skill, doDiagonals).ToList();
+        var p = card.transform.position;
+
+        foreach (var c in neighbours)
+        {
+            AddMulti(c.transform.position, skill.amount);
+            DrawLines(p, new List<Card>{ c });
+            PulseAt(p);
+            c.Pulsate();
+            c.Flash();
+            yield return new WaitForSeconds(0.15f);
+        }
+    }
 
     private bool TileMatchesSkill(InfiniteGrid<Tile>.GridSpot spot, Skill skill)
     {

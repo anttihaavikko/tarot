@@ -243,7 +243,8 @@ public enum SkillEffect
     ScoreForNeighbours,
     ScoreForNeighboursNoDiagonals,
     SpawnOnSides,
-    GambleMulti
+    GambleMulti,
+    MultiForNeighbours
 }
 
 public enum Passive
