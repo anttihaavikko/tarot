@@ -22,8 +22,10 @@ MonoBehaviour:
     effect: 0
     firstCards: 0e000000
     secondCards: 
+    extraTypes: 
     iconSprite: {fileID: -1968548009, guid: 8d48dd2df5ca34a19a1ae4603948f1d1, type: 3}
     triggerDelay: 0
+    announceDelay: 0.8
     requirement: {fileID: 11400000, guid: 62c1f78260c094ab1b7c5ea020b92f0b, type: 2}
     sound: {fileID: 8300000, guid: 3b90d4a360200452eaed7a85109fc04b, type: 3}
     amount: 0
@@ -38,4 +40,5 @@ MonoBehaviour:
     isNotMarked: 1
     usesRequirementForMarking: 0
     canNotFizzle: 0
-    skipAnnounce: 1
+    skipAnnounce: 0
+    manualPlaceOnly: 0

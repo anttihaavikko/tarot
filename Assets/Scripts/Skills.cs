@@ -217,7 +217,7 @@ public class Skills : MonoBehaviour
 
         triggered.ForEach(skill =>
         {
-            skill.Announce(pos);
+            this.StartCoroutine(() => skill.Announce(pos), skill.announceDelay);
             skill.Trigger();
         });
         

@@ -34,7 +34,7 @@ public class Skill
     public SkillEffect effect;
     public List<CardType> firstCards, secondCards, extraTypes;
     public Sprite iconSprite;
-    public float triggerDelay;
+    public float triggerDelay, announceDelay;
     public SkillDefinition requirement;
     public AudioClip sound;
     
@@ -100,6 +100,7 @@ public class Skill
         skipAnnounce = source.skipAnnounce;
         extraTypes = source.extraTypes.ToList();
         manualPlaceOnly = source.manualPlaceOnly;
+        announceDelay = source.announceDelay;
     }
 
     public void Randomize(IEnumerable<Skill> skills)

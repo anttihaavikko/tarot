@@ -575,9 +575,9 @@ public class Board : MonoBehaviour
         
         if (reachedWithFirst)
         {
+            EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
             var doubles = skills.Trigger(Passive.MultiIncreaseAndDecreaseMoves, cardPos);
             AddMulti(cardPos, doubles ? 2 : 1);
-            EffectManager.AddTextPopup("SPLENDID!", cardPos.RandomOffset(1f) + Vector3.up, 0.7f);
         }
         
         soundIndex = reachedWithFirst ? (soundIndex + 1) % 7 : 0;
