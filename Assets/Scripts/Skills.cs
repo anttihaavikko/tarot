@@ -180,8 +180,22 @@ public class Skills : MonoBehaviour
     private List<Skill> Take(int amount)
     {
         DailyState.Instance.Seed(skills.Count + usedRerolls + 313);
-        skillPool.ForEach(s => s.Randomize(skills));
-        return skillPool.OrderBy(s => Random.value).Where(CanObtain).Take(amount).ToList();
+
+        var list = new List<Skill>();
+        while (list.Count < amount)
+        {
+            var skill = skillDefinitions.Random().GetSkill();
+            if (CanObtain(skill) && skillPool.Any(s => s.title == skill.title) && list.All(s => s.title != skill.title))
+            {
+                list.Add(skill);
+            }
+        }
+        
+        DailyState.Instance.Seed(skills.Count + usedRerolls + 525);
+        
+        list.ForEach(s => s.Randomize(skills));
+
+        return list;
     }
 
     public void AddRandom()
