@@ -250,7 +250,7 @@ TextureImporter:
         width: 668
         height: 687
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -258,6 +258,111 @@ TextureImporter:
       bones: []
       spriteID: d836d4e1aefe24b69b8a4578d8919a0a
       internalID: -452797621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: no_kills
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 454
+        width: 708
+        height: 702
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31330d466c82547db8b648263d135df7
+      internalID: 2105622445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: no_trans
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 77
+        width: 542
+        height: 442
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0068d3c9c48c4349a1628a3bbb7f535
+      internalID: -116235869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: less_exp
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 0
+        width: 461
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4d1788078d894520a793a6698483414
+      internalID: -558208016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: timer
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 6
+        width: 536
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717441c0bd9af458ba8ca5950ba62b7c
+      internalID: -1154509969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: losses_are_multi
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 0
+        width: 554
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7205d9ef8bf4d0c953f6cebff9b6ed
+      internalID: 588879602
       vertices: []
       indices: 
       edges: []
@@ -273,13 +378,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      less_exp: -558208016
+      timer: -1154509969
+      no_trans: -116235869
       luck: -205805902
+      no_kills: 2105622445
       barks: 1702000581
       move_multi: 1623850089
       pair: 1819956519
       tower_block: -452797621
       servants: 699894101
       noose: -660687779
+      losses_are_multi: 588879602
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
