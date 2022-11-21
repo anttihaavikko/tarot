@@ -118,6 +118,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d4a05af9cf134e9d9f96387b6047552, type: 2}
   - {fileID: 11400000, guid: c35e3e298999f40e6be90d6cea9dc446, type: 2}
   - {fileID: 11400000, guid: c6ef089e3a90d4d36aaf5861fc123fc9, type: 2}
+  dailyMods:
+  - {fileID: 11400000, guid: e452e017994764634a773fd13f840644, type: 2}
+  - {fileID: 11400000, guid: f1c2c99abb9a04660861bceed92be1c4, type: 2}
   board: {fileID: 0}
   skillContainer: {fileID: 0}
   iconPrefab: {fileID: 4147917032930819230, guid: 2e520d90dd3794db2bf6f2dd9c60aca6, type: 3}

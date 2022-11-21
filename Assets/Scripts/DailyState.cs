@@ -13,6 +13,7 @@ public class DailyState : Manager<DailyState>
 
     public const int MinSkills = 1;
     public const int MaxSkills = 4;
+    public const float ModChance = 0.7f;
 
     private void Start()
     {

@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 public class Skills : MonoBehaviour
 {
     [SerializeField] private List<SkillDefinition> skillDefinitions;
+    [SerializeField] private List<SkillDefinition> dailyMods;
     [SerializeField] private Board board;
     [SerializeField] private Transform skillContainer;
     [SerializeField] private SkillIcon iconPrefab;
@@ -36,6 +37,13 @@ public class Skills : MonoBehaviour
     {
         skillPool = skillDefinitions.Select(s => s.GetSkill()).ToList();
         skills.Clear();
+    }
+
+    public void AddRandomDailyMod()
+    {
+        var mod = dailyMods.Random().GetSkill();
+        mod.Randomize(skills);
+        Add(mod, true);
     }
 
     private void Update()

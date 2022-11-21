@@ -112,6 +112,11 @@ public class Board : MonoBehaviour
 
         fieldSize = Random.Range(4, 10);
         var skillCount = Random.Range(DailyState.MinSkills, DailyState.MaxSkills + 1);
+        
+        if (Random.value < DailyState.ModChance)
+        {
+            skills.AddRandomDailyMod();
+        }
             
         for (var i = 0; i < skillCount; i++)
         {

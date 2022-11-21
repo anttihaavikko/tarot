@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AnttiStarterKit.Managers;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,6 +19,7 @@ public class DailyView : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.TargetPitch = 1;
         ChangeDate(0);
     }
 
@@ -50,6 +52,11 @@ public class DailyView : MonoBehaviour
         var skillCount = Random.Range(DailyState.MinSkills, DailyState.MaxSkills + 1);
         
         infos.ForEach(i => i.text = $"Board size of {(fieldSize - 2) * 2 + 1}, start with");
+        
+        if (Random.value < DailyState.ModChance)
+        {
+            skills.AddRandomDailyMod();
+        }
 
         for (var i = 0; i < skillCount; i++)
         {
