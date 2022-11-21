@@ -73,8 +73,8 @@ public class Board : MonoBehaviour
     public bool IsActing => !skills.IsViewingBoard && !canPlace;
     public bool IsDragging => drawnCards.Any(c => c.IsDragging);
     public Vector3 MidPoint => cam.transform.position.WhereZ(0);
-    
     public Vector3 SkyPoint => MidPoint + Vector3.Distance(MidPoint, hand.transform.position) * Vector3.up;
+    public bool HasEnded => alreadyOver;
 
     private void Start()
     {
@@ -591,6 +591,8 @@ public class Board : MonoBehaviour
         if (exp == level)
         {
             yield return new WaitForSeconds(0.5f);
+
+            if (alreadyOver) yield break;
             
             var amount = grid.GetEmptyCount() * 10;
             AudioManager.Instance.PlayEffectAt(11, cardPos, 0.7f, false);
