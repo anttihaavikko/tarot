@@ -229,7 +229,7 @@ TextureImporter:
         width: 282
         height: 768
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,6 +237,27 @@ TextureImporter:
       bones: []
       spriteID: 722d053a833b24377b893bb8d482a7e5
       internalID: -660687779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tower_block
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 475
+        width: 668
+        height: 687
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d836d4e1aefe24b69b8a4578d8919a0a
+      internalID: -452797621
       vertices: []
       indices: 
       edges: []
@@ -256,6 +277,7 @@ TextureImporter:
       barks: 1702000581
       move_multi: 1623850089
       pair: 1819956519
+      tower_block: -452797621
       servants: 699894101
       noose: -660687779
   spritePackingTag: 

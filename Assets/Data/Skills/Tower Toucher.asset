@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Tower Toucher
   m_EditorClassIdentifier: 
   skill:
-    title: Tower Toucher
-    description: ([1]) increases (multiplier) by ([X]) for each surrounding ([2]).
+    title: New Kid on the Block
+    description: ([1]) increases your (multiplier) by ([X]) for each surrounding
+      ([2]).
     passive: 0
     trigger: 1
     condition: 0
@@ -22,10 +23,10 @@ MonoBehaviour:
     firstCards: 10000000
     secondCards: 10000000
     extraTypes: 
-    iconSprite: {fileID: 699894101, guid: 36f50c6a977d04576891735e7cbb2339, type: 3}
+    iconSprite: {fileID: -452797621, guid: 36f50c6a977d04576891735e7cbb2339, type: 3}
     triggerDelay: 0
     requirement: {fileID: 0}
-    sound: {fileID: 8300000, guid: 184ce9b8a9f2f4a79aa17ac2397fbfc8, type: 3}
+    sound: {fileID: 8300000, guid: 96feca258376e4865a6afb16759d38d8, type: 3}
     amount: 2
     cancelShout: 
     cancelDelay: 0
