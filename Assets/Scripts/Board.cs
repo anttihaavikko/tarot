@@ -637,8 +637,9 @@ public class Board : MonoBehaviour
     private void UpdateMoveDisplay()
     {
         var color = movesLeft < 2 ? "#E0CA3C" : "#FBFFFE";
-        moveCounters[0].text = $"{movesLeft} MOVES LEFT";
-        moveCounters[1].text = $"<color={color}>{movesLeft}</color> MOVES LEFT";
+        var move = movesLeft == 1 ? "MOVE" : "MOVES";
+        moveCounters[0].text = $"{movesLeft} {move} LEFT";
+        moveCounters[1].text = $"<color={color}>{movesLeft}</color> {move} LEFT";
     }
 
     public void AddMulti(Vector3 pos, int amount = 1)
