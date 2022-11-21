@@ -224,11 +224,14 @@ public class Skills : MonoBehaviour
         return triggered.Any();
     }
     
-    public List<Skill> GetTriggered(Passive passive, CardType type, Vector3 pos, bool firstOnly = false)
+    public List<Skill> GetTriggered(Passive passive, Vector3 pos, bool firstOnly = false)
     {
-        var types = GetTypesFor(type).ToList();
-        var triggered = Get(passive, types).ToList();
+        var triggered = Get(passive).ToList();
+        return GetTriggeredInner(pos, firstOnly, triggered);
+    }
 
+    private static List<Skill> GetTriggeredInner(Vector3 pos, bool firstOnly, List<Skill> triggered)
+    {
         if (firstOnly)
         {
             triggered = triggered.Take(1).ToList();
@@ -239,8 +242,15 @@ public class Skills : MonoBehaviour
             skill.Announce(pos);
             skill.Trigger();
         });
-        
+
         return triggered;
+    }
+
+    public List<Skill> GetTriggered(Passive passive, CardType type, Vector3 pos, bool firstOnly = false)
+    {
+        var types = GetTypesFor(type).ToList();
+        var triggered = Get(passive, types).ToList();
+        return GetTriggeredInner(pos, firstOnly, triggered);
     }
 
     public bool Trigger(Passive passive, CardType type, Vector3 pos, bool firstOnly = false)
@@ -256,10 +266,14 @@ public class Skills : MonoBehaviour
         }
     }
 
-    public IEnumerator Trigger(SkillTrigger trigger, Card card)
+    public IEnumerator Trigger(SkillTrigger trigger, Card card, float delay = 0f)
     {
         foreach (var s in skills.Where(s => GetTypesFor(card).Any(t => s.Matches(trigger, t))).ToList())
         {
+            if (delay > 0)
+            {
+                yield return new WaitForSeconds(delay);
+            }
             yield return Act(s, card.transform.position, card);
         }
     }

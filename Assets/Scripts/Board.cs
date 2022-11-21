@@ -190,21 +190,24 @@ public class Board : MonoBehaviour
         
         placeSound.Play(p);
 
-        var transforms = skills.GetTriggered(Passive.TransformOnDraw, type, p, true).ToList();
-        if (transforms.Any())
+        this.StartCoroutine(() =>
         {
-            this.StartCoroutine(() =>
+            var transforms = skills.GetTriggered(Passive.TransformOnDraw, type, p, true).ToList();
+            if (!transforms.Any() && Random.value < 0.5f)
             {
-                var first = transforms.First();
-                var targetType = GetTransformTypeFor(drawnCard, first.TargetType);
-                drawnCard.TransformTo(targetType);
-                ShowPreview(targetType);
-                first.Trigger();
-                var position = t.position;
-                EffectManager.AddTextPopup(first.title, position, 0.8f);
-                first.Announce(position);
-            }, 0.5f);
-        }
+                transforms = skills.GetTriggered(Passive.GambleTransform, p, true).ToList();
+            }
+
+            if (!transforms.Any()) return;
+            var first = transforms.First();
+            var targetType = GetTransformTypeFor(drawnCard, first.TargetType);
+            drawnCard.TransformTo(targetType);
+            ShowPreview(targetType);
+            first.Trigger();
+
+            StartCoroutine(skills.Trigger(SkillTrigger.Transform, drawnCard, 0.6f));
+
+        }, 0.5f);
 
         ShowPreview(type);
 

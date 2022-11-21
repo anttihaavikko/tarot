@@ -268,5 +268,6 @@ public enum Passive
     NoNegativeMulti,
     Reroll,
     StopsOnTarget,
-    TransformForcer
+    TransformForcer,
+    GambleTransform
 }

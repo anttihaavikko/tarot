@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
+  m_Name: Gamble Transform
+  m_EditorClassIdentifier: 
+  skill:
+    title: Wear Many Hats
+    description: Any (drawn card) has a (50% chance) to transform to ([2]).
+    passive: 20
+    trigger: 0
+    condition: 0
+    effect: 0
+    firstCards: 00000000
+    secondCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
+    extraTypes: 
+    iconSprite: {fileID: 1251437981, guid: 8d48dd2df5ca34a19a1ae4603948f1d1, type: 3}
+    triggerDelay: 0
+    requirement: {fileID: 0}
+    sound: {fileID: 8300000, guid: 0d9efbf83ed1c4c989b1e99d963f48d9, type: 3}
+    amount: 2
+    cancelShout: 
+    cancelDelay: 0
+    cancelSound: {fileID: 0}
+    repeatable: 0
+    notRepeatableForOthers: 0
+    useSecondImage: 0
+    canTargetSame: 0
+    anyTriggers: 1
+    isNotMarked: 0
+    usesRequirementForMarking: 0
+    canNotFizzle: 0
+    skipAnnounce: 0
+    manualPlaceOnly: 0
