@@ -345,6 +345,11 @@ public class Skills : MonoBehaviour
                 yield return new WaitForSeconds(0.4f);
                 var reach = HasExtender(skill) ? 2 : 1;
                 yield return board.SpawnAround(card, skill.TargetType, reach);
+                if (reach > 1)
+                {
+                    yield return new WaitForSeconds(0.3f);
+                    GetExtender(skill).Announce(card.transform.position);
+                }
                 yield return new WaitForSeconds(0.25f);
                 break;
             case SkillEffect.LevelUp:
@@ -445,6 +450,11 @@ public class Skills : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+
+    public Skill GetExtender(Skill skill)
+    {
+        return skills.First(s => s.passive == Passive.Extender && s.requirement && s.requirement.Is(skill));
+    } 
 
     public bool HasExtender(Skill skill)
     {
