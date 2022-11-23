@@ -37,7 +37,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Shaker moveShaker;
     [SerializeField] private SoundCollection harpSounds;
     [SerializeField] private GameObject gameOverContainer;
-    [SerializeField] private Appearer tutorialMessage;
+    [SerializeField] private TutorialHolder tutorial;
 
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
 
@@ -105,6 +105,13 @@ public class Board : MonoBehaviour
         canPlace = true;
         
         Invoke(nameof(TenSecondTimer), 10f);
+        
+        Invoke(nameof(IntroTutorial), 1f);
+    }
+
+    private void IntroTutorial()
+    {
+        tutorial.Show(TutorialMessage.Intro);
     }
 
     private void TenSecondTimer()
@@ -396,6 +403,7 @@ public class Board : MonoBehaviour
     {
         if (!canPlace)
         {
+            tutorial.Show(TutorialMessage.PlaceOnEdge);
             card.ReturnToHand();
             ShowPreview(card.GetCardType());
             HidePreview();
@@ -420,12 +428,15 @@ public class Board : MonoBehaviour
         if (start.Position.x != spot.Position.x && start.Position.y != spot.Position.y ||
             Vector3.Distance(p, spot.AsVector3) > MaxDropDistance)
         {
+            tutorial.Show(TutorialMessage.PlaceOnEdge);
             card.ReturnToHand();
             placeSound.Play(card.transform.position);
             ShowPreview(card.GetCardType());
             canPlace = true;
             yield break;
         }
+        
+        tutorial.Mark(TutorialMessage.PlaceOnEdge);
 
         skills.UnMarkSkills();
         card.Placed();
@@ -949,7 +960,7 @@ public class Board : MonoBehaviour
 
     public void HideCardPreview()
     {
-        tutorialMessage.Hide();
+        tutorial.Hide();
         cardPreview.Hide();
         tooltipper.Clear();
     }
