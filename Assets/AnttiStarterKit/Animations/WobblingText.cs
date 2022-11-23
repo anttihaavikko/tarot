@@ -32,10 +32,29 @@ namespace AnttiStarterKit.Animations
         
             var mesh = textField.mesh;
             var verts = mesh.vertices;
-
+            var realPos = 0;
+            var styleStarted = false;
+            
             for (var i = 0; i < textField.text.Length; i++)
             {
-                OffsetCharacter(i, textField.textInfo.characterInfo[i], ref verts);
+                var current = textField.text.Substring(i, 1);
+                if (current == "<")
+                {
+                    styleStarted = true;
+                    continue;
+                }
+
+                if (styleStarted)
+                {
+                    if (current == ">")
+                    {
+                        styleStarted = false;
+                    }
+                    continue;
+                }
+                
+                OffsetCharacter(realPos, textField.textInfo.characterInfo[realPos], ref verts);
+                realPos++;
             }
 
             mesh.vertices = verts;
