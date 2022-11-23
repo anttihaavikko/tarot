@@ -57,6 +57,7 @@ public class Skill
     public bool canNotFizzle;
     public bool skipAnnounce;
     public bool manualPlaceOnly;
+    public bool skipMulti;
 
     private CardType firstCard, secondCard;
 
@@ -101,6 +102,7 @@ public class Skill
         extraTypes = source.extraTypes.ToList();
         manualPlaceOnly = source.manualPlaceOnly;
         announceDelay = source.announceDelay;
+        skipMulti = source.skipMulti;
     }
 
     public void Randomize(IEnumerable<Skill> skills)
@@ -205,7 +207,8 @@ public enum SkillTrigger
     AddSkill,
     Fizzle,
     Kill,
-    TargetMove
+    TargetMove,
+    Timer
 }
 
 public enum SkillCondition

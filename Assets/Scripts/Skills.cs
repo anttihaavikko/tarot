@@ -364,7 +364,7 @@ public class Skills : MonoBehaviour
             case SkillEffect.None:
                 break;
             case SkillEffect.AddScore:
-                board.AddScore(skill.amount, card.transform.position);
+                board.AddScore(skill.amount, card ? card.transform.position: board.MidPoint, !skill.skipMulti);
                 yield return new WaitForSeconds(0.4f);
                 break;
             case SkillEffect.DestroyTouching:

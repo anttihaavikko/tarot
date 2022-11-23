@@ -102,6 +102,14 @@ public class Board : MonoBehaviour
         Invoke(nameof(AddCard), PanTime + 0.1f);
 
         canPlace = true;
+        
+        Invoke(nameof(TenSecondTimer), 10f);
+    }
+
+    private void TenSecondTimer()
+    {
+        StartCoroutine(skills.Trigger(SkillTrigger.Timer));
+        Invoke(nameof(TenSecondTimer), 10f);
     }
 
     private void SetupDaily()
