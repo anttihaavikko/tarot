@@ -216,7 +216,9 @@ public enum SkillCondition
 {
     None,
     IsAlone,
-    IsNotAlone
+    IsNotAlone,
+    IsNotClose,
+    IsClose
 }
 
 public enum SkillEffect

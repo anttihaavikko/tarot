@@ -52,7 +52,7 @@ public class Board : MonoBehaviour
     private int movesLeft;
     private int MoveCount => 5 + skills.Count(Passive.AddMove) - skills.Count(Passive.MultiIncreaseAndDecreaseMoves);
 
-    private int level = 1;
+    private int level = 2;
     private int exp;
     private int fieldSize = 7;
     
@@ -100,7 +100,7 @@ public class Board : MonoBehaviour
         UpdateMoveDisplay();
         
         RepositionCamera();
-        Invoke(nameof(AddCard), PanTime + 0.1f);
+        Invoke(nameof(AddCard), PanTime + 0.5f);
 
         canPlace = true;
         

@@ -316,6 +316,8 @@ public class Skills : MonoBehaviour
             SkillCondition.None => false,
             SkillCondition.IsAlone => !board.IsPlacedAlone(),
             SkillCondition.IsNotAlone => board.IsPlacedAlone(),
+            SkillCondition.IsNotClose => board.GetNeighbours(card, skill, true).Any(),
+            SkillCondition.IsClose => !board.GetNeighbours(card, skill, true).Any(),
             _ => throw new ArgumentOutOfRangeException()
         };
     }

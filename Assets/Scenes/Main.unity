@@ -1360,8 +1360,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1694,6 +1694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 463939899}
   - component: {fileID: 463939900}
+  - component: {fileID: 463939901}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -1736,13 +1737,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundCollection: {fileID: 0}
   hiddenSize: {x: 0, y: 0, z: 0}
-  appearAfter: 0.5
+  appearAfter: 1
   hideDelay: 0
   silent: 0
   visuals: {fileID: 1062562307}
   inScreenSpace: 0
   cam: {fileID: 0}
   text: {fileID: 0}
+--- !u!210 &463939901
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463939898}
+  m_Enabled: 1
+  m_SortingLayerID: 48027341
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!1 &470388726
 GameObject:
   m_ObjectHideFlags: 0
@@ -3528,8 +3540,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
