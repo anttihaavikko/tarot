@@ -37,6 +37,7 @@ public class Board : MonoBehaviour
     [SerializeField] private Shaker moveShaker;
     [SerializeField] private SoundCollection harpSounds;
     [SerializeField] private GameObject gameOverContainer;
+    [SerializeField] private Appearer tutorialMessage;
 
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
 
@@ -948,6 +949,7 @@ public class Board : MonoBehaviour
 
     public void HideCardPreview()
     {
+        tutorialMessage.Hide();
         cardPreview.Hide();
         tooltipper.Clear();
     }
