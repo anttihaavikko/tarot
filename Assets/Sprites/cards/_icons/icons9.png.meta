@@ -145,7 +145,7 @@ TextureImporter:
         width: 580
         height: 624
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,6 +153,27 @@ TextureImporter:
       bones: []
       spriteID: 002e508f95e774f8bb319eb98e2d9c60
       internalID: -353256114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flute
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 1366
+        width: 580
+        height: 608
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e7bd7ff2d2d4726a5c181b53cb040e
+      internalID: 2010268347
       vertices: []
       indices: 
       edges: []
@@ -170,6 +191,7 @@ TextureImporter:
     nameFileIdTable:
       gold_digger: -2128916887
       speed: -353256114
+      flute: 2010268347
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

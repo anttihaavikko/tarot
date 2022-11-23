@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32ca4546ea85d432685e600008824211, type: 2}
   - {fileID: 11400000, guid: f77b59fb0df394b63a1aa31f093bfc66, type: 2}
   - {fileID: 11400000, guid: fe8008b8ef338443c871c3d6c13aedc6, type: 2}
+  - {fileID: 11400000, guid: 9590a0c7011e74badb5e508471d1c201, type: 2}
   dailyMods:
   - {fileID: 11400000, guid: e452e017994764634a773fd13f840644, type: 2}
   - {fileID: 11400000, guid: f1c2c99abb9a04660861bceed92be1c4, type: 2}
