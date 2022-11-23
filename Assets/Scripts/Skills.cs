@@ -192,8 +192,9 @@ public class Skills : MonoBehaviour
         var list = new List<Skill>();
         while (list.Count < amount)
         {
-            var skill = skillDefinitions.Random().GetSkill();
-            if (CanObtain(skill) && skillPool.Any(s => s.title == skill.title) && list.All(s => s.title != skill.title))
+            var def = skillDefinitions.Random().GetSkill();
+            var skill = skillPool.Find(s => s.title == def.title);
+            if (skill != default && CanObtain(skill) && list.All(s => s.title != skill.title))
             {
                 list.Add(skill);
             }
