@@ -672,6 +672,12 @@ public class Board : MonoBehaviour
         var willUseMulti = useMulti && (amount > 0 || !skills.Trigger(Passive.NoNegativeMulti, MidPoint));
         scoreDisplay.Add(amt, willUseMulti);
         var shown = amt * (willUseMulti ? scoreDisplay.Multi : 1);
+
+        if (shown < 0)
+        {
+            StartCoroutine(skills.Trigger(SkillTrigger.LosePoints));
+        }
+        
         EffectManager.AddTextPopup(shown.AsScore(), pos.RandomOffset(1f), 1.3f);
         
         AudioManager.Instance.PlayEffectFromCollection(5, pos);

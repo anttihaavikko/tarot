@@ -182,7 +182,7 @@ public class Skills : MonoBehaviour
 
     public List<Skill> All()
     {
-        return skillPool.ToList();
+        return skillPool.Concat(dailyMods.Select(s => s.GetSkill())).ToList();
     }
 
     private List<Skill> Take(int amount)
@@ -542,6 +542,8 @@ public class Skills : MonoBehaviour
 
             yield break;
         }
+        
+        yield return new WaitForSeconds(skill.announceDelay);
         
         skill.Announce(p);
 

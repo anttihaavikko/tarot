@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 14934
+  controlID: 16949
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 14876
+  controlID: 16928
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -694,8 +694,8 @@ MonoBehaviour:
     y: 478
     width: 813.5
     height: 256
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -757,7 +757,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 14899
+  controlID: 16885
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -944,7 +944,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Data/Skills/_Mods
+    - Assets/Data/Skills
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -983,9 +983,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 768.0003}
-    m_SelectedIDs: f62e0200
-    m_LastClickedID: 143094
+    scrollPos: {x: 0, y: 903.0005}
+    m_SelectedIDs: 40f60200
+    m_LastClickedID: 194112
     m_ExpandedIDs: ffffffff00000000b47a0000b67a0000b87a0000ba7a0000bc7a0000be7a0000c07a0000c27a0000c47a0000c67a0000c87a0000ca7a0000cc7a0000ce7a0000e6290100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1011,8 +1011,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f62e0200
-    m_LastClickedInstanceID: 143094
+    m_SelectedInstanceIDs: 40f60200
+    m_LastClickedInstanceID: 194112
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 14935
+  controlID: 16950
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1182,8 +1182,8 @@ MonoBehaviour:
     m_CachedPref: -252
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 143094
-  m_LastVerticalScrollValue: 0
+  m_LastInspectedObjectInstanceID: 194112
+  m_LastVerticalScrollValue: 16.199999
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

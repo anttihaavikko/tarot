@@ -208,7 +208,8 @@ public enum SkillTrigger
     Fizzle,
     Kill,
     TargetMove,
-    Timer
+    Timer,
+    LosePoints
 }
 
 public enum SkillCondition
