@@ -276,5 +276,5 @@ public enum Passive
     StopsOnTarget,
     TransformForcer,
     GambleTransform,
-    SlowerExp
+    ExpSpeedMod
 }

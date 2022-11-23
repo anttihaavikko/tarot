@@ -124,7 +124,7 @@ TextureImporter:
         width: 623
         height: 687
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -132,6 +132,27 @@ TextureImporter:
       bones: []
       spriteID: 22d3ad195c00b4625b865b477e3a28fe
       internalID: -2128916887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: speed
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 1359
+        width: 580
+        height: 624
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002e508f95e774f8bb319eb98e2d9c60
+      internalID: -353256114
       vertices: []
       indices: 
       edges: []
@@ -148,6 +169,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       gold_digger: -2128916887
+      speed: -353256114
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

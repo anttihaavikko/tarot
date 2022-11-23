@@ -601,7 +601,7 @@ public class Board : MonoBehaviour
 
         movesLeft = MoveCount;
         exp++;
-        var levelMod = skills.Has(Passive.SlowerExp) ? 1.5f : 1f;
+        var levelMod =  GetExpSpeed();
 
         UpdateExpBar();
 
@@ -632,9 +632,17 @@ public class Board : MonoBehaviour
         }
     }
 
+    private float GetExpSpeed()
+    {
+        var mods = skills.Get(Passive.ExpSpeedMod).ToList();
+        var speed = 1f;
+        mods.ForEach(s => speed *= s.amount * 0.01f);
+        return speed;
+    }
+
     private void UpdateExpBar()
     {
-        var levelMod = skills.Has(Passive.SlowerExp) ? 1.5f : 1f;
+        var levelMod =  GetExpSpeed();
         var ratio = Mathf.Clamp01(1f * exp / Mathf.CeilToInt(level * levelMod));
         Tweener.ScaleToBounceOut(expBar, new Vector3(ratio, 1f, 1f), 0.2f);
     }

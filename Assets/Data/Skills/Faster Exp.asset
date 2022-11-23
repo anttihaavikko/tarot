@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Slower Exp
+  m_Name: Faster Exp
   m_EditorClassIdentifier: 
   skill:
-    title: Old Dog, New Tricks
-    description: (Destiny) meter fills (50%) slower.
+    title: Penny Saved Is a Oenny Earned
+    description: (Destiny) meter fills (30%) faster.
     passive: 21
     trigger: 0
     condition: 0
     effect: 0
-    firstCards: 09000000
+    firstCards: 15000000
     secondCards: 
     extraTypes: 
-    iconSprite: {fileID: -558208016, guid: 36f50c6a977d04576891735e7cbb2339, type: 3}
+    iconSprite: {fileID: -353256114, guid: a0719984d6c1147cb9865b29768e7bb5, type: 3}
     triggerDelay: 0
     announceDelay: 0
     requirement: {fileID: 0}
-    sound: {fileID: 8300000, guid: bc0b5c49b81d54fde9966f6b61efa0ba, type: 3}
-    amount: 150
+    sound: {fileID: 8300000, guid: 3e8183fcbb4984a029c0ea4f6fa0905b, type: 3}
+    amount: 70
     cancelShout: 
     cancelDelay: 0
     cancelSound: {fileID: 0}
-    repeatable: 0
+    repeatable: 1
     notRepeatableForOthers: 0
     useSecondImage: 0
     canTargetSame: 0
     anyTriggers: 1
-    isNotMarked: 0
+    isNotMarked: 1
     usesRequirementForMarking: 0
     canNotFizzle: 0
     skipAnnounce: 0
