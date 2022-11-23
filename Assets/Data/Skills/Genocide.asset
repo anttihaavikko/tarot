@@ -14,20 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Screaming Bloody Murder
-    description: (Destroy) every ([2]) every time you gain a (new destiny).
+    description: (Destroy) all ([2]) cards every time you gain a (new destiny).
     passive: 0
     trigger: 6
     condition: 0
     effect: 23
     firstCards: 0f000000
     secondCards: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
+    extraTypes: 
     iconSprite: {fileID: 1043322991, guid: c45c071d97b0c4af8827c7521e72f1aa, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: 313b10401eeae40d58e06251d2207930, type: 3}
     amount: 0
     cancelShout: 
     cancelDelay: 0
+    cancelSound: {fileID: 0}
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 1
@@ -36,3 +39,5 @@ MonoBehaviour:
     isNotMarked: 1
     usesRequirementForMarking: 0
     canNotFizzle: 0
+    skipAnnounce: 0
+    manualPlaceOnly: 0
