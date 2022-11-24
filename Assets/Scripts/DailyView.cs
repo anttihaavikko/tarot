@@ -25,7 +25,7 @@ public class DailyView : MonoBehaviour
 
     public void Play()
     {
-        SceneChanger.Instance.ChangeScene("Main");
+        SceneChanger.Instance.ChangeScene(PlayerPrefs.HasKey("PlayerName") ? "Main" : "Name");
     }
 
     public void ChangeDate(int direction)
