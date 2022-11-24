@@ -105,7 +105,10 @@ namespace Leaderboards
 			certHandler = new CustomCertificateHandler();
 		}
 
-		public void SubmitScore(string entryName, long scoreSub, long levelSub, string id) {
+		public void SubmitScore(long scoreSub, long levelSub, string suffix = "")
+		{
+			var entryName = PlayerPrefs.GetString("PlayerName", "Anon");
+			var id = PlayerPrefs.GetString("PlayerId", Guid.NewGuid().ToString());
 			var check = (int)Secrets.GetVerificationNumber(entryName, scoreSub, levelSub);
 			
 			var parameters = "";
@@ -114,7 +117,7 @@ namespace Leaderboards
 			parameters += "," + levelSub;
 			parameters += "," + scoreSub;
 			parameters += "," + check;
-			parameters += "," + gameName;
+			parameters += "," + gameName + suffix;
 			
 			StartCoroutine(DoSubmitScore(parameters));
 		}

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AnttiStarterKit.Managers;
+using Leaderboards;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,6 +13,7 @@ public class DailyView : MonoBehaviour
     [SerializeField] private Skills skills;
     [SerializeField] private Transform skillContainer;
     [SerializeField] private Transform infoContainer;
+    [SerializeField] private ScoreManager scoreManager;
 
     private int offset;
     private DateTime current;
@@ -62,5 +64,8 @@ public class DailyView : MonoBehaviour
         {
             skills.AddRandom();
         }
+
+        scoreManager.gameName = "tarot" + DailyState.Instance.BoardSuffix;
+        scoreManager.LoadLeaderBoards(0);
     }
 }

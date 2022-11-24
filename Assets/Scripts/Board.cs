@@ -10,6 +10,7 @@ using AnttiStarterKit.Managers;
 using AnttiStarterKit.ScriptableObjects;
 using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
+using Leaderboards;
 using TMPro;
 using Random = UnityEngine.Random;
 
@@ -38,8 +39,9 @@ public class Board : MonoBehaviour
     [SerializeField] private SoundCollection harpSounds;
     [SerializeField] private GameObject gameOverContainer;
     [SerializeField] private TutorialHolder tutorial;
-
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
+    [SerializeField] private ScoreManager scoreManager;
+    
 
     private readonly InfiniteGrid<Tile> grid = new();
     private readonly List<Card> drawnCards = new();
@@ -517,6 +519,9 @@ public class Board : MonoBehaviour
     private void GameOver(bool filled)
     {
         if (alreadyOver) return;
+        
+        scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
+        
         alreadyOver = true;
         StartCoroutine(ShowGameOver(filled));
     }

@@ -11,6 +11,8 @@ public class DailyState : Manager<DailyState>
     private int BaseSeed => int.Parse(current.ToString("ddMMyyyy"));
     public static string FormatDate(DateTime date) => date.ToString("MMM dd yyyy", new CultureInfo("en-US"));
 
+    public string BoardSuffix => IsDaily ? $"-{BaseSeed.ToString()}" : "";
+
     public const int MinSkills = 1;
     public const int MaxSkills = 4;
     public const float ModChance = 0.7f;
