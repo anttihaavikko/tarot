@@ -42,7 +42,6 @@ public class Board : MonoBehaviour
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
     [SerializeField] private ScoreManager scoreManager;
     
-
     private readonly InfiniteGrid<Tile> grid = new();
     private readonly List<Card> drawnCards = new();
 
@@ -1124,5 +1123,10 @@ public class Board : MonoBehaviour
         
         scoreDisplay.ResetMulti();
         EffectManager.AddTextPopup("BAD LUCK!", pos.RandomOffset(0.5f) + Vector3.down, 0.9f);
+    }
+
+    public void PlayPickSound(Vector3 p)
+    {
+        placeSound.Play(p);
     }
 }

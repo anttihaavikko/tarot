@@ -80,6 +80,7 @@ public class Card : MonoBehaviour
         transform.localScale *= 1.1f;
         RandomizeRotation();
         board.HideCardPreview();
+        board.PlayPickSound(transform.position);
     }
 
     public void Placed()
