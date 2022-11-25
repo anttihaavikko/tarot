@@ -91,7 +91,6 @@ public class Board : MonoBehaviour
             }
         }
         
-        deck.Init();
         MoveTarget();
         
         SetupDaily();
@@ -109,6 +108,8 @@ public class Board : MonoBehaviour
         Invoke(nameof(TenSecondTimer), 10f);
         
         Invoke(nameof(IntroTutorial), 1f);
+        
+        deck.Init();
     }
 
     private void IntroTutorial()

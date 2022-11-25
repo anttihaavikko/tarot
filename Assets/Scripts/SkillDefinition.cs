@@ -278,5 +278,6 @@ public enum Passive
     StopsOnTarget,
     TransformForcer,
     GambleTransform,
-    ExpSpeedMod
+    ExpSpeedMod,
+    DeckOrder
 }

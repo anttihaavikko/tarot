@@ -5470,6 +5470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 1044727668695542183, guid: 38a461dfef6664548b153a6a2625b789, type: 3}
   board: {fileID: 296764682}
+  skills: {fileID: 1517199133}
 --- !u!1 &1190430316
 GameObject:
   m_ObjectHideFlags: 0
