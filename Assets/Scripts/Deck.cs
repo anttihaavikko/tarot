@@ -77,7 +77,6 @@ public class Deck : MonoBehaviour
         DailyState.Instance.Seed(shuffles + 666);
         var ordererSkill = skills.GetTriggered(Passive.DeckOrder, Vector3.zero);
         var orderMod = ordererSkill.Any() ? ordererSkill.First().amount : 0;
-        Debug.Log($"Ordering by {orderMod}");
         deck = new Stack<CardType>(EnumUtils.ToList<CardType>().OrderByDescending(t => (int)t * orderMod).ThenBy(_ => Random.value).Take(DeckSize));
         shuffles++;
     }
