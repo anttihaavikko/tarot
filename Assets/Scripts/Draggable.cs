@@ -26,6 +26,8 @@ public class Draggable : MonoBehaviour
 
     public bool IsDragging => dragging;
 
+    public Vector3 ReturnPos => start;
+
     private void Start()
     {
         cam = Camera.main;

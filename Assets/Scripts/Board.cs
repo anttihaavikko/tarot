@@ -235,6 +235,7 @@ public class Board : MonoBehaviour
         t.parent = hand;
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
+        this.StartCoroutine(() => drawnCard.Bounce(Vector3.down), 0.3f);
         drawnCard.RandomizeRotation();
         
         placeSound.Play(p);
@@ -465,6 +466,7 @@ public class Board : MonoBehaviour
         }
         
         tutorial.Mark(TutorialMessage.PlaceOnEdge);
+        tutorial.HideSpots();
 
         skills.UnMarkSkills();
         card.Placed();
@@ -491,6 +493,7 @@ public class Board : MonoBehaviour
         var duration = 0.05f * Vector3.Distance(t.position, cardPos);
         yield return new WaitForSeconds(0.1f);
         Tweener.MoveToBounceOut(t, cardPos, duration);
+        card.Bounce(dir);
 
         end.Value.Set(card);
         card.Lock();
@@ -1108,6 +1111,8 @@ public class Board : MonoBehaviour
         card.Tile.Clear();
         slideTarget.Value.Set(card);
         card.MarkVisit();
+        
+        card.Bounce(dir);
 
         PulseAt(pos);
         placeSound.Play(pos);

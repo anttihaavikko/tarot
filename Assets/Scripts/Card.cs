@@ -20,6 +20,7 @@ public class Card : MonoBehaviour
     [SerializeField] private Material flashSMaterial, normalMaterial, darkFlashMaterial;
     [SerializeField] private SoundCollection cardSounds;
     [SerializeField] private Transform shadow;
+    [SerializeField] private Transform wrap;
 
     private Board board;
     private Shaker shaker;
@@ -267,6 +268,7 @@ public class Card : MonoBehaviour
 
     public void ReturnToHand()
     {
+        Bounce(draggable.ReturnPos - transform.position);
         ResetPicked();
         draggable.Return();
     }
@@ -294,6 +296,26 @@ public class Card : MonoBehaviour
     public void Pulsate()
     {
         pulsater.Pulsate();
+    }
+
+    public void Bounce(Vector2Int dir)
+    {
+        var d = new Vector3(dir.x, dir.y, 0);
+        Bounce(d);
+    }
+
+    public void Bounce(Vector3 dir)
+    {
+        var d = dir .normalized * 0.1f;
+        var target = Mathf.Abs(d.x) > Mathf.Abs(d.y) ? new Vector3(0.8f, 1.2f, 1f) : new Vector3(1.2f, 0.8f, 1f);
+
+        Tweener.MoveLocalToBounceOut(wrap, d, 0.2f);
+        Tweener.ScaleToBounceOut(wrap, target, 0.2f);
+        this.StartCoroutine(() =>
+        {
+            Tweener.ScaleToQuad(wrap, Vector3.one, 0.2f);
+            Tweener.MoveLocalToQuad(wrap, Vector3.zero, 0.2f);
+        }, 0.2f);
     }
 }
 

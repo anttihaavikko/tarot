@@ -37,7 +37,10 @@ public class TutorialHolder : MonoBehaviour
     public void Hide()
     {
         appearer.Hide();
-        
+    }
+
+    public void HideSpots()
+    {
         if (spotsShown)
         {
             edgeSpots.ForEach(s => s.Hide());
