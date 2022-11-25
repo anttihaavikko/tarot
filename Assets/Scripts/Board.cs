@@ -235,7 +235,7 @@ public class Board : MonoBehaviour
         t.parent = hand;
         Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
         this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
-        this.StartCoroutine(() => drawnCard.Bounce(Vector3.down), 0.3f);
+        this.StartCoroutine(() => drawnCard.Bounce(Vector3.down), 0.35f);
         drawnCard.RandomizeRotation();
         
         placeSound.Play(p);
@@ -615,6 +615,7 @@ public class Board : MonoBehaviour
             tile.Set(card);
             HideTarget(card.Tile);
             DrawLines(lineStart, new List<Card>{ card });
+            card.Bounce(lineStart - card.transform.position);
         }
 
         foreach (var tile in tiles)
@@ -849,7 +850,11 @@ public class Board : MonoBehaviour
         
         DrawLines(lineStart, targets, true);
         
-        targets.ForEach(c => c.Shake());
+        targets.ForEach(c =>
+        {
+            c.Shake();
+            c.Bounce(lineStart - c.transform.position);
+        });
         yield return new WaitForSeconds(0.2f);
         
         foreach (var c in targets)
