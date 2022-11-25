@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Utils;
@@ -9,8 +10,10 @@ public class TutorialHolder : MonoBehaviour
 {
     [SerializeField] private Appearer appearer;
     [SerializeField] private TMP_Text text, shadow;
+    [SerializeField] private List<Appearer> edgeSpots;
 
     private Tutorial<TutorialMessage> tutorials;
+    private bool spotsShown;
 
     private void Start()
     {
@@ -34,6 +37,11 @@ public class TutorialHolder : MonoBehaviour
     public void Hide()
     {
         appearer.Hide();
+        
+        if (spotsShown)
+        {
+            edgeSpots.ForEach(s => s.Hide());
+        }
     }
     
     public void Mark(TutorialMessage message)
@@ -43,6 +51,12 @@ public class TutorialHolder : MonoBehaviour
 
     private void DoShow(TutorialMessage message)
     {
+        if (message == TutorialMessage.PlaceOnEdge)
+        {
+            spotsShown = true;
+            edgeSpots.ForEach(s => s.Show());
+        }
+        
         var msg = GetMessage(message);
         text.text = Colorize(msg, "#E0CA3C");
         shadow.text = Colorize(msg, "#1B1B1E");
