@@ -41,7 +41,9 @@ public class Board : MonoBehaviour
     [SerializeField] private TutorialHolder tutorial;
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
     [SerializeField] private ScoreManager scoreManager;
-    
+
+    [SerializeField] private Appearer pauseLabel, dailyResumeButton, menuButton, giveUpButton, resumeButton, againButton;
+
     private readonly InfiniteGrid<Tile> grid = new();
     private readonly List<Card> drawnCards = new();
 
@@ -66,6 +68,7 @@ public class Board : MonoBehaviour
     private bool canPlace;
     private int soundIndex;
     private bool alreadyOver;
+    private bool paused;
     
     public Card JustTouched { get; private set; }
     public int SlideLength { get; private set; }
@@ -118,7 +121,11 @@ public class Board : MonoBehaviour
 
     private void TenSecondTimer()
     {
-        StartCoroutine(skills.Trigger(SkillTrigger.Timer));
+        if (!paused)
+        {
+            StartCoroutine(skills.Trigger(SkillTrigger.Timer));   
+        }
+        
         Invoke(nameof(TenSecondTimer), 10f);
     }
 
@@ -163,18 +170,37 @@ public class Board : MonoBehaviour
         targetMoves++;
     }
 
+    public void Resume()
+    {
+        paused = false;
+        
+        pauseLabel.Hide();
+        resumeButton.Hide();
+        giveUpButton.Hide();
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            paused = !paused;
+
+            if (paused)
+            {
+                pauseLabel.Show();
+                resumeButton.Show();
+                giveUpButton.Show();
+                return;
+            }
+            
+            Resume();
+        }
+        
         if (DevKey.Down(KeyCode.Tab))
         {
             devMenu.SetActive(!devMenu.activeSelf);
         }
-        
-        if (DevKey.Down(KeyCode.Escape))
-        {
-            SceneChanger.Instance.ChangeScene("Start");
-        }
-        
+
         if (DevKey.Down(KeyCode.T))
         {
             DrawLines(SkyPoint, drawnCards);
@@ -516,10 +542,11 @@ public class Board : MonoBehaviour
         GameOver(false);
     }
 
-    private void GameOver(bool filled)
+    public void GameOver(bool filled)
     {
         if (alreadyOver) return;
 
+        Resume();
         alreadyOver = true;
         StartCoroutine(ShowGameOver(filled));
     }
@@ -543,6 +570,17 @@ public class Board : MonoBehaviour
         AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
         gameOverContainer.SetActive(true);
         AudioManager.Instance.TargetPitch = 0;
+
+        yield return new WaitForSeconds(0.2f);
+
+        if (DailyState.Instance.IsDaily)
+        {
+            dailyResumeButton.Show();
+            yield break;
+        }
+        
+        menuButton.Show();
+        againButton.Show();
     }
 
     public void PulseAt(Vector3 pos, bool lines = true)
