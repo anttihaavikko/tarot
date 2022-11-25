@@ -534,9 +534,10 @@ public class Board : MonoBehaviour
             AudioManager.Instance.PlayEffectAt(13, MidPoint);
             yield return new WaitForSeconds(0.2f);
             AddScore(scoreDisplay.Total, MidPoint, false);
-            scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
             yield return new WaitForSeconds(2f);         
         }
+        
+        scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
         
         effectCamera.BaseEffect(0.5f);
         AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
@@ -703,6 +704,7 @@ public class Board : MonoBehaviour
         }
         
         EffectManager.AddTextPopup(shown.AsScore(), pos.RandomOffset(1f), 1.3f);
+        effectCamera.BaseEffect(0.2f);
         
         AudioManager.Instance.PlayEffectFromCollection(5, pos);
     }
