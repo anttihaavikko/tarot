@@ -65,7 +65,7 @@ public class Skill
 
     public CardType MainType => firstCard;
     public CardType ImageType => useSecondImage ? secondCard : firstCard;
-    public CardType TargetType => secondCard;
+    public CardType TargetType => secondCards.Any() ? secondCard : EnumUtils.Random<CardType>();
     public bool HasTargetType => secondCards.Any();
 
     public CardType ExtraType => extraTypes.Any() ? extraTypes.Random() : EnumUtils.Random<CardType>();

@@ -187,7 +187,7 @@ TextureImporter:
         width: 665
         height: 464
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -195,6 +195,27 @@ TextureImporter:
       bones: []
       spriteID: 093e8ec56451c4b57a2d808ede0f9b7f
       internalID: 156122376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stack
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 657
+        width: 819
+        height: 615
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a82a9d1c03ec46a7866d6261d4acbe2
+      internalID: -1965879884
       vertices: []
       indices: 
       edges: []
@@ -211,6 +232,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       gold_digger: -2128916887
+      stack: -1965879884
       speed: -353256114
       list_down: 156122376
       flute: 2010268347
