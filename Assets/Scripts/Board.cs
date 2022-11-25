@@ -535,6 +535,7 @@ public class Board : MonoBehaviour
             AudioManager.Instance.PlayEffectAt(13, MidPoint);
             yield return new WaitForSeconds(0.2f);
             AddScore(scoreDisplay.Total, MidPoint, false);
+            scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
             yield return new WaitForSeconds(2f);         
         }
         
@@ -542,8 +543,6 @@ public class Board : MonoBehaviour
         AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
         gameOverContainer.SetActive(true);
         AudioManager.Instance.TargetPitch = 0;
-        
-        scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
     }
 
     public void PulseAt(Vector3 pos, bool lines = true)
