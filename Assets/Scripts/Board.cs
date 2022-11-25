@@ -520,9 +520,7 @@ public class Board : MonoBehaviour
     private void GameOver(bool filled)
     {
         if (alreadyOver) return;
-        
-        scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
-        
+
         alreadyOver = true;
         StartCoroutine(ShowGameOver(filled));
     }
@@ -544,6 +542,8 @@ public class Board : MonoBehaviour
         AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
         gameOverContainer.SetActive(true);
         AudioManager.Instance.TargetPitch = 0;
+        
+        scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
     }
 
     public void PulseAt(Vector3 pos, bool lines = true)
