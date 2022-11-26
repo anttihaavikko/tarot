@@ -6,6 +6,7 @@ namespace Leaderboards
 {
     public class Leaderboards : MonoBehaviour
     {
+        [SerializeField] private Transform container;
         public ScoreRow rowPrefab;
 
         private ScoreManager scoreManager;
@@ -34,15 +35,15 @@ namespace Leaderboards
         {
             var data = scoreManager.GetData();
 
-            for (var i = 0; i < transform.childCount; i++)
+            for (var i = 0; i < container.childCount; i++)
             {
-                var go = transform.GetChild(i).gameObject;
+                var go = container.GetChild(i).gameObject;
                 Destroy(go);
             }
 
             data.scores.ToList().ForEach(entry =>
             {
-                var row = Instantiate(rowPrefab, transform);
+                var row = Instantiate(rowPrefab, container);
                 row.Setup(entry.position + ". " + entry.name, entry.score, entry.locale);
             });
         }
