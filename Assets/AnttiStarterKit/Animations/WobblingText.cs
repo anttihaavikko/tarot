@@ -69,8 +69,8 @@ namespace AnttiStarterKit.Animations
         {
             var offset = Vector3.zero.WhereY(Mathf.Sin(Time.time * speed + index * 0.5f + baseOffset) * amount);
             verts[info.vertexIndex] += offset;
-            verts[info.vertexIndex + 1] += offset;
-            verts[info.vertexIndex + 2] += offset;
+            verts[info.vertexIndex + 1] += offset * 0.5f;
+            verts[info.vertexIndex + 2] += offset * 0.5f;
             verts[info.vertexIndex + 3] += offset;
         }
     }
