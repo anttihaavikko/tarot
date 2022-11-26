@@ -579,7 +579,8 @@ public class Board : MonoBehaviour
         }
         
         effectCamera.BaseEffect(0.5f);
-        AudioManager.Instance.PlayEffectAt(10, Vector3.zero);
+        AudioManager.Instance.PlayEffectAt(10, MidPoint);
+        AudioManager.Instance.PlayEffectFromCollection(4, MidPoint);
         gameOverContainer.SetActive(true);
         AudioManager.Instance.TargetPitch = 0;
 
@@ -773,6 +774,7 @@ public class Board : MonoBehaviour
         var from = source ? source.transform.position : SkyPoint;
         var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(from, c.transform.position)).ToList();
         DrawLines(from, targets, false, true);
+        AudioManager.Instance.PitchFor(0.7f, 0.5f);
         var immortals = targets.Where(c => skills.Has(Passive.Immortal, c.GetCardType())).ToList();
         targets = targets.Except(immortals).ToList();
 
@@ -859,7 +861,8 @@ public class Board : MonoBehaviour
         var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(lineStart, c.transform.position)).ToList();
         
         DrawLines(lineStart, targets, true);
-        
+        AudioManager.Instance.PitchFor(1.3f, 0.5f);
+
         targets.ForEach(c =>
         {
             c.Shake();

@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: 0.5
   hideDelay: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: 1.2
   hideDelay: 0
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 1, y: 0, z: 0}
   appearAfter: 0.4
   hideDelay: 0
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: 1.2
   hideDelay: 0
@@ -1812,6 +1812,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 31.5
       objectReference: {fileID: 0}
+    - target: {fileID: 160017149719832018, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
+      propertyPath: soundCollection
+      value: 
+      objectReference: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
     - target: {fileID: 160017149719832041, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
       propertyPath: m_Name
       value: Preview (4)
@@ -2450,7 +2454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: 1
   hideDelay: 0
@@ -2833,7 +2837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: 0.7
   hideDelay: 0
@@ -3133,6 +3137,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 31.5
       objectReference: {fileID: 0}
+    - target: {fileID: 160017149719832018, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
+      propertyPath: soundCollection
+      value: 
+      objectReference: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
     - target: {fileID: 160017149719832041, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
       propertyPath: m_Name
       value: Preview
@@ -3856,7 +3864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: 0.7
   hideDelay: 0
@@ -3915,7 +3923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: 0.5
   hideDelay: 0
@@ -4323,6 +4331,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1463888321}
     m_Modifications:
+    - target: {fileID: 1374150627, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
+      propertyPath: soundCollection
+      value: 
+      objectReference: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
+    - target: {fileID: 493991866424159783, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493991866424159783, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493991866424159783, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493991866424159783, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493991866424159783, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5244400817378973800, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4775,7 +4807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 1, y: 0, z: 0}
   appearAfter: 0.4
   hideDelay: 0
@@ -5879,6 +5911,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 31.5
       objectReference: {fileID: 0}
+    - target: {fileID: 160017149719832018, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
+      propertyPath: soundCollection
+      value: 
+      objectReference: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
     - target: {fileID: 160017149719832041, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
       propertyPath: m_Name
       value: Preview (3)
@@ -6521,6 +6557,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 31.5
       objectReference: {fileID: 0}
+    - target: {fileID: 160017149719832018, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
+      propertyPath: soundCollection
+      value: 
+      objectReference: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
     - target: {fileID: 160017149719832041, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
       propertyPath: m_Name
       value: Preview (1)
@@ -7163,6 +7203,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 31.5
       objectReference: {fileID: 0}
+    - target: {fileID: 160017149719832018, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
+      propertyPath: soundCollection
+      value: 
+      objectReference: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
     - target: {fileID: 160017149719832041, guid: 09e8c9c32f16d4fa1831f0c8de160eb0, type: 3}
       propertyPath: m_Name
       value: Preview (2)
@@ -7988,7 +8032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
   hiddenSize: {x: 0, y: 0, z: 0}
   appearAfter: 1.1
   hideDelay: 0

@@ -262,6 +262,8 @@ public class Card : MonoBehaviour
         Init(target);
         board.PulseAt(transform.position);
         
+        AudioManager.Instance.PitchFor(1.3f, 0.5f);
+        
         Flash();
         RandomizeRotation();
         // Announce();

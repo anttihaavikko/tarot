@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AnttiStarterKit.ScriptableObjects;
 using UnityEngine;
+using AnttiStarterKit.Extensions;
 
 namespace AnttiStarterKit.Managers
 {
@@ -101,13 +102,25 @@ namespace AnttiStarterKit.Managers
 			curMusic.Play ();
 		}
 
+		public void PitchFor(float target, float duration)
+		{
+			TargetPitch = target;
+			CancelInvoke(nameof(ResetPitch));
+			Invoke(nameof(ResetPitch), duration);
+		}
+
+		private void ResetPitch()
+		{
+			TargetPitch = 1f;
+		}
+
 		private void Update()
 		{
 			var targetLowpass = (doingLowpass) ? 5000f : 22000;
 			var targetHighpass = (doingHighpass) ? 400f : 10f;
 			const float changeSpeed = 0.075f;
 
-			curMusic.pitch = Mathf.MoveTowards (curMusic.pitch, TargetPitch, 0.005f * changeSpeed);
+			curMusic.pitch = Mathf.MoveTowards (curMusic.pitch, TargetPitch, 0.01f * changeSpeed);
 			if(lowpass) lowpass.cutoffFrequency = Mathf.MoveTowards (lowpass.cutoffFrequency, targetLowpass, 750f * changeSpeed);
 			if (highpass) highpass.cutoffFrequency = Mathf.MoveTowards (highpass.cutoffFrequency, targetHighpass, 50f * changeSpeed);
 		
