@@ -566,8 +566,11 @@ public class Board : MonoBehaviour
             AddScore(scoreDisplay.Total, MidPoint, false);
             yield return new WaitForSeconds(2f);         
         }
-        
-        scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
+
+        if (scoreDisplay.Total > 0)
+        {
+            scoreManager.SubmitScore(scoreDisplay.Total, level, DailyState.Instance.BoardSuffix);
+        }
         
         effectCamera.BaseEffect(0.5f);
         AudioManager.Instance.PlayEffectAt(10, Vector3.zero);

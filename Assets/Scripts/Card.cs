@@ -21,6 +21,7 @@ public class Card : MonoBehaviour
     [SerializeField] private SoundCollection cardSounds;
     [SerializeField] private Transform shadow;
     [SerializeField] private Transform wrap;
+    [SerializeField] private SoundCollection pops;
 
     private Board board;
     private Shaker shaker;
@@ -268,7 +269,7 @@ public class Card : MonoBehaviour
 
     public void ReturnToHand()
     {
-        Bounce(draggable.ReturnPos - transform.position);
+        this.StartCoroutine(() => Bounce(draggable.ReturnPos - transform.position), 0.25f);
         ResetPicked();
         draggable.Return();
     }
@@ -309,6 +310,10 @@ public class Card : MonoBehaviour
         var d = dir .normalized * 0.1f;
         var target = Mathf.Abs(d.x) > Mathf.Abs(d.y) ? new Vector3(0.8f, 1.2f, 1f) : new Vector3(1.2f, 0.8f, 1f);
 
+        var p = wrap.position;
+        AudioManager.Instance.PlayEffectFromCollection(pops, p, 1f);
+        board.PlayPickSound(p);
+        
         Tweener.MoveLocalToBounceOut(wrap, d, 0.2f);
         Tweener.ScaleToBounceOut(wrap, target, 0.2f);
         this.StartCoroutine(() =>

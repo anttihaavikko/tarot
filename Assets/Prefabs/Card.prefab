@@ -5672,6 +5672,7 @@ MonoBehaviour:
   cardSounds: {fileID: 11400000, guid: caba13590707742dbb06bfb616398c8d, type: 2}
   shadow: {fileID: 87641125952399377}
   wrap: {fileID: 113963324799046490}
+  pops: {fileID: 11400000, guid: ed1e92e53c6ca4744b01d651646a6293, type: 2}
 --- !u!210 &4148702712765327948
 SortingGroup:
   m_ObjectHideFlags: 0
