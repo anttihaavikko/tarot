@@ -55,7 +55,7 @@ public class DailyView : MonoBehaviour
         fieldSize = Random.Range(4, 10);
         var skillCount = Random.Range(DailyState.MinSkills, DailyState.MaxSkills + 1);
         
-        infos.ForEach(i => i.text = $"Board size of {(fieldSize - 2) * 2 + 1}, start with");
+        infos.ForEach(i => i.text = $"Board size of <size=28>{(fieldSize - 2) * 2 + 1}</size>, start with");
         
         if (Random.value < DailyState.ModChance)
         {
