@@ -16,7 +16,7 @@ namespace AnttiStarterKit.Managers
 
 			if (pitchShift) {
 				float targetPitch = 1f;
-				audioSource.pitch = (1f + Random.Range (-0.2f, 0.2f)) * targetPitch;
+				audioSource.pitch = (1f + Random.Range (-0.1f, 0.1f)) * targetPitch;
 			}
 
 			audioSource.PlayOneShot (clip, AudioManager.Instance.volume * volume);
