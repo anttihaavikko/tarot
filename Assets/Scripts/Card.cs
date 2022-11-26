@@ -307,6 +307,7 @@ public class Card : MonoBehaviour
 
     public void Bounce(Vector3 dir)
     {
+        var duration = 0.15f;
         var d = dir .normalized * 0.1f;
         var target = Mathf.Abs(d.x) > Mathf.Abs(d.y) ? new Vector3(0.8f, 1.2f, 1f) : new Vector3(1.2f, 0.8f, 1f);
 
@@ -314,13 +315,13 @@ public class Card : MonoBehaviour
         AudioManager.Instance.PlayEffectFromCollection(pops, p, 1f);
         board.PlayPickSound(p);
         
-        Tweener.MoveLocalToBounceOut(wrap, d, 0.2f);
-        Tweener.ScaleToBounceOut(wrap, target, 0.2f);
+        Tweener.MoveLocalToBounceOut(wrap, d, duration);
+        Tweener.ScaleToBounceOut(wrap, target, duration);
         this.StartCoroutine(() =>
         {
-            Tweener.ScaleToQuad(wrap, Vector3.one, 0.2f);
-            Tweener.MoveLocalToQuad(wrap, Vector3.zero, 0.2f);
-        }, 0.2f);
+            Tweener.ScaleToQuad(wrap, Vector3.one, duration);
+            Tweener.MoveLocalToQuad(wrap, Vector3.zero, duration);
+        }, duration);
     }
 }
 
