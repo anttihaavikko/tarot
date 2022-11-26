@@ -120,7 +120,7 @@ namespace AnttiStarterKit.Animations
         {
             if (index < 0) return;
             var pos = GetSoundPos();
-            AudioManager.Instance.PlayEffectAt(index, pos, volume);
+            AudioManager.Instance.PlayEffectFromCollection(index, pos, volume);
         }
     }
 }

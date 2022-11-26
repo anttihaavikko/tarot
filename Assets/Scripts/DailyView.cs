@@ -9,11 +9,12 @@ using Random = UnityEngine.Random;
 
 public class DailyView : MonoBehaviour
 {
-    [SerializeField] private List<TMP_Text> dateLabels, infos;
+    [SerializeField] private List<TMP_Text> dateLabels, infos, clicheLabels;
     [SerializeField] private Skills skills;
     [SerializeField] private Transform skillContainer;
     [SerializeField] private Transform infoContainer;
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private WordDictionary cliches;
 
     private int offset;
     private DateTime current;
@@ -21,6 +22,7 @@ public class DailyView : MonoBehaviour
 
     private void Start()
     {
+        cliches.Setup();
         AudioManager.Instance.TargetPitch = 1;
         ChangeDate(0);
     }
@@ -67,5 +69,8 @@ public class DailyView : MonoBehaviour
 
         scoreManager.gameName = "tarot" + DailyState.Instance.BoardSuffix;
         scoreManager.LoadLeaderBoards(0);
+
+        var cliche = cliches.RandomWord().ToUpper();
+        clicheLabels.ForEach(t => t.text = cliche);
     }
 }
