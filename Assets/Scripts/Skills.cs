@@ -104,6 +104,8 @@ public class Skills : MonoBehaviour
 
     public IEnumerator Present(bool isReroll = false)
     {
+        board.CanUndo = false;
+        
         if (!isReroll)
         {
             rerolls = skills.Count(s => s.Matches(Passive.Reroll));   
@@ -220,6 +222,7 @@ public class Skills : MonoBehaviour
 
     private IEnumerable<CardType> GetTypesFor(Card card)
     {
+        if (!card) return new List<CardType>();
         var type = card.GetCardType();
         return GetTypesFor(type);
     }
@@ -362,6 +365,8 @@ public class Skills : MonoBehaviour
 
     private IEnumerator DoEffect(Skill skill, Card card)
     {
+        board.CanUndo = false;
+        
         switch (skill.effect)
         {
             case SkillEffect.None:

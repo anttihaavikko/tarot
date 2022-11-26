@@ -41,6 +41,7 @@ public class Board : MonoBehaviour
     [SerializeField] private TutorialHolder tutorial;
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private Appearer undoButton;
 
     [SerializeField] private Appearer pauseLabel, dailyResumeButton, menuButton, giveUpButton, resumeButton, againButton;
 
@@ -51,6 +52,9 @@ public class Board : MonoBehaviour
     private Tile targetTile;
     private Card justPlaced;
     private int targetMoves;
+
+    private int prevScore, prevMulti, prevMoves;
+    private Card prevCard;
 
     private int movesLeft;
     private int MoveCount => 5 + skills.Count(Passive.AddMove) - skills.Count(Passive.MultiIncreaseAndDecreaseMoves);
@@ -74,6 +78,7 @@ public class Board : MonoBehaviour
     public int SlideLength { get; private set; }
     public Tile BehindSpot { get; private set; }
     public Vector2Int PreviousDirection { get; private set; }
+    public bool CanUndo { get; set; }
     
     public bool IsActing => !skills.IsViewingBoard && !canPlace;
     public bool IsDragging => drawnCards.Any(c => c.IsDragging);
@@ -127,6 +132,26 @@ public class Board : MonoBehaviour
         }
         
         Invoke(nameof(TenSecondTimer), 10f);
+    }
+
+    public void Undo()
+    {
+        undoButton.Hide();
+        
+        scoreDisplay.Set(prevScore, prevMulti);
+        movesLeft = prevMoves;
+        
+        UpdateMoveDisplay();
+        
+        deck.AddToTop(drawnCard.GetCardType(), 1);
+        deck.AddToTop(prevCard.GetCardType(), 1);
+        
+        prevCard.Tile.Clear();
+        Destroy(prevCard.gameObject);
+        Destroy(drawnCards.Last().gameObject);
+        drawnCards.Clear();
+        
+        AddCard();
     }
 
     private void SetupDaily()
@@ -436,6 +461,13 @@ public class Board : MonoBehaviour
 
     private IEnumerator DoSlide(Card card)
     {
+        CanUndo = true;
+
+        prevScore = scoreDisplay.Total;
+        prevMulti = scoreDisplay.Multi;
+        prevMoves = movesLeft;
+        prevCard = card;
+        
         if (!canPlace)
         {
             tutorial.Show(TutorialMessage.PlaceOnEdge);
@@ -470,7 +502,7 @@ public class Board : MonoBehaviour
             canPlace = true;
             yield break;
         }
-        
+
         tutorial.Mark(TutorialMessage.PlaceOnEdge);
         tutorial.HideSpots();
 
@@ -544,6 +576,12 @@ public class Board : MonoBehaviour
             canPlace = true;
             yield return deck.TryShuffle();
             AddCard();
+
+            if (CanUndo && drawnCards.Count <= 1)
+            {
+                undoButton.Show();
+            }
+            
             yield break;
         }
         
@@ -665,6 +703,8 @@ public class Board : MonoBehaviour
         soundIndex = reachedWithFirst ? (soundIndex + 1) % 7 : 0;
 
         yield return new WaitForSeconds(0.2f);
+        
+        CanUndo = false;
 
         Grow();
         yield return MoveTarget();
@@ -771,6 +811,8 @@ public class Board : MonoBehaviour
 
     public IEnumerator DestroyCards(List<Card> cards, Card source)
     {
+        CanUndo = false;
+        
         var from = source ? source.transform.position : SkyPoint;
         var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(from, c.transform.position)).ToList();
         DrawLines(from, targets, false, true);
@@ -858,6 +900,8 @@ public class Board : MonoBehaviour
 
     public IEnumerator TransformCards(List<Card> cards, Skill skill, Vector3 lineStart)
     {
+        CanUndo = false;
+        
         var targets = cards.Where(c => !c.IsDying).OrderBy(c => Vector3.Distance(lineStart, c.transform.position)).ToList();
         
         DrawLines(lineStart, targets, true);
@@ -1025,6 +1069,7 @@ public class Board : MonoBehaviour
 
     public void HideCardPreview()
     {
+        undoButton.Hide();
         tutorial.Hide();
         cardPreview.Hide();
         tooltipper.Clear();
