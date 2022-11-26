@@ -151,7 +151,7 @@ public class Board : MonoBehaviour
         Destroy(drawnCards.Last().gameObject);
         drawnCards.Clear();
         
-        AddCard();
+        AddCardWithoutTriggers();
     }
 
     private void SetupDaily()
@@ -257,6 +257,23 @@ public class Board : MonoBehaviour
         ShowPreview(type);
     }
 
+    private void AddCardWithoutTriggers()
+    {
+        RepositionHand(true);
+        
+        var p = hand.position;
+        var type = deck.Pull();
+        drawnCard = CreateCard(type, deck.GetSpawn(), false);
+        var t = drawnCard.transform;
+        t.parent = hand;
+        Tweener.MoveToQuad(t, t.position + new Vector3(0.8f, 0.4f, 0), 0.2f);
+        this.StartCoroutine(() => Tweener.MoveToBounceOut(t, hand.position, 0.3f), 0.2f);
+        this.StartCoroutine(() => drawnCard.Bounce(Vector3.down), 0.35f);
+        drawnCard.RandomizeRotation();
+        
+        placeSound.Play(p);
+    }
+
     public void AddCard()
     {
         RepositionHand(true);
@@ -272,6 +289,8 @@ public class Board : MonoBehaviour
         drawnCard.RandomizeRotation();
         
         placeSound.Play(p);
+
+        prevMulti = scoreDisplay.Multi;
 
         this.StartCoroutine(() =>
         {
@@ -464,7 +483,6 @@ public class Board : MonoBehaviour
         CanUndo = true;
 
         prevScore = scoreDisplay.Total;
-        prevMulti = scoreDisplay.Multi;
         prevMoves = movesLeft;
         prevCard = card;
         
@@ -617,7 +635,7 @@ public class Board : MonoBehaviour
         }
         
         effectCamera.BaseEffect(0.5f);
-        AudioManager.Instance.PlayEffectAt(10, MidPoint);
+        AudioManager.Instance.PlayEffectAt(10, MidPoint, 3f);
         AudioManager.Instance.PlayEffectFromCollection(4, MidPoint);
         gameOverContainer.SetActive(true);
         AudioManager.Instance.TargetPitch = 0;

@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c2b7f93d66473b9f70cbd643a3e298, type: 3}
-  m_Name: Suicidal
+  m_Name: Sacrifice
   m_EditorClassIdentifier: 
   skill:
-    title: Short Changed
-    description: Increase (multiplier) by (10) when ([1]) is destroyed.
+    title: Blood Money
+    description: Increase (multiplier) by ([X]) when (any card) is destroyed.
     passive: 0
     trigger: 2
     condition: 0
     effect: 3
-    firstCards: 0c000000
+    firstCards: 0f000000
     secondCards: 
     extraTypes: 
-    iconSprite: {fileID: -677619303, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
+    iconSprite: {fileID: -687841705, guid: c45c071d97b0c4af8827c7521e72f1aa, type: 3}
     triggerDelay: 0
-    announceDelay: 0
+    announceDelay: 0.2
     requirement: {fileID: 0}
-    sound: {fileID: 8300000, guid: d7d02203d51c84c11bf91dcde1235a13, type: 3}
-    amount: 10
+    sound: {fileID: 8300000, guid: 2dbf1b7056d0743f9917ee7ced6e52a0, type: 3}
+    amount: 1
     cancelShout: 
     cancelDelay: 0
     cancelSound: {fileID: 0}
@@ -35,7 +35,7 @@ MonoBehaviour:
     notRepeatableForOthers: 0
     useSecondImage: 0
     canTargetSame: 0
-    anyTriggers: 0
+    anyTriggers: 1
     isNotMarked: 0
     usesRequirementForMarking: 0
     canNotFizzle: 0
