@@ -419,7 +419,7 @@ public class Skills : MonoBehaviour
                 yield return board.DestroyCards(board.GetClosest(card, skill.TargetType, 1 + ExtenderCount(skill)), card);
                 break;
             case SkillEffect.MoveTarget:
-                board.MoveTarget();
+                yield return board.MoveTarget();
                 if (skills.Any(s => s.Matches(SkillTrigger.TargetMove)))
                 {
                     yield return new WaitForSeconds(0.3f);

@@ -279,5 +279,6 @@ public enum Passive
     TransformForcer,
     GambleTransform,
     ExpSpeedMod,
-    DeckOrder
+    DeckOrder,
+    TargetDriller
 }

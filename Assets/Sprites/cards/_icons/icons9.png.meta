@@ -208,7 +208,7 @@ TextureImporter:
         width: 819
         height: 615
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -216,6 +216,27 @@ TextureImporter:
       bones: []
       spriteID: 2a82a9d1c03ec46a7866d6261d4acbe2
       internalID: -1965879884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: target_driller
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 309
+        width: 758
+        height: 988
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff3ea29da08a04ea4af6774a40e70486
+      internalID: 2116724105
       vertices: []
       indices: 
       edges: []
@@ -231,6 +252,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      target_driller: 2116724105
       gold_digger: -2128916887
       stack: -1965879884
       speed: -353256114

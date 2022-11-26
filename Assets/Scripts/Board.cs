@@ -93,7 +93,7 @@ public class Board : MonoBehaviour
             }
         }
         
-        MoveTarget();
+        StartCoroutine(MoveTarget());
         
         SetupDaily();
         
@@ -154,16 +154,24 @@ public class Board : MonoBehaviour
         playArea.size = Scale(new Vector3(fieldSize * 2 - 1.5f, fieldSize * 2 - 2f));
     }
 
-    public void MoveTarget()
+    public IEnumerator MoveTarget()
     {
         DailyState.Instance.Seed(targetMoves + 1234);
         target.gameObject.SetActive(true);
-        var spot = grid.RandomFree();
+        var spot = skills.Has(Passive.TargetDriller) ? grid.GetRandom() : grid.RandomFree();
         if (spot == default)
         {
             GameOver(true);
-            return;
+            yield break;
         }
+
+        if (spot.IsOccupied)
+        {
+            skills.Trigger(Passive.TargetDriller, spot.Value.Card);
+            skills.GetTriggered(Passive.TargetDriller, spot.Value.Card.transform.position);
+            yield return DestroyCards(new List<Card> { spot.Value.Card }, null);
+        }
+        
         targetTile = spot.Value;
         target.position = targetTile.transform.position;
         PulseAt(target.position);
@@ -321,8 +329,6 @@ public class Board : MonoBehaviour
                 .ToList()
                 .ForEach(g => AddTile(g.Position.x, g.Position.y));
         });
-        
-        MoveTarget();
 
         RepositionCamera();
     }
@@ -660,6 +666,7 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         Grow();
+        yield return MoveTarget();
 
         movesLeft = MoveCount;
         exp++;

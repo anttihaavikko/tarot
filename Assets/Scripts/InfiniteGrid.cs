@@ -50,6 +50,11 @@ public class InfiniteGrid<T> where T : GridTile
         return items.Values.Where(a => a.IsEmpty).OrderBy(_ => Random.value).FirstOrDefault();
     }
 
+    public GridSpot GetRandom()
+    {
+        return items.Values.Where(a => !a.IsWall).OrderBy(_ => Random.value).FirstOrDefault();
+    }
+
     public GridSpot GetClosest(Vector3 pos)
     {
         return items.Values
