@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Faster Exp
   m_EditorClassIdentifier: 
   skill:
-    title: Penny Saved Is a Oenny Earned
+    title: Penny Saved Is a Penny Earned
     description: (Destiny) meter fills (30%) faster.
     passive: 21
     trigger: 0
