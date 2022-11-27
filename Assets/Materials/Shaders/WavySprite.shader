@@ -52,7 +52,7 @@ Shader "CustomSprites/WavySprite"
 
             float2 diff(fixed2 uv, float2 world) {
                 float phase = sin((_Time + _Offset) * 100.0 * _Speed + world.x * 0.5 + world.y * 0.7);
-
+                
                 float xdiff = phase * uv.y * 0.02 * _Amount;
                 float ydiff = phase * uv.y * 0.005 * uv.x * _Sway;
 
@@ -67,14 +67,13 @@ Shader "CustomSprites/WavySprite"
 
                 float2 d = diff(v.uv, world);
 
-                o.position = UnityObjectToClipPos(v.vertex) + float4(d.x, d.y , 0, 0);
+                o.position = UnityObjectToClipPos(v.vertex + float4(d.x, d.y , 0, 0));
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.color = v.color;
                 return o;
             }
 
             fixed4 frag(v2f i) : SV_TARGET{
-                // float2 d = diff(i.uv);
                 fixed4 col = tex2D(_MainTex, i.uv);
                 col *= i.color;
                 return col;

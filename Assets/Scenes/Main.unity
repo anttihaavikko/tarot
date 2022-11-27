@@ -1379,6 +1379,7 @@ MonoBehaviour:
   placeSound: {fileID: 11400000, guid: 1253bc6c8c1b74280822c7c03aa96c6a, type: 2}
   scoreManager: {fileID: 257932473}
   undoButton: {fileID: 1235737436}
+  plants: {fileID: 578358991}
   pauseLabel: {fileID: 332919506}
   dailyResumeButton: {fileID: 923744347}
   menuButton: {fileID: 847068877}
@@ -3759,6 +3760,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551048930}
   m_CullTransparentMesh: 1
+--- !u!1 &578358989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 578358990}
+  - component: {fileID: 578358991}
+  m_Layer: 0
+  m_Name: Plants
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &578358990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578358989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &578358991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578358989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4329be88557549cdb00fe495a96eb704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2096544962065632337, guid: 4291e28fd747c4bbb9a9bd9de09ea0f8, type: 3}
 --- !u!1 &584944102
 GameObject:
   m_ObjectHideFlags: 0

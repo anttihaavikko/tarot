@@ -43,6 +43,8 @@ public class Board : MonoBehaviour
     [SerializeField] private SoundComposition explosionSound, transformSound, placeSound;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private Appearer undoButton;
+    [SerializeField] private Plants plants;
+    
 
     [SerializeField] private Appearer pauseLabel, dailyResumeButton, menuButton, giveUpButton, resumeButton, againButton;
 
@@ -476,6 +478,10 @@ public class Board : MonoBehaviour
             // PulseAt(p, false);
         }
         grid.Set(x, y, tile);
+        
+        // plants.Clear(Scale(p));
+        // var spots = grid.GetNeighboursWithDiagonals(x, y, 4).Where(t => t.IsWall).ToList();
+        // spots.ForEach(spot => plants.Add(Scale(spot.AsVector3)));
     }
 
     public void Slide(Card card)
