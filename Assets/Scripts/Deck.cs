@@ -25,6 +25,8 @@ public class Deck : MonoBehaviour
     private const float DealDelay = 0.03f;
 
     private Vector3 DealPos => transform.position + board.SkyPoint.magnitude * Vector3.down + Vector3.left;
+    
+    public bool IsInitialized { get; private set; }
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class Deck : MonoBehaviour
     public void Init()
     {
         SetupStack();
+        IsInitialized = true;
     }
 
     private void AddCard()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Managers;
+using AnttiStarterKit.Utils;
 using Leaderboards;
 using TMPro;
 using UnityEngine;
@@ -27,6 +28,15 @@ public class DailyView : MonoBehaviour
         cliches.Setup();
         AudioManager.Instance.TargetPitch = 1;
         ChangeDate(0);
+    }
+
+    private void Update()
+    {
+        if (DevKey.Down(KeyCode.F))
+        {
+            notification.Hide();
+            startButton.Show();
+        }
     }
 
     public void Play()

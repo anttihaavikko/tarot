@@ -12,6 +12,7 @@ using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
 using Leaderboards;
 using TMPro;
+using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 
 public class Board : MonoBehaviour
@@ -52,6 +53,7 @@ public class Board : MonoBehaviour
     private Tile targetTile;
     private Card justPlaced;
     private int targetMoves;
+    private int handSize = 1;
 
     private int prevScore, prevMulti, prevMoves;
     private Card prevCard;
@@ -108,15 +110,25 @@ public class Board : MonoBehaviour
         UpdateMoveDisplay();
         
         RepositionCamera();
-        Invoke(nameof(AddCard), PanTime + 0.5f);
+        
+        deck.Init();
+        StartCoroutine(AddStartHand());
 
         canPlace = true;
         
         Invoke(nameof(TenSecondTimer), 10f);
-        
         Invoke(nameof(IntroTutorial), 1f);
+    }
+
+    private IEnumerator AddStartHand()
+    {
+        yield return new WaitForSeconds(PanTime);
         
-        deck.Init();
+        for (var i = 0; i < handSize; i++)
+        {
+            yield return new WaitForSeconds(0.5f);
+            AddCard();
+        }
     }
 
     private void IntroTutorial()
@@ -276,6 +288,8 @@ public class Board : MonoBehaviour
 
     public void AddCard()
     {
+        DailyState.Instance.Seed(1234 + level + drawnCards.Count);
+        
         RepositionHand(true);
         
         var p = hand.position;
@@ -1231,12 +1245,16 @@ public class Board : MonoBehaviour
 
     public void IncreaseHandSize()
     {
-        AddCard();
-        
-        var offset = drawnCards.Count;
-        var pos = hand.position + Vector3.right * offset + Vector3.down * (0.2f * offset);
+        if (deck.IsInitialized)
+        {
+            AddCard();   
+        }
+
+        var pos = hand.position + Vector3.right * handSize + Vector3.down * (0.2f * handSize);
         var spot = Instantiate(handSpotPrefab, hand);
         spot.position = pos;
+        
+        handSize++;
     }
 
     public void GambleMulti(Vector3 pos)
