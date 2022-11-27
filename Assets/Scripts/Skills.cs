@@ -291,6 +291,18 @@ public class Skills : MonoBehaviour
             yield return Act(s, card.transform.position, card);
         }
     }
+    
+    public IEnumerator Trigger(SkillTrigger trigger, CardType type, Card card, float delay = 0f)
+    {
+        foreach (var s in skills.Where(s => s.Matches(trigger, type)).ToList())
+        {
+            if (delay > 0)
+            {
+                yield return new WaitForSeconds(delay);
+            }
+            yield return Act(s, card.transform.position, card);
+        }
+    }
 
     public IEnumerator Trigger(SkillTrigger trigger, Card card, float delay = 0f)
     {

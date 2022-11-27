@@ -318,11 +318,12 @@ public class Board : MonoBehaviour
             if (!transforms.Any()) return;
             var first = transforms.First();
             var targetType = GetTransformTypeFor(drawnCard, first.TargetType);
+            var originalType = drawnCard.GetCardType();
             drawnCard.TransformTo(targetType);
             ShowPreview(targetType);
             first.Trigger();
 
-            StartCoroutine(skills.Trigger(SkillTrigger.Transform, drawnCard, 0.6f));
+            StartCoroutine(skills.Trigger(SkillTrigger.Transform, originalType, drawnCard, 0.6f));
 
         }, 0.5f);
 
@@ -958,11 +959,12 @@ public class Board : MonoBehaviour
         
         foreach (var c in targets)
         {
+            var originalType = c.GetCardType();
             c.TransformTo(GetTransformTypeFor(c, skill.ExtraType), skill.title);
             transformSound.Play(c.transform.position);
             DrawLines(lineStart, new List<Card> { c }, true);
             yield return new WaitForSeconds(0.1f);
-            yield return skills.Trigger(SkillTrigger.Transform, c);
+            yield return skills.Trigger(SkillTrigger.Transform, originalType, c);
             yield return new WaitForSeconds(0.1f);
             yield return skills.PlaceTrigger(c);
             yield return new WaitForSeconds(0.2f);

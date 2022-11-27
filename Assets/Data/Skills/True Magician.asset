@@ -26,7 +26,7 @@ MonoBehaviour:
     triggerDelay: 0
     announceDelay: 0
     requirement: {fileID: 0}
-    sound: {fileID: 8300000, guid: 5373a48fd9a4344adb36cb98d8f40014, type: 3}
+    sound: {fileID: 8300000, guid: b5779a716ffb44fadbd08982bf41d456, type: 3}
     amount: -1200
     cancelShout: 
     cancelDelay: 0
