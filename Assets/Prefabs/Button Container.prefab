@@ -595,4 +595,4 @@ MonoBehaviour:
   rotationAmount: 2
   duration: 0.05
   decreasing: 1
-  useLocalPosition: 1
+  useLocalPosition: 0
