@@ -28,6 +28,8 @@ public class Draggable : MonoBehaviour
 
     public Vector3 ReturnPos => start;
 
+    public Vector3 Offset => offset;
+
     private void Start()
     {
         cam = Camera.main;

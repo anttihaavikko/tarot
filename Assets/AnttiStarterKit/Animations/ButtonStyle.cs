@@ -44,7 +44,7 @@ namespace AnttiStarterKit.Animations
 
         private Vector3 GetSoundPos()
         {
-            return cam.ScreenToWorldPoint(transform.position);
+            return cam ? cam.ScreenToWorldPoint(transform.position) : Vector3.zero;
         }
 
         public void OnPointerEnter(PointerEventData eventData)

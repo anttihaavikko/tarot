@@ -84,8 +84,10 @@ public class Card : MonoBehaviour
         transform.localScale *= 1.1f;
         RandomizeRotation();
         board.HideCardPreview();
-        board.PlayPickSound(transform.position);
+        var p = transform.position;
+        board.PlayPickSound(p);
         CursorManager.Instance.Use(3);
+        EffectManager.AddEffect(4, p - draggable.Offset);
     }
 
     public void Placed()

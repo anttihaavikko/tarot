@@ -1100,6 +1100,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4624582713115025238}
+    - target: {fileID: 3963644940145160850, guid: d4aba7c21f95041aaa5246f758748162, type: 3}
+      propertyPath: shaker
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9142607376536867945, guid: d4aba7c21f95041aaa5246f758748162, type: 3}
       propertyPath: m_Name
       value: Button Container
