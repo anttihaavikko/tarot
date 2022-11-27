@@ -11,9 +11,10 @@ public class TutorialHolder : MonoBehaviour
     [SerializeField] private Appearer appearer;
     [SerializeField] private TMP_Text text, shadow;
     [SerializeField] private List<Appearer> edgeSpots;
+    [SerializeField] private Appearer arrow;
 
     private Tutorial<TutorialMessage> tutorials;
-    private bool spotsShown;
+    private bool spotsShown, arrowShown;
 
     private void Start()
     {
@@ -36,15 +37,22 @@ public class TutorialHolder : MonoBehaviour
 
     public void Hide()
     {
+        HideArrow();
         appearer.Hide();
+    }
+
+    private void HideArrow()
+    {
+        if (!arrowShown) return;
+        arrowShown = false;
+        arrow.Hide();
     }
 
     public void HideSpots()
     {
-        if (spotsShown)
-        {
-            edgeSpots.ForEach(s => s.Hide());
-        }
+        if (!spotsShown) return;
+        spotsShown = false;
+        edgeSpots.ForEach(s => s.Hide());
     }
     
     public void Mark(TutorialMessage message)
@@ -54,6 +62,12 @@ public class TutorialHolder : MonoBehaviour
 
     private void DoShow(TutorialMessage message)
     {
+        if (message == TutorialMessage.Intro)
+        {
+            arrowShown = true;
+            arrow.Show();
+        }
+        
         if (message == TutorialMessage.PlaceOnEdge)
         {
             spotsShown = true;
