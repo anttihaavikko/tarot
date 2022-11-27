@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Reign Supreme
-    description: (Doubles) your score now. Lose ([X] points) if ([1]) is ever transformed.
+    description: (Doubles) your score now. Lose ([X] points) if ([1]) ever transforms.
     passive: 7
     trigger: 5
     condition: 0
