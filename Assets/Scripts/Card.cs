@@ -105,8 +105,8 @@ public class Card : MonoBehaviour
         {
             board.Preview(this);
             var p = transform.position;
-            var diff = Vector3.MoveTowards(p, Vector3.zero, 0.2f);
-            shadow.position = p + diff.normalized * 0.2f;
+            var diff = Vector3.MoveTowards(p, Vector3.zero, 0.3f);
+            shadow.position = p + diff.normalized * 0.3f;
         }
     }
 
