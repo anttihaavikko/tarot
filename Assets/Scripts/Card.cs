@@ -34,6 +34,8 @@ public class Card : MonoBehaviour
     public Tile Tile { get; set; }
     public bool IsDying { get; private set; }
 
+    public bool IsLocked => !draggable.enabled;
+
     public bool IsDragging => draggable.IsDragging;
 
     private void Awake()
@@ -83,6 +85,7 @@ public class Card : MonoBehaviour
         RandomizeRotation();
         board.HideCardPreview();
         board.PlayPickSound(transform.position);
+        CursorManager.Instance.Use(3);
     }
 
     public void Placed()

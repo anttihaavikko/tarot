@@ -44,8 +44,6 @@ public class Board : MonoBehaviour
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private Appearer undoButton;
     [SerializeField] private Plants plants;
-    
-
     [SerializeField] private Appearer pauseLabel, dailyResumeButton, menuButton, giveUpButton, resumeButton, againButton;
 
     private readonly InfiniteGrid<Tile> grid = new();
@@ -89,6 +87,7 @@ public class Board : MonoBehaviour
     public Vector3 MidPoint => cam.transform.position.WhereZ(0);
     public Vector3 SkyPoint => MidPoint + Vector3.Distance(MidPoint, hand.transform.position) * Vector3.up;
     public bool HasEnded => alreadyOver;
+    public bool IsPaused => paused;
 
     private void Start()
     {
@@ -500,6 +499,8 @@ public class Board : MonoBehaviour
 
     private IEnumerator DoSlide(Card card)
     {
+        CursorManager.Instance.Use(0);
+        
         CanUndo = true;
 
         prevScore = scoreDisplay.Total;

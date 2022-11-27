@@ -23,11 +23,14 @@ public class SkillIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         SkillTooltip.Instance.Show(skill);
+        CursorManager.Instance.Use(1);
+        pulsater.Pulsate();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         SkillTooltip.Instance.Hide();
+        CursorManager.Instance.Use(0);
     }
 
     public void Pulsate()
