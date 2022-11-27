@@ -5,22 +5,13 @@ using UnityEngine;
 
 public class CursorManager : Manager<CursorManager>
 {
-    [SerializeField] private List<CursorDefinition> cursors;
+    [SerializeField] private List<Sprite> cursors;
 
     public void Use(int cursorIndex)
     {
-        cursors[cursorIndex].Use();
-    }
-}
-
-[Serializable]
-public class CursorDefinition
-{
-    [SerializeField] private Texture2D cursor;
-    [SerializeField] private Vector2 hotspot;
-
-    public void Use()
-    {
-        Cursor.SetCursor(cursor, hotspot, CursorMode.Auto);
+        var cursor = cursors[cursorIndex];
+        if (!cursor) return;
+        var hotspot = new Vector2(cursor.pivot.x, cursor.texture.height - cursor.pivot.y);
+        Cursor.SetCursor(cursor.texture, hotspot, CursorMode.Auto);
     }
 }

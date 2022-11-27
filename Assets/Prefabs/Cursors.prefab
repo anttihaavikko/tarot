@@ -45,11 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursors:
-  - cursor: {fileID: 2800000, guid: 4f31899578f5d4fb0b77e642aaa91d65, type: 3}
-    hotspot: {x: 0, y: 0}
-  - cursor: {fileID: 2800000, guid: 87fe776d9b78d410d90813404771b776, type: 3}
-    hotspot: {x: 10, y: 5}
-  - cursor: {fileID: 2800000, guid: 3c8c91c435d824f6d9a8ebd1ec885e20, type: 3}
-    hotspot: {x: 35, y: 16}
-  - cursor: {fileID: 2800000, guid: 601334b0503674103b3ba25b0d42079d, type: 3}
-    hotspot: {x: 35, y: 16}
+  - {fileID: 21300000, guid: 4f31899578f5d4fb0b77e642aaa91d65, type: 3}
+  - {fileID: 21300000, guid: 87fe776d9b78d410d90813404771b776, type: 3}
+  - {fileID: 21300000, guid: 3c8c91c435d824f6d9a8ebd1ec885e20, type: 3}
+  - {fileID: 21300000, guid: 601334b0503674103b3ba25b0d42079d, type: 3}
