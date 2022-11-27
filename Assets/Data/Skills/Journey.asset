@@ -24,12 +24,13 @@ MonoBehaviour:
     extraTypes: 
     iconSprite: {fileID: -2108590751, guid: f653580ec121045ebbae95b9d9639600, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: e1419f240d75c4a9c918067c92fdd92f, type: 3}
     amount: 0
-    cancelShout: Too short!
+    cancelShout: Make a long story short!
     cancelDelay: 0.1
-    cancelSound: {fileID: 0}
+    cancelSound: {fileID: 8300000, guid: 95ebf47ecc9a24e42b626965ad7b62b4, type: 3}
     repeatable: 1
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -40,3 +41,4 @@ MonoBehaviour:
     canNotFizzle: 0
     skipAnnounce: 0
     manualPlaceOnly: 1
+    skipMulti: 0

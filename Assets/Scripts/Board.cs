@@ -841,8 +841,14 @@ public class Board : MonoBehaviour
         
         EffectManager.AddTextPopup(shown.AsScore(), pos.RandomOffset(1f), 1.3f);
         effectCamera.BaseEffect(0.2f);
+
+        if (amt >= 0)
+        {
+            AudioManager.Instance.PlayEffectFromCollection(5, pos);
+            return;
+        }
         
-        AudioManager.Instance.PlayEffectFromCollection(5, pos);
+        AudioManager.Instance.PlayEffectAt(16, pos, 0.5f);
     }
 
     public bool IsPlacedAlone()
