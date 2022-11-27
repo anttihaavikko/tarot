@@ -14,20 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Queen's Guard
-    description: Add two ([2]) card to the top of the (draw pile) when placing ([1]).
+    description: Add two ([2]) cards to the top of the (draw pile) when placing ([1]).
     passive: 0
     trigger: 1
     condition: 0
     effect: 11
     firstCards: 03000000
     secondCards: 0200000005000000
+    extraTypes: 
     iconSprite: {fileID: -763425680, guid: f2cc5fa39c5b14aa09e66e815370184c, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: cbb733874726d4b5ca237aa1187bd995, type: 3}
     amount: 2
     cancelShout: 
     cancelDelay: 0
+    cancelSound: {fileID: 0}
     repeatable: 1
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -36,3 +39,6 @@ MonoBehaviour:
     isNotMarked: 0
     usesRequirementForMarking: 0
     canNotFizzle: 0
+    skipAnnounce: 0
+    manualPlaceOnly: 0
+    skipMulti: 0
