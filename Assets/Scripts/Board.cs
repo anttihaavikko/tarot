@@ -656,6 +656,7 @@ public class Board : MonoBehaviour
         }
         
         effectCamera.BaseEffect(0.5f);
+        AudioManager.Instance.PlayEffectAt(14, MidPoint, 1f);
         AudioManager.Instance.PlayEffectAt(10, MidPoint, 3f);
         AudioManager.Instance.PlayEffectFromCollection(4, MidPoint);
         gameOverContainer.SetActive(true);
@@ -822,6 +823,8 @@ public class Board : MonoBehaviour
 
     public void AddScore(int amount, Vector3 pos, bool useMulti = true)
     {
+        AudioManager.Instance.PitchFor(1.1f, 0.7f);
+        
         var doubles = justPlaced && skills.Trigger(Passive.ScoreDoubler, justPlaced.GetCardType(), justPlaced.transform.position + Vector3.up);
         var extraMulti = doubles ? 2 : 1;
 
