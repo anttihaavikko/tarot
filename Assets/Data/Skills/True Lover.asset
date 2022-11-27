@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill:
     title: Joined at the Hip
-    description: Doubles your score now. Lose ([X] points) if ([1]) card is ever
+    description: (Doubles) your score now. Lose ([X] points) if ([1]) card is ever
       placed too far from another ([2]).
     passive: 7
     trigger: 1
