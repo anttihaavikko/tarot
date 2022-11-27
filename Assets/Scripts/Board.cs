@@ -446,11 +446,12 @@ public class Board : MonoBehaviour
         prevDir = dir;
         prevPos = start.Position;
 
-        preview.gameObject.SetActive(true);
+        preview.gameObject.SetActive(false);
         var targetPos = Scale(spot.AsVector3);
         var duration = 0.3f * Vector3.Distance(p, targetPos);
         preview.transform.position = Scale(spot.AsVector3);
         Tweener.MoveToQuad(preview, Scale(end.AsVector3), duration);
+        preview.gameObject.SetActive(true);
         
         previewLane.transform.position = Scale((start.AsVector3 + end.AsVector3) * 0.5f);
         previewLane.gameObject.SetActive(true);
