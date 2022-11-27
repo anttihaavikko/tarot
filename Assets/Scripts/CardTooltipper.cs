@@ -27,7 +27,7 @@ public class CardTooltipper : MonoBehaviour
             if (hovering)
             {
                 hovering = false;
-                CursorManager.Instance.Use(0);   
+                CursorManager.Instance.Use(0);
             }
             return;
         }
@@ -36,11 +36,11 @@ public class CardTooltipper : MonoBehaviour
         
         if (!card) return;
         ShowCursor(card);
+        hovering = true;
 
         if (card == current || board.IsDragging) return;
         current = card;
         board.ShowPreview(card.GetCardType());
-        hovering = true;
     }
 
     private void ShowCursor(Card card)
