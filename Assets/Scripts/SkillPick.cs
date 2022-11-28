@@ -2,6 +2,7 @@ using System.Collections;
 using AnttiStarterKit.Animations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillPick : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SkillPick : MonoBehaviour
     [SerializeField] private Skills skillPool;
     [SerializeField] private ButtonStyle buttonStyle;
     [SerializeField] private TMP_Text title, description, descriptionShadow;
+    [SerializeField] private Image icon;
 
     private Skill skill;
 
@@ -19,6 +21,7 @@ public class SkillPick : MonoBehaviour
         descriptionShadow.text = skill.GetDescription(false);
         preview.Show(skill.ImageType);
         title.text = skill.title;
+        icon.sprite = skill.iconSprite;
     }
 
     public void Pick()
