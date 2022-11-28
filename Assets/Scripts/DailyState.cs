@@ -10,6 +10,8 @@ public class DailyState : Manager<DailyState>
     private string DateString => FormatDate(current);
     private int BaseSeed => int.Parse(current.ToString("ddMMyyyy"));
     public static string FormatDate(DateTime date) => date.ToString("MMM dd yyyy", new CultureInfo("en-US"));
+    
+    public static string FormatDateWithSize(DateTime date) => date.ToString("MMM '<size=45>'dd'</size>' yyyy", new CultureInfo("en-US"));
 
     public string BoardSuffix => IsDaily ? $"-{BaseSeed.ToString()}" : "";
 

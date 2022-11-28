@@ -49,7 +49,7 @@ public class DailyView : MonoBehaviour
     {
         offset = Mathf.Min(0, offset + direction);
         current = DateTime.UtcNow.Add(new TimeSpan(offset, 0, 0, 0));
-        dateLabels.ForEach(t => t.text = DailyState.FormatDate(current));
+        dateLabels.ForEach(t => t.text = DailyState.FormatDateWithSize(current));
         
         DailyState.Instance.Setup(current);
 
