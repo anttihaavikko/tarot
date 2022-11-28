@@ -218,6 +218,11 @@ public class Board : MonoBehaviour
 
     public void Resume()
     {
+        if (skills.IsPicking && !alreadyOver)
+        {
+            skills.ToggleCompletely();
+        }
+        
         paused = false;
         
         pauseLabel.Hide();
@@ -233,9 +238,15 @@ public class Board : MonoBehaviour
 
             if (paused)
             {
+                if (skills.IsPicking)
+                {
+                    skills.ToggleCompletely();
+                }
+                
                 pauseLabel.Show();
                 resumeButton.Show();
                 giveUpButton.Show();
+
                 return;
             }
             
@@ -633,9 +644,9 @@ public class Board : MonoBehaviour
     public void GameOver(bool filled)
     {
         if (alreadyOver) return;
-
-        Resume();
+        
         alreadyOver = true;
+        Resume();
         StartCoroutine(ShowGameOver(filled));
     }
 

@@ -27,6 +27,7 @@ public class Skills : MonoBehaviour
     private int usedRerolls;
 
     public bool IsViewingBoard => picking && !shown;
+    public bool IsPicking => picking;
 
     private void Awake()
     {
@@ -65,6 +66,19 @@ public class Skills : MonoBehaviour
         usedRerolls++;
         StartCoroutine(DoReroll());
     }
+
+    public void ToggleCompletely()
+    {
+        Toggle();
+
+        if (toggleButton.IsShown)
+        {
+            toggleButton.Hide();
+            return;
+        }
+        
+        toggleButton.Show();
+    } 
 
     public void Toggle()
     {
