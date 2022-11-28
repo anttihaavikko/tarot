@@ -139,7 +139,7 @@ public class Board : MonoBehaviour
 
     private void TenSecondTimer()
     {
-        if (!paused)
+        if (!paused && !alreadyOver && !IsActing)
         {
             StartCoroutine(skills.Trigger(SkillTrigger.Timer));   
         }
