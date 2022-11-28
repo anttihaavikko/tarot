@@ -697,9 +697,14 @@ public class Board : MonoBehaviour
     private void ExplodeAt(Vector3 pos)
     {
         EffectManager.AddEffects(new []{ 1, 2, 3 }, pos);
-        effectCamera.BaseEffect(0.5f);
+        effectCamera.BaseEffect(0.7f);
         PulseAt(pos, false);
     }
+
+    public void Effect(float amount)
+    {
+        effectCamera.BaseEffect(amount);
+    } 
 
     public IEnumerator SpawnCards(CardType type, List<Tile> tiles, Vector3 lineStart)
     {

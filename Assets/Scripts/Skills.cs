@@ -571,6 +571,7 @@ public class Skills : MonoBehaviour
             if (card && !skill.canNotFizzle)
             {
                 // Debug.Log($"{skill.title} fizzled");
+                board.Effect(0.3f);
                 yield return Trigger(SkillTrigger.Fizzle, card);   
             }
 
