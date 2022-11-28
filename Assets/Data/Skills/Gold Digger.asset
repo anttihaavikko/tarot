@@ -23,7 +23,7 @@ MonoBehaviour:
     secondCards: 03000000
     extraTypes: 
     iconSprite: {fileID: -2128916887, guid: a0719984d6c1147cb9865b29768e7bb5, type: 3}
-    triggerDelay: 0
+    triggerDelay: 0.2
     announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: ed1ecbba91f11425ca3dd98018b1ddeb, type: 3}
@@ -41,3 +41,4 @@ MonoBehaviour:
     canNotFizzle: 0
     skipAnnounce: 1
     manualPlaceOnly: 0
+    skipMulti: 0

@@ -425,6 +425,7 @@ public class Skills : MonoBehaviour
                 break;
             case SkillEffect.LevelUp:
                 yield return new WaitForSeconds(0.5f);
+                AudioManager.Instance.PlayEffectAt(9, Vector3.zero);
                 yield return Present();
                 break;
             case SkillEffect.DestroySurrounding:
