@@ -21,13 +21,16 @@ MonoBehaviour:
     effect: 23
     firstCards: 13000000
     secondCards: 12000000
+    extraTypes: 
     iconSprite: {fileID: -1786412683, guid: 1f62efd971a4a4031946c67ad09c7c88, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: 60b8d18ed5c004a5fa2897f36610aec8, type: 3}
     amount: 0
-    cancelShout: 
+    cancelShout: Nice Day for a Picnic
     cancelDelay: 0
+    cancelSound: {fileID: 8300000, guid: 85fb081a320264d2db5fb5f49a590815, type: 3}
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -36,3 +39,6 @@ MonoBehaviour:
     isNotMarked: 0
     usesRequirementForMarking: 0
     canNotFizzle: 0
+    skipAnnounce: 0
+    manualPlaceOnly: 0
+    skipMulti: 0

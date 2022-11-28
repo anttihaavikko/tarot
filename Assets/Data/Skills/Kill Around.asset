@@ -21,13 +21,16 @@ MonoBehaviour:
     effect: 6
     firstCards: 1100000013000000
     secondCards: 
+    extraTypes: 
     iconSprite: {fileID: -576827614, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: b3b231dde4d594ce3b3843c311f513f8, type: 3}
     amount: 0
-    cancelShout: 
+    cancelShout: Thou Shalt Not Kill
     cancelDelay: 0
+    cancelSound: {fileID: 8300000, guid: b440a08c0976b42af9c601f77f108be3, type: 3}
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -36,3 +39,6 @@ MonoBehaviour:
     isNotMarked: 0
     usesRequirementForMarking: 0
     canNotFizzle: 0
+    skipAnnounce: 0
+    manualPlaceOnly: 0
+    skipMulti: 0

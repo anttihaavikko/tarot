@@ -24,12 +24,13 @@ MonoBehaviour:
     extraTypes: 
     iconSprite: {fileID: 699894101, guid: 36f50c6a977d04576891735e7cbb2339, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: 184ce9b8a9f2f4a79aa17ac2397fbfc8, type: 3}
     amount: 200
-    cancelShout: 
+    cancelShout: Caught Me Off-Guard
     cancelDelay: 0
-    cancelSound: {fileID: 0}
+    cancelSound: {fileID: 8300000, guid: e9e032bc5fefe4c209304c5b5e6be5bc, type: 3}
     repeatable: 1
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -39,3 +40,5 @@ MonoBehaviour:
     usesRequirementForMarking: 0
     canNotFizzle: 0
     skipAnnounce: 0
+    manualPlaceOnly: 0
+    skipMulti: 0

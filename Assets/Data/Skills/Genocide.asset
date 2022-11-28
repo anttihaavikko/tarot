@@ -28,9 +28,9 @@ MonoBehaviour:
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: 313b10401eeae40d58e06251d2207930, type: 3}
     amount: 0
-    cancelShout: 
+    cancelShout: Caught Red-Handed
     cancelDelay: 0
-    cancelSound: {fileID: 0}
+    cancelSound: {fileID: 8300000, guid: b8875d4fea6054ddba9d4a5d5348cdd2, type: 3}
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 1
@@ -41,3 +41,4 @@ MonoBehaviour:
     canNotFizzle: 0
     skipAnnounce: 0
     manualPlaceOnly: 0
+    skipMulti: 0

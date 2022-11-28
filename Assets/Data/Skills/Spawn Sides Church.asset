@@ -24,12 +24,13 @@ MonoBehaviour:
     extraTypes: 
     iconSprite: {fileID: 1819956519, guid: 36f50c6a977d04576891735e7cbb2339, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: a773fa9d8d3e14001aebd46cfef0249a, type: 3}
     amount: 0
-    cancelShout: 
+    cancelShout: O Ye, of Little Faith
     cancelDelay: 0
-    cancelSound: {fileID: 0}
+    cancelSound: {fileID: 8300000, guid: a85418acab55548dc8e968c809eb67d7, type: 3}
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -40,3 +41,4 @@ MonoBehaviour:
     canNotFizzle: 0
     skipAnnounce: 0
     manualPlaceOnly: 1
+    skipMulti: 0

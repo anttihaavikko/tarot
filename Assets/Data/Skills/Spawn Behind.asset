@@ -24,12 +24,13 @@ MonoBehaviour:
     extraTypes: 
     iconSprite: {fileID: -1558645074, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: 946e41168d98043b5b41f358c4d0dd3d, type: 3}
     amount: 0
-    cancelShout: 
+    cancelShout: Heart Upon Your Sleeve
     cancelDelay: 0
-    cancelSound: {fileID: 0}
+    cancelSound: {fileID: 8300000, guid: 1a647df7b413641afbf68043362fd20d, type: 3}
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -40,3 +41,4 @@ MonoBehaviour:
     canNotFizzle: 0
     skipAnnounce: 0
     manualPlaceOnly: 1
+    skipMulti: 0

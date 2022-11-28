@@ -21,13 +21,16 @@ MonoBehaviour:
     effect: 4
     firstCards: 04000000
     secondCards: 00000000
+    extraTypes: 
     iconSprite: {fileID: -1734278407, guid: 0258c794acb9b4918bc3672a7094759d, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: cc65a7d909d474c12a6ed4ba6fbf2b5b, type: 3}
     amount: 0
-    cancelShout: 
+    cancelShout: My Kingdom for a Horse
     cancelDelay: 0
+    cancelSound: {fileID: 8300000, guid: c5b82fdfb1695484dba6e4bce085739c, type: 3}
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -36,3 +39,6 @@ MonoBehaviour:
     isNotMarked: 0
     usesRequirementForMarking: 0
     canNotFizzle: 0
+    skipAnnounce: 0
+    manualPlaceOnly: 0
+    skipMulti: 0

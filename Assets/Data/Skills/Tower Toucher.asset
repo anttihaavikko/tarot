@@ -25,12 +25,13 @@ MonoBehaviour:
     extraTypes: 
     iconSprite: {fileID: -452797621, guid: 36f50c6a977d04576891735e7cbb2339, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: 96feca258376e4865a6afb16759d38d8, type: 3}
     amount: 2
-    cancelShout: 
+    cancelShout: House Divided
     cancelDelay: 0
-    cancelSound: {fileID: 0}
+    cancelSound: {fileID: 8300000, guid: 755a39c5086354d9b81598825e25cf7d, type: 3}
     repeatable: 1
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -41,3 +42,4 @@ MonoBehaviour:
     canNotFizzle: 0
     skipAnnounce: 0
     manualPlaceOnly: 0
+    skipMulti: 0

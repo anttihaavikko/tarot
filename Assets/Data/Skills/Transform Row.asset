@@ -22,13 +22,16 @@ MonoBehaviour:
     effect: 21
     firstCards: 01000000
     secondCards: 
+    extraTypes: 
     iconSprite: {fileID: -852461112, guid: f2cc5fa39c5b14aa09e66e815370184c, type: 3}
     triggerDelay: 0
+    announceDelay: 0
     requirement: {fileID: 0}
     sound: {fileID: 8300000, guid: b1bdfcd6c7afe41a98bbabbdccf688c7, type: 3}
     amount: 0
-    cancelShout: 
+    cancelShout: Same Ol' Same Ol'
     cancelDelay: 0
+    cancelSound: {fileID: 8300000, guid: b7f9f60ed2cb947d18962af9d7aef2ac, type: 3}
     repeatable: 0
     notRepeatableForOthers: 0
     useSecondImage: 0
@@ -37,3 +40,6 @@ MonoBehaviour:
     isNotMarked: 0
     usesRequirementForMarking: 0
     canNotFizzle: 0
+    skipAnnounce: 0
+    manualPlaceOnly: 0
+    skipMulti: 0
