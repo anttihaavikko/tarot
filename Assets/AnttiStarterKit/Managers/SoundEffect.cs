@@ -10,7 +10,7 @@ namespace AnttiStarterKit.Managers
 			DontDestroyOnLoad (gameObject);
 		}
 
-		public void Play(AudioClip clip, float volume, bool pitchShift = true) {
+		public void Play(AudioClip clip, float volume, bool pitchShift = true, bool priority = false) {
 
 			name = clip.name;
 
@@ -18,6 +18,8 @@ namespace AnttiStarterKit.Managers
 				float targetPitch = 1f;
 				audioSource.pitch = (1f + Random.Range (-0.1f, 0.1f)) * targetPitch;
 			}
+
+			audioSource.priority = priority ? 128 : 256;
 
 			audioSource.PlayOneShot (clip, AudioManager.Instance.volume * volume);
 

@@ -146,7 +146,7 @@ public class Card : MonoBehaviour
     public void Announce()
     {
         var sound = cardSounds.At((int)type);
-        AudioManager.Instance.PlayEffectAt(sound, transform.position);
+        AudioManager.Instance.PlayEffectAt(sound, transform.position, true, true);
     }
 
     public static string GetName(CardType type)

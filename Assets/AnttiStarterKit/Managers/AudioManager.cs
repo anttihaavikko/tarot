@@ -152,14 +152,18 @@ namespace AnttiStarterKit.Managers
 			PlayEffectAt(clip, pos, v * collection.Volume);
 		}
 
-		public void PlayEffectAt(AudioClip clip, Vector3 pos, float vol, bool pitchShift = true) {
+		public void PlayEffectAt(AudioClip clip, Vector3 pos, float vol, bool pitchShift = true, bool priority = false) {
 			var se = Get();
 			se.transform.position = pos;
+			if (priority)
+			{
+				
+			}
 			se.Play (clip, vol, pitchShift);
 			se.transform.parent = transform;
 		}
 
-		public void PlayEffectAt(AudioClip clip, Vector3 pos, bool pitchShift = true) {
+		public void PlayEffectAt(AudioClip clip, Vector3 pos, bool pitchShift = true, bool priority = false) {
 			PlayEffectAt (clip, pos, 1f, pitchShift);
 		}
 
