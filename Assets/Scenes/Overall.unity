@@ -4567,7 +4567,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 42537066138d54b7cab8a4384ff39a7d, type: 2}
     - target: {fileID: 269701358985396028, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
       propertyPath: m_text
-      value: BEST SCORES
+      value: BEST RUN
       objectReference: {fileID: 0}
     - target: {fileID: 493991866424159783, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4719,7 +4719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6803717220258943556, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
       propertyPath: m_text
-      value: BEST SCORES
+      value: BEST RUN
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 345b61705769f476fabf6d90c2daab12, type: 3}
