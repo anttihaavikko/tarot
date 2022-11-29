@@ -51,4 +51,5 @@ public class LeaderboardStatData
     public int best;
     public int average;
     public int plays;
+    public string previous;
 }

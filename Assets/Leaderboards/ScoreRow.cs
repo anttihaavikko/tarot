@@ -60,11 +60,19 @@ namespace Leaderboards
                 data.normal.plays.ToString(),
                 data.normal.best.AsScore(),
                 data.normal.average.AsScore(),
+                FormatDate(data.normal.previous),
                 "",
                 data.daily.plays.ToString(),
                 data.daily.best.AsScore(),
-                data.daily.average.AsScore()
+                data.daily.average.AsScore(),
+                FormatDate(data.daily.previous)
             });
+        }
+
+        private string FormatDate(string input)
+        {
+            var date = DateTime.Parse(input);
+            return DailyState.FormatDate(date);
         }
 
         public void OnPointerExit(PointerEventData eventData)
