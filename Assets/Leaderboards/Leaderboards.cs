@@ -44,7 +44,7 @@ namespace Leaderboards
             data.scores.ToList().ForEach(entry =>
             {
                 var row = Instantiate(rowPrefab, container);
-                row.Setup(entry.position + ". " + entry.name, entry.score, entry.locale);
+                row.Setup(entry.position + ". " + entry.name, entry.score, entry.locale, entry.pid);
             });
         }
 
