@@ -28,25 +28,23 @@ namespace Leaderboards
 	public class ScoreManager : MonoBehaviour {
 
 		public string gameName;
+		[SerializeField] private string loadUrl = "https://games.sahaqiel.com/leaderboards/load-scores-vball.php";
+		[SerializeField] private int mode;
+		[SerializeField] private bool showAll;
+
 		public int perPage = 5;
 		public Action onUploaded, onLoaded;
 		public Action<int> onRankFound;
 
 		private const string SaveURL = "https://games.sahaqiel.com/leaderboards/save-score.php?str=";
-		private const string LoadURL = "https://games.sahaqiel.com/leaderboards/load-scores-vball.php";
 
 		public bool EndReached { get; private set; }
 		
 		private CertificateHandler certHandler;
 
 		/******/
-
-		private static ScoreManager instance = null;
+		
 		private LeaderBoardData data;
-
-		public static ScoreManager Instance {
-			get { return instance; }
-		}
 
 		public void CancelLeaderboards() {
 			StopAllCoroutines ();
@@ -61,8 +59,10 @@ namespace Leaderboards
 			return data;
 		}
 
-		private IEnumerator DoLoadLeaderBoards(int p) {
-			var www = UnityWebRequest.Get(LoadURL + "?amt=" + perPage + "&p=" + p + "&game=" + gameName);
+		private IEnumerator DoLoadLeaderBoards(int p)
+		{
+			var all = showAll ? "&all=1" : "";
+			var www = UnityWebRequest.Get(loadUrl + "?amt=" + perPage + "&p=" + p + "&game=" + gameName + "&mode=" + mode + all);
 			www.certificateHandler = certHandler;
 
 			yield return www.SendWebRequest();
@@ -96,12 +96,6 @@ namespace Leaderboards
 		}
 
 		private void Awake() {
-			if (instance != null && instance != this) {
-				Destroy (this.gameObject);
-				return;
-			}
-
-			instance = this;
 			certHandler = new CustomCertificateHandler();
 		}
 
