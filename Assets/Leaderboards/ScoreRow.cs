@@ -71,8 +71,8 @@ namespace Leaderboards
 
         private string FormatDate(string input)
         {
-            var date = DateTime.Parse(input);
-            return DailyState.FormatDate(date);
+            var ok = DateTime.TryParse(input, out var date);
+            return ok ? DailyState.FormatDate(date) : "-";
         }
 
         public void OnPointerExit(PointerEventData eventData)
