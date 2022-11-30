@@ -30,11 +30,14 @@ public class StatsLoader : Manager<StatsLoader>
 
         yield return www.SendWebRequest();
 
-        if (string.IsNullOrEmpty (www.error)) {
-            var data = JsonUtility.FromJson<LeaderboardStat> (www.downloadHandler.text);
-            cache.Add(player, data);
-            yield return data;
+        if (!string.IsNullOrEmpty(www.error)) yield break;
+        
+        var data = JsonUtility.FromJson<LeaderboardStat> (www.downloadHandler.text);
+        if (!cache.ContainsKey(player))
+        {
+            cache.Add(player, data);   
         }
+        yield return data;
     }
 }
 
