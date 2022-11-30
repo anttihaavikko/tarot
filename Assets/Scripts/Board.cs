@@ -698,7 +698,7 @@ public class Board : MonoBehaviour
     {
         PulseAt(pos, false);
         EffectManager.AddEffects(new []{ 1, 2, 3 }, pos);
-        effectCamera.BaseEffect(0.4f);
+        effectCamera.BaseEffect(0.3f);
     }
 
     public void Effect(float amount)
