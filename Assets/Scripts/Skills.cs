@@ -6,6 +6,7 @@ using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,6 +19,7 @@ public class Skills : MonoBehaviour
     [SerializeField] private SkillIcon iconPrefab;
     [SerializeField] private List<SkillPick> skillPicks;
     [SerializeField] private Appearer title, rerollButton, toggleButton;
+    [SerializeField] private TMP_Text markedDesc, markedDescShadow;
 
     private List<Skill> skillPool;
     private bool picking;
@@ -612,10 +614,17 @@ public class Skills : MonoBehaviour
         var types = GetTypesFor(type).ToList();
         skills.Where(s => s.MatchesForSecondaryMarking(type)).ToList().ForEach(s => s.Icon.Mark(false));
         skills.Where(s => s.MatchesForMarking(types, this)).ToList().ForEach(s => s.Icon.Mark(true));
+
+        var matches = skills.Where(s => s.MatchesForMarking(types, this) || s.MatchesForSecondaryMarking(type)).ToList();
+        var texts = matches.Select(s => s.GetDescription());
+        var shadows = matches.Select(s => s.GetDescription(false));
+        markedDesc.text = string.Join("\n\n", texts);
+        markedDescShadow.text = string.Join("\n\n", shadows);
     }
 
     public void UnMarkSkills()
     {
+        markedDesc.text = markedDescShadow.text = "";
         skills.ForEach(s => s.Icon.UnMark());
     }
 
